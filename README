@@ -1,0 +1,7 @@
+Documentation for Keen.
+
+To build HTML docs, type:
+
+  make html
+  
+Then check your build folder.

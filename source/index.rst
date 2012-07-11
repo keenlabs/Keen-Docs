@@ -3,20 +3,27 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to Keen's documentation!
-================================
+Documentation
+=============
 
-Contents:
+We have lots of shit written.
 
-.. toctree::
-   :maxdepth: 2
+============
+Keen Clients
+============
 
+| :doc:`iOS/usage-guide` - See this if you want a quickstart / tutorial on how to add the Keen iOS client to your iOS app and quickly start tracking events.
+| :doc:`iOS/reference` - See this if you want a detailed reference to the Keen iOS client API.
 
+========
+Keen API
+========
 
-Indices and tables
-==================
+| :doc:`api/usage-guide` - See this if you want a quickstart / tutorial on how to use the Keen API.
+| :doc:`api/reference` - See this if you want a detailed reference to the Keen API.
 
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
-
+.. toctree::   
+   :hidden:
+   
+   iOS/usage-guide
+   iOS/reference
