@@ -6,7 +6,7 @@
 Documentation
 =============
 
-We have lots of shit written.
+All the documentation we've written can be found below. If you have any feedback or find any errors, please `let us know`_!
 
 ============
 Keen Clients
@@ -27,3 +27,5 @@ Keen API
    
    iOS/usage-guide
    iOS/reference
+
+.. _let us know: team@keen.io
