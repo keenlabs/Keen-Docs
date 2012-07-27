@@ -26,7 +26,8 @@ Keen API
    :hidden:
    
    iOS/usage-guide
-   iOS/reference
+   api/usage-guide
+   api/reference
 
 .. _let us know: team@keen.io
 .. _Keen iOS Client API Reference: http://keen.io
