@@ -159,6 +159,7 @@ EXAMPLE RESPONSE
   		}
   		]
   	}
+
 ===================
 Collection Resource
 ===================
@@ -347,3 +348,53 @@ EXAMPLE RESPONSE
 		"_id": ":EXTRACTION_ID:",
 		"results_url": "https://s3.amazonaws.com/keen_service/..."
 	}
+
+==============
+Count Resource
+==============
+
+URL
+
+/:VERSION:/projects/:PROJECT_ID:/:COLLECTION_NAME:/_count:
+
+SUPPORTED METHODS
+
+GET, HEAD
+
+DESCRIPTION
+
+GET returns the number of resources in the collection matching the given criteria. The response will be a simple JSON
+object with one key: result, which maps to the numeric result described previously.
+
+QUERY STRING PARAMETERS
+
+Count supports two query string parameters: clauses and api_key.
+
+The "clauses" parameter is optional. If specified, its value should be a URL-encoded JSON string that represents an
+array of clauses. These clauses should look just like they do in the <a href="#extractions">extractions resource</a>.
+Here's an example clause:
+
+::
+
+    {
+        "column_name": "body:amount",
+        "operator": "gt",
+        "value": 3.50
+    }
+
+The "api_key" parameter is optional. It allows you to pass your api_key as a query string parameter rather than as an
+HTTP header. This is to support embedding links to count APIs directly in HTML. If both the query string parameter
+and the header are specified, Keen will try the API key in the query string first, then the header.
+
+PAYLOAD
+
+None
+
+EXAMPLE RESPONSE
+
+::
+
+    {
+        "result": 10
+    }
+
