@@ -30,4 +30,4 @@ Keen API
    api/reference
 
 .. _let us know: team@keen.io
-.. _Keen iOS Client API Reference: http://keen.io
+.. _Keen iOS Client API Reference: http://keen.io/documentation/iOS-client-api-reference
