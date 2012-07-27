@@ -412,3 +412,63 @@ Example Response
         "result": 10
     }
 
+=====================
+Count Unique Resource
+=====================
+
+----
+URL
+----
+
+/:VERSION:/projects/:PROJECT_ID:/:COLLECTION_NAME:/_count_unique:
+
+-----------------
+Supported Methods
+-----------------
+
+GET, HEAD
+
+-----------
+Description
+-----------
+
+GET returns the number of UNIQUE resources in the collection matching the given criteria. The response will be a simple
+JSON object with one key: result, which maps to the numeric result described previously.
+
+-----------------------
+Query String Parameters
+-----------------------
+
+Count unique supports two query string parameters: clauses and api_key.
+
+The "clauses" parameter is optional. If specified, its value should be a URL-encoded JSON string that represents an
+array of clauses. These clauses should look just like they do in the <a href="#extractions">extractions resource</a>.
+Here's an example clause:
+
+::
+
+    {
+        "column_name": "body:amount",
+        "operator": "gt",
+        "value": 3.50
+    }
+
+The "api_key" parameter is optional. It allows you to pass your api_key as a query string parameter rather than as an
+HTTP header. This is to support embedding links to count APIs directly in HTML. If both the query string parameter
+and the header are specified, Keen will try the API key in the query string first, then the header.
+
+-------
+Payload
+-------
+
+None
+
+----------------
+Example Response
+----------------
+
+::
+    {
+        "result": 7
+    }
+
