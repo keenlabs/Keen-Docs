@@ -13,7 +13,7 @@ Keen Clients
 ============
 
 | :doc:`iOS/usage-guide` - See this if you want a quickstart / tutorial on how to add the Keen iOS client to your iOS app and quickly start tracking events.
-| :doc:`iOS/reference` - See this if you want a detailed reference to the Keen iOS client API.
+| `Keen iOS Client API Reference`_ - See this if you want a detailed reference to the Keen iOS client API.
 
 ========
 Keen API
@@ -29,3 +29,4 @@ Keen API
    iOS/reference
 
 .. _let us know: team@keen.io
+.. _Keen iOS Client API Reference: http://keen.io
