@@ -2,9 +2,9 @@
 Keen API v2.0 Documentation
 ===========================
 
-NOTE: This API is part of a developer preview and may change without notice!
+.. note:: This API is part of a developer preview and may change without notice!
 
-SUB-NOTE: We recognize that changing APIs on you is really shitty, so while we’ll do it when in developer preview, we’ll never ever do it once the developer preview is over.
+.. note:: We recognize that changing APIs on you is really shitty, so while we’ll do it when in developer preview, we’ll never ever do it once the developer preview is over.
 
 If you’re looking for the Keen Service API Usage Guide, go here. If you want a tutorial / quick-start, check it out!
 
