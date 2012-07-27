@@ -381,8 +381,7 @@ Query String Parameters
 Count supports two query string parameters: clauses and api_key.
 
 The "clauses" parameter is optional. If specified, its value should be a URL-encoded JSON string that represents an
-array of clauses. These clauses should look just like they do in the <a href="#extractions">extractions resource</a>.
-Here's an example clause:
+array of clauses. These clauses should look just like they do in the `Extractions Resource`_. Here's an example clause:
 
 ::
 
@@ -442,8 +441,7 @@ Query String Parameters
 Count unique supports two query string parameters: clauses and api_key.
 
 The "clauses" parameter is optional. If specified, its value should be a URL-encoded JSON string that represents an
-array of clauses. These clauses should look just like they do in the <a href="#extractions">extractions resource</a>.
-Here's an example clause:
+array of clauses. These clauses should look just like they do in the `Extractions Resource`_. Here's an example clause:
 
 ::
 
@@ -468,6 +466,7 @@ Example Response
 ----------------
 
 ::
+
     {
         "result": 7
     }
