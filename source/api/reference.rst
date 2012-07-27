@@ -11,19 +11,28 @@ If you’re looking for the Keen Service API Usage Guide, go here. If you want a
 ================
 Version Resource
 ================
+
+----
 URL
+----
 
 /
 
-DESCRIPTION
+-----------
+Description
+-----------
 
 Returns the available API versions. Please only use API version 2.0. Version 1.0 will work but will be deprecated shortly.
 
-PAYLOAD
+-------
+Payload
+-------
 
 None
 
-EXAMPLE RESPONSE
+----------------
+Example Response
+----------------
 
 ::
 
@@ -49,23 +58,34 @@ EXAMPLE RESPONSE
 ==================
 Discovery Resource
 ==================
+
+----
 URL
+----
 
 /:version:
 
-SUPPORTED METHODS
+-----------------
+Supported Methods
+-----------------
 
 GET, HEAD
 
-DESCRIPTION
+-----------
+Description
+-----------
 
 Returns the available child resources. Currently, the only child resource is the Projects Resource.
 
-PAYLOAD
+-------
+Payload
+-------
 
 None
 
-EXAMPLE RESPONSE
+----------------
+Example Response
+----------------
 
 ::
 
@@ -78,23 +98,33 @@ EXAMPLE RESPONSE
 Projects Resource
 =================
 
+----
 URL
+----
 
 /:version:/projects
 
-SUPPORTED METHODS
+-----------------
+Supported Methods
+-----------------
 
 GET, HEAD
 
-DESCRIPTION
+-----------
+Description
+-----------
 
 Returns the projects accessible to the API user, as well as links to project sub-resources for discovery.
 
-PAYLOAD
+-------
+Payload
+-------
 
 None
 
-EXAMPLE RESPONSE
+----------------
+Example Response
+----------------
 
 ::
 
@@ -123,23 +153,33 @@ EXAMPLE RESPONSE
 Project Row Resource
 ====================
 
+----
 URL
+----
 
 /:VERSION:/projects/:PROJECT_ID:
 
-SUPPORTED METHODS
+-----------------
+Supported Methods
+-----------------
 
 GET, HEAD
 
-DESCRIPTION
+-----------
+Description
+-----------
 
 Returns detailed information about the specific project, as well as links to related resources.
 
-PAYLOAD
+-------
+Payload
+-------
 
 None
 
-EXAMPLE RESPONSE
+----------------
+Example Response
+----------------
 
 ::
 
@@ -166,21 +206,29 @@ EXAMPLE RESPONSE
 Collection Resource
 ===================
 
+----
 URL
+----
 
 /:VERSION:/projects/:PROJECT_ID:/:COLLECTION_NAME:
 
-SUPPORTED METHODS
+-----------------
+Supported Methods
+-----------------
 
 GET, HEAD, POST
 
-DESCRIPTION
+-----------
+Description
+-----------
 
 GET returns available schema information for this collection, including columns and their type and frequency. It also returns links to sub-resources.
 
 POST adds a new resource to this collection.
 
-PAYLOAD
+-------
+Payload
+-------
 
 A namespaced JSON object. There are two namespaces that matter. The "body" namespace is required and is where the properties you define and their values are placed. The "header" namespace is optional and is where several standard properties are placed. Some of them can be overriden.
 
@@ -201,7 +249,9 @@ The "body" namespace is completely user-defined. It must not be empty.
 		}
 	}
 
-EXAMPLE RESPONSE
+----------------
+Example Response
+----------------
 
 GET
 
@@ -249,21 +299,29 @@ POST
 Extractions Resource
 ====================
 
+----
 URL
+----
 
 /:VERSION:/projects/:PROJECT_ID:/:COLLECTION_NAME:/_extracts
 
-SUPPORTED METHODS
+-----------------
+Supported Methods
+-----------------
 
 GET, HEAD, POST
 
-DESCRIPTION
+-----------
+Description
+-----------
 
 GET returns available extractions and their statuses.
 
 POST creates a new extraction.
 
-PAYLOAD
+-------
+Payload
+-------
 
 Body should be a JSON object. One property is "clauses", which is a list of nested JSON objects with the following properties:
 
@@ -290,7 +348,9 @@ Example:
 
 
 
-EXAMPLE RESPONSE
+----------------
+Example Response
+----------------
 
 GET
 
@@ -325,23 +385,33 @@ POST
 Extraction Row Resource
 =======================
 
+----
 URL
+----
 
 /:VERSION:/projects/:PROJECT_ID:/:COLLECTION_NAME:/_extracts/:EXTRACTION_ID:
 
-SUPPORTED METHODS
+-----------------
+Supported Methods
+-----------------
 
 GET, HEAD
 
-DESCRIPTION
+-----------
+Description
+-----------
 
 GET returns detailed information about a particular extraction (including a link to its results if the extraction has completed).
 
-PAYLOAD
+-------
+Payload
+-------
 
 None
 
-EXAMPLE RESPONSE
+----------------
+Example Response
+----------------
 
 ::
 
