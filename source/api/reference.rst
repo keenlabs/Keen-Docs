@@ -1,5 +1,7 @@
+===========================
 Keen API v2.0 Documentation
-=============
+===========================
+
 NOTE: This API is part of a developer preview and may change without notice!
 
 SUB-NOTE: We recognize that changing APIs on you is really shitty, so while we’ll do it when in developer preview, we’ll never ever do it once the developer preview is over.
@@ -353,20 +355,28 @@ EXAMPLE RESPONSE
 Count Resource
 ==============
 
+----
 URL
+----
 
 /:VERSION:/projects/:PROJECT_ID:/:COLLECTION_NAME:/_count:
 
-SUPPORTED METHODS
+-----------------
+Supported Methods
+-----------------
 
 GET, HEAD
 
-DESCRIPTION
+-----------
+Description
+-----------
 
 GET returns the number of resources in the collection matching the given criteria. The response will be a simple JSON
 object with one key: result, which maps to the numeric result described previously.
 
-QUERY STRING PARAMETERS
+-----------------------
+Query String Parameters
+-----------------------
 
 Count supports two query string parameters: clauses and api_key.
 
@@ -386,11 +396,15 @@ The "api_key" parameter is optional. It allows you to pass your api_key as a que
 HTTP header. This is to support embedding links to count APIs directly in HTML. If both the query string parameter
 and the header are specified, Keen will try the API key in the query string first, then the header.
 
-PAYLOAD
+-------
+Payload
+-------
 
 None
 
-EXAMPLE RESPONSE
+----------------
+Example Response
+----------------
 
 ::
 
