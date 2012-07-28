@@ -13,6 +13,7 @@ This guide is a tutorial / quick-start to get you up and running with the Keen A
 * :ref:`Get the names of keys and the types of their values for the events you’ve already stored <collection_schema>`
 * :ref:`Create an extraction request <create_extraction>`
 * :ref:`Get the results of that extraction <get_extraction>`
+* :ref:`Count the number of times an event has occurred <count>`
 
 If you’re looking for the Keen Service API Reference Documentation, go :doc:`here<reference>`. It's great if what you want to see is a list of resources and example payloads!
 
@@ -258,3 +259,52 @@ Response
     }
 
 Your results have been saved to S3. Simply copy and paste the value from "results_url" to a browser and they will download to your computer.
+
+.. _count:
+
+=========
+Get Count
+=========
+
+Okay, you've stored data and retrieved it, but now it's time to do some analysis in Keen itself. Perhaps the most basic piece of information you can ask for is the number of events matching a set of criteria in a specific collection.
+
+Just as with :ref:`creating an extraction<create_extraction>`, you'll probably want to provide a list of clauses to use as a filter. This is optional, so leave it out if you want! But if you do want to only count events that match certain criteria, then follow along.
+
+Unlike other API calls, count requires query string parameters. The first is the "clauses" parameter. Its value is a URL-encoded JSON string that represents the clauses you want to use to filter the collection. The value should be identical in form to the one used when :ref:`creating an extraction<create_extraction>`. Let's take an example. Let's say our clauses are the following:
+
+::
+
+    [{
+        "column_name": "body:type",
+        "operator": "eq",
+        "value": "mouse_click"
+    }]
+
+Note that the root object is a list. Once we convert this to a URL-encoded JSON string, it'll look like:
+
+::
+
+    %5B%7B%22column_name%22%3A%20%22body%3Atype%22%2C%20%22operator%22%3A%20%22eq%22%2C%20%22value%22%3A%20%22mouse_click%22%7D%5D
+
+I know, pretty ugly, right? But it's important to support this so that our users can easily embed links to our analysis APIs (like Count!) in their websites and dashboards. Which leads us to our second query string parameter: "api_key".
+
+The "api_key" parameter is optional. It allows you to specify your API key through a query string parameter instead of through the "Authorization" header as with our other APIs. This makes embedding links much easier. If you don't use this parameter, we do require that you specify the "Authorization" header.
+
+-------
+Request
+-------
+
+::
+
+    curl https://api.keen.io/2.0/projects/<PROJECT_ID>/user_interactions/_count?clauses=<URL_ENCODED_JSON_STRING>&api_key=<API_KEY>"
+
+--------
+Response
+--------
+
+::
+
+    {
+        "result": 1
+    }
+
