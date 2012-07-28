@@ -56,13 +56,17 @@ All you have to do to authenticate is include the API Token in an HTTP header ca
 
 An example using cURL:
 
-REQUEST
+-------
+Request
+-------
 
 ::
 
     curl https://api.keen.io -H "Authorization: <YOUR_API_KEY_HERE>"
 
-RESPONSE
+--------
+Response
+--------
 
 ::
 
@@ -133,13 +137,17 @@ Get Collection Schema Information
 
 Once you’ve inserted a number of events, you may want to see the names of the keys in those events as well as the types of their values. This is useful if you want to create new extraction requests (so you can actually use the data you’re collecting!). Let’s get the schema for our "user_interactions" collection. It’s super easy:
 
-REQUEST
+-------
+Request
+-------
 
 ::
 
     curl https://api.keen.io/2.0/projects/<PROJECT_ID>/user_interactions -H "Authorization: <API_KEY>"
 
-RESPONSE
+--------
+Response
+--------
 
 ::
 
@@ -199,13 +207,17 @@ Once you’ve stored a bunch of data, you’re going to want to get it out so yo
 
 The important pieces of information are the "clauses" and "email" properties. "clauses" contains a list of JSON objects, each of which is a specific filter criteria. In this example, we’re saying we only want events whose "type" column has a value equal to "mouse_click". See the API reference guide for all supported operators. The "email" property is optional. If specified, Keen will e-mail the given address whenever the extraction has completed.
 
-REQUEST
+-------
+Request
+-------
 
 ::
 
     curl https://api.keen.io/2.0/projects/<PROJECT_ID>/user_interactions/_extracts -H "Authorization: <API_KEY>" -d @extraction.json
 
-RESPONSE
+--------
+Response
+--------
 
 ::
 
@@ -225,13 +237,17 @@ Get Extraction Results
 
 Now that you’ve created an extraction, you want to get the results. For this, you’ll need the ID of the extraction request you created (see previous example). Example:
 
-REQUEST
+-------
+Request
+-------
 
 ::
 
     curl https://api.keen.io/2.0/projects/<PROJECT_ID>/user_interactions/_extracts/<EXTRACTION_ID> -H "Authorization: <API_KEY>"
 
-RESPONSE
+--------
+Response
+--------
 
 ::
 
