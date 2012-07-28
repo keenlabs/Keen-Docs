@@ -1,8 +1,10 @@
-Keen API Usage Guide 
-===============
-**NOTE:** This API is part of a developer preview and may change without notice!
+====================
+Keen API Usage Guide
+====================
 
-**SUB-NOTE:** We recognize that changing APIs on you is really shitty, so while we’ll do it when in developer preview, we’ll never ever do it once the developer preview is over.
+.. note:: This API is part of a developer preview and may change without notice!
+
+.. note:: We recognize that changing APIs on you is really shitty, so while we’ll do it when in developer preview, we’ll never ever do it once the developer preview is over.
 
 This guide is a tutorial / quick-start to get you up and running with the Keen API. After you’re done with this guide, you’ll have learned how to:
 
@@ -12,7 +14,7 @@ This guide is a tutorial / quick-start to get you up and running with the Keen A
 * :ref:`Create an extraction request <create_extraction>`
 * :ref:`Get the results of that extraction <get_extraction>`
 
-If you’re looking for the Keen Service API Reference Documentation, go `here <https://keen.io/documentation/service-api-reference>`_. It's great if what you want to see is a list of resources and example payloads!
+If you’re looking for the Keen Service API Reference Documentation, go :doc:`here<reference>`. It's great if what you want to see is a list of resources and example payloads!
 
 ====================== 
 Setup / Pre-requisites 
@@ -57,28 +59,28 @@ An example using cURL:
 REQUEST
 
 ::
-	
-	curl https://api.keen.io -H "Authorization: <YOUR_API_KEY_HERE>"
+
+    curl https://api.keen.io -H "Authorization: <YOUR_API_KEY_HERE>"
 
 RESPONSE
 
 ::
 
-	[{
-   		"url": "/beta",
-   		"is_public": false,
-   		"version": "beta"
-	},
-	{
-   		"url": "/1.0",
-   		"is_public": false,
-   		"version": "1.0"
-	},
-	{
-   		"url": "/2.0",
-   		"is_public": true,
-   		"version": "2.0"
-	}]
+    [{
+        "url": "/beta",
+        "is_public": false,
+        "version": "beta"
+    },
+    {
+        "url": "/1.0",
+        "is_public": false,
+        "version": "1.0"
+    },
+    {
+        "url": "/2.0",
+        "is_public": true,
+        "version": "2.0"
+    }]
 
 It’s as simple as that!
 
@@ -94,32 +96,32 @@ So we’ll insert a new "user_interaction" event into our project. The event loo
 
 ::
 
-	{
-		"body": {
-			"type": "mouse_click",
-			"x_coord": 720,
-			"y_coord": 640
-		}
-	}
+    {
+        "body": {
+            "type": "mouse_click",
+            "x_coord": 720,
+            "y_coord": 640
+        }
+    }
 
 Save that JSON to a file on your filesystem. We’re naming ours "click1.json". Now, to send it to Keen, type the following: 
 
 ::
 
-	curl https://api.keen.io/2.0/projects/<PROJECT_ID>/user_interactions
-  	  -H "Authorization: <API_KEY>"
-  	  -H "Content-Type: application/json"
- 	  -d @click1.json
-    
+    curl https://api.keen.io/2.0/projects/<PROJECT_ID>/user_interactions
+      -H "Authorization: <API_KEY>"
+      -H "Content-Type: application/json"
+      -d @click1.json
+
 There are a couple things going on here. First, we send the request to a URL that includes both the Project ID and the name of the collection we want to insert into. Second, we set headers for both authorization and content-type (so the API knows it’s getting a JSON request). Third, we tell curl to set the body of the HTTP request to the contents of the file that we saved.
 
 The response should look like:  
 
 ::
 
-	{
-		"created": true
-	}
+    {
+        "created": true
+    }
 
 Once you see that, you’ve successfully inserted your event! 
 
@@ -135,42 +137,43 @@ REQUEST
 
 ::
 
-	curl https://api.keen.io/2.0/projects/<PROJECT_ID>/user_interactions -H "Authorization: <API_KEY>"
+    curl https://api.keen.io/2.0/projects/<PROJECT_ID>/user_interactions -H "Authorization: <API_KEY>"
 
 RESPONSE
 
 ::
 
-	{
-    		"column_names": [
-        		"body:y_coord",
-        		"body:type",
-        		"body:x_coord"
-    		],
-    		"body:y_coord": {
-        		"num_appearances": 1,
-        		"type_appearances": {
-            		"num": 1
-        		}
-    		},
-    		"body:x_coord": {
-        		"num_appearances": 1,
-        		"type_appearances": {
-            		"num": 1
-        		}
-    		},
-    		"body:inferred_column_types": {
-        		"y_coord": "num",
-        		"type": "string",
-        		"x_coord": "num"
-    		},
-    		"body:type": {
-        		"num_appearances": 1,
-        		"type_appearances": {
-            		"string": 1
-        		}
-    		}
-	}
+    {
+            "column_names": [
+                "body:y_coord",
+                "body:type",
+                "body:x_coord"
+            ],
+            "body:y_coord": {
+                "num_appearances": 1,
+                "type_appearances": {
+                    "num": 1
+                }
+            },
+            "body:x_coord": {
+                "num_appearances": 1,
+                "type_appearances": {
+                    "num": 1
+                }
+            },
+            "body:inferred_column_types": {
+                "y_coord": "num",
+                "type": "string",
+                "x_coord": "num"
+            },
+            "body:type": {
+                "num_appearances": 1,
+                "type_appearances": {
+                    "string": 1
+                }
+            }
+    }
+
 The response has a few important bits. First, there’s a list of all the keys / column names under the property "column_names". Then, there’s a property for each key / column, which contains information about how many times it’s appeared, and how many times each appeared for a specific type (number, string, etc.). 
 
 .. _create_extraction:
@@ -183,16 +186,16 @@ Once you’ve stored a bunch of data, you’re going to want to get it out so yo
 
 ::
 
-	{
-    		"clauses": [
-    		{
-        		"column_name": "body:type",
-        		"operator": "eq",
-        		"value": "mouse_click"
-    		}
-    		],
-    		"email": "alert@keen.io"
-	}
+    {
+            "clauses": [
+            {
+                "column_name": "body:type",
+                "operator": "eq",
+                "value": "mouse_click"
+            }
+            ],
+            "email": "alert@keen.io"
+    }
 
 The important pieces of information are the "clauses" and "email" properties. "clauses" contains a list of JSON objects, each of which is a specific filter criteria. In this example, we’re saying we only want events whose "type" column has a value equal to "mouse_click". See the API reference guide for all supported operators. The "email" property is optional. If specified, Keen will e-mail the given address whenever the extraction has completed.
 
@@ -200,18 +203,18 @@ REQUEST
 
 ::
 
-	curl https://api.keen.io/2.0/projects/<PROJECT_ID>/user_interactions/_extracts -H "Authorization: <API_KEY>" -d @extraction.json
+    curl https://api.keen.io/2.0/projects/<PROJECT_ID>/user_interactions/_extracts -H "Authorization: <API_KEY>" -d @extraction.json
 
 RESPONSE
 
 ::
-	
-	{
-    		"status": "complete",
-    		"_id": "4f72644f498e4734f4003e89",
-    		"results_url": "https://s3.amazonaws.com/keen_service/..."
-	}
-	
+
+    {
+            "status": "complete",
+            "_id": "4f72644f498e4734f4003e89",
+            "results_url": "https://s3.amazonaws.com/keen_service/..."
+    }
+
 You just created an extraction request in Keen. The system will process your request and then wait for you to ask for the results when you’re ready. Make note of the "_id" property! It’s important!
 
 .. _get_extraction:
@@ -226,16 +229,16 @@ REQUEST
 
 ::
 
-	curl https://api.keen.io/2.0/projects/<PROJECT_ID>/user_interactions/_extracts/<EXTRACTION_ID> -H "Authorization: <API_KEY>"
+    curl https://api.keen.io/2.0/projects/<PROJECT_ID>/user_interactions/_extracts/<EXTRACTION_ID> -H "Authorization: <API_KEY>"
 
 RESPONSE
 
 ::
 
-	{
-    		"status": "complete",
-    		"_id": "4f72644f498e4734f4003e89",
-    		"results_url": "https://s3.amazonaws.com/keen_service/..."
-	}
+    {
+            "status": "complete",
+            "_id": "4f72644f498e4734f4003e89",
+            "results_url": "https://s3.amazonaws.com/keen_service/..."
+    }
 
 Your results have been saved to S3. Simply copy and paste the value from "results_url" to a browser and they will download to your computer.
