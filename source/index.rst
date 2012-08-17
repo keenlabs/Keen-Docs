@@ -23,7 +23,6 @@ Keen API
 | :doc:`api/reference` - See this if you want a detailed reference to the Keen API.
 
 .. toctree::   
-   :hidden:
    
    iOS/usage-guide
    api/usage-guide
