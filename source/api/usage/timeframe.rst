@@ -79,16 +79,17 @@ ISO-8601 Format
 
 ISO-8601 is an international standard for representing time data.  The format is as follows:
 
+::
+
 {YYYY}-{MM}-{DD}T{hh}:{mm}:{ss}{TZ}
 
-	YYYY: Four digit year.  Example: “2012”
-	MM: Two digit month.  Example: January would be “01”
-	DD: Two digit day.  Example: The first of the month would be “01”
-    hh: Two digit hour.  Example: The hours for 12:01am would be “00” and the hours for
-    11:15pm would be “23”
-    mm: Two digit minute.
-    ss: Two digit seconds.
-    TZ: Time zone offset.  Specify a positive or negative integer. To specify UTC, you can either leave this off your date string or add “Z” to the end..  Example: To specify Pacific time (UTC-8 hours),you should append “-0800” to the end of your date string.
+* YYYY: Four digit year.  Example: “2012”
+* MM: Two digit month.  Example: January would be “01”
+* DD: Two digit day.  Example: The first of the month would be “01”
+* hh: Two digit hour.  Example: The hours for 12:01am would be “00” and the hours for 11:15pm would be “23”
+* mm: Two digit minute.
+* ss: Two digit seconds.
+* TZ: Time zone offset.  Specify a positive or negative integer. To specify UTC, you can either leave this off your date string or add “Z” to the end..  Example: To specify Pacific time (UTC-8 hours),you should append “-0800” to the end of your date string.
 
 Example ISO-8601 date strings:
 

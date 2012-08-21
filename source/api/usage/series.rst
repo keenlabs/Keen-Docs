@@ -4,7 +4,7 @@ Series
 
 A Series allows you to analyze trends in :doc:`Metrics<metrics>` over time. It breaks a timeframe into intervals of hours, days, or weeks, and returns Metrics (numbers) for each of those intervals.
 
-Creating a series request is done by simply adding the **timeframe** and **interval** querystring parameters to a :doc:`Metric<metrics>` request.
+Creating a series request is done by simply adding the :doc:`timeframe` and :doc:`interval` querystring parameters to a :doc:`Metric<metrics>` request.
 
 .. note:: The **timeframe** parameter is already optional for Metrics.  If you are already using a timeframe with a Metric, you only need to add the **interval** querystring parameter to turn your Metric into a Series.
 
