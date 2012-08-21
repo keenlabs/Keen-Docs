@@ -1,5 +1,6 @@
-Keen iOS Client Usage Guide
-===========================
+======================
+iOS Client Usage Guide
+======================
 
 ============
 Introduction

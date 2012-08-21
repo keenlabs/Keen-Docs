@@ -22,12 +22,21 @@ Keen API
     api/reference
 
 
+
 ============
 Keen Clients
 ============
 
-| :doc:`iOS/usage-guide` - See this if you want a quickstart / tutorial on how to add the Keen iOS client to your iOS app and quickly start tracking events.
+| :doc:`clients/iOS/usage_guide` - See this if you want a quickstart / tutorial on how to add the Keen iOS client to your iOS app and quickly start tracking events.
+
+
 | `Keen iOS Client API Reference`_ - See this if you want a detailed reference to the Keen iOS client API.
+
+.. toctree::
+    :maxdepth: 1
+
+    clients/iOS/usage_guide
+    clients/ruby/usage_guide
 
 .. _let us know: team@keen.io
 .. _Keen iOS Client API Reference: http://keen.io/documentation/iOS-client-api-reference
