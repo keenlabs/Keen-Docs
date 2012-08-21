@@ -6,8 +6,7 @@ KEEN_NEW_DOCS_FOLDER="$KEEN_WEB_DIR/app/static/new-docs"
 
 echo "Okay, first I'm going to run Sphinx."
 
-make html
-#make clean html
+make clean html
 
 echo "Okay, that worked, now to delete everything in the current Keen-Web new-docs folder: $KEEN_NEW_DOCS_FOLDER"
 
