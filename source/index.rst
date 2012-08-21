@@ -8,25 +8,26 @@ Documentation
 
 All the documentation we've written can be found below. If you have any feedback or find any errors, please `let us know`_!
 
+========
+Keen API
+========
+
+| :doc:`api/getting_started` - See this if you want a quickstart / tutorial on how to use the Keen API.
+
+.. toctree::
+    :maxdepth: 1
+
+    api/getting_started
+    api/usage/overview
+    api/reference
+
+
 ============
 Keen Clients
 ============
 
 | :doc:`iOS/usage-guide` - See this if you want a quickstart / tutorial on how to add the Keen iOS client to your iOS app and quickly start tracking events.
 | `Keen iOS Client API Reference`_ - See this if you want a detailed reference to the Keen iOS client API.
-
-========
-Keen API
-========
-
-| :doc:`api/usage-guide` - See this if you want a quickstart / tutorial on how to use the Keen API.
-| :doc:`api/reference` - See this if you want a detailed reference to the Keen API.
-
-.. toctree::   
-   
-   iOS/usage-guide
-   api/usage-guide
-   api/reference
 
 .. _let us know: team@keen.io
 .. _Keen iOS Client API Reference: http://keen.io/documentation/iOS-client-api-reference

@@ -1,6 +1,6 @@
-====================
-Keen API Usage Guide
-====================
+===============
+Getting Started
+===============
 
 .. note:: This API is part of a developer preview and may change without notice!
 
@@ -17,8 +17,7 @@ This guide is a tutorial / quick-start to get you up and running with the Keen A
 
 If you’re looking for the Keen Service API Reference Documentation, go :doc:`here<reference>`. It's great if what you want to see is a list of resources and example payloads!
 
-====================== 
-Setup / Pre-requisites 
+Setup / Pre-requisites
 ======================
 This guide assumes you already have an account to use Keen. If not, sign up for our
 developer preview on our website, tweet us at @keen_io, or e-mail us at founders@keen.io.
@@ -34,8 +33,7 @@ We also assume you know how to use a command line shell. You should be able to f
 along if you don’t know how to use one, but knowing how will mean you can actually try the
 examples yourself!
 
-======== 
-Glossary 
+Glossary
 ========
 Project: The Keen project that you want to use!
 
@@ -46,8 +44,7 @@ Event: A discrete piece of data that you want to track. Its shape is arbitrary J
 
 .. _authentication:
 
-============== 
-Authentication 
+Authentication
 ==============
 Authentication for our API is very simple. You need one piece of information: the API Key for whatever Project you want to use. This is easily retrieved from the Keen website. Login, then click on "Projects", then click on the name of the Project you wish to work with, then click on "Project Settings". You’ll be presented with a page that includes both the Project ID and the API Key for that Project.
 
@@ -91,8 +88,7 @@ It’s as simple as that!
 
 .. _single_event_insert:
 
-=================== 
-Single Event Insert 
+Single Event Insert
 ===================
 
 Now that you know how to authenticate an API request, inserting a new event into your project is very simple. You need to know your Project ID (see the first paragraph of the Authentication section above) and the name of the Collection that you want to insert into. For this example, we’ll call our Collection "user_interactions", but you can pick almost any name!
@@ -132,7 +128,6 @@ Once you see that, you’ve successfully inserted your event!
 
 .. _collection_schema:
 
-================================= 
 Get Collection Schema Information
 =================================
 
@@ -187,8 +182,7 @@ The response has a few important bits. First, there’s a list of all the keys /
 
 .. _create_extraction:
 
-================= 
-Create Extraction 
+Create Extraction
 =================
 
 Once you’ve stored a bunch of data, you’re going to want to get it out so you can do analysis on it! This is easy to do through the Keen UI, but we also have easy programmatic access as well. Let’s say we want to extract from the "user_interactions" collection. First, we have to create the JSON payload that contains information to control the extraction request. Create a file called "extraction.json" and save it to your filesystem with the following content:
@@ -232,8 +226,7 @@ You just created an extraction request in Keen. The system will process your req
 
 .. _get_extraction:
 
-====================== 
-Get Extraction Results 
+Get Extraction Results
 ======================
 
 Now that you’ve created an extraction, you want to get the results. For this, you’ll need the ID of the extraction request you created (see previous example). Example:
@@ -262,7 +255,6 @@ Your results have been saved to S3. Simply copy and paste the value from "result
 
 .. _count:
 
-=========
 Get Count
 =========
 

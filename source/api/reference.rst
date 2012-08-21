@@ -1,5 +1,5 @@
 ===========================
-Keen API v2.0 Documentation
+Keen API v2.0 Reference
 ===========================
 
 .. note:: This API is part of a developer preview and may change without notice!
@@ -8,7 +8,6 @@ Keen API v2.0 Documentation
 
 If you’re looking for the Keen Service API Usage Guide, go here. If you want a tutorial / quick-start, check it out!
 
-================
 Version Resource
 ================
 
@@ -55,7 +54,6 @@ Example Response
 	]
 
 
-==================
 Discovery Resource
 ==================
 
@@ -94,7 +92,6 @@ Example Response
 	}
 
 
-=================
 Projects Resource
 =================
 
@@ -149,7 +146,6 @@ Example Response
    		}
 	]
 
-====================
 Project Row Resource
 ====================
 
@@ -202,7 +198,6 @@ Example Response
   		]
   	}
 
-===================
 Collection Resource
 ===================
 
@@ -295,7 +290,6 @@ POST
 		"created": true
 	}
 
-====================
 Extractions Resource
 ====================
 
@@ -381,7 +375,6 @@ POST
 	}
 
 
-=======================
 Extraction Row Resource
 =======================
 
@@ -421,7 +414,6 @@ Example Response
 		"results_url": "https://s3.amazonaws.com/keen_service/..."
 	}
 
-==============
 Count Resource
 ==============
 
@@ -481,7 +473,6 @@ Example Response
         "result": 10
     }
 
-=====================
 Count Unique Resource
 =====================
 
