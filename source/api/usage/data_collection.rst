@@ -8,6 +8,6 @@ Our public REST API lets you send data to Keen using standard HTTP POST methods,
 
 Unlike traditional databases like SQL, our database has no schema. You no longer need to think of data as a row with a limited number of columns. Our database holds JSON documents - they’re hierarchical and can have as many fields and values as you want. 
 
-Checkout Events & Event data to learn more about data you can post to our data collection API.
+Checkout :doc:`events_and_event_data` to learn more about data you can post to our Data Collection API.
 
-<TODO: Link to client usage guides/client specs>
+View our :doc:`/api/getting_started` guide and :doc:`/api/reference` to learn more about collecting data.
