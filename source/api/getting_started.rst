@@ -35,11 +35,11 @@ examples yourself!
 
 Glossary
 ========
-Project: The Keen project that you want to use!
+:doc:`Project </api/usage/projects>`: The Keen project that you want to use!
 
-Collection: A collection is logically like a table - it contains an arbitrary number of similarly typed events.
+Collection: A :ref:`collection <event collections>` is logically like a table - it contains an arbitrary number of similarly typed events.
 
-Event: A discrete piece of data that you want to track. Its shape is arbitrary JSON.
+Event: An :doc:`event </api/usage/events_and_event_data>` is a  discrete piece of data that you want to track. Its shape is arbitrary JSON.
 
 
 .. _authentication:
@@ -68,21 +68,23 @@ Response
 
 ::
 
-    [{
-        "url": "/beta",
-        "is_public": false,
-        "version": "beta"
-    },
-    {
-        "url": "/1.0",
-        "is_public": false,
-        "version": "1.0"
-    },
-    {
-        "url": "/2.0",
-        "is_public": true,
-        "version": "2.0"
-    }]
+    [
+       {
+          "url":"\/beta",
+          "is_public":false,
+          "version":"beta"
+       },
+       {
+          "url":"\/1.0",
+          "is_public":false,
+          "version":"1.0"
+       },
+       {
+          "url":"\/2.0",
+          "is_public":true,
+          "version":"2.0"
+       }
+    ]
 
 It’s as simple as that!
 
@@ -148,59 +150,59 @@ Response
 ::
 
     {
-            "column_names": [
-                "body:y_coord",
-                "body:type",
-                "body:x_coord"
-            ],
-            "body:y_coord": {
-                "num_appearances": 1,
-                "type_appearances": {
-                    "num": 1
-                }
-            },
-            "body:x_coord": {
-                "num_appearances": 1,
-                "type_appearances": {
-                    "num": 1
-                }
-            },
-            "body:inferred_column_types": {
-                "y_coord": "num",
-                "type": "string",
-                "x_coord": "num"
-            },
-            "body:type": {
-                "num_appearances": 1,
-                "type_appearances": {
-                    "string": 1
-                }
+        "properties": [
+            "body:y_coord",
+            "body:type",
+            "body:x_coord"
+        ],
+        "body:y_coord": {
+            "num_appearances": 1,
+            "type_appearances": {
+                "num": 1
             }
+        },
+        "body:x_coord": {
+            "num_appearances": 1,
+            "type_appearances": {
+                "num": 1
+            }
+        },
+        "body:inferred_column_types": {
+            "y_coord": "num",
+            "type": "string",
+            "x_coord": "num"
+        },
+        "body:type": {
+            "num_appearances": 1,
+            "type_appearances": {
+                "string": 1
+            }
+        }
     }
 
-The response has a few important bits. First, there’s a list of all the keys / column names under the property "column_names". Then, there’s a property for each key / column, which contains information about how many times it’s appeared, and how many times each appeared for a specific type (number, string, etc.). 
+The response has a few important bits. First, there’s a list of all the keys / column names under the property "properties". Then, there’s a property for each key / column, which contains information about how many times it’s appeared, and how many times each appeared for a specific type (number, string, etc.).
 
 .. _create_extraction:
 
 Create Extraction
 =================
 
-Once you’ve stored a bunch of data, you’re going to want to get it out so you can do analysis on it! This is easy to do through the Keen UI, but we also have easy programmatic access as well. Let’s say we want to extract from the "user_interactions" collection. First, we have to create the JSON payload that contains information to control the extraction request. Create a file called "extraction.json" and save it to your filesystem with the following content:
+Once you’ve stored a bunch of data, you’re going to want to get it out so you can do analysis on it! This is easy to do through the Keen UI, but we have easy programmatic access as well. Let’s say we want to extract from the "user_interactions" collection. First, we have to create the JSON payload that contains information to control the extraction request. Create a file called "extraction.json" and save it to your filesystem with the following content:
 
 ::
 
     {
-            "clauses": [
-            {
-                "column_name": "body:type",
-                "operator": "eq",
-                "value": "mouse_click"
-            }
-            ],
-            "email": "alert@keen.io"
+        "clauses": [
+        {
+            "property": "body:type",
+            "operator": "eq",
+            "value": "mouse_click"
+        }
+        ],
+        "email": "alert@keen.io"
     }
 
-The important pieces of information are the "clauses" and "email" properties. "clauses" contains a list of JSON objects, each of which is a specific filter criteria. In this example, we’re saying we only want events whose "type" column has a value equal to "mouse_click". See the API reference guide for all supported operators. The "email" property is optional. If specified, Keen will e-mail the given address whenever the extraction has completed.
+The important pieces of information are the "clauses" and "email" properties. "clauses" contains a list of JSON objects, each of which is a specific :doc:`filter </api/usage/filters>` criteria. In this example, we’re saying we only want events whose "type" column has a value equal to "mouse_click". See the API reference guide for all supported operators. The "email" property is optional. If specified, Keen will e-mail the given address whenever the extraction has completed.
 
 -------
 Request
@@ -217,9 +219,9 @@ Response
 ::
 
     {
-            "status": "complete",
-            "_id": "4f72644f498e4734f4003e89",
-            "results_url": "https://s3.amazonaws.com/keen_service/..."
+        "status": "complete",
+        "_id": "4f72644f498e4734f4003e89",
+        "results_url": "https://s3.amazonaws.com/keen_service/..."
     }
 
 You just created an extraction request in Keen. The system will process your request and then wait for you to ask for the results when you’re ready. Make note of the "_id" property! It’s important!
@@ -246,9 +248,9 @@ Response
 ::
 
     {
-            "status": "complete",
-            "_id": "4f72644f498e4734f4003e89",
-            "results_url": "https://s3.amazonaws.com/keen_service/..."
+        "status": "complete",
+        "_id": "4f72644f498e4734f4003e89",
+        "results_url": "https://s3.amazonaws.com/keen_service/..."
     }
 
 Your results have been saved to S3. Simply copy and paste the value from "results_url" to a browser and they will download to your computer.
@@ -260,23 +262,25 @@ Get Count
 
 Okay, you've stored data and retrieved it, but now it's time to do some analysis in Keen itself. Perhaps the most basic piece of information you can ask for is the number of events matching a set of criteria in a specific collection.
 
-Just as with :ref:`creating an extraction<create_extraction>`, you'll probably want to provide a list of clauses to use as a filter. This is optional, so leave it out if you want! But if you do want to only count events that match certain criteria, then follow along.
+Just as with :ref:`creating an extraction<create_extraction>`, you'll probably want to provide a list of clauses to use as a :doc:`filter </api/usage/filters>`. This is optional, so leave it out if you want! But if you do want to only count events that match certain criteria, then follow along.
 
 Unlike other API calls, count requires query string parameters. The first is the "clauses" parameter. Its value is a URL-encoded JSON string that represents the clauses you want to use to filter the collection. The value should be identical in form to the one used when :ref:`creating an extraction<create_extraction>`. Let's take an example. Let's say our clauses are the following:
 
 ::
 
-    [{
-        "column_name": "body:type",
-        "operator": "eq",
-        "value": "mouse_click"
-    }]
+    [
+        {
+            "property": "body:type",
+            "operator": "eq",
+            "value": "mouse_click"
+        }
+    ]
 
 Note that the root object is a list. Once we convert this to a URL-encoded JSON string, it'll look like:
 
 ::
 
-    %5B%7B%22column_name%22%3A%20%22body%3Atype%22%2C%20%22operator%22%3A%20%22eq%22%2C%20%22value%22%3A%20%22mouse_click%22%7D%5D
+    %5B%7B%22property%22%3A%20%22body%3Atype%22%2C%20%22operator%22%3A%20%22eq%22%2C%20%22value%22%3A%20%22mouse_click%22%7D%5D
 
 I know, pretty ugly, right? But it's important to support this so that our users can easily embed links to our analysis APIs (like Count!) in their websites and dashboards. Which leads us to our second query string parameter: "api_key".
 
