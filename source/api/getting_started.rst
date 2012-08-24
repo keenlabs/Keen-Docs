@@ -20,8 +20,8 @@ If you’re looking for the Keen Service API Reference Documentation, go :doc:`h
 Setup / Pre-requisites
 ======================
 This guide assumes you already have an account to use Keen. If not, sign up for our
-developer preview on our website, tweet us at @keen_io, or e-mail us at founders@keen.io.
-We suggest creating a new test project in Keen so you don’t fill your real project with
+developer preview on our website, tweet us at `@keen_io <http://twitter.com/keen_io>`_, or e-mail us at `team@keen.io <mailto:team@keen.io>`_.
+We suggest creating a new test :doc:`project </api/usage/projects>` in Keen so you don’t fill your real project with
 test data (if you accidentally do, let us know - we can help).
 
 This guide uses the command line tool cURL to issue HTTP requests. Most systems have
@@ -46,11 +46,13 @@ Event: An :doc:`event </api/usage/events_and_event_data>` is a  discrete piece o
 
 Authentication
 ==============
-Authentication for our API is very simple. You need one piece of information: the API Key for whatever Project you want to use. This is easily retrieved from the Keen website. Login, then click on "Projects", then click on the name of the Project you wish to work with, then click on "Project Settings". You’ll be presented with a page that includes both the Project ID and the API Key for that Project.
+Authentication for our API is very simple. You need one piece of information: the API Key for whatever Project you want to use. This is easily retrieved from the Keen website. Login, then click on "Projects", then click on the name of the Project you wish to work with. You’ll be presented with a page that includes both the Project ID and the API Key for that Project.
 
 All you have to do to authenticate is include the API Token in an HTTP header called "Authorization". It looks like:
 
-"Authorization": "<YOUR_API_KEY_HERE>"
+::
+
+    "Authorization": "<YOUR_API_KEY_HERE>"
 
 An example using cURL:
 
@@ -93,7 +95,7 @@ It’s as simple as that!
 Single Event Insert
 ===================
 
-Now that you know how to authenticate an API request, inserting a new event into your project is very simple. You need to know your Project ID (see the first paragraph of the Authentication section above) and the name of the Collection that you want to insert into. For this example, we’ll call our Collection "user_interactions", but you can pick almost any name!
+Now that you know how to authenticate an API request, inserting a new event into your project is very simple. You need to know your Project ID (see the first paragraph of the Authentication section above) and the name of the :ref:`Event Collection <event collections>` that you want to insert into. For this example, we’ll call our Collection "user_interactions", but you can pick almost any name!
 
 So we’ll insert a new "user_interaction" event into our project. The event looks like this:
 
@@ -264,7 +266,7 @@ Okay, you've stored data and retrieved it, but now it's time to do some analysis
 
 Just as with :ref:`creating an extraction<create_extraction>`, you'll probably want to provide a list of clauses to use as a :doc:`filter </api/usage/filters>`. This is optional, so leave it out if you want! But if you do want to only count events that match certain criteria, then follow along.
 
-Unlike other API calls, count requires query string parameters. The first is the "clauses" parameter. Its value is a URL-encoded JSON string that represents the clauses you want to use to filter the collection. The value should be identical in form to the one used when :ref:`creating an extraction<create_extraction>`. Let's take an example. Let's say our clauses are the following:
+Unlike :doc:`Data Collection API </api/usage/data_collection>` calls, :ref:`count metric` is a :doc:`Metric </api/usage/metrics>`, which uses query string parameters. The first is the "filters" parameter. Its value is a URL-encoded JSON string that represents the clauses you want to use to filter the collection. The value should be identical in form to the one used when :ref:`creating an extraction<create_extraction>`. Let's take an example. Let's say our clauses are the following:
 
 ::
 
@@ -292,7 +294,7 @@ Request
 
 ::
 
-    curl https://api.keen.io/2.0/projects/<PROJECT_ID>/user_interactions/_count?clauses=<URL_ENCODED_JSON_STRING>&api_key=<API_KEY>"
+    curl https://api.keen.io/2.0/projects/<PROJECT_ID>/user_interactions/_count?filters=<URL_ENCODED_JSON_STRING>&api_key=<API_KEY>"
 
 --------
 Response
