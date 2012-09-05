@@ -20,7 +20,7 @@ Below are the supported relative timeframes:
 
 * **last_n_hours** - Gives a start of n-hours before the most recent complete hour and an end at the most recent complete hour.  Example: If right now it is 7:15pm and I specify last_7_hours, the timeframe would stretch from noon until 7:00pm.
 * **last_n_days** - Gives a starting point of n-days before the most recent complete day and an end at the most recent complete day.  Example: If right now is Friday at 9:00am and I specify a timeframe of “last_3_days”, the timeframe would stretch from Tuesday morning at 12:00am until Thursday night at midnight.
-* **last_n_weeks** - Gives a start of n-weeks before the most recent complete week and an end at the most recent complete week.  Example: If right now is Monday and I specify a timeframe of “last_2_weeks”, the timeframe would stretch from three Sundays mornings ago at 12:00am until the most recent Sunday at 12:00am. (yesterday morning)
+* **last_n_weeks** - Gives a start of n-weeks before the most recent complete week and an end at the most recent complete week.  Example: If right now is Monday and I specify a timeframe of “last_2_weeks”, the timeframe would stretch from three Sunday mornings ago at 12:00am until the most recent Sunday at 12:00am. (yesterday morning)
 * **this_hour** - Creates a timeframe starting from the beginning of the current hour until now.
 * **this_day** - Creates a timeframe starting from the beginning of the current day until now.
 * **this_week** - Creates a timeframe starting from the beginning of the current week until now.
