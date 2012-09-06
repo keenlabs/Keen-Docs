@@ -10,7 +10,7 @@ This guide is a tutorial / quick-start to get you up and running with the Keen A
 
 * :ref:`Authenticate the API requests you make <authentication>`
 * :ref:`Insert a single event at a time <single_event_insert>`
-* :ref:`Get the names of keys and the types of their values for the events you’ve already stored <collection_schema>`
+* :ref:`Get the names of properties and the types of their values for the events you’ve already stored <collection_schema>`
 * :ref:`Create an extraction request <create_extraction>`
 * :ref:`Get the results of that extraction <get_extraction>`
 * :ref:`Count the number of times an event has occurred <count>`
@@ -135,7 +135,7 @@ Once you see that, you’ve successfully inserted your event!
 Get Collection Schema Information
 =================================
 
-Once you’ve inserted a number of events, you may want to see the names of the keys in those events as well as the types of their values. This is useful if you want to create new extraction requests (so you can actually use the data you’re collecting!). Let’s get the schema for our "user_interactions" collection. It’s super easy:
+Once you’ve inserted a number of events, you may want to see the names of the properties in those events as well as the types of their values. This is useful if you want to create new extraction requests (so you can actually use the data you’re collecting!). Let’s get the schema for our "user_interactions" collection. It’s super easy:
 
 -------
 Request
@@ -194,17 +194,17 @@ Once you’ve stored a bunch of data, you’re going to want to get it out so yo
 ::
 
     {
-        "clauses": [
+        "filters": [
         {
             "property": "body:type",
             "operator": "eq",
-            "value": "mouse_click"
+            "property_value": "mouse_click"
         }
         ],
         "email": "alert@keen.io"
     }
 
-The important pieces of information are the "clauses" and "email" properties. "clauses" contains a list of JSON objects, each of which is a specific :doc:`filter </api/usage/filters>` criteria. In this example, we’re saying we only want events whose "type" column has a value equal to "mouse_click". See the API reference guide for all supported operators. The "email" property is optional. If specified, Keen will e-mail the given address whenever the extraction has completed.
+The important pieces of information are the "filters" and "email" properties. "filters" contains a list of JSON objects, each of which is a specific :doc:`filter </api/usage/filters>` criteria. In this example, we’re saying we only want events whose "type" property has a value equal to "mouse_click". See the API reference guide for all supported operators. The "email" property is optional. If specified, Keen will e-mail the given address whenever the extraction has completed.
 
 -------
 Request
@@ -264,9 +264,9 @@ Get Count
 
 Okay, you've stored data and retrieved it, but now it's time to do some analysis in Keen itself. Perhaps the most basic piece of information you can ask for is the number of events matching a set of criteria in a specific collection.
 
-Just as with :ref:`creating an extraction<create_extraction>`, you'll probably want to provide a list of clauses to use as a :doc:`filter </api/usage/filters>`. This is optional, so leave it out if you want! But if you do want to only count events that match certain criteria, then follow along.
+Just as with :ref:`creating an extraction<create_extraction>`, you'll probably want to provide a list of filters to use as a :doc:`filter </api/usage/filters>`. This is optional, so leave it out if you want! But if you do want to only count events that match certain criteria, then follow along.
 
-Unlike :doc:`Data Collection API </api/usage/data_collection>` calls, :ref:`count metric` is a :doc:`Metric </api/usage/metrics>`, which uses query string parameters. The first is the "filters" parameter. Its value is a URL-encoded JSON string that represents the clauses you want to use to filter the collection. The value should be identical in form to the one used when :ref:`creating an extraction<create_extraction>`. Let's take an example. Let's say our clauses are the following:
+Unlike :doc:`Data Collection API </api/usage/data_collection>` calls, :ref:`count metric` is a :doc:`Metric </api/usage/metrics>`, which uses query string parameters. The first is the "filters" parameter. Its value is a URL-encoded JSON string that represents the filters you want to use to filter the collection. The value should be identical in form to the one used when :ref:`creating an extraction<create_extraction>`. Let's take an example. Let's say our filters are the following:
 
 ::
 
@@ -274,7 +274,7 @@ Unlike :doc:`Data Collection API </api/usage/data_collection>` calls, :ref:`coun
         {
             "property": "body:type",
             "operator": "eq",
-            "value": "mouse_click"
+            "property_value": "mouse_click"
         }
     ]
 

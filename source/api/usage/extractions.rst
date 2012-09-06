@@ -64,9 +64,9 @@ An example POST body:
     {
         "filters": [
             {
-                "column_name": "body:amount",
+                "property_name": "body:amount",
                 "operator": "gt",
-                "value": 3.50
+                "property_value": 3.50
             }
         ],
         "timeframe": "last_4_days"
@@ -116,7 +116,7 @@ The .CSV file containing your data is stored in the URL provided in the **result
 List of Unique Properties
 =========================
 
-This feature returns a list of values from one property of an event collection. Only unique property values are returned (all duplicates are removed).
+This feature returns a list of property values from one property of an event collection. Only unique property values are returned (all duplicates are removed).
 
 Some example uses of this feature:
 

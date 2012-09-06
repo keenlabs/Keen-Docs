@@ -6,11 +6,11 @@ A filter is a criterion applied to a collection of events to narrow down the eve
 
 Filters are passed into URLs as an array of JSON objects.  Each JSON object has three properties:
 
-* **column_name** (required) - the name of the property on which you’d like to filter.
+* **property_name** (required) - the name of the property on which you’d like to filter.
 * **operator** (required) - the string code for the filter operator you’d like to use.
-* **value** (required) - the value to compare to the property specified in “column_name”.
+* **value** (required) - the value to compare to the property specified in “property_name”.
 
-.. note:: **column_name** will need the “body” prefix to filter on user defined properties.
+.. note:: **property_name** will need the “body” prefix to filter on user defined properties.
 
 Filter operators are :
 
@@ -35,14 +35,14 @@ Example: Here is the JSON array for two filters.  The first one restricts our ev
 
     [
         {
-            “column_name” : “body:price”,
+            “property_name” : “body:price”,
             “operator” : “gte”,
-            “value” : .99
+            “property_value” : .99
         },
         {
-            “column_name” : “body:on_sale”
+            “property_name” : “body:on_sale”
             “operator” : “eq”
-            “value” : true
+            “property_value” : true
         }
     ]
 
@@ -52,7 +52,7 @@ This is what the above example looks like URLencoded:
 
 .. code-block:: none
 
-    %5b%7b%22column_name%22%3a%22body%3aprice%22%2c%22operator%22%3a%22gte%22%2c%22value%22%3a.99%7d%2c%7b%22column_name%22%3a%22body%3aon_sale%22%2c%22operator%22%3a%22eq%22%2c%22value%22%3atrue%7d%5d
+    %5b%7b%22property_name%22%3a%22body%3aprice%22%2c%22operator%22%3a%22gte%22%2c%22property_value%22%3a.99%7d%2c%7b%22property_name%22%3a%22body%3aon_sale%22%2c%22operator%22%3a%22eq%22%2c%22property_value%22%3atrue%7d%5d
 
 Finally, set the “filters” parameter in your query string equal to the URLencoded string.
 
@@ -60,4 +60,4 @@ Example:
 
 .. code-block:: none
 
-    https://api.keen.io/2.0/projects/<project_id>/<event_name>/_count?api_key=<api_key>&filters=%5b%7b%22column_name%22%3a%22body%3aprice%22%2c%22operator%22%3a%22gte%22%2c%22value%22%3a.99%7d%2c%7b%22column_name%22%3a%22body%3aon_sale%22%2c%22operator%22%3a%22eq%22%2c%22value%22%3atrue%7d%5d
+    https://api.keen.io/2.0/projects/<project_id>/<event_name>/_count?api_key=<api_key>&filters=%5b%7b%22property_name%22%3a%22body%3aprice%22%2c%22operator%22%3a%22gte%22%2c%22property_value%22%3a.99%7d%2c%7b%22property_name%22%3a%22body%3aon_sale%22%2c%22operator%22%3a%22eq%22%2c%22property_value%22%3atrue%7d%5d

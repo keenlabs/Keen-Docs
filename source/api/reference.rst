@@ -217,7 +217,7 @@ GET, HEAD, POST
 Description
 -----------
 
-GET returns available schema information for this collection, including columns and their type and frequency. It also returns links to sub-resources.
+GET returns available schema information for this collection, including properties and their type and frequency. It also returns links to sub-resources.
 
 POST adds a new resource to this collection.
 
@@ -225,7 +225,7 @@ POST adds a new resource to this collection.
 Payload
 -------
 
-A namespaced JSON object. There are two namespaces that matter. The "body" namespace is required and is where the properties you define and their values are placed. The "header" namespace is optional and is where several standard properties are placed. Some of them can be overriden.
+A namespaced JSON object. There are two namespaces that matter. The "body" namespace is required and is where the properties you define and their values are placed. The "header" namespace is optional and is where several standard properties are placed. Some of them can be overridden.
 
 The "header" namespace currently supports a single property: "timestamp", which has an ISO-8601 formatted datetime value. If not provided, we'll automatically generate a timestamp.
 
@@ -253,7 +253,7 @@ GET
 ::
 
 	{
-		"column_names": ["body:type", "body:x_coord", "body:y_coord"],
+		"property_names": ["body:type", "body:x_coord", "body:y_coord"],
 		"inferred_column_types": {
 			"body:type": "string",
         	"body:x_coord": "num",
@@ -317,9 +317,9 @@ POST creates a new extraction.
 Payload
 -------
 
-Body should be a JSON object. One property is "clauses", which is a list of nested JSON objects with the following properties:
+Body should be a JSON object. One property is "filters", which is a list of nested JSON objects with the following properties:
 
-column_name (string)
+property_name (string)
 operator (string, valid values are eq, lt, gt, lte, gte
 value (primitive)
 The other optional property is "email", which is an email address which will receive a notification of extraction completion. If this property is omitted, no email is sent.
@@ -329,11 +329,11 @@ Example:
 ::
 
 	{
-		"clauses": [
+		"filters": [
 			{
-				"column_name": "body:amount",
+				"property_name": "body:amount",
 				"operator": "gt",
-				"value": 3.50
+				"property_value": 3.50
 			}
 		],
 		"email": "alert@keen.io"
@@ -440,17 +440,17 @@ object with one key: result, which maps to the numeric result described previous
 Query String Parameters
 -----------------------
 
-Count supports two query string parameters: clauses and api_key.
+Count supports two query string parameters: filters and api_key.
 
-The "clauses" parameter is optional. If specified, its value should be a URL-encoded JSON string that represents an
-array of clauses. These clauses should look just like they do in the `Extractions Resource`_. Here's an example clause:
+The "filters" parameter is optional. If specified, its value should be a URL-encoded JSON string that represents an
+array of filters. These filters should look just like they do in the `Extractions Resource`_. Here's an example filter:
 
 ::
 
     {
-        "column_name": "body:amount",
+        "property_name": "body:amount",
         "operator": "gt",
-        "value": 3.50
+        "property_value": 3.50
     }
 
 The "api_key" parameter is optional. It allows you to pass your api_key as a query string parameter rather than as an
@@ -499,17 +499,17 @@ JSON object with one key: result, which maps to the numeric result described pre
 Query String Parameters
 -----------------------
 
-Count unique supports two query string parameters: clauses and api_key.
+Count unique supports two query string parameters: filters and api_key.
 
-The "clauses" parameter is optional. If specified, its value should be a URL-encoded JSON string that represents an
-array of clauses. These clauses should look just like they do in the `Extractions Resource`_. Here's an example clause:
+The "filters" parameter is optional. If specified, its value should be a URL-encoded JSON string that represents an
+array of filters. These filters should look just like they do in the `Extractions Resource`_. Here's an example filter:
 
 ::
 
     {
-        "column_name": "body:amount",
+        "property_name": "body:amount",
         "operator": "gt",
-        "value": 3.50
+        "property_value": 3.50
     }
 
 The "api_key" parameter is optional. It allows you to pass your api_key as a query string parameter rather than as an

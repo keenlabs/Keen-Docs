@@ -90,7 +90,7 @@ Here is an example of a request to return the number of unique users that logged
 
     https://api.keen.io/2.0/projects/your_project_id/logged_in/_count_unique?api_key=your_api_key&unique_property=body:user:email&timeframe=today
 
-In this example, we are analyzing our “logged_in” event collection and telling it to count the unique values in the **body:user:email** :ref:`hierarchical property <property hierarchy>`.  That property contains a way to identify a unique user -- the user’s email.
+In this example, we are analyzing our “logged_in” event collection and telling it to count the unique property values in the **body:user:email** :ref:`hierarchical property <property hierarchy>`.  That property contains a way to identify a unique user -- the user’s email.
 
 The response from a Count Unique request is a JSON object that looks like the following:
 
