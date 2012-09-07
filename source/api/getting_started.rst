@@ -169,7 +169,7 @@ Response
                 "num": 1
             }
         },
-        "body:inferred_column_types": {
+        "body:inferred_property_types": {
             "y_coord": "num",
             "type": "string",
             "x_coord": "num"
@@ -182,7 +182,7 @@ Response
         }
     }
 
-The response has a few important bits. First, there’s a list of all the keys / column names under the property "properties". Then, there’s a property for each key / column, which contains information about how many times it’s appeared, and how many times each appeared for a specific type (number, string, etc.).
+The response has a few important bits. First, there’s a list of all the properties. Then, there’s information about each property, like how many times it’s appeared, and how many times each appeared for a specific type (number, string, etc.).
 
 .. _create_extraction:
 

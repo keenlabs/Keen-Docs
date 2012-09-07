@@ -254,7 +254,7 @@ GET
 
 	{
 		"property_names": ["body:type", "body:x_coord", "body:y_coord"],
-		"inferred_column_types": {
+		"inferred_property_types": {
 			"body:type": "string",
         	"body:x_coord": "num",
         	"body:y_coord": "num"
