@@ -1,7 +1,57 @@
 Documentation for Keen.
 
-To build HTML docs, type:
+Here's how to modify Keen docs (install Sphinx first)
 
-  make html
+1. Use Sphinx and TextMate to modify .rst files. Synch Keen-Docs and Keen-Web to your machine using github.
+2. Open Keen-Docs in TextMate or another editor to make mods to the Spinx rst files. Don't modify html files directly.
+3. Use Sphinx build HTML docs locally. Type "make html" in your Terminal.
+
+for example:
+	
+	[michelle] ~/Dev/Keen-Docs $ make html
+
+or use "make clean" to delete unused files (and other helpful things? sometimes this makes things work better)
+
+	[michelle] ~/Dev/Keen-Docs $ make clean html
   
-Then check your build folder.
+4. Check your build folder (/Keen-Docs/build/html) and open index.html to preview the build on your local machine.
+5. Review warnings from the build process --- Sphinx is good at identifying broken links and new docs which are missing from the table of contents.
+
+
+To deploy build docs:
+
+1. You must set an environment variable on your local machine so that Sphinx can deposit html files into Keen-Web. You must have Keen-Web synched to your machine. This is a one-time step to set the environment variable:
+
+In terminal:
+
+	export KEEN_WEB_DIR=<Keen web directory on your machine>
+	
+	for example:
+	export KEEN_WEB_DIR=/Users/michellewetzler/Dev/Keen-Web
+	
+Note: See Keen-Docs/build.sh for the configuration of this deployment folder.
+
+2. I'm not sure if this required, but run the make html command prior to the build.
+
+	for example:
+	[michelle] ~/Dev/Keen-Docs $ make html
+
+3. Now run the Sphinx build command to generate the html files in the Keen-Web folder.
+
+	[michelle] ~/Dev/Keen-Docs $ ./build.sh
+	
+4. If you have the Keen-Web environment on your local machine, you can checkout the deployment locally.
+
+5. Don't forget to commit your updated Sphinx docs (rst files) to the Keen-Docs repository on github. Make sure you're in the right branch (master)
+
+6. Now you can push the final web code (html) to Keen-Web on github.
+
+7. To deploy the new Keen-web code to staging, type this in HipChat:
+
+	@robot keen deploy web to staging
+	
+8. Go to staging.keen.io to checkout the changes
+
+9. If successful, deploy web to prod by typing this in HipChat:
+
+	@robot keen deploy web to prod
