@@ -15,7 +15,9 @@ Data Analysis APIs
    interval
    meta_analysis
 
-We are building a set of analysis APIs so you can use your data in whatever way you want. You can build a custom dashboards or real-time workflows. Here is the inventory of tools we've built so far. 
+We are passionate about building a powerful analysis API so you can get the most out of your data. Our services could be the building blocks for your new custom dashboard or a real-time workflow. I'm sure you'll think of even more uses we haven't considered yet :)
+
+Here is the inventory of tools we've built so far. We'd love to get your feedback or ideas about what to build next. Let us know at team@keen.io.
 
 * :doc:`metrics` - Answer questions about events that happened over a single period of time.  Example: The number of users that signed up last month.
 * :doc:`series` - Analyze data over a period of time broken into smaller periods of time.  Example: The number of users that signed up each day last week.
