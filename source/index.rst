@@ -14,7 +14,7 @@ We're trying our best to communicate how stuff works so we'd love to get your ad
 If it's your first time here, I highly recommend our :doc:`getting_started_guide`. It'll walk you through a hands-on example from start to finish.
 
 
--Michelle
+-Keen Team
 
 
 .. toctree::
