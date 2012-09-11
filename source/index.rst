@@ -11,7 +11,7 @@ Welcome to Keen's documentation. Keen provides public REST APIs to perform both 
 
 We're trying our best to communicate how stuff works so we'd love to get your advice on what could make this documentation simpler or more powerful. Please share your thoughts with team@keen.io!
 
-If it's your first time here, I highly recommend our :doc:`getting_started_guide`. It'll walk you through a hands-on example from start to finish.
+If it's your first time here, checkout our :doc:`getting_started_guide`. It'll walk you through a hands-on example from start to finish.
 
 
 -Keen Team
