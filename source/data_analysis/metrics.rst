@@ -8,6 +8,10 @@ The following Metrics are currently supported in the Data Analysis API:
 *  :ref:`count metric`
 *  :ref:`count unique metric`
 
+.. toctree::
+   :maxdepth: 3
+   
+   
 Metrics are retrieved using HTTP GET requests to a URL for this format:
 
 .. code-block:: none
@@ -27,6 +31,8 @@ Querystring parameters specific to the analysis type will be also be present -- 
 
 Count
 =====
+Technical Reference: :ref:`count-resource`
+
 Keen’s Count tool counts the number of events recorded that meet criteria you provide.
 
 Some examples of questions you could answer with Counts:
@@ -56,10 +62,14 @@ The response from a Count is a JSON object that looks like this:
         result : 7
     }
 
+
+
 .. _count unique metric:
 
 Count Unique
 ============
+Technical Reference: :ref:`count-unique-resource`
+
 Keen’s Count Unique tool counts the number of events that have a unique value for a given property.  A common use for this is to count the number of unique users that performed an event.
 
 Some examples of questions you can answer with Count Unique:
@@ -99,3 +109,5 @@ The response from a Count Unique request is a JSON object that looks like the fo
     {
             result : 7
     }
+
+

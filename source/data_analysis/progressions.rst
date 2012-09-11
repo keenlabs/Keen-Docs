@@ -68,21 +68,26 @@ Finally, set that string equal to the **step** parameter in your query string.
 
 The response from a Progression analysis looks like this:
 
-{
-    “results”:[
-        9375,
-        203
-    ],
-    ”steps”:[
-        {
-           “event_name”:”view_landing_page”,
-           ”actor_property”:”body:user:id”
-        },
-        {
-           “event_name”:”sign_up”,
-           ”actor_property”:”body:user:id”
-        }
-    ]
-}
+
+.. code-block:: none
+
+   
+   {
+       “results”:[
+           9375,
+           203
+       ],
+       ”steps”:[
+           {
+              “event_name”:”view_landing_page”,
+              ”actor_property”:”body:user:id”
+           },
+           {
+              “event_name”:”sign_up”,
+              ”actor_property”:”body:user:id”
+           }
+       ]
+   }
+   
 
 The results array details the number of users that successfully made it to each step in the Progression.  The **steps** array contains the definition of the steps passed in via the query string parameter.

@@ -5,7 +5,7 @@ Ruby Client Usage Guide
 Introduction
 ------------
 
-The Keen Ruby client is designed to be simple yet flexible. Our goal is to let you decide what events are important to you, use your own vocabulary to describe them, and decide when you want to send them to Keen service.
+The Keen Ruby client is designed to be simple yet flexible. Our goal is to let you decide what events are important to you, use your own vocabulary to describe them, and decide when you want to send them to Keen service. If you're ready to start sending data to Keen, this guide will help you get started. You might also want to check out the :doc:`/getting_started_guide` and the :doc:`/event_data_modeling/event_data_intro`.
 
 Installing the Keen Gem
 It’s easy! Use this command line:
@@ -26,7 +26,7 @@ First, load the required libraries by including this at the beginning of your pr
     require 'rubygems'
     require 'keen'
 
-Before doing this next step, login to Keen and get your project ID & auth token. These are automatically generated when you create a new Keen :doc:`project</api/usage/projects>`. You can get this information anytime by going to your project settings page.
+Before doing this next step, login to Keen and get your project ID & auth token. These are automatically generated when you create a new Keen :ref:`project <projects>`. You can get this information anytime by going to your project settings page.
 
 Define these variables in your program:
 
@@ -43,7 +43,7 @@ Next, setup the Keen client.  Here’s the beginner way to define the client:
 
 Now, the fun part. Use *keen.add.event()* wherever you want to collect data.
 
-For each event, specify an event collection name (e.g. “arrivals”), then include as many properties as you want (eg. landing page, referring source, browser, user properties).
+For each event, specify an :ref:`event collection <event-collections>` name (e.g. “arrivals”), then include as many :ref:`properties <event-properties>` as you want (eg. landing page, referring source, browser, user properties).
 
 Here’s a simple example that records someone’s arrival to your site:
 
@@ -213,7 +213,7 @@ Below is a sample ruby program which is instrumented to send data to Keen.
     mykeenclient = Keen::Client.new(project_id, auth_token,
                 :storage_class => Keen::Async::Storage::RedisHandler,
                 :cache_locally => true,
-            :logging => false
+            	:logging => false
                 )
 
 

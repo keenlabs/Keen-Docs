@@ -1,6 +1,11 @@
-===============
-Getting Started
-===============
+
+.. toctree::
+   :maxdepth: 3
+
+
+=====================
+Getting Started Guide
+=====================
 
 .. note:: This API is part of a developer preview and may change without notice!
 
@@ -15,13 +20,13 @@ This guide is a tutorial / quick-start to get you up and running with the Keen A
 * :ref:`Get the results of that extraction <get_extraction>`
 * :ref:`Count the number of times an event has occurred <count>`
 
-If you’re looking for the Keen Service API Reference Documentation, go :doc:`here<reference>`. It's great if what you want to see is a list of resources and example payloads!
+If you’re looking for the Keen Service API Technical Reference, go :doc:`here<api/reference>`. It's great if what you want to see is a list of resources and example payloads!
 
 Setup / Pre-requisites
 ======================
 This guide assumes you already have an account to use Keen. If not, sign up for our
 developer preview on our website, tweet us at `@keen_io <http://twitter.com/keen_io>`_, or e-mail us at `team@keen.io <mailto:team@keen.io>`_.
-We suggest creating a new test :doc:`project </api/usage/projects>` in Keen so you don’t fill your real project with
+We suggest creating a new test :ref:`project <projects>` in Keen so you don’t fill your real project with
 test data (if you accidentally do, let us know - we can help).
 
 This guide uses the command line tool cURL to issue HTTP requests. Most systems have
@@ -35,11 +40,11 @@ examples yourself!
 
 Glossary
 ========
-:doc:`Project </api/usage/projects>`: The Keen project that you want to use!
+:ref:`Project <projects>`: The Keen project that you want to use!
 
-Collection: A :ref:`collection <event collections>` is logically like a table - it contains an arbitrary number of similarly typed events.
+:ref:`Event Collection <event-collections>`: Collection: A event collection is logically like a table - it contains an arbitrary number of similarly typed events.
 
-Event: An :doc:`event </api/usage/events_and_event_data>` is a  discrete piece of data that you want to track. Its shape is arbitrary JSON.
+:ref:`Event <event-data>`: An event is a discrete piece of data that you want to track. Its shape is arbitrary JSON.
 
 
 .. _authentication:
@@ -95,7 +100,7 @@ It’s as simple as that!
 Single Event Insert
 ===================
 
-Now that you know how to authenticate an API request, inserting a new event into your project is very simple. You need to know your Project ID (see the first paragraph of the Authentication section above) and the name of the :ref:`Event Collection <event collections>` that you want to insert into. For this example, we’ll call our Collection "user_interactions", but you can pick almost any name!
+Now that you know how to authenticate an API request, inserting a new event into your project is very simple. You need to know your Project ID (see the first paragraph of the Authentication section above) and the name of the :ref:`Event Collection <event-collections>` that you want to insert into. For this example, we’ll call our Collection "user_interactions", but you can pick almost any name!
 
 So we’ll insert a new "user_interaction" event into our project. The event looks like this:
 
@@ -204,7 +209,7 @@ Once you’ve stored a bunch of data, you’re going to want to get it out so yo
         "email": "alert@keen.io"
     }
 
-The important pieces of information are the "filters" and "email" properties. "filters" contains a list of JSON objects, each of which is a specific :doc:`filter </api/usage/filters>` criteria. In this example, we’re saying we only want events whose "type" property has a value equal to "mouse_click". See the API reference guide for all supported operators. The "email" property is optional. If specified, Keen will e-mail the given address whenever the extraction has completed.
+The important pieces of information are the "filters" and "email" properties. "filters" contains a list of JSON objects, each of which is a specific :doc:`filter <data_analysis/filters>` criteria. In this example, we’re saying we only want events whose "type" property has a value equal to "mouse_click". See the API reference guide for all supported operators. The "email" property is optional. If specified, Keen will e-mail the given address whenever the extraction has completed.
 
 -------
 Request
@@ -264,9 +269,9 @@ Get Count
 
 Okay, you've stored data and retrieved it, but now it's time to do some analysis in Keen itself. Perhaps the most basic piece of information you can ask for is the number of events matching a set of criteria in a specific collection.
 
-Just as with :ref:`creating an extraction<create_extraction>`, you'll probably want to provide a list of filters to use as a :doc:`filter </api/usage/filters>`. This is optional, so leave it out if you want! But if you do want to only count events that match certain criteria, then follow along.
+Just as with :ref:`creating an extraction<create_extraction>`, you'll probably want to provide a list of filters to use as a :doc:`filter </data_analysis/filters>`. This is optional, so leave it out if you want! But if you do want to only count events that match certain criteria, then follow along.
 
-Unlike :doc:`Data Collection API </api/usage/data_collection>` calls, :ref:`count metric` is a :doc:`Metric </api/usage/metrics>`, which uses query string parameters. The first is the "filters" parameter. Its value is a URL-encoded JSON string that represents the filters you want to use to filter the collection. The value should be identical in form to the one used when :ref:`creating an extraction<create_extraction>`. Let's take an example. Let's say our filters are the following:
+Unlike :doc:`Data Collection API </data_collection/data_collection>` calls, :ref:`count metric` is a :doc:`Metric </data_analysis/metrics>`, which uses query string parameters. The first is the "filters" parameter. Its value is a URL-encoded JSON string that represents the filters you want to use to filter the collection. The value should be identical in form to the one used when :ref:`creating an extraction<create_extraction>`. Let's take an example. Let's say our filters are the following:
 
 ::
 

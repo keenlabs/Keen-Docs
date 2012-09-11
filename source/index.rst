@@ -3,40 +3,29 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Documentation
-=============
+=======
+Welcome
+=======
 
-All the documentation we've written can be found below. If you have any feedback or find any errors, please `let us know`_!
+Welcome to Keen's documentation. Keen provides public REST APIs to perform both :doc:`Data Collection <data_collection/data_collection>` and :doc:`Data Analysis <data_analysis/data_analysis>`. 
 
-========
-Keen API
-========
+We're trying our best to communicate how stuff works so we'd love to get your advice on what could make this documentation simpler or more powerful. Please share your thoughts with team@keen.io!
 
-| :doc:`api/getting_started` - See this if you want a quickstart / tutorial on how to use the Keen API.
+If it's your first time here, I highly recommend our :doc:`getting_started_guide`. It'll walk you through a hands-on example from start to finish.
+
+
+-Michelle
+
 
 .. toctree::
-    :maxdepth: 1
+   :maxdepth: 2
+   :hidden:
 
-    api/getting_started
-    api/usage/overview
-    api/reference
-
-
-
-============
-Keen Clients
-============
-
-| :doc:`clients/iOS/usage_guide` - See this if you want a quickstart / tutorial on how to add the Keen iOS client to your iOS app and quickly start tracking events.
-
-
-| `Keen iOS Client API Reference`_ - See this if you want a detailed reference to the Keen iOS client API.
-
-.. toctree::
-    :maxdepth: 1
-
-    clients/iOS/usage_guide
-    clients/ruby/usage_guide
+   getting_started_guide
+   event_data_modeling/event_data_intro
+   data_collection/data_collection
+   data_analysis/data_analysis
+   api/reference
 
 .. _let us know: team@keen.io
 .. _Keen iOS Client API Reference: http://keen.io/documentation/iOS-client-api-reference
