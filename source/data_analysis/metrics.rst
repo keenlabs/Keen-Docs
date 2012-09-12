@@ -59,7 +59,7 @@ The response from a Count is a JSON object that looks like this:
 .. code-block:: none
 
     {
-        result : 7
+        "result" : 7
     }
 
 
@@ -107,7 +107,7 @@ The response from a Count Unique request is a JSON object that looks like the fo
 .. code-block:: none
 
     {
-            result : 7
+        "result" : 7
     }
 
 

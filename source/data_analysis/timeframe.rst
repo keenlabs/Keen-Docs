@@ -6,10 +6,10 @@ A timeframe is the period of time over which you want to run an analysis.  Timef
 
 Timeframes can be specified in two different ways:
 
-* :ref:`relative timeframes` - a timeframe that is relative to now.  Example: last week
-* :ref:`absolute timeframes` - a timeframe that is specified by two points in time.  Example: April 1st, 2012 at 4:00pm until April 15th, 2012 at 4:00pm.
+* :ref:`relative-timeframes` - a timeframe that is relative to now.  Example: last week
+* :ref:`absolute-timeframes` - a timeframe that is specified by two points in time.  Example: April 1st, 2012 at 4:00pm until April 15th, 2012 at 4:00pm.
 
-.. _relative timeframes:
+.. _relative-timeframes:
 
 Relative Timeframes
 ===================
@@ -38,7 +38,7 @@ Example:
 
     https://api.keen.io/2.0/projects/<project_id>/<event_name>/_count?api_key=<api_key>&timeframe=last_7_days
 
-.. _absolute timeframes:
+.. _absolute-timeframes:
 
 Absolute Timeframes
 ===================

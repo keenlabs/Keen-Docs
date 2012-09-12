@@ -89,7 +89,7 @@ Though it might seem counter-intuitive and redundant to send the same informatio
 
 Feel free to add or remove events and properties from your code at any time. Keen will automatically keep track of whatever you send, and your new properties will be available for filtering immediately.
 
-.. _property types:
+.. _property-types:
 
 Property Types
 +++++++++++++++++++++++++++++++++

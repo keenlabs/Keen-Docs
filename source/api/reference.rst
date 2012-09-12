@@ -3,12 +3,21 @@
 API Technical Reference
 ===========================
 
+This document lists all of the technical resources available on Keen API. 
+
 .. note:: This API is part of a developer preview and may change without notice!
 
-.. note:: We recognize that changing APIs on you is really shitty, so while we’ll do it when in developer preview, we’ll never ever do it once the developer preview is over.
+Contents:
 
-If you’re looking for the Keen Service API Usage Guide, go here. If you want a tutorial / quick-start, check it out!
-
+* :ref:`version-resource` - Returns the available API versions
+* :ref:`discovery-resource` - Returns the available child resources. Currently, the only child resource is the Projects Resource.
+* :ref:`projects-resource` - Returns the projects accessible to the API user, as well as links to project sub-resources for discovery.
+* :ref:`project-row-resource` - Returns detailed information about the specific project, as well as links to related resources.
+* :ref:`collection-resource` - Returns collection info including properties and their type and frequency. It also returns links to sub-resources. Also used for posting events.
+* :ref:`extractions-resource` - Returns available extractions and their statuses. Post to this resource to create a new extraction.
+* :ref:`count-resource` - Returns a count of items meeting specified criteria
+* :ref:`count-unique-resource` - Returns a count of unique items meeting specified criteria
+   
 
 .. _version-resource:
 
@@ -449,16 +458,17 @@ Description
 -----------
 
 GET returns the number of resources in the collection matching the given criteria. The response will be a simple JSON
-object with one key: result, which maps to the numeric result described previously.
+object with one key: a numeric result.
 
 -----------------------
 Query String Parameters
 -----------------------
 
-Count supports two query string parameters: filters and api_key.
+Count supports the following query string parameters: filters, timeframe, interval, and API key.
 
-The "filters" parameter is optional. If specified, its value should be a URL-encoded JSON string that represents an
-array of filters. These filters should look just like they do in the `Extractions Resource`_. Here's an example filter:
+
+The :doc:`/data_analysis/filters` parameter is optional. If specified, its value should be a URL-encoded JSON string that represents an
+array of filters. Here's an example filter:
 
 ::
 
@@ -468,9 +478,47 @@ array of filters. These filters should look just like they do in the `Extraction
         "property_value": 3.50
     }
 
+
+
+The :doc:`/data_analysis/timeframe` parameter is optional. If specified, its value should be a URL-encoded JSON string that represents a :ref:`relative timeframe <relative-timeframes>` or an :ref:`absolute timeframe <absolute-timeframes>`. 
+
+
+Example of a :ref:`relative timeframe <relative-timeframes>`:
+
+::
+
+    {
+        "timeframe": "last.week"
+    }
+
+
+Example of an :ref:`absolute timeframe <absolute-timeframes>`:
+
+::
+
+    {
+        "start" : "2012-08-13T19:00Z",
+        "end" : "2013-09-20T19:00Z"
+    }
+
+
+The :doc:`/data_analysis/interval` parameter is optional. If specified, its value should be a URL-encoded JSON string specifying one of the allowed intervals (e.g. hourly). Intervals are used when creating a :doc:`data_analysis/series` API call.  
+
+
+::
+
+    {
+        "interval": "daily"
+    }
+
+
+
 The "api_key" parameter is optional. It allows you to pass your api_key as a query string parameter rather than as an
 HTTP header. This is to support embedding links to count APIs directly in HTML. If both the query string parameter
 and the header are specified, Keen will try the API key in the query string first, then the header.
+
+
+
 
 -------
 Payload
@@ -549,4 +597,6 @@ Example Response
     {
         "result": 7
     }
+
+
 
