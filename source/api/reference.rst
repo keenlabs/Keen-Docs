@@ -502,7 +502,7 @@ Example of an :ref:`absolute timeframe <absolute-timeframes>`:
     }
 
 
-The :doc:`/data_analysis/interval` parameter is optional. If specified, its value should be a URL-encoded JSON string specifying one of the allowed intervals (e.g. hourly). Intervals are used when creating a :doc:`data_analysis/series` API call.  
+The :doc:`/data_analysis/interval` parameter is optional. If specified, its value should be a URL-encoded JSON string specifying one of the allowed intervals (e.g. hourly). Intervals are used when creating a :doc:`/data_analysis/series` API call.  
 
 
 ::
