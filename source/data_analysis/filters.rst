@@ -12,16 +12,7 @@ Filters are passed into URLs as an array of JSON objects.  Each JSON object has 
 
 .. note:: **property_name** will need the “body” prefix to filter on user defined properties.
 
-Filter operators are :
-
-* **eq** - Equal to
-* **ne** - Not equal to
-* **lt** - Less than
-* **lte** - Less than or equal to
-* **gt** - Greater than
-* **gte** - Greater than or equal to
-* **exists** - Whether or not a specific property exists on an event record.  When using the “exists” operator, the value passed in must be either “true” or “false”
-* **in** - Whether or not the property value is in a given set of values.  When using the “in” operator, the value must be a JSON array of values.  Example: [1,2,4,5]
+.. include:: operators.txt
 
 Because not all filter operators make sense for the different property data types, only certain ones are valid for each type.
 

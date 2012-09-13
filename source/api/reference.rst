@@ -457,8 +457,7 @@ GET, HEAD
 Description
 -----------
 
-GET returns the number of resources in the collection matching the given criteria. The response will be a simple JSON
-object with one key: a numeric result.
+GET returns the number of resources in the collection matching the given criteria. The response will be a simple JSON object with one key: a numeric result.
 
 -----------------------
 Query String Parameters
@@ -467,8 +466,10 @@ Query String Parameters
 Count supports the following query string parameters: filters, timeframe, interval, and API key.
 
 
-The :doc:`/data_analysis/filters` parameter is optional. If specified, its value should be a URL-encoded JSON string that represents an
-array of filters. Here's an example filter:
+Filter Parameter
+^^^^^^^^^^^^^^^^
+
+The :doc:`/data_analysis/filters` parameter is optional. If specified, its value should be a URL-encoded JSON string that represents an array of filters. Here's an example filter:
 
 ::
 
@@ -478,7 +479,10 @@ array of filters. Here's an example filter:
         "property_value": 3.50
     }
 
+.. include:: ../data_analysis/operators.txt
 
+Timeframe Parameter
+^^^^^^^^^^^^^^^^^^^
 
 The :doc:`/data_analysis/timeframe` parameter is optional. If specified, its value should be a URL-encoded JSON string that represents a :ref:`relative timeframe <relative-timeframes>` or an :ref:`absolute timeframe <absolute-timeframes>`. 
 
@@ -502,6 +506,9 @@ Example of an :ref:`absolute timeframe <absolute-timeframes>`:
     }
 
 
+Interval Parameter
+^^^^^^^^^^^^^^^^^^
+	
 The :doc:`/data_analysis/interval` parameter is optional. If specified, its value should be a URL-encoded JSON string specifying one of the allowed intervals (e.g. hourly). Intervals are used when creating a :doc:`/data_analysis/series` API call.  
 
 
@@ -512,11 +519,18 @@ The :doc:`/data_analysis/interval` parameter is optional. If specified, its valu
     }
 
 
+API Key Parameter
+^^^^^^^^^^^^^^^^^
 
 The "api_key" parameter is optional. It allows you to pass your api_key as a query string parameter rather than as an
 HTTP header. This is to support embedding links to count APIs directly in HTML. If both the query string parameter
 and the header are specified, Keen will try the API key in the query string first, then the header.
 
+::
+
+    {
+        "api_key": "bc66cc2gg8c24c2ba1972b1d6c2058c2"
+    }
 
 
 
