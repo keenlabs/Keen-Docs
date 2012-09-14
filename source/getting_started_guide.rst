@@ -1,129 +1,92 @@
-
-.. toctree::
-   :maxdepth: 3
-
-
-=====================
 Getting Started Guide
 =====================
 
-.. note:: This API is part of a developer preview and may change without notice!
+==================
+What Are We Doing?
+==================
+This we believe: Getting started with Keen APIs should be easy. For the technical wizards among you, this guide will take you 8 minutes and you can dig into the advanced documentation. For the sorcerer's apprentices, this shouldn't take much more than 17 minutes. If it does, we've failed. `Let us know <team@keen.io>`_. 
 
-.. note:: We recognize that changing APIs on you is really shitty, so while we’ll do it when in developer preview, we’ll never ever do it once the developer preview is over.
+If you’re looking for the Keen Service API Technical Reference, go :doc:`here<api/reference>`. It’s great if you already know the basic elements of the Keen API and want to see a list of every endpoint and example requests and responses along with technical details.
 
-This guide is a tutorial / quick-start to get you up and running with the Keen API. After you’re done with this guide, you’ll have learned how to:
+Once you're through this guide, we hope you'll be square on the following: 
 
-* :ref:`Authenticate the API requests you make <authentication>`
-* :ref:`Insert a single event at a time <single_event_insert>`
-* :ref:`Get the names of properties and the types of their values for the events you’ve already stored <collection_schema>`
-* :ref:`Create an extraction request <create_extraction>`
-* :ref:`Get the results of that extraction <get_extraction>`
-* :ref:`Count the number of times an event has occurred <count>`
+* How we think about and organize analytics data. 
+* How to setup a project. 
+* How to submit sample data and do a little something with it. 
 
-If you’re looking for the Keen Service API Technical Reference, go :doc:`here<api/reference>`. It's great if what you want to see is a list of resources and example payloads!
+You don't need a preexisting application to walk through this guide, and we've tried to limit the technical background required of you as well. This is just about Keen. Once we get through that, we'll hand you off to the :doc:`data_collection/data_collection` and :doc:`data_analysis/data_analysis` documentation.
 
-Setup / Pre-requisites
-======================
-This guide assumes you already have an account to use Keen. If not, sign up for our
-developer preview on our website, tweet us at `@keen_io <http://twitter.com/keen_io>`_, or e-mail us at `team@keen.io <mailto:team@keen.io>`_.
-We suggest creating a new test :ref:`project <projects>` in Keen so you don’t fill your real project with
-test data (if you accidentally do, let us know - we can help).
+===========
+Assumptions
+===========
 
-This guide uses the command line tool cURL to issue HTTP requests. Most systems have
-package managers that can install it for you (if it’s not installed already). Or you can
-download it from http://curl.haxx.se/. Make sure that you can use curl from the command
-line!
+* You've been granted developer preview access. Keen is still in private beta, so access is limited to the choicest of rockstars. You can request access `here <http://keen.io>`_. 
+* You've got some familiarity with the command line shell. You won't be hacking into the Matrix, so don't worry if this isn't a strength. We also reference `cURL <http://en.wikipedia.org/wiki/CURL>`_, but you don't really need an understanding to get the job done in this guide.
+* You're a bit impatient and will `let us know <team@keen.io>`_ if our service could be better. 
+* You've got a high level understanding of `APIs <http://en.wikipedia.org/wiki/API>`_ and `JSON <http://en.wikipedia.org/wiki/JSON>`_. 
 
-We also assume you know how to use a command line shell. You should be able to follow
-along if you don’t know how to use one, but knowing how will mean you can actually try the
-examples yourself!
+We're not asking much, right? 
 
-Glossary
-========
-:ref:`Project <projects>`: The Keen project that you want to use!
+=========================
+How We Think About Things
+=========================
 
-:ref:`Event Collection <event-collections>`: Collection: A event collection is logically like a table - it contains an arbitrary number of similarly typed events.
+Before we jump into the tech, it's important to know how we think about things. We put together a pretty comprehensive document on :doc:`data modeling </event_data_modeling/event_data_intro>` that you should certainly review in a bit. For this exercise, here's what you need to know:
 
-:ref:`Event <event-data>`: An event is a discrete piece of data that you want to track. Its shape is arbitrary JSON.
+* **Projects** - A project amounts to a data silo. The information in one project isn't available to other projects. Practically speaking, in the mobile world, a project is an app. 
+* **Events** - These are the actions that are happening in your app that you want to track. You can record whatever you want.  
+* **Event Collections** - Event Collections logically organize all the events happening in your application. So, for example, when you collect multiple "login" events, they will all be stored in the login event collection.
+* **Properties** - Properties describe and give context to events. They answer the who (username), when (timestamp), where (geolocation) questions you might have.  
 
-
-.. _authentication:
-
-Authentication
 ==============
-Authentication for our API is very simple. You need one piece of information: the API Key for whatever Project you want to use. This is easily retrieved from the Keen website. Login, then click on "Projects", then click on the name of the Project you wish to work with. You’ll be presented with a page that includes both the Project ID and the API Key for that Project.
+Project Setup
+==============
 
-All you have to do to authenticate is include the API Token in an HTTP header called "Authorization". It looks like:
+------------------
+Create a Project
+------------------
+If you've not already done so, you need to `create a project <https://keen.io/add-project>`_. Since we're just practicing, you might want to give it a sufficiently silly name like "Getting Keeny" or "Windows ME". Make note of the Project ID and the API Key. You'll need those soon.  
 
-::
+-------------
+Send an Event
+-------------
 
-    "Authorization": "<YOUR_API_KEY_HERE>"
+Let's get to the heart of it - sending events. You need to know your Project ID, API Key,  and you'll need to name the event that you want to record. For this example, we’ll call our event collection "purchase", but you can pick almost any name!
 
-An example using cURL:
-
--------
-Request
--------
-
-::
-
-    curl https://api.keen.io -H "Authorization: <YOUR_API_KEY_HERE>"
-
---------
-Response
---------
+So we’ll insert a new "purchase" event into our project. The event looks like this:
 
 ::
 
-    [
-       {
-          "url":"\/beta",
-          "is_public":false,
-          "version":"beta"
-       },
-       {
-          "url":"\/1.0",
-          "is_public":false,
-          "version":"1.0"
-       },
-       {
-          "url":"\/2.0",
-          "is_public":true,
-          "version":"2.0"
-       }
-    ]
-
-It’s as simple as that!
-
-.. _single_event_insert:
-
-Single Event Insert
-===================
-
-Now that you know how to authenticate an API request, inserting a new event into your project is very simple. You need to know your Project ID (see the first paragraph of the Authentication section above) and the name of the :ref:`Event Collection <event-collections>` that you want to insert into. For this example, we’ll call our Collection "user_interactions", but you can pick almost any name!
-
-So we’ll insert a new "user_interaction" event into our project. The event looks like this:
-
-::
 
     {
         "body": {
-            "type": "mouse_click",
-            "x_coord": 720,
-            "y_coord": 640
-        }
+			"category": "magical animals",
+			"animal_type": "pegasus",
+			"username": "perseus",
+			"payment_type": "head of medusa"
+		}
     }
 
-Save that JSON to a file on your filesystem. We’re naming ours "click1.json". Now, to send it to Keen, type the following: 
+Save that JSON to a file on your filesystem. We’re naming ours "purchase1.json". You can send your event to Keen by entering the following on the command line (with your Project ID and API Key rather than the placeholders): 
 
 ::
 
-    curl https://api.keen.io/2.0/projects/<PROJECT_ID>/user_interactions
+    curl https://api.keen.io/2.0/projects/<PROJECT_ID>/purchase -H "Authorization: <API_KEY>" -H "Content-Type: application/json" -d @purchase1.json
+
+Breaking the request across a couple of lines makes it look like this. A bit easier to read, no?
+
+::
+
+    curl https://api.keen.io/2.0/projects/<PROJECT_ID>/purchase
       -H "Authorization: <API_KEY>"
       -H "Content-Type: application/json"
-      -d @click1.json
+      -d @purchase1.json
 
-There are a couple things going on here. First, we send the request to a URL that includes both the Project ID and the name of the collection we want to insert into. Second, we set headers for both authorization and content-type (so the API knows it’s getting a JSON request). Third, we tell curl to set the body of the HTTP request to the contents of the file that we saved.
+There are a couple things going on here. 
+
+* First, we send the request to a URL that includes both the Project ID and the name of the event collection we want to insert into. 
+* Second, we set headers for both authorization (with your API Key) and content-type (so the API knows it’s getting a JSON request). 
+* Third, we tell cURL to set the body of the HTTP request to the contents of the file that we saved.
 
 The response should look like:  
 
@@ -132,84 +95,16 @@ The response should look like:
     {
         "created": true
     }
+	
+Winning!	
+	
+------------
+Count Events
+------------
 
-Once you see that, you’ve successfully inserted your event! 
+Through our data analysis API, you'll have access to a number of different tools. But, for the moment, let's just worry about one - counts. It exactly what it sounds like it does - counts the number of times an event has occurred. 
 
-.. _collection_schema:
-
-Get Collection Schema Information
-=================================
-
-Once you’ve inserted a number of events, you may want to see the names of the properties in those events as well as the types of their values. This is useful if you want to create new extraction requests (so you can actually use the data you’re collecting!). Let’s get the schema for our "user_interactions" collection. It’s super easy:
-
--------
-Request
--------
-
-::
-
-    curl https://api.keen.io/2.0/projects/<PROJECT_ID>/user_interactions -H "Authorization: <API_KEY>"
-
---------
-Response
---------
-
-::
-
-    {
-        "properties": [
-            "body:y_coord",
-            "body:type",
-            "body:x_coord"
-        ],
-        "body:y_coord": {
-            "num_appearances": 1,
-            "type_appearances": {
-                "num": 1
-            }
-        },
-        "body:x_coord": {
-            "num_appearances": 1,
-            "type_appearances": {
-                "num": 1
-            }
-        },
-        "body:inferred_property_types": {
-            "y_coord": "num",
-            "type": "string",
-            "x_coord": "num"
-        },
-        "body:type": {
-            "num_appearances": 1,
-            "type_appearances": {
-                "string": 1
-            }
-        }
-    }
-
-The response has a few important bits. First, there’s a list of all the properties. Then, there’s information about each property, like how many times it’s appeared, and how many times each appeared for a specific type (number, string, etc.).
-
-.. _create_extraction:
-
-Create Extraction
-=================
-
-Once you’ve stored a bunch of data, you’re going to want to get it out so you can do analysis on it! This is easy to do through the Keen UI, but we have easy programmatic access as well. Let’s say we want to extract from the "user_interactions" collection. First, we have to create the JSON payload that contains information to control the extraction request. Create a file called "extraction.json" and save it to your filesystem with the following content:
-
-::
-
-    {
-        "filters": [
-        {
-            "property": "body:type",
-            "operator": "eq",
-            "property_value": "mouse_click"
-        }
-        ],
-        "email": "alert@keen.io"
-    }
-
-The important pieces of information are the "filters" and "email" properties. "filters" contains a list of JSON objects, each of which is a specific :doc:`filter <data_analysis/filters>` criteria. In this example, we’re saying we only want events whose "type" property has a value equal to "mouse_click". See the API reference guide for all supported operators. The "email" property is optional. If specified, Keen will e-mail the given address whenever the extraction has completed.
+The first query string parameter is the "api_key". You know where to find this from earlier. However, you might have noticed that we're using a different type of authentication (parameter vs. header). We wanted to give you a couple of options.
 
 -------
 Request
@@ -217,89 +112,7 @@ Request
 
 ::
 
-    curl https://api.keen.io/2.0/projects/<PROJECT_ID>/user_interactions/_extracts -H "Authorization: <API_KEY>" -d @extraction.json
-
---------
-Response
---------
-
-::
-
-    {
-        "status": "complete",
-        "_id": "4f72644f498e4734f4003e89",
-        "results_url": "https://s3.amazonaws.com/keen_service/..."
-    }
-
-You just created an extraction request in Keen. The system will process your request and then wait for you to ask for the results when you’re ready. Make note of the "_id" property! It’s important!
-
-.. _get_extraction:
-
-Get Extraction Results
-======================
-
-Now that you’ve created an extraction, you want to get the results. For this, you’ll need the ID of the extraction request you created (see previous example). Example:
-
--------
-Request
--------
-
-::
-
-    curl https://api.keen.io/2.0/projects/<PROJECT_ID>/user_interactions/_extracts/<EXTRACTION_ID> -H "Authorization: <API_KEY>"
-
---------
-Response
---------
-
-::
-
-    {
-        "status": "complete",
-        "_id": "4f72644f498e4734f4003e89",
-        "results_url": "https://s3.amazonaws.com/keen_service/..."
-    }
-
-Your results have been saved to S3. Simply copy and paste the value from "results_url" to a browser and they will download to your computer.
-
-.. _count:
-
-Get Count
-=========
-
-Okay, you've stored data and retrieved it, but now it's time to do some analysis in Keen itself. Perhaps the most basic piece of information you can ask for is the number of events matching a set of criteria in a specific collection.
-
-Just as with :ref:`creating an extraction<create_extraction>`, you'll probably want to provide a list of filters to use as a :doc:`filter </data_analysis/filters>`. This is optional, so leave it out if you want! But if you do want to only count events that match certain criteria, then follow along.
-
-Unlike :doc:`Data Collection API </data_collection/data_collection>` calls, :ref:`count metric` is a :doc:`Metric </data_analysis/metrics>`, which uses query string parameters. The first is the "filters" parameter. Its value is a URL-encoded JSON string that represents the filters you want to use to filter the collection. The value should be identical in form to the one used when :ref:`creating an extraction<create_extraction>`. Let's take an example. Let's say our filters are the following:
-
-::
-
-    [
-        {
-            "property": "body:type",
-            "operator": "eq",
-            "property_value": "mouse_click"
-        }
-    ]
-
-Note that the root object is a list. Once we convert this to a URL-encoded JSON string, it'll look like:
-
-::
-
-    %5B%7B%22property%22%3A%20%22body%3Atype%22%2C%20%22operator%22%3A%20%22eq%22%2C%20%22value%22%3A%20%22mouse_click%22%7D%5D
-
-I know, pretty ugly, right? But it's important to support this so that our users can easily embed links to our analysis APIs (like Count!) in their websites and dashboards. Which leads us to our second query string parameter: "api_key".
-
-The "api_key" parameter is optional. It allows you to specify your API key through a query string parameter instead of through the "Authorization" header as with our other APIs. This makes embedding links much easier. If you don't use this parameter, we do require that you specify the "Authorization" header.
-
--------
-Request
--------
-
-::
-
-    curl https://api.keen.io/2.0/projects/<PROJECT_ID>/user_interactions/_count?filters=<URL_ENCODED_JSON_STRING>&api_key=<API_KEY>"
+   curl https://api.keen.io/2.0/projects/<PROJECT_ID>/purchase/_count?api_key=<API_KEY>
 
 --------
 Response
@@ -311,3 +124,34 @@ Response
         "result": 1
     }
 
+Yup. 1. We only inserted one event, so that's all we can count. This is just a getting started guide. 
+
+=======================
+Get to Work, For Realz
+=======================
+
+Congratulations! You've graduated from the Keen Getting Started guide. Admittedly, we've just scratched the surface, but hopefully you've got some context on which you can build. 
+
+Now, go do something useful. 
+
+--------------------
+Data Collection APIs
+--------------------
+We built a massively scalable event data warehouse so that you can send us whatever data you want without having to worry about storage or performance. You can dive into all of our data collection API docs :doc:`here <data_collection/data_collection>`.
+
+Or, jump straight to our currently available client usage guides. 
+
+.. toctree::
+    :maxdepth: 1
+    
+    ../clients/iOS/usage_guide
+    ../clients/ruby/usage_guide
+
+More are on the way!
+
+------------------
+Data Analysis APIs
+------------------
+We are passionate about building a powerful analysis API so you can get the most out of your data. Our services could be the building blocks for your new custom dashboard or a real-time workflow. I’m sure you’ll think of even more uses we haven’t considered yet :)
+
+Our suite of analysis offerings is available :doc:`here </data_analysis/data_analysis>`.
