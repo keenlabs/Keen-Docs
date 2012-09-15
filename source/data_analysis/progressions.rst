@@ -6,9 +6,9 @@ A Progression is a flow of events that a user performs on their way to reaching 
 
 For example, your progression could have these steps:
 
-1. Successful completion of an app’s tutorial
-2. Creation of content in the app
-3. Sharing of content with another user
+1. Successful completion of an app’s tutorial.
+2. Creation of content in the app.
+3. Sharing of content with another user.
 
 A progression analysis with those steps would work like this:
 
@@ -20,12 +20,12 @@ Progressions are performed by sending an HTTP GET request to a URL of the follow
 
 .. code-block:: none
 
-    https://api.keen.io/2.0/projects/<project_id>/_progression?api_key=<api_key>&steps=<[step1, step2, step3...]>
+    https://api.keen.io/3.0/projects/<project_id>/probes/progression?api_key=<api_key>&steps=<[step1, step2, step3...]>
 
 Progressions take in the following parameters:
 
-* **api_key** (required) - The API key for the project containing the data you are analyzing.
-* **steps** (required) - A URLencoded JSON array defining the :ref:`steps` in the Progression.  See the Steps section below for details.
+* **api_key** (optional) - The API key for the project containing the data you are analyzing.
+* **steps** (required) - A URL encoded JSON array defining the :ref:`steps` in the Progression.  See the Steps section below for details.
 
 .. _steps:
 
@@ -41,7 +41,7 @@ To create a Progression, you must define each of its steps.  A step is a JSON ob
 * **timeframe** (optional) - A :doc:`timeframe` specifies the events to use for analysis based on a window of time.
 * **filters** (optional) - :doc:`filters` are used to narrow the scope of events used in this step of the progression.
 
-Each step of your Progression should be be inserted into a JSON array and URLencoded. Then you simply and set to the “steps” parameter in your query string.
+Each step of your Progression should be be inserted into a JSON array and URL encoded. Then you simply set the “steps” parameter in your query string.
 
 In this example, we want to find the drop off rate between users viewing our landing page and signing up for our service.  Note that timeframes are not specified, so it will be using all the data ever recorded for these two events.  Here is what the steps would look like in JSON form.
 
@@ -58,7 +58,7 @@ In this example, we want to find the drop off rate between users viewing our lan
        }
     ]
 
-Here is what that JSON string looks like after URLencoding it:
+Here is what that JSON string looks like after URL encoding it:
 
 .. code-block:: none
 

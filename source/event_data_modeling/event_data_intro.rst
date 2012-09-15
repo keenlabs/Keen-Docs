@@ -35,7 +35,7 @@ Events & Event Data
 ===================
 Our database is optimized to store *event data*. Events are actions that occur at a point in time. These actions can be performed by a user, an admin, a server, a program, etc. Events have *properties*.  Properties are the juicy bits of data that describe what is happening and allow you to do in-depth analysis. When we talk about “event data” we mean events and all the properties that you send along with them. 
 
-Here is an example of a Purchase event and its properties. There's a timestamp property that's automatically included at the top, plus a set a custom properties like item, cost, customer, and store.
+Here is an example of a Purchase event and its properties. There's a timestamp property that's automatically included at the top, plus a set of custom properties like item, cost, customer, and store.
 
 
 .. code-block:: none
@@ -65,7 +65,7 @@ This event is sent to Keen using an HTTP POST request to a URL of the following 
 
 .. code-block:: none
 
-   http://api.keen.io/2.0/projects/<project_id>/<event_collection_name>
+   http://api.keen.io/3.0/projects/<project_id>/events/<event_collection_name>
 
 Read on for more info on Event Properties and Event Collections.
 
@@ -78,7 +78,7 @@ Properties are pieces of information that describe an event and relevant informa
 
 When we talk about events and their properties, we are starting to dig into the art of data science. There is no prescription for what events you should record and what properties will be important for your unique application. Rather, you need to think creatively about what information is important to you now and what might be important in the future. We believe that it can’t hurt to have too much information. Here are some things to consider capturing as event properties:
 
-* Information about the event itself. If your event is a phone call, what number is being called? how many times did the phone ring? Did someone answer?
+* Information about the event itself. If your event is a phone call, what number is being called? How many times did the phone ring? Did someone answer?
 * Information about the actor performing the event. For example, if you’re recording a user action, what do you know about the user at that point in time? If possible, record their age, gender, location, favorite coffee shop, or whatever else you know that might be useful for analyzing their behavior later.
 * Information about other actors involved. For example, if your event is a user sharing content with another user, you could record the properties of the recipient. What is their name? To what groups do they belong?
 * Information about the session - How long has your app been running since this event occurred? Is this the user’s first session?
@@ -99,7 +99,7 @@ Although you will spend most of your time working with your unique event propert
 The two property types:
 
 * **Header properties** are standard properties supported by Keen.
-* **Body properties** describe the event and are provided by you, the API user
+* **Body properties** describe the event and are provided by you, the API user.
 
 Currently, the only header property supported by the Keen is the **header:timestamp** property. We reserved the header object so we can support more standard properties in the future.
 
@@ -134,7 +134,7 @@ Just in case you have a complex or atypical use case, our data collection API gi
 Property Hierarchy
 +++++++++++++++++++++++++++++++++
 
-The nice thing about using a `JSON`_ data format is that you can include LOTS of properties with your events, and you can organize them in a hierarchy.
+The nice thing about using `JSON`_ as the data format is that you can include LOTS of properties with your events, and you can organize them in a hierarchy.
 
 You can see in the example below that this purchases event has properties that describe the purchase, properties that describe the customer, and properties that describe the store.
 

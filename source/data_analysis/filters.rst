@@ -36,19 +36,21 @@ Example: Here is the JSON array for two filters.  The first one restricts our ev
             “property_value” : true
         }
     ]
+    
+Filters are either passed through a HTTP POST/PUT body, or through the query string of an HTTP GET. If you're making a GET request and you want to specify some filters, you'll have to URL encode your JSON string using the proper method in your language of choice.
 
-Next, URLencode your JSON string using the proper method in your language of choice.
-
-This is what the above example looks like URLencoded:
+This is what the above example looks like URL encoded:
 
 .. code-block:: none
 
     %5b%7b%22property_name%22%3a%22body%3aprice%22%2c%22operator%22%3a%22gte%22%2c%22property_value%22%3a.99%7d%2c%7b%22property_name%22%3a%22body%3aon_sale%22%2c%22operator%22%3a%22eq%22%2c%22property_value%22%3atrue%7d%5d
 
-Finally, set the “filters” parameter in your query string equal to the URLencoded string.
+I know, it's really ugly, but it's required so that the Keen API can understand what you need.
+
+Finally, set the “filters” parameter in your query string equal to the URL encoded string.
 
 Example:
 
 .. code-block:: none
 
-    https://api.keen.io/2.0/projects/<project_id>/<event_name>/_count?api_key=<api_key>&filters=%5b%7b%22property_name%22%3a%22body%3aprice%22%2c%22operator%22%3a%22gte%22%2c%22property_value%22%3a.99%7d%2c%7b%22property_name%22%3a%22body%3aon_sale%22%2c%22operator%22%3a%22eq%22%2c%22property_value%22%3atrue%7d%5d
+    https://api.keen.io/3.0/projects/<project_id>/probes/count?api_key=<api_key>&event_name=<event_name>&filters=%5b%7b%22property_name%22%3a%22body%3aprice%22%2c%22operator%22%3a%22gte%22%2c%22property_value%22%3a.99%7d%2c%7b%22property_name%22%3a%22body%3aon_sale%22%2c%22operator%22%3a%22eq%22%2c%22property_value%22%3atrue%7d%5d

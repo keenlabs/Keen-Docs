@@ -9,20 +9,26 @@ This document lists all of the technical resources available on Keen API.
 
 Contents:
 
-* :ref:`version-resource` - Returns the available API versions
+* :ref:`versions-resource` - Returns the available API versions.
 * :ref:`discovery-resource` - Returns the available child resources. Currently, the only child resource is the Projects Resource.
-* :ref:`projects-resource` - Returns the projects accessible to the API user, as well as links to project sub-resources for discovery.
+* :ref:`projects-list-resource` - Returns the projects accessible to the API user, as well as links to project sub-resources for discovery.
 * :ref:`project-row-resource` - Returns detailed information about the specific project, as well as links to related resources.
-* :ref:`collection-resource` - Returns collection info including properties and their type and frequency. It also returns links to sub-resources. Also used for posting events.
-* :ref:`extractions-resource` - Returns available extractions and their statuses. Post to this resource to create a new extraction.
-* :ref:`count-resource` - Returns a count of items meeting specified criteria
-* :ref:`count-unique-resource` - Returns a count of unique items meeting specified criteria
+* :ref:`event-collections-list-resource` - Returns collection info including properties and their type. It also returns links to sub-resources. Also used for posting events.
+* :ref:`event-collection-row-resource` - Returns info about this specific event collection including properties and their type.
+* :ref:`count-resource` - Returns a count of items meeting specified criteria.
+* :ref:`count-unique-resource` - Returns a count of unique items meeting specified criteria.
+* :ref:`select-unique-resource` - Returns a list of unique items meeting specified criteria.
+* :ref:`extraction-resource` - Returns data meeting specified criteria.
+* :ref:`progression-resource` - Returns a Progression. Read more about :doc:`/data_analysis/progressions`.
+* :ref:`saved-insights-list-resource` - Returns all the existing saved insights for the specific projects.
+* :ref:`saved-insight-row-resource` - Returns information about a single saved insight. Also supports inserting a new saved insight or updating an existing one.
+* :ref:`saved-insight-row-result-resource` - Returns the analysis results of a single saved insight.
    
 
-.. _version-resource:
+.. _versions-resource:
 
-Version Resource
-================
+Versions Resource
+=================
 
 ----
 URL
@@ -34,11 +40,11 @@ URL
 Description
 -----------
 
-Returns the available API versions. Please only use API version 2.0. Version 1.0 will work but will be deprecated shortly.
+Returns the available API versions. Please only use API version 3.0. Versions 1.0 and 2.0 will work but will be deprecated shortly.
 
--------
-Payload
--------
+------------
+Request Body
+------------
 
 None
 
@@ -48,23 +54,23 @@ Example Response
 
 ::
 
-	[
-		{
-  		 "url": "/beta",
-  		 "is_public": false,
-  		 "version": "beta"
- 		},
- 		{
-  		 "url": "/1.0",
-  		 "is_public": false,
-  		 "version": "1.0"
- 		},
- 		{
-  		 "url": "/2.0",
-  		 "is_public": true,
-  		 "version": "2.0"
- 		}
-	]
+  [
+    {
+      "is_public": false, 
+      "url": "/1.0", 
+      "version": "1.0"
+    }, 
+    {
+      "is_public": false, 
+      "url": "/2.0", 
+      "version": "2.0"
+    }, 
+    {
+      "is_public": true, 
+      "url": "/3.0", 
+      "version": "3.0"
+    }
+  ]
 
 .. _discovery-resource:
 
@@ -75,7 +81,7 @@ Discovery Resource
 URL
 ----
 
-/:version:
+/<version>
 
 -----------------
 Supported Methods
@@ -89,9 +95,9 @@ Description
 
 Returns the available child resources. Currently, the only child resource is the Projects Resource.
 
--------
-Payload
--------
+------------
+Request Body
+------------
 
 None
 
@@ -101,11 +107,11 @@ Example Response
 
 ::
 
-	{
-	 "projects_resource_url": "/2.0/projects"
-	}
+  {
+    "projects_resource_url": "/3.0/projects"
+  }
 
-.. _projects-resource:
+.. _projects-list-resource:
 
 Projects Resource
 =================
@@ -114,7 +120,7 @@ Projects Resource
 URL
 ----
 
-/:version:/projects
+/<version>/projects
 
 -----------------
 Supported Methods
@@ -128,9 +134,9 @@ Description
 
 Returns the projects accessible to the API user, as well as links to project sub-resources for discovery.
 
--------
-Payload
--------
+------------
+Request Body
+------------
 
 None
 
@@ -140,26 +146,35 @@ Example Response
 
 ::
 
-	[
- 		{
-  		 "api_key": ":API_KEY:",
-  	 	 "_id": ":PROJECT_ID:",
-  		 "collections": [
-   			{
-   			 "url": "/2.0/projects/:PROJECT_ID:/purchases",
-   			 "name": "purchases"
-   			},
-   			{
-   			 "url": "/2.0/projects/:PROJECT_ID:/level_ups",
-   			 "name": "level_ups"
-   			},
-   			{
-   			 "url": "/2.0/projects/:PROJECT_ID:/inventory_changes",
-   			 "name": "inventory_changes"
-   			}
-   			]
-   		}
-	]
+  [
+    {
+      "api_key": "a62538e817dd49fc9101fd0c1fa3c892", 
+      "events": [
+        {
+          "name": "purchases", 
+          "url": "/3.0/projects/4fea721933da5b4e8e000002/purchases"
+        }, 
+        {
+          "name": "level_up", 
+          "url": "/3.0/projects/4fea721933da5b4e8e000002/level_up"
+        }, 
+        {
+          "name": "inventory_changes", 
+          "url": "/3.0/projects/4fea721933da5b4e8e000002/inventory_changes"
+        }, 
+        {
+          "name": "login", 
+          "url": "/3.0/projects/4fea721933da5b4e8e000002/login"
+        }
+      ], 
+      "events_url": "/3.0/projects/4fea721933da5b4e8e000002/events", 
+      "id": "4fea721933da5b4e8e000002", 
+      "insights": [], 
+      "name": "Click to Buy (iOS)", 
+      "probes_url": "/3.0/projects/4fea721933da5b4e8e000002/probes", 
+      "url": "/3.0/projects/4fea721933da5b4e8e000002"
+    }
+  ]
 
 .. _project-row-resource:
 
@@ -170,7 +185,7 @@ Project Row Resource
 URL
 ----
 
-/:VERSION:/projects/:PROJECT_ID:
+/<version>/projects/<project_id>
 
 -----------------
 Supported Methods
@@ -184,9 +199,9 @@ Description
 
 Returns detailed information about the specific project, as well as links to related resources.
 
--------
-Payload
--------
+------------
+Request Body
+------------
 
 None
 
@@ -196,35 +211,44 @@ Example Response
 
 ::
 
-	{
-	 "api_key": ":API_KEY:",
- 	 "_id": ":PROJECT_ID":",
- 	 "collections": [
-		{
-		 "url": "/2.0/projects/:PROJECT_ID:/purchases",
-		 "name": "purchases"
-		},
-		{
-	 	 "url": "/2.0/projects/:PROJECT_ID:/level_ups",
-	 	 "name": "level_ups"
-		},
-  		{
-  		 "url": "/2.0/projects/:PROJECT_ID:/inventory_changes",
-  		 "name": "inventory_changes"
-  		}
-  		]
-  	}
+  {
+    "api_key": "a62538e817dd49fc9101fd0c1fa3c892", 
+    "events": [
+      {
+        "name": "purchases", 
+        "url": "/3.0/projects/4fea721933da5b4e8e000002/purchases"
+      }, 
+      {
+        "name": "level_up", 
+        "url": "/3.0/projects/4fea721933da5b4e8e000002/level_up"
+      }, 
+      {
+        "name": "inventory_changes", 
+        "url": "/3.0/projects/4fea721933da5b4e8e000002/inventory_changes"
+      }, 
+      {
+        "name": "login", 
+        "url": "/3.0/projects/4fea721933da5b4e8e000002/login"
+      }
+    ], 
+    "events_url": "/3.0/projects/4fea721933da5b4e8e000002/events", 
+    "id": "4fea721933da5b4e8e000002", 
+    "insights": [], 
+    "name": "Click to Buy (iOS)", 
+    "probes_url": "/3.0/projects/4fea721933da5b4e8e000002/probes", 
+    "url": "/3.0/projects/4fea721933da5b4e8e000002"
+  }
+  
+.. _event-collections-list-resource:
 
-.. _collection-resource:
-
-Collection Resource
-===================
+Event Collections List Resource
+===============================
 
 ----
 URL
 ----
 
-/:VERSION:/projects/:PROJECT_ID:/:COLLECTION_NAME:
+/<version>/projects/<project_id>/events
 
 -----------------
 Supported Methods
@@ -236,25 +260,222 @@ GET, HEAD, POST
 Description
 -----------
 
-GET returns available schema information for this collection, including properties and their type and frequency. It also returns links to sub-resources.
+GET returns schema information for all the collections in this project, including properties and their type. It also returns links to sub-resources.
 
-POST adds a new resource to this collection.
+POST is for bulk-inserting multiple events in a single request. See below for examples.
 
--------
-Payload
--------
+----------------
+GET Request Body
+----------------
 
-A namespaced JSON object. There are two namespaces that matter. The "body" namespace is required and is where the properties you define and their values are placed. The "header" namespace is optional and is where several standard properties are placed. Some of them can be overridden.
+None
 
-The "header" namespace currently supports a single property: "timestamp", which has an ISO-8601 formatted datetime value. If not provided, we'll automatically generate a timestamp.
+--------------------
+Example GET Response
+--------------------
 
-The "body" namespace is completely user-defined. It must not be empty.
+::
+
+  [
+    {
+      "name": "purchases", 
+      "properties": {
+        "body:item:id": "num", 
+        "body:item:on_sale": "bool", 
+        "body:item:price": "num", 
+        "body:quantity": "num", 
+        "body:screen:category": "string", 
+        "body:screen:name": "string", 
+        "body:user:has_paid": "bool", 
+        "body:user:id": "num", 
+        "body:user:level": "num", 
+        "body:user:prior_balance": "num", 
+        "body:user:referring_source": "string"
+      }, 
+      "url": "/3.0/projects/4fea721933da5b4e8e000002/events/purchases"
+    }, 
+    {
+      "name": "level_up", 
+      "properties": {
+        "body:from_level": "num", 
+        "body:level": "num", 
+        "body:screen:category": "string", 
+        "body:screen:name": "string", 
+        "body:to_level": "num", 
+        "body:user:has_paid": "bool", 
+        "body:user:id": "num", 
+        "body:user:level": "num", 
+        "body:user:prior_balance": "num", 
+        "body:user:referring_source": "string"
+      }, 
+      "url": "/3.0/projects/4fea721933da5b4e8e000002/events/level_up"
+    }, 
+    {
+      "name": "inventory_changes", 
+      "properties": {
+        "body:item:id": "num", 
+        "body:quantity": "num", 
+        "body:screen:category": "string", 
+        "body:screen:name": "string", 
+        "body:user:has_paid": "bool", 
+        "body:user:id": "num", 
+        "body:user:level": "num", 
+        "body:user:prior_balance": "num", 
+        "body:user:referring_source": "string"
+      }, 
+      "url": "/3.0/projects/4fea721933da5b4e8e000002/events/inventory_changes"
+    }, 
+    {
+      "name": "login", 
+      "properties": {
+        "body:user:email": "string", 
+        "body:user:id": "string", 
+        "body:user_agent:browser": "string", 
+        "body:user_agent:browser_version": "string", 
+        "body:user_agent:platform": "string"
+      }, 
+      "url": "/3.0/projects/4fea721933da5b4e8e000002/events/login"
+    }
+  ]
+
+-----------------
+POST Request Body
+-----------------
+
+See :ref:`event-data` for more information about the shape of event data in Keen. The API expects a JSON object whose keys are the names of each event collection you want to insert into. Each key should point to a list of events to insert for that collection.
+
+::
+
+  {
+    "purchases": [
+      {
+        "header": {
+          "timestamp": "2012-06-06T19:10:39.205000Z"
+        },
+        "body": {
+          "quantity": 5
+        }
+      },
+      {
+        "header": {
+          "timestamp": "2012-06-06T20:10:39.205000Z"
+        },
+        "body": {
+          "quantity": 25
+        }
+      }
+    ],
+    "inventory_changes": [
+      {
+        "header": {
+          "timestamp": "2012-06-06T19:10:39.205000Z"
+        },
+        "body": {
+          "quantity": 32
+        }
+      },
+      {
+        "header": {
+          "timestamp": "2012-06-06T19:10:39.205000Z"
+        },
+        "body": {
+          "quantity": 5
+        }
+      }
+    ]
+  }
+
+---------------------
+Example POST Response
+---------------------
+
+::
+
+  {
+    "purchases": [
+      {
+        "success": true
+      }, 
+      {
+        "success": true
+      }
+    ], 
+    "inventory_changes": [
+      {
+        "success": true
+      },
+      {
+        "success": true
+      } 
+    ]
+  }
+  
+.. _event-collection-row-resource:
+
+Event Collection Row Resource
+=============================
+
+----
+URL
+----
+
+/<version>/projects/<project_id>/events/<event_name>
+
+-----------------
+Supported Methods
+-----------------
+
+GET, HEAD, POST
+
+-----------
+Description
+-----------
+
+GET returns available schema information for this event collection, including properties and their type. It also returns links to sub-resources.
+
+POST is for bulk-inserting multiple events in a single request. See below for examples.
+
+----------------
+GET Request Body
+----------------
+
+None
+
+--------------------
+Example GET Response
+--------------------
+
+::
+
+  {
+    "name": "purchases", 
+    "properties": {
+      "body:item:id": "num", 
+      "body:item:on_sale": "bool", 
+      "body:item:price": "num", 
+      "body:quantity": "num", 
+      "body:screen:category": "string", 
+      "body:screen:name": "string", 
+      "body:user:has_paid": "bool", 
+      "body:user:id": "num", 
+      "body:user:level": "num", 
+      "body:user:prior_balance": "num", 
+      "body:user:referring_source": "string"
+    }, 
+    "url": "/3.0/projects/4fea721933da5b4e8e000002/events/purchases"
+  }
+
+-----------------
+POST Request Body
+-----------------
+
+See :ref:`event-data` for more information about the shape of event data in Keen.
 
 ::
 
 	{
 		"header": {
-			"timestamp": "2012-06-06T19:10:39.205000"
+			"timestamp": "2012-06-06T19:10:39.205000Z"
 		},
 		"body": {
 			"type": "mouse_click",
@@ -263,45 +484,9 @@ The "body" namespace is completely user-defined. It must not be empty.
 		}
 	}
 
-----------------
-Example Response
-----------------
-
-GET
-
-::
-
-	{
-		"property_names": ["body:type", "body:x_coord", "body:y_coord"],
-		"inferred_property_types": {
-			"body:type": "string",
-        	"body:x_coord": "num",
-        	"body:y_coord": "num"
-    	},
-    	"body:type": {
-    		"num_appearances": 1,
-    		"type_appearances": {
-    			"string": 1
-    			}
-    	},
-    		"body:x_coord": {
-    			"num_appearances": 1,
-    			"type_appearances": {
-    				"num": 1
-    			}
-    		},
-    		"body:y_coord": {
-    			"num_appearances": 1,
-    			"type_appearances": {
-    				"num": 1
-    			}
-    		},
-    		"urls": {
-    			"extractions": "/2.0/projects/:PROJECT_ID:/:COLLECTION_NAME:/_extracts"
-    		}
-    }
-
-POST
+---------------------
+Example POST Response
+---------------------
 
 ::
 
@@ -309,102 +494,16 @@ POST
 		"created": true
 	}
 
-.. _extractions-resource:
+.. _probes-resource:
 
-Extractions Resource
-====================
-
-----
-URL
-----
-
-/:VERSION:/projects/:PROJECT_ID:/:COLLECTION_NAME:/_extracts
-
------------------
-Supported Methods
------------------
-
-GET, HEAD, POST
-
------------
-Description
------------
-
-GET returns available extractions and their statuses.
-
-POST creates a new extraction.
-
--------
-Payload
--------
-
-Body should be a JSON object. One property is "filters", which is a list of nested JSON objects with the following properties:
-
-property_name (string)
-operator (string, valid values are eq, lt, gt, lte, gte
-value (primitive)
-The other optional property is "email", which is an email address which will receive a notification of extraction completion. If this property is omitted, no email is sent.
-
-Example:
-
-::
-
-	{
-		"filters": [
-			{
-				"property_name": "body:amount",
-				"operator": "gt",
-				"property_value": 3.50
-			}
-		],
-		"email": "alert@keen.io"
-	}
-		
-
-
-
-----------------
-Example Response
-----------------
-
-GET
-
-::
-
-	[
-		{
-			"_id": ":EXTRACTION_ID:",
-			"status": "complete",
-			"results_url": "https://s3.amazonaws.com/keen_service/..."
-		},
-		{
-			"_id": ":EXTRACTION_ID:",
-			"status": "complete",
-			"results_url": "http://s3.amazonaws.com/keen_service/..."
-		}
-	]
-			
-
-POST
-
-::
-
-	{
-		"_id": ":EXTRACTION_ID:",
-		"status": "complete",
-		"results_url": "http://s3.amazonaws.com/keen_service/..."
-	}
-
-.. _extraction-row-resource:
-
-Extraction Row Resource
-=======================
+Probes Resource
+===============
 
 ----
 URL
 ----
 
-/:VERSION:/projects/:PROJECT_ID:/:COLLECTION_NAME:/_extracts/:EXTRACTION_ID:
+/<version>/projects/<project_id>/probes
 
 -----------------
 Supported Methods
@@ -416,11 +515,11 @@ GET, HEAD
 Description
 -----------
 
-GET returns detailed information about a particular extraction (including a link to its results if the extraction has completed).
+GET returns the list of available probes and links to them. See :doc:`/data_analysis/data_analysis` for more information.
 
--------
-Payload
--------
+------------
+Request Body
+------------
 
 None
 
@@ -430,11 +529,13 @@ Example Response
 
 ::
 
-	{
-		"status": "complete",
-		"_id": ":EXTRACTION_ID:",
-		"results_url": "https://s3.amazonaws.com/keen_service/..."
-	}
+  {
+    "count_unique_url": "/3.0/projects/4fea721933da5b4e8e000002/probes/count_unique", 
+    "count_url": "/3.0/projects/4fea721933da5b4e8e000002/probes/count", 
+    "extraction_url": "/3.0/projects/4fea721933da5b4e8e000002/probes/extraction", 
+    "progression_url": "/3.0/projects/4fea721933da5b4e8e000002/probes/progression", 
+    "select_unique_url": "/3.0/projects/4fea721933da5b4e8e000002/probes/select_unique"
+  }
 
 .. _count-resource:
 
@@ -445,7 +546,7 @@ Count Resource
 URL
 ----
 
-/:VERSION:/projects/:PROJECT_ID:/:COLLECTION_NAME:/_count:
+/<version>/projects/<project_id>/probes/count
 
 -----------------
 Supported Methods
@@ -463,80 +564,16 @@ GET returns the number of resources in the collection matching the given criteri
 Query String Parameters
 -----------------------
 
-Count supports the following query string parameters: filters, timeframe, interval, and API key.
+* **api_key** (optional) - The API Key for the project containing the data you are analyzing. See :doc:`/data_analysis/authentication` for more information.
+* **event_name** (required) - The name of the event collection you are analyzing.
+* **filters** (optional) - :doc:`/data_analysis/filters` are used to narrow down the events used in an analysis request based on `event property <event_properties>`_ values.
+* **timeframe** (optional) - A :doc:`/data_analysis/timeframe` specifies the events to use for analysis based on a window of time. If no timeframe is specified, all events will be counted.
 
+.. note:: Adding :doc:`/data_analysis/timeframe` and :doc:`/data_analysis/interval` query string parameters will turn the Count request into a Series.  See the documentation on :doc:`/data_analysis/series` for more information.
 
-Filter Parameter
-^^^^^^^^^^^^^^^^
-
-The :doc:`/data_analysis/filters` parameter is optional. If specified, its value should be a URL-encoded JSON string that represents an array of filters. Here's an example filter:
-
-::
-
-    {
-        "property_name": "body:amount",
-        "operator": "gt",
-        "property_value": 3.50
-    }
-
-.. include:: ../data_analysis/operators.txt
-
-Timeframe Parameter
-^^^^^^^^^^^^^^^^^^^
-
-The :doc:`/data_analysis/timeframe` parameter is optional. If specified, its value should be a URL-encoded JSON string that represents a :ref:`relative timeframe <relative-timeframes>` or an :ref:`absolute timeframe <absolute-timeframes>`. 
-
-
-Example of a :ref:`relative timeframe <relative-timeframes>`:
-
-::
-
-    {
-        "timeframe": "last.week"
-    }
-
-
-Example of an :ref:`absolute timeframe <absolute-timeframes>`:
-
-::
-
-    {
-        "start" : "2012-08-13T19:00Z",
-        "end" : "2013-09-20T19:00Z"
-    }
-
-
-Interval Parameter
-^^^^^^^^^^^^^^^^^^
-	
-The :doc:`/data_analysis/interval` parameter is optional. If specified, its value should be a URL-encoded JSON string specifying one of the allowed intervals (e.g. hourly). Intervals are used when creating a :doc:`/data_analysis/series` API call.  
-
-
-::
-
-    {
-        "interval": "daily"
-    }
-
-
-API Key Parameter
-^^^^^^^^^^^^^^^^^
-
-The "api_key" parameter is optional. It allows you to pass your api_key as a query string parameter rather than as an
-HTTP header. This is to support embedding links to count APIs directly in HTML. If both the query string parameter
-and the header are specified, Keen will try the API key in the query string first, then the header.
-
-::
-
-    {
-        "api_key": "bc66cc2gg8c24c2ba1972b1d6c2058c2"
-    }
-
-
-
--------
-Payload
--------
+------------
+Request Body
+------------
 
 None
 
@@ -546,9 +583,9 @@ Example Response
 
 ::
 
-    {
-        "result": 10
-    }
+  {
+      "result": 10
+  }
 
 
 .. _count-unique-resource:
@@ -560,7 +597,7 @@ Count Unique Resource
 URL
 ----
 
-/:VERSION:/projects/:PROJECT_ID:/:COLLECTION_NAME:/_count_unique:
+/<version>/projects/<project_id>/probes/count_unique
 
 -----------------
 Supported Methods
@@ -579,26 +616,17 @@ JSON object with one key: result, which maps to the numeric result described pre
 Query String Parameters
 -----------------------
 
-Count unique supports two query string parameters: filters and api_key.
+* **api_key** (optional) - The API Key for the project containing the data you are analyzing. See :doc:`/data_analysis/authentication` for more information.
+* **event_name** (required) - The name of the event collection you are analyzing.
+* **unique_property** (required) - The property of which you want to count the unique values.
+* **filters** (optional) - :doc:`/data_analysis/filters` are used to narrow down the events used in an analysis request based on `event property <event_properties>`_ values.
+* **timeframe** (optional) - Similar to filters, a :doc:`/data_analysis/timeframe` is used to narrow down the events used in an analysis request based on the time that the event occurred.
 
-The "filters" parameter is optional. If specified, its value should be a URL-encoded JSON string that represents an
-array of filters. These filters should look just like they do in the `Extractions Resource`_. Here's an example filter:
+.. note:: Adding **timeframe** and **interval** query string parameters will turn the Count Unique request into a Series.  See the documentation on :doc:`Series</data_analysis/series>` for more information.
 
-::
-
-    {
-        "property_name": "body:amount",
-        "operator": "gt",
-        "property_value": 3.50
-    }
-
-The "api_key" parameter is optional. It allows you to pass your api_key as a query string parameter rather than as an
-HTTP header. This is to support embedding links to count APIs directly in HTML. If both the query string parameter
-and the header are specified, Keen will try the API key in the query string first, then the header.
-
--------
-Payload
--------
+------------
+Request Body
+------------
 
 None
 
@@ -611,6 +639,403 @@ Example Response
     {
         "result": 7
     }
+    
+.. _select-unique-resource:
 
+Select Unique Resource
+======================
 
+----
+URL
+----
 
+/<version>/projects/<project_id>/probes/select_unique
+
+-----------------
+Supported Methods
+-----------------
+
+GET, HEAD
+
+-----------
+Description
+-----------
+
+GET returns a list of UNIQUE resources in the collection matching the given criteria. The response will be a simple
+JSON object with one key: result, which maps to the numeric result described previously.
+
+-----------------------
+Query String Parameters
+-----------------------
+
+* **api_key** (optional) - The API Key for the project containing the data you are analyzing. See :doc:`/data_analysis/authentication` for more information.
+* **event_name** (required) - The name of the event collection you are analyzing.
+* **unique_property** (required) - The property of which you want to count the unique values.
+* **filters** (optional) - :doc:`/data_analysis/filters` are used to narrow down the events used in an analysis request based on `event property <event_properties>`_ values.
+* **timeframe** (optional) - Similar to filters, a :doc:`/data_analysis/timeframe` is used to narrow down the events used in an analysis request based on the time that the event occurred.
+
+.. note:: Adding **timeframe** and **interval** query string parameters will turn the Select Unique request into a Series.  See the documentation on :doc:`Series</data_analysis/series>` for more information.
+
+------------
+Request Body
+------------
+
+None
+
+----------------
+Example Response
+----------------
+
+::
+
+    {
+        "result": ["hello", "goodbye", "welcome"]
+    }
+
+.. _extraction-resource:
+
+Extraction Resource
+===================
+
+----
+URL
+----
+
+/<version>/projects/<project_id>/probes/extractions
+
+-----------------
+Supported Methods
+-----------------
+
+GET, HEAD
+
+-----------
+Description
+-----------
+
+GET creates an extraction request. See :doc:`/data_analysis/extractions` for more details. If the query string parameter **email** is specified, then the extraction will be processed asynchronously and an e-mail will be sent to the specified address when it completes. If **email** is omitted, then the extraction will be processed in-line and the CSV results will be returned in the GET request.
+
+-----------------------
+Query String Parameters
+-----------------------
+
+* **api_key** (optional) - The API Key for the project containing the data you are analyzing. See :doc:`/data_analysis/authentication` for more information.
+* **event_name** (required) - The name of the event collection you are analyzing.
+* **filters** (optional) - :doc:`/data_analysis/filters` are used to narrow down the events used in an analysis request based on `event property <event_properties>`_ values.
+* **timeframe** (optional) - Similar to filters, a :doc:`/data_analysis/timeframe` is used to narrow down the events used in an analysis request based on the time that the event occurred.
+
+.. note:: :doc:`/data_analysis/series` are not supported for the Extraction Resource. The **interval** query string parameter is not used here.
+
+------------
+Request Body
+------------
+
+None
+
+----------------
+Example Response
+----------------
+
+GET (if **email** is specified)
+
+::
+
+  {"result": "Processing. Check the specified email for the extraction results."}
+
+GET (if **email** is not specified)
+
+::
+
+	header.timestamp,user.referring_source,user.has_paid,user.level,screen.category,item.price,item.id,user.id,quantity,user.prior_balance,screen.name,item.on_sale
+  2012-07-11T05:08:05.352000,fb_ad_15,True,6,Shop,863,847,10,2,536,Equipment Store,False
+  2012-07-11T05:08:06.284000,fb_ad_20,True,1,Shop,584,238,1,4,301,Equipment Store,False
+
+.. _progression-resource:
+
+Progression Resource
+====================
+
+----
+URL
+----
+
+/<version>/projects/<project_id>/probes/progression
+
+-----------------
+Supported Methods
+-----------------
+
+GET, HEAD
+
+-----------
+Description
+-----------
+
+See :doc:`/data_analysis/progressions` for more details!
+
+-----------------------
+Query String Parameters
+-----------------------
+
+* **api_key** (optional) - The API Key for the project containing the data you are analyzing. See :doc:`/data_analysis/authentication` for more information.
+* **steps** (required) - A URL encoded JSON Array defining the :ref:`steps` in the Progression.
+
+.. note:: :doc:`/data_analysis/series` are not supported for the Progression Resource. The **interval** query string parameter is not used here.
+
+------------
+Request Body
+------------
+
+None
+
+----------------
+Example Response
+----------------
+
+::
+
+  {
+    "results": [
+      2, 
+      2
+    ], 
+    "steps": [
+      {
+        "actor_property": [
+          "body:username"
+        ], 
+        "event_name": "landed", 
+        "filters": [
+          {
+            "operator": "eq", 
+            "property_name": "body:device", 
+            "property_value": "Android"
+          }
+        ]
+      }, 
+      {
+        "actor_property": [
+          "body:username"
+        ], 
+        "event_name": "signed_up", 
+        "filters": [
+          {
+            "operator": "eq", 
+            "property_name": "body:device", 
+            "property_value": "Android"
+          }
+        ]
+      }
+    ]
+  }
+  
+.. _saved-insights-list-resource:
+
+Saved Insights List Resource
+============================
+
+----
+URL
+----
+
+/<version>/projects/<project_id>/insights
+
+-----------------
+Supported Methods
+-----------------
+
+GET, HEAD
+
+-----------
+Description
+-----------
+
+GET returns all the available saved insights for the specified project as well as links to child-resources.
+
+------------
+Request Body
+------------
+
+None
+
+----------------
+Example Response
+----------------
+
+::
+
+  [
+    {
+      "analysis_type": "count", 
+      "created_date": "2012-09-14T22:23:50.259000", 
+      "event_name": "foo", 
+      "filters": [], 
+      "insight_name": "insight_one", 
+      "insight_type": "metric", 
+      "interval": null, 
+      "last_modified_date": "2012-09-14T22:23:50.259000", 
+      "timeframe": null, 
+      "urls": {
+        "insight_results_url": "/3.0/projects/abc/insights/insight_one/results", 
+        "insight_url": "/3.0/projects/abc/insights/insight_one"
+      }
+    }, 
+    {
+      "analysis_type": "count", 
+      "created_date": "2012-09-14T22:23:50.288000", 
+      "event_name": "bar", 
+      "filters": [], 
+      "insight_name": "insight_two", 
+      "insight_type": "metric", 
+      "interval": null, 
+      "last_modified_date": "2012-09-14T22:23:50.288000", 
+      "timeframe": null, 
+      "urls": {
+        "insight_results_url": "/3.0/projects/abc/insights/insight_two/results", 
+        "insight_url": "/3.0/projects/abc/insights/insight_two"
+      }
+    }
+  ]
+
+.. _saved-insight-row-resource:
+
+Saved Insight Row Resource
+==========================
+
+----
+URL
+----
+
+/<version>/projects/<project_id>/insights/<insight_name>
+
+-----------------
+Supported Methods
+-----------------
+
+GET, HEAD, PUT, DELETE
+
+-----------
+Description
+-----------
+
+GET returns information about the specified saved insight and includes links to child-resources.
+
+PUT either inserts a new saved insight if it doesn't already exist, or updates an existing insight if it does exist.
+
+When inserting a new saved insight, the body of the PUT request should be a JSON object with all the required properties for that particular analysis type. The optional properties, are, well, optional.
+
+When updating a saved insight, the body of the PUT request only needs to include the properties you want to update. For example, if you have a saved insight that does a Count and want to change its :doc:`/data_analysis/filters`, just include the **filters** property.
+
+.. note:: If you update a saved insight's **analysis_type** and the NEW type doesn't allow for some of the properties of the OLD type, Keen will delete the definition of those properties. For example, if you have an insight that does a Count Unique and you change it to do a Count, we will delete the **unique_property** property.
+
+DELETE just plain old deletes the insight.
+
+----------
+Parameters
+----------
+
+.. include:: /data_analysis/saved_insight_parameters.txt
+
+----------------
+GET Request Body
+----------------
+
+None
+
+--------------------
+Example GET Response
+--------------------
+
+::
+
+  {
+    "analysis_type": "count", 
+    "created_date": "2012-09-14T22:23:50.259000", 
+    "event_name": "foo", 
+    "filters": [], 
+    "insight_name": "insight_one", 
+    "insight_type": "metric", 
+    "interval": null, 
+    "last_modified_date": "2012-09-14T22:23:50.259000", 
+    "timeframe": null, 
+    "urls": {
+      "insight_results_url": "/3.0/projects/abc/insights/insight_one/results", 
+      "insight_url": "/3.0/projects/abc/insights/insight_one"
+    }
+  }
+
+-----------------
+POST Request Body
+-----------------
+
+::
+
+	{
+	  "analysis_type": "count", 
+	  "event_name": "foo"
+	}
+
+---------------------
+Example POST Response
+---------------------
+
+::
+
+  {
+    "created": true, 
+    "insight": {
+      "analysis_type": "count", 
+      "created_date": "2012-09-14T22:23:50.259178", 
+      "event_name": "foo", 
+      "filters": [], 
+      "insight_name": "insight_one", 
+      "insight_type": "metric", 
+      "interval": null, 
+      "last_modified_date": "2012-09-14T22:23:50.259178", 
+      "timeframe": null, 
+      "urls": {
+        "insight_results_url": "/3.0/projects/abc/insights/insight_one/results", 
+        "insight_url": "/3.0/projects/abc/insights/insight_one"
+      }
+    }, 
+    "updated": false
+  }
+  
+.. _saved-insight-row-result-resource:
+
+Saved Insight Row Result Resource
+=================================
+
+----
+URL
+----
+
+/<version>/projects/<project_id>/insights/<event_name>/results
+
+-----------------
+Supported Methods
+-----------------
+
+GET, HEAD
+
+-----------
+Description
+-----------
+
+GET returns the results of the specified saved insight.
+
+------------
+Request Body
+------------
+
+None
+
+----------------
+Example Response
+----------------
+
+::
+
+  {
+    "result": 5
+  }

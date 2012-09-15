@@ -77,19 +77,19 @@ Response
 
     [
        {
-          "url":"\/beta",
-          "is_public":false,
-          "version":"beta"
-       },
-       {
           "url":"\/1.0",
           "is_public":false,
           "version":"1.0"
        },
        {
           "url":"\/2.0",
-          "is_public":true,
+          "is_public":false,
           "version":"2.0"
+       }   ,
+       {
+          "url":"\/3.0",
+          "is_public":true,
+          "version":"3.0"
        }
     ]
 
@@ -118,7 +118,7 @@ Save that JSON to a file on your filesystem. We’re naming ours "click1.json". 
 
 ::
 
-    curl https://api.keen.io/2.0/projects/<PROJECT_ID>/user_interactions
+    curl https://api.keen.io/3.0/projects/<PROJECT_ID>/events/user_interactions
       -H "Authorization: <API_KEY>"
       -H "Content-Type: application/json"
       -d @click1.json
@@ -137,8 +137,8 @@ Once you see that, you’ve successfully inserted your event!
 
 .. _collection_schema:
 
-Get Collection Schema Information
-=================================
+Get Event Collection Schema Information
+=======================================
 
 Once you’ve inserted a number of events, you may want to see the names of the properties in those events as well as the types of their values. This is useful if you want to create new extraction requests (so you can actually use the data you’re collecting!). Let’s get the schema for our "user_interactions" collection. It’s super easy:
 
@@ -148,7 +148,7 @@ Request
 
 ::
 
-    curl https://api.keen.io/2.0/projects/<PROJECT_ID>/user_interactions -H "Authorization: <API_KEY>"
+    curl https://api.keen.io/3.0/projects/<PROJECT_ID>/events/user_interactions -H "Authorization: <API_KEY>"
 
 --------
 Response
@@ -157,37 +157,14 @@ Response
 ::
 
     {
-        "properties": [
-            "body:y_coord",
-            "body:type",
-            "body:x_coord"
-        ],
-        "body:y_coord": {
-            "num_appearances": 1,
-            "type_appearances": {
-                "num": 1
-            }
-        },
-        "body:x_coord": {
-            "num_appearances": 1,
-            "type_appearances": {
-                "num": 1
-            }
-        },
-        "body:inferred_property_types": {
-            "y_coord": "num",
-            "type": "string",
-            "x_coord": "num"
-        },
-        "body:type": {
-            "num_appearances": 1,
-            "type_appearances": {
-                "string": 1
-            }
+        "properties": {
+            "body:x_coord": "num",
+            "body:y_coord": "num",
+            "body:type": "string"
         }
     }
 
-The response has a few important bits. First, there’s a list of all the properties. Then, there’s information about each property, like how many times it’s appeared, and how many times each appeared for a specific type (number, string, etc.).
+The response contains all the properties that have been sent to Keen for this event collection and what Keen thinks the type is for each property.
 
 .. _create_extraction:
 

@@ -188,12 +188,15 @@ Below is a sample ruby program which is instrumented to send data to Keen.
                  })
 
 
-    This event was automatically sent to Keen when the add_event method was called. If you want to batch up events and send them asynchronously, checkout the Async storage class options!
+This event was automatically sent to Keen when the add_event method was called. If you want to batch up events and send them asynchronously, checkout the Async storage class options!
 
-    After running your program, you data is immediately available in Keen. Login and check it out!
+After running your program, you data is immediately available in Keen. Login and check it out!
 
-    Example Program with Async event sending
-    Below is a sample ruby program which is instrumented to send data to Keen.
+Example Program with Async event sending
+----------------------------------------
+Below is a sample ruby program which is instrumented to send data to Keen.
+
+.. code-block:: ruby
 
     #======================#
     # This little app asks a user a question and then replies to the user.
@@ -242,9 +245,9 @@ Below is a sample ruby program which is instrumented to send data to Keen.
                  })
 
     # Since we have opted to use the RedisStorageHandler, the above event is now stored in Redis.
-    # Now we need to send those events to Keen by evoking the Worker.
+    # Now we need to send those events to Keen by invoking the Worker.
 
     worker = Keen::Async::Worker.new(mykeenclient)
     result = worker.process_queue
 
-After running your program, you data is immediately available in Keen. Login and check it out!
+After running your program, your data is immediately available in Keen. Login and check it out!

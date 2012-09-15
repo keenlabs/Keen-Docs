@@ -4,15 +4,15 @@ Series
 
 A Series allows you to analyze trends in :doc:`Metrics<metrics>` over time. It breaks a timeframe into intervals of hours, days, or weeks, and returns Metrics (numbers) for each of those intervals.
 
-Creating a series request is done by simply adding the :doc:`timeframe` and :doc:`interval` querystring parameters to a :doc:`Metric<metrics>` request.
+Creating a series request is done by simply adding the :doc:`timeframe` and :doc:`interval` query string parameters to a :doc:`Metric<metrics>` request.
 
-.. note:: The **timeframe** parameter is already optional for Metrics.  If you are already using a timeframe with a Metric, you only need to add the **interval** querystring parameter to turn your Metric into a Series.
+.. note:: The **timeframe** parameter is already optional for Metrics.  If you are already using a timeframe with a Metric, you only need to add the **interval** query string parameter to turn your Metric into a Series.
 
 Here’s an example that counts the number of purchases events we have recorded for each day last week.
 
 .. code-block:: none
 
-    http://api.keen.io/2.0/projects/<project_id>/purchases/_count?api_key=<key>&interval=daily&timeframe=last_3_days
+    http://api.keen.io/3.0/projects/<project_id>/probes/count?api_key=<key>&event_name=purchases&interval=daily&timeframe=last_3_days
 
 The output of a Series request is an array of JSON dictionaries which include the value for each interval in the timeframe.  Here is what the output looks like in our example:
 

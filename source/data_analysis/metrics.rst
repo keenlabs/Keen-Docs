@@ -16,16 +16,15 @@ Metrics are retrieved using HTTP GET requests to a URL for this format:
 
 .. code-block:: none
 
-    https://api.keen.io/<api_version>/projects/<project_id>/<event_collection>/_<metric_name>
+    https://api.keen.io/<api_version>/projects/<project_id>/probes/<metric_name>
 
 The variables in the URL are defined as follows:
 
 * **api_version** - the version of the API you want to use.
 * **project_id** - the ID of the project that contains the data you are analyzing.
-* **event_collection** - the name of the event collection you are analyzing.
 * **metric_name** - the type of Metric you wish to use in this analysis. Example: count_unique
 
-Querystring parameters specific to the analysis type will be also be present -- such as filters or a specific timeframe.  See the documentation for the specific Metric for more information.
+Query string parameters specific to the analysis type will be also be present -- such as filters or a specific timeframe.  See the documentation for the specific Metric for more information.
 
 .. _count metric:
 
@@ -44,15 +43,16 @@ Performing a Count is done via an HTTP GET request that follows this pattern:
 
 .. code-block:: none
 
-    https://api.keen.io/2.0/projects/<project_id>/<event_collection>/_count?api_key=<api_key>
+    https://api.keen.io/3.0/projects/<project_id>/probes/count?api_key=<api_key>&event_name=<event_name>
 
 Counts take the following parameters:
 
-* **api_key** (required) - The API key for the project containing the data you are analyzing.
+* **api_key** (optional) - The API Key for the project containing the data you are analyzing. See :doc:`authentication` for more information.
+* **event_name** (required) - The name of the event collection you are analyzing.
 * **filters** (optional) - :doc:`filters` are used to narrow down the events used in an analysis request based on `event property <event_properties>`_ values.
 * **timeframe** (optional) - A :doc:`timeframe` specifies the events to use for analysis based on a window of time. If no timeframe is specified, all events will be counted.
 
-.. note:: Adding :doc:`timeframe` and :doc:`interval` querystring parameters will turn the Count request into a Series.  See the documentation on :doc:`Series<series>` for more information.
+.. note:: Adding :doc:`timeframe` and :doc:`interval` query string parameters will turn the Count request into a Series.  See the documentation on :doc:`Series<series>` for more information.
 
 The response from a Count is a JSON object that looks like this:
 
@@ -83,22 +83,23 @@ Performing a Count Unique is done via an HTTP GET request that follows this patt
 
 .. code-block:: none
 
-    https://api.keen.io/2.0/projects/<project_id>/<event_name>/_count_unique?api_key=<api_key>&unique_property=<property_name>
+    https://api.keen.io/3.0/projects/<project_id>/probes/count_unique?api_key=<api_key>&event_name=<event_name>&unique_property=<property_name>
 
-Count Unique takes the following querystring parameters:
+Count Unique takes the following query string parameters:
 
-* **api_key** (required) - The API key for the project containing the data you are analyzing.
+* **api_key** (optional) - The API Key for the project containing the data you are analyzing. See :doc:`authentication` for more information.
+* **event_name** (required) - The name of the event collection you are analyzing.
 * **unique_property** (required) - The property of which you want to count the unique values.
 * **filters** (optional) - :doc:`filters` are used to narrow down the events used in an analysis request based on `event property <event_properties>`_ values.
 * **timeframe** (optional) - Similar to filters, a :doc:`timeframe` is used to narrow down the events used in an analysis request based on the time that the event occurred.
 
-.. note:: Adding **timeframe** and **interval** querystring parameters will turn the Count Unique request into a Series.  See the documentation on :doc:`Series<series>` for more information.
+.. note:: Adding **timeframe** and **interval** query string parameters will turn the Count Unique request into a Series.  See the documentation on :doc:`Series<series>` for more information.
 
 Here is an example of a request to return the number of unique users that logged in today:
 
 .. code-block:: none
 
-    https://api.keen.io/2.0/projects/your_project_id/logged_in/_count_unique?api_key=your_api_key&unique_property=body:user:email&timeframe=today
+    https://api.keen.io/3.0/projects/your_project_id/probes/count_unique?event_name=logged_in&api_key=your_api_key&unique_property=body:user:email&timeframe=today
 
 In this example, we are analyzing our “logged_in” event collection and telling it to count the unique property values in the **body:user:email** :ref:`hierarchical property <property hierarchy>`.  That property contains a way to identify a unique user -- the user’s email.
 

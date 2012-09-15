@@ -36,7 +36,7 @@ Example:
 
 .. code-block:: none
 
-    https://api.keen.io/2.0/projects/<project_id>/<event_name>/_count?api_key=<api_key>&timeframe=last_7_days
+    https://api.keen.io/3.0/projects/<project_id>/probes/count?api_key=<api_key>&event_name=<event_name>&timeframe=last_7_days
 
 .. _absolute-timeframes:
 
@@ -55,22 +55,22 @@ Example:
         “start” : “2012-08-13T19:00Z”,
         “end” : “2013-09-20T19:00Z”
     }
+    
+Timeframes are either passed through a HTTP POST/PUT body, or through the query string of an HTTP GET. If you're making a GET request and you want to specify an absolute timeframe, you'll have to URL encode your JSON string using the proper method in your language of choice.
 
-Next, URLencode your JSON string using the proper method in your language of choice.
-
-This is what the above example looks like URLencoded:
+This is what the above example looks like URL encoded:
 
 .. code-block:: none
 
     %7b%22start%22%3a%222012-08-13T19%3a00Z%22%2c%22end%22%3a%222013-09-20T19%3a00Z%22%7d
 
-Finally, set the **timeframe** parameter in your query string equal to the URLencoded string.
+Finally, set the **timeframe** parameter in your query string equal to the URL encoded string.
 
 Example:
 
 .. code-block:: none
 
-    https://api.keen.io/2.0/projects/<project_id>/<event_name>/_count?api_key=<api_key>&timeframe=%7b%22start%22%3a%222012-08-13T19%3a00Z%22%2c%22end%22%3a%222013-09-20T19%3a00Z%22%7d
+    https://api.keen.io/3.0/projects/<project_id>/probes/count?api_key=<api_key>&event_name=<event_name>&timeframe=%7b%22start%22%3a%222012-08-13T19%3a00Z%22%2c%22end%22%3a%222013-09-20T19%3a00Z%22%7d
 
 .. _iso 8601 format:
 
@@ -81,7 +81,7 @@ ISO-8601 is an international standard for representing time data.  The format is
 
 ::
 
-{YYYY}-{MM}-{DD}T{hh}:{mm}:{ss}{TZ}
+{YYYY}-{MM}-{DD}T{hh}:{mm}:{ss}.{SSS}{TZ}
 
 * YYYY: Four digit year.  Example: “2012”
 * MM: Two digit month.  Example: January would be “01”
@@ -89,7 +89,10 @@ ISO-8601 is an international standard for representing time data.  The format is
 * hh: Two digit hour.  Example: The hours for 12:01am would be “00” and the hours for 11:15pm would be “23”
 * mm: Two digit minute.
 * ss: Two digit seconds.
-* TZ: Time zone offset.  Specify a positive or negative integer. To specify UTC, you can either leave this off your date string or add “Z” to the end..  Example: To specify Pacific time (UTC-8 hours),you should append “-0800” to the end of your date string.
+* SSS: Milliseconds to the third decimal place.
+* TZ: Time zone offset.  Specify a positive or negative integer. To specify UTC, add “Z” to the end.  Example: To specify Pacific time (UTC-8 hours), you should append “-0800” to the end of your date string. 
+
+.. note:: If no time zone is specified, the date/time is assumed to be in local time. At Keen, we'll treat that as UTC.
 
 Example ISO-8601 date strings:
 
@@ -98,3 +101,5 @@ Example ISO-8601 date strings:
     2012-01-01T00:01:00-08:00
     1996-02-29T15:30:00+12:00
     2000-05-30T12:12:12Z
+    
+.. note:: Keen stores all date and time information in UTC.

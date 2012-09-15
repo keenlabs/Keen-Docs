@@ -13,90 +13,22 @@ The following types of Data Extractions are currently supported in the Keen Anal
 
 Data Extraction to File
 =======================
+Technical Reference: :ref:`extraction-resource`
 
-Requesting a Data Extraction to File will give you the events specified by any filters and/or timeframe in .csv format.  Your request is typically processed in under a minute. The Data Extraction APIs can be used to set up a nightly job that will have the data you need ready and waiting in your inbox in the morning.
+Requesting a Data Extraction to File will give you the events specified by any filters and/or timeframe in .csv format. The Data Extraction APIs can be used to set up a nightly job that will have the data you need ready and waiting in your inbox in the morning.
 
-Performing a Data Extraction to File is done via an HTTP POST request that looks like this:
+Performing a Data Extraction to File is done via an HTTP GET request that follows this pattern:
 
 .. code-block:: none
 
-    https://api.keen.io/2.0/projects/<project_id>/<event_collection>/_extract
-
-    Headers:
-        Authorization: <api_key>
-        Content-Type: application/json
-
-    POST Body:
-
-    {
-    	"filters": [],
-    	"timeframe": <timeframe>
-    	"email": <email_address>
-    }
+    https://api.keen.io/3.0/projects/<project_id>/probes/extraction?api_key=<api_key>&event_name=<event_name>
 
 Extractions take the following parameters:
 
-* **api_key** (required) - The API key for the project containing the data you are analyzing.  This goes in the Authorization HTTP header.
-* **filters** (required) - :doc:`filters` are used to narrow down the events used in an analysis request based on property values.  If you don't want to apply any filters, simply send an empty JSON array
+* **api_key** (optional) - The API Key for the project containing the data you are analyzing. See :doc:`authentication` for more information.
+* **event_name** (required) - The name of the event collection you are analyzing.
+* **filters** (optional) - :doc:`filters` are used to narrow down the events used in an analysis request based on `event property <event_properties>`_ values.
 * **timeframe** (optional) - A :doc:`timeframe` specifies the events to use for analysis based on a window of time. If no timeframe is specified, all events will be counted.
-* **email_address** (optional) - If an email address is specified in the post body, an email will be sent that address when the extraction is complete.
+* **email_address** (optional) - If an email address is specified, an email will be sent that address when the extraction is complete.
 
-An example POST body:
-
-.. code-block:: none
-
-    {
-        "filters": [
-            {
-                "property_name": "body:amount",
-                "operator": "gt",
-                "property_value": 3.50
-            }
-        ],
-        "timeframe": "last_4_days"
-        "email": "alert@keen.io"
-    }
-
-The response looks like this:
-
-.. code-block:: none
-
-    {
-        "_id": "<extraction_id>",
-        "status": "not started",
-    }
-
-
-Check out the details in the API reference guide:
-	:ref:`extractions-resource` - Returns available extractions and their statuses. Post to this resource to create a new extraction.
-	:ref:`extraction-row-resource` - GET returns detailed information about a particular extraction (including a link to its results if the extraction has completed).
-
-Getting the .CSV File
-+++++++++++++++++++++
-
-To check the status of the Extraction and retrieve the the URL of the resulting .CSV file, simply send an HTTP GET request to the following URL:
-
-.. code-block:: none
-
-    https://api.keen.io/2.0/projects/<project_id>/<event_collection>/_extract/<extraction_id>
-
-    Headers:
-        Authorization: <api_key>
-
-* **api_key** (required) - The API key for the project containing the data you are analyzing.  This goes in the Authorization HTTP header.
-* **extraction_id** (required) - The ID present in the _extract POST request.
-
-The response will look like this:
-
-.. code-block:: none
-
-    {
-        "status": "complete",
-        "_id": ":EXTRACTION_ID:",
-        "results_url": "https://s3.amazonaws.com/keen_service/..."
-    }
-
-.. note:: If the **status** is not complete, the **results_url** parameter will not be present.
-
-The .CSV file containing your data is stored in the URL provided in the **results_url** parameter.
-
+.. note:: There are two forms of responses. If **email_address** is specified, then the request will be processed asynchronously and an email will be delivered when it completes. If **email_address** is omitted, the request is processed synchronously and the response will be a CSV file containing the results of the extraction.

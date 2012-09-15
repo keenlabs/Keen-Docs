@@ -1,0 +1,32 @@
+The two parameters required for **every** saved insight are:
+
+* **insight_name** - The name of the insight. This goes in the URL.
+* **analysis_type** - The type of analysis this saved insight is doing. Valid values are "count", "count_unique", "select_unique", "extraction", and "progression".
+
+There are a number of read-only, Keen-specified properties available on a saved insight once it's been created. They are:
+
+* **insight_type** - Returns if the saved insight is a "metric", a "series", an "extraction", or a "progression".
+* **created_date** - When the insight was created.
+* **last_modified_date** - When the insight was last modified.
+
+Then there are the properties for each specific **analysis type**. The table below describes all the properties that might appear in a saved insight and which analysis types they're applicable to. Please refer to the :doc:`/data_analysis/data_analysis` documentation for full descriptions of what each of these do.
+
++---------------+----------+--------------+---------------+------------+------------+
+| Property Name | Count    | Count Unique | Select Unique | Extraction | Progression|
++===============+==========+==============+===============+============+============+
+| insight_name  | Required | Required     | Required      | Required   | Required   |
++---------------+----------+--------------+---------------+------------+------------+
+| analysis_type | Required | Required     | Required      | Required   | Required   |
++---------------+----------+--------------+---------------+------------+------------+
+| event_name    | Required | Required     | Required      | Required   | N/A        |
++---------------+----------+--------------+---------------+------------+------------+
+| filters       | Optional | Optional     | Optional      | Optional   | N/A        |
++---------------+----------+--------------+---------------+------------+------------+
+| timeframe     | Optional | Optional     | Optional      | Optional   | N/A        |
++---------------+----------+--------------+---------------+------------+------------+
+| interval      | Optional | Optional     | Optional      | N/A        | N/A        |
++---------------+----------+--------------+---------------+------------+------------+
+| email         | N/A      | N/A          | N/A           | Optional   | N/A        |
++---------------+----------+--------------+---------------+------------+------------+
+| steps         | N/A      | N/A          | N/A           | N/A        | Optional   |
++---------------+----------+--------------+---------------+------------+------------+
