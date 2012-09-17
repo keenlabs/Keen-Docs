@@ -65,19 +65,18 @@ So we’ll insert a new "purchase" event into our project. The event looks like 
 			"username": "perseus",
 			"payment_type": "head of medusa"
 		}
-    }
 
 Save that JSON to a file on your filesystem. We’re naming ours "purchase1.json". You can send your event to Keen by entering the following on the command line (with your Project ID and API Key rather than the placeholders): 
 
 ::
 
-    curl https://api.keen.io/2.0/projects/<PROJECT_ID>/purchase -H "Authorization: <API_KEY>" -H "Content-Type: application/json" -d @purchase1.json
+    curl https://api.keen.io/3.0/projects/<PROJECT_ID>/events/purchase -H "Authorization: <API_KEY>" -H "Content-Type: application/json" -d @purchase1.json
 
 Breaking the request across a couple of lines makes it look like this. A bit easier to read, no?
 
 ::
 
-    curl https://api.keen.io/2.0/projects/<PROJECT_ID>/purchase
+    curl https://api.keen.io/3.0/projects/<PROJECT_ID>/events/purchase
       -H "Authorization: <API_KEY>"
       -H "Content-Type: application/json"
       -d @purchase1.json
@@ -112,7 +111,7 @@ Request
 
 ::
 
-   curl https://api.keen.io/2.0/projects/<PROJECT_ID>/purchase/_count?api_key=<API_KEY>
+   curl https://api.keen.io/3.0/projects/<PROJECT_ID>/probes/count?api_key=<API_KEY>&event_name=purchase
 
 --------
 Response
