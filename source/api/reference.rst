@@ -34,7 +34,7 @@ Versions Resource
 URL
 ----
 
-/
+api.keen.io/
 
 -----------
 Description
@@ -81,7 +81,7 @@ Discovery Resource
 URL
 ----
 
-/<version>
+api.keen.io/<version>
 
 -----------------
 Supported Methods
@@ -120,7 +120,7 @@ Projects Resource
 URL
 ----
 
-/<version>/projects
+api.keen.io/<version>/projects
 
 -----------------
 Supported Methods
@@ -185,7 +185,7 @@ Project Row Resource
 URL
 ----
 
-/<version>/projects/<project_id>
+api.keen.io/<version>/projects/<project_id>
 
 -----------------
 Supported Methods
@@ -248,7 +248,7 @@ Event Collections List Resource
 URL
 ----
 
-/<version>/projects/<project_id>/events
+api.keen.io/<version>/projects/<project_id>/events
 
 -----------------
 Supported Methods
@@ -419,7 +419,7 @@ Event Collection Row Resource
 URL
 ----
 
-/<version>/projects/<project_id>/events/<event_name>
+api.keen.io/<version>/projects/<project_id>/events/<event_name>
 
 -----------------
 Supported Methods
@@ -503,7 +503,7 @@ Probes Resource
 URL
 ----
 
-/<version>/projects/<project_id>/probes
+api.keen.io/<version>/projects/<project_id>/probes
 
 -----------------
 Supported Methods
@@ -546,7 +546,7 @@ Count Resource
 URL
 ----
 
-/<version>/projects/<project_id>/probes/count
+api.keen.io/<version>/projects/<project_id>/probes/count
 
 -----------------
 Supported Methods
@@ -597,7 +597,7 @@ Count Unique Resource
 URL
 ----
 
-/<version>/projects/<project_id>/probes/count_unique
+api.keen.io/<version>/projects/<project_id>/probes/count_unique
 
 -----------------
 Supported Methods
@@ -649,7 +649,7 @@ Select Unique Resource
 URL
 ----
 
-/<version>/projects/<project_id>/probes/select_unique
+api.keen.io/<version>/projects/<project_id>/probes/select_unique
 
 -----------------
 Supported Methods
@@ -701,7 +701,7 @@ Extraction Resource
 URL
 ----
 
-/<version>/projects/<project_id>/probes/extractions
+api.keen.io/<version>/projects/<project_id>/probes/extractions
 
 -----------------
 Supported Methods
@@ -759,7 +759,7 @@ Progression Resource
 URL
 ----
 
-/<version>/projects/<project_id>/probes/progression
+api.keen.io/<version>/projects/<project_id>/probes/progression
 
 -----------------
 Supported Methods
@@ -838,7 +838,7 @@ Saved Insights List Resource
 URL
 ----
 
-/<version>/projects/<project_id>/insights
+api.keen.io/<version>/projects/<project_id>/insights
 
 -----------------
 Supported Methods
@@ -906,7 +906,7 @@ Saved Insight Row Resource
 URL
 ----
 
-/<version>/projects/<project_id>/insights/<insight_name>
+api.keen.io/<version>/projects/<project_id>/insights/<insight_name>
 
 -----------------
 Supported Methods
@@ -1010,7 +1010,7 @@ Saved Insight Row Result Resource
 URL
 ----
 
-/<version>/projects/<project_id>/insights/<event_name>/results
+api.keen.io/<version>/projects/<project_id>/insights/<event_name>/results
 
 -----------------
 Supported Methods
