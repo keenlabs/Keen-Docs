@@ -57,14 +57,14 @@ So we’ll insert a new "purchase" event into our project. The event looks like 
 
 ::
 
-
-    {
-        "body": {
+	{
+		"body":{
 			"category": "magical animals",
 			"animal_type": "pegasus",
 			"username": "perseus",
 			"payment_type": "head of medusa"
-		}
+			}
+	}
 
 Save that JSON to a file on your filesystem. We’re naming ours "purchase1.json". You can send your event to Keen by entering the following on the command line (with your Project ID and API Key rather than the placeholders): 
 
