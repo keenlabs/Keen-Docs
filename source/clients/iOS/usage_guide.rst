@@ -10,99 +10,13 @@ The Keen iOS client is designed to be simple to develop with, yet incredibly fle
 Install Guide
 =============
 
------------
-From Source
------------
-
-The Keen iOS clients source is available on GitHub: https://github.com/keenlabs/KeenClient-iOS
-
-^^^^^^^^^^^^^^^^^
-Clone the Project
-^^^^^^^^^^^^^^^^^
-
-Clone the project locally: ::
-
-  git clone --recursive https://github.com/keenlabs/KeenClient-iOS
-  
-The --recursive modifier is set because the client includes sub-modules.
-
-You could also add the project as a sub-module to your own git project: ::
-
-  git submodule add https://github.com/keenlabs/KeenClient-iOS
-  git submodule update --recursive --init
-
-^^^^^^^^^
-Run Tests
-^^^^^^^^^
-
-This is optional but probably a good idea to make sure everything is working as expected. Open up the Keen client workspace file (KeenClient.xcworkspace).
-
-Make sure the KeenClient scheme is selected, with the target device as a simulator.
-
-.. image:: https://keen.io/static/img/docs/ios_client_usage_guide/target_device.png
-
-Then try to run all the tests for the project by going to the Product menu in Xcode and selecting Test (or just hit ⌘+U on your keyboard). If all goes well, the code should compile and all the tests should pass.
-
-^^^^^^^^
-Add Code
-^^^^^^^^
-
-Add the correct code to your XCode project.  There are a few important files: ::
-
-  /KeenClient/KeenClient.h
-  /KeenClient/KeenClient.m
-  /KeenClient/KeenConstants.h
-  /KeenClient/KeenConstants.m
-  /JSONKit/JSONKit.h
-  /JSONKit/JSONKit.m
-  /iso-8601-parser-unparser/ISO8601DateFormatter.h
-  /iso-8601-parser-unparser/ISO8601DateFormatter.m
-
-Start by creating a new group in your project:
-
-.. image:: https://keen.io/static/img/docs/ios_client_usage_guide/new_group.png
-
-Rename the group to whatever you want. I’ve chosen "KeenClient". Now you’ll want to drag all the files outlined above from Finder into XCode, under that group. Here’s an example:
-
-.. image:: https://keen.io/static/img/docs/ios_client_usage_guide/drag_files.png
-
-Make sure the "Copy items into destination group’s folder..." option is selected.
-
-^^^^^^^^^^^^^^
-If You Use ARC
-^^^^^^^^^^^^^^
-
-This should only be done if your project uses ARC (Automatic Reference Counting).
-
-The source code does not use ARC currently, in order to be backwards-compatible with older code. This will change in the future as ARC gains traction in the developer community. Because of this, if your project uses ARC, you’ll need to set specific compiler settings so that the Keen code is treated correctly. Select your target and make sure the "Build Phases" tab is selected. Then add the compiler flag "-fno-objc-arc" to the .m files you just dragged in. By the end, it should look something like this:
-
-.. image:: https://keen.io/static/img/docs/ios_client_usage_guide/arc.png
-
-^^^^^^^^^^^^^^^^^^^^
-Add KCLog Definition
-^^^^^^^^^^^^^^^^^^^^
-
-Now you need to add a definition for KCLog to your project's prefix file. KCLog is a custom logging method that the Keen Client uses. It exists so that you can choose whether or not to enable internal logging from the Keen Client (useful when sending debugging issues to us). Open up your project's \*-Prefix.pch file, and add the following after whatever is in there already: ::
-
-  #define KEEN_DEBUG
-
-  #ifdef KEEN_DEBUG
-      #define KCLog(...) NSLog(__VA_ARGS__)
-  #else
-      #define KCLog(...)
-  #endif
-
-^^^^^^^
-Compile
-^^^^^^^
-
-Finally, try and compile. If all goes well, the compile should be clean! It took a bit of work, but now you can easily pull updates from the open source community and have those changes reflected in your project. But if you don’t want to go through the hassle, there’s an easier way.
-
 ----------------
 Universal Binary
 ----------------
 
-Instead of including source and having to compile it yourself, you can simply download the latest universal binary for the client from Keen. This binary will work on both simulators and devices.
+Our recommended way of installing the Keen Client is to use the universal binary we've created. With this, you'll be able to instrument your app regardless of whether or not it uses ARC (Automatic Reference Counting) or if you have a different version of JSONKit than the one we rely on.
+
+.. note:: While we think the universal binary makes things really easy, we love to be transparent. Come check out our work on GitHub at https://github.com/keenlabs/KeenClient-iOS. We love feedback, especially in the form of pull requests. :)
 
 ^^^^^^^^
 Download
@@ -116,18 +30,16 @@ http://keen.io/static/code/KeenClient.zip
 Uncompress
 ^^^^^^^^^^
 
-Uncompress the archive. It should contain two files:
+Uncompress the archive. It should contain a folder called "KeenClient" with two files:
 
-libKeenClient-Aggregate.a
-KeenClient.h
-
-.. image:: https://keen.io/static/img/docs/ios_client_usage_guide/add_from_archive.png
+* libKeenClient-Aggregate.a
+* KeenClient.h
 
 ^^^^^^^^^^^^^^^^^^
 Add Files to Xcode
 ^^^^^^^^^^^^^^^^^^ 
 
-Add these two files from Finder into Xcode.
+Just drag the "KeenClient" folder into your Xcode project.
 
 ^^^^^^^^^^^^^^^^^^
 Enable Linker Flag
@@ -141,7 +53,7 @@ Enable a linker flag to include the special categories on some of the NSFoundati
 Compile
 ^^^^^^^
 
-Try and compile. It should work!
+Try and compile. It should work! If it doesn't, you probably forgot to enable the linker flag (see above). If you still can't get it to work, let us know at team@keen.io and one of us will help you right away.
 
 
 Usage Guide
@@ -151,13 +63,15 @@ Usage Guide
 Instrumentation
 ---------------
 
-By this point, you should have either included the Keen client code from source or from a universal binary. Now it’s time to actually use the code!
+Now it’s time to actually use the code!
 
 ^^^^^^^^^^^^^^^
 Register Client
 ^^^^^^^^^^^^^^^
 
-Register the KeenClient shared client with your project ID and authorization token. The recommended place to do this is in one of your application delegates. Here’s some example code: ::
+Register the KeenClient shared client with your project ID and authorization token. The recommended place to do this is in one of your application delegates. Here’s some example code: 
+
+.. code-block:: objc
 
   - (void)applicationDidBecomeActive:(UIApplication *)application
   {
@@ -171,12 +85,14 @@ The [KeenClient sharedClientWithProjectId: andAuthToken] does the registration. 
 Add Events
 ^^^^^^^^^^
 
-Add events to track. Here’s a very basic example for an app that includes two tabs. We want to track when a tab is switched to. ::
+Add events to track. Here’s a very basic example for an app that includes two tabs. We want to track when a tab is switched to.
+
+.. code-block:: objc
 
   - (void)viewWillAppear:(BOOL)animated
   {
       [super viewWillAppear:animated];
-
+      
       NSDictionary *event = [NSDictionary dictionaryWithObjectsAndKeys:@"first view", @"view_name",
                              @"going to", @"action", nil];
       [[KeenClient sharedClient] addEvent:event toCollection:@"tab_views"];
@@ -185,12 +101,16 @@ Add events to track. Here’s a very basic example for an app that includes two 
 The idea is to first create an arbitrary dictionary of JSON-serializable values. We support: ::
 
   NSString, NSNumber, NSDate, NSDictionary, NSArray, and BOOL
+  
+.. note:: The JSON spec doesn't include anything about date values. At Keen, we know dates are important to track. Keen sends dates back and forth through its API in ISO-8601 format. The Keen Client handles this for you.
 
 Keys must be alphanumeric, with the exception of the underscore (_) character, which can appear anywhere but the beginning of the string. For example, "view_name" is allowed, but "_view_name" is not.
 
 Add as many events as you like. The Keen client will cache them on disk until you’re ready to send them.
 
-The client will automatically stamp every event you track with a timestamp. If you want to override the system value with your own, use the following example. Note that the "timestamp" key is set in the header properties dictionary. ::
+The client will automatically stamp every event you track with a timestamp. If you want to override the system value with your own, use the following example. Note that the "timestamp" key is set in the header properties dictionary.
+
+.. code-block:: objc
 
   - (void)viewWillAppear:(BOOL)animated
   {
@@ -210,12 +130,13 @@ The client will automatically stamp every event you track with a timestamp. If y
 Upload to Keen
 ^^^^^^^^^^^^^^
 
-Upload the captured events to the Keen service. This must be done explicitly. We recommend doing the upload when your application is sent to the background, but you can do it whenever you’d like (for example, if your application typically has very long user sessions). The uploader spawns its own background thread so the main UI thread is not blocked. ::
+Upload the captured events to the Keen service. This must be done explicitly. We recommend doing the upload when your application is sent to the background, but you can do it whenever you’d like (for example, if your application typically has very long user sessions). The uploader spawns its own background thread so the main UI thread is not blocked.
+
+.. code-block:: objc
 
   - (void)applicationDidEnterBackground:(UIApplication *)application
   { 
-      UIBackgroundTaskIdentifier taskId = [application 
-    beginBackgroundTaskWithExpirationHandler:^(void) {
+      UIBackgroundTaskIdentifier taskId = [application beginBackgroundTaskWithExpirationHandler:^(void) {
           NSLog(@"Background task is being expired.");
       }];
     
