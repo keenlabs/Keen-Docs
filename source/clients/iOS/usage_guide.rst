@@ -63,7 +63,7 @@ Usage Guide
 Instrumentation
 ---------------
 
-Now it’s time to actually use the code!
+Now it’s time to actually use the client!
 
 ^^^^^^^^^^^^^^^
 Register Client
@@ -125,6 +125,32 @@ The client will automatically stamp every event you track with a timestamp. If y
                      withHeaderProperties:headerProperties
                              toCollection:@"tab_views"];
   }
+  
+^^^^^^^^^^^^^^^^^
+Global Properties
+^^^^^^^^^^^^^^^^^
+
+Now you might be thinking, "Okay, that looks pretty easy. But what if I want to send the same properties on EVERY event in a particular collection? Or just EVERY event, period?" We've got you covered through something we call Global Properties. After you register your client, you'll need to set a property on the KeenClient instance you're using. The property's value will be a block that you define. Every time an event is added, the block will be called. The client expects the block to return an NSDictionary consisting of the global properties for that event collection.
+
+Global properties are properties which are sent with EVERY event. For example, you may wish to always capture device information like OS version, handset type, orientation, etc.
+
+Here's an example:
+
+.. code-block:: objc
+
+  - (void)applicationDidBecomeActive:(UIApplication *)application
+  {
+      [KeenClient sharedClientWithProjectId:@"4f4ed092163d663d3a000000" 
+                               andAuthToken:@"9a9d92907c3e43c3a4742535fc2f78ec"];
+                               
+      client.globalPropertiesBlock = ^NSDictionary *(NSString *eventName) {
+        return [NSDictionary dictionaryWithObject:@"some global value" forKey:@"global_property_name"];
+      };
+  }
+  
+The block takes in a single string parameter which corresponds to the name of this particular event. And we expect it to return an NSDictionary of your construction. This example doesn't make use of the parameter, but yours could!
+
+.. note:: Because we support a block here, you can create DYNAMIC global properties. For example, you might want to capture the orientation of the device, which obviously could change at run-time. With the block, you can use functional programming to ask the OS what the current orientation is, each time you add an event. Pretty useful, right?
 
 ^^^^^^^^^^^^^^
 Upload to Keen
