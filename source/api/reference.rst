@@ -17,13 +17,16 @@ Contents:
 * :ref:`event-collection-row-resource` - Returns info about this specific event collection including properties and their type.
 * :ref:`count-resource` - Returns a count of items meeting specified criteria.
 * :ref:`count-unique-resource` - Returns a count of unique items meeting specified criteria.
+* :ref:`minimum-resource` - Returns the minimum value for a given property.
+* :ref:`maximum-resource` - Returns the maximum value for a given property.
+* :ref:`average-resource` - Returns the average of all values for a given property.
+* :ref:`sum-resource` - Returns the sum of all values for a given property.
 * :ref:`select-unique-resource` - Returns a list of unique items meeting specified criteria.
 * :ref:`extraction-resource` - Returns data meeting specified criteria.
 * :ref:`progression-resource` - Returns a Progression. Read more about :doc:`/data_analysis/progressions`.
 * :ref:`saved-insights-list-resource` - Returns all the existing saved insights for the specific projects.
 * :ref:`saved-insight-row-resource` - Returns information about a single saved insight. Also supports inserting a new saved insight or updating an existing one.
 * :ref:`saved-insight-row-result-resource` - Returns the analysis results of a single saved insight.
-   
 
 .. _versions-resource:
 
@@ -34,7 +37,7 @@ Versions Resource
 URL
 ----
 
-api.keen.io/
+https://api.keen.io/
 
 -----------
 Description
@@ -52,7 +55,7 @@ None
 Example Response
 ----------------
 
-::
+.. code-block:: javascript
 
   [
     {
@@ -81,7 +84,7 @@ Discovery Resource
 URL
 ----
 
-api.keen.io/<version>
+https://api.keen.io/<version>
 
 -----------------
 Supported Methods
@@ -105,7 +108,7 @@ None
 Example Response
 ----------------
 
-::
+.. code-block:: javascript
 
   {
     "projects_resource_url": "/3.0/projects"
@@ -120,7 +123,7 @@ Projects Resource
 URL
 ----
 
-api.keen.io/<version>/projects
+https://api.keen.io/<version>/projects
 
 -----------------
 Supported Methods
@@ -144,7 +147,7 @@ None
 Example Response
 ----------------
 
-::
+.. code-block:: javascript
 
   [
     {
@@ -185,7 +188,7 @@ Project Row Resource
 URL
 ----
 
-api.keen.io/<version>/projects/<project_id>
+https://api.keen.io/<version>/projects/<project_id>
 
 -----------------
 Supported Methods
@@ -209,7 +212,7 @@ None
 Example Response
 ----------------
 
-::
+.. code-block:: javascript
 
   {
     "api_key": "a62538e817dd49fc9101fd0c1fa3c892", 
@@ -248,7 +251,7 @@ Event Collections List Resource
 URL
 ----
 
-api.keen.io/<version>/projects/<project_id>/events
+https://api.keen.io/<version>/projects/<project_id>/events
 
 -----------------
 Supported Methods
@@ -274,7 +277,7 @@ None
 Example GET Response
 --------------------
 
-::
+.. code-block:: javascript
 
   [
     {
@@ -344,7 +347,7 @@ POST Request Body
 
 See :ref:`event-data` for more information about the shape of event data in Keen. The API expects a JSON object whose keys are the names of each event collection you want to insert into. Each key should point to a list of events to insert for that collection.
 
-::
+.. code-block:: javascript
 
   {
     "purchases": [
@@ -389,7 +392,7 @@ See :ref:`event-data` for more information about the shape of event data in Keen
 Example POST Response
 ---------------------
 
-::
+.. code-block:: javascript
 
   {
     "purchases": [
@@ -419,7 +422,7 @@ Event Collection Row Resource
 URL
 ----
 
-api.keen.io/<version>/projects/<project_id>/events/<event_name>
+https://api.keen.io/<version>/projects/<project_id>/events/<event_name>
 
 -----------------
 Supported Methods
@@ -445,7 +448,7 @@ None
 Example GET Response
 --------------------
 
-::
+.. code-block:: javascript
 
   {
     "name": "purchases", 
@@ -471,7 +474,7 @@ POST Request Body
 
 See :ref:`event-data` for more information about the shape of event data in Keen.
 
-::
+.. code-block:: javascript
 
 	{
 		"header": {
@@ -488,7 +491,7 @@ See :ref:`event-data` for more information about the shape of event data in Keen
 Example POST Response
 ---------------------
 
-::
+.. code-block:: javascript
 
 	{
 		"created": true
@@ -503,7 +506,7 @@ Probes Resource
 URL
 ----
 
-api.keen.io/<version>/projects/<project_id>/probes
+https://api.keen.io/<version>/projects/<project_id>/probes
 
 -----------------
 Supported Methods
@@ -527,7 +530,7 @@ None
 Example Response
 ----------------
 
-::
+.. code-block:: javascript
 
   {
     "count_unique_url": "/3.0/projects/4fea721933da5b4e8e000002/probes/count_unique", 
@@ -546,7 +549,7 @@ Count Resource
 URL
 ----
 
-api.keen.io/<version>/projects/<project_id>/probes/count
+https://api.keen.io/<version>/projects/<project_id>/probes/count
 
 -----------------
 Supported Methods
@@ -581,7 +584,7 @@ None
 Example Response
 ----------------
 
-::
+.. code-block:: javascript
 
   {
       "result": 10
@@ -597,7 +600,7 @@ Count Unique Resource
 URL
 ----
 
-api.keen.io/<version>/projects/<project_id>/probes/count_unique
+https://api.keen.io/<version>/projects/<project_id>/probes/count_unique
 
 -----------------
 Supported Methods
@@ -616,13 +619,7 @@ JSON object with one key: result, which maps to the numeric result described pre
 Query String Parameters
 -----------------------
 
-* **api_key** (optional) - The API Key for the project containing the data you are analyzing. See :doc:`/data_analysis/authentication` for more information.
-* **event_name** (required) - The name of the event collection you are analyzing.
-* **unique_property** (required) - The property of which you want to count the unique values.
-* **filters** (optional) - :doc:`/data_analysis/filters` are used to narrow down the events used in an analysis request based on `event property <event_properties>`_ values.
-* **timeframe** (optional) - Similar to filters, a :doc:`/data_analysis/timeframe` is used to narrow down the events used in an analysis request based on the time that the event occurred.
-
-.. note:: Adding **timeframe** and **interval** query string parameters will turn the Count Unique request into a Series.  See the documentation on :doc:`Series</data_analysis/series>` for more information.
+.. include:: /data_analysis/metric_parameters.txt
 
 ------------
 Request Body
@@ -634,11 +631,191 @@ None
 Example Response
 ----------------
 
-::
+.. code-block:: javascript
 
-    {
-        "result": 7
-    }
+  {
+    "result": 7
+  }
+  
+.. _minimum-resource:
+
+Minimum Resource
+================
+
+----
+URL
+----
+
+https://api.keen.io/<version>/projects/<project_id>/probes/minimum
+
+-----------------
+Supported Methods
+-----------------
+
+GET, HEAD
+
+-----------
+Description
+-----------
+
+GET returns the minimum value for the target property in the event collection matching the given criteria. The response will be a simple JSON object with one key: result, which maps to the numeric result described previously.
+
+-----------------------
+Query String Parameters
+-----------------------
+
+.. include:: /data_analysis/metric_parameters.txt
+
+------------
+Request Body
+------------
+
+None
+
+----------------
+Example Response
+----------------
+
+.. code-block:: javascript
+
+  {
+    "result": 7
+  }
+
+.. _maximum-resource:
+
+Maximum Resource
+================
+
+----
+URL
+----
+
+https://api.keen.io/<version>/projects/<project_id>/probes/maximum
+
+-----------------
+Supported Methods
+-----------------
+
+GET, HEAD
+
+-----------
+Description
+-----------
+
+GET returns the maximum value for the target property in the event collection matching the given criteria. The response will be a simple JSON object with one key: result, which maps to the numeric result described previously.
+
+-----------------------
+Query String Parameters
+-----------------------
+
+.. include:: /data_analysis/metric_parameters.txt
+
+------------
+Request Body
+------------
+
+None
+
+----------------
+Example Response
+----------------
+
+.. code-block:: javascript
+
+  {
+    "result": 7
+  } 
+  
+.. _average-resource:
+
+Average Resource
+================
+
+----
+URL
+----
+
+https://api.keen.io/<version>/projects/<project_id>/probes/average
+
+-----------------
+Supported Methods
+-----------------
+
+GET, HEAD
+
+-----------
+Description
+-----------
+
+GET returns the average across all numeric values for the target property in the event collection matching the given criteria. The response will be a simple JSON object with one key: result, which maps to the numeric result described previously.
+
+-----------------------
+Query String Parameters
+-----------------------
+
+.. include:: /data_analysis/metric_parameters.txt
+
+------------
+Request Body
+------------
+
+None
+
+----------------
+Example Response
+----------------
+
+.. code-block:: javascript
+
+  {
+    "result": 7
+  }
+  
+.. _sum-resource:
+
+Sum Resource
+============
+
+----
+URL
+----
+
+https://api.keen.io/<version>/projects/<project_id>/probes/sum
+
+-----------------
+Supported Methods
+-----------------
+
+GET, HEAD
+
+-----------
+Description
+-----------
+
+GET returns the sum of all numeric values for the target property in the event collection matching the given criteria. The response will be a simple JSON object with one key: result, which maps to the numeric result described previously.
+
+-----------------------
+Query String Parameters
+-----------------------
+
+.. include:: /data_analysis/metric_parameters.txt
+
+------------
+Request Body
+------------
+
+None
+
+----------------
+Example Response
+----------------
+
+.. code-block:: javascript
+
+  {
+    "result": 7
+  }
     
 .. _select-unique-resource:
 
@@ -649,7 +826,7 @@ Select Unique Resource
 URL
 ----
 
-api.keen.io/<version>/projects/<project_id>/probes/select_unique
+https://api.keen.io/<version>/projects/<project_id>/probes/select_unique
 
 -----------------
 Supported Methods
@@ -670,7 +847,7 @@ Query String Parameters
 
 * **api_key** (optional) - The API Key for the project containing the data you are analyzing. See :doc:`/data_analysis/authentication` for more information.
 * **event_name** (required) - The name of the event collection you are analyzing.
-* **unique_property** (required) - The property of which you want to count the unique values.
+* **target_property** (required) - The property of which you want to count the unique values.
 * **filters** (optional) - :doc:`/data_analysis/filters` are used to narrow down the events used in an analysis request based on `event property <event_properties>`_ values.
 * **timeframe** (optional) - Similar to filters, a :doc:`/data_analysis/timeframe` is used to narrow down the events used in an analysis request based on the time that the event occurred.
 
@@ -686,7 +863,7 @@ None
 Example Response
 ----------------
 
-::
+.. code-block:: javascript
 
     {
         "result": ["hello", "goodbye", "welcome"]
@@ -701,7 +878,7 @@ Extraction Resource
 URL
 ----
 
-api.keen.io/<version>/projects/<project_id>/probes/extractions
+https://api.keen.io/<version>/projects/<project_id>/probes/extractions
 
 -----------------
 Supported Methods
@@ -746,7 +923,7 @@ GET (if **email** is not specified)
 
 ::
 
-	header.timestamp,user.referring_source,user.has_paid,user.level,screen.category,item.price,item.id,user.id,quantity,user.prior_balance,screen.name,item.on_sale
+  header.timestamp,user.referring_source,user.has_paid,user.level,screen.category,item.price,item.id,user.id,quantity,user.prior_balance,screen.name,item.on_sale
   2012-07-11T05:08:05.352000,fb_ad_15,True,6,Shop,863,847,10,2,536,Equipment Store,False
   2012-07-11T05:08:06.284000,fb_ad_20,True,1,Shop,584,238,1,4,301,Equipment Store,False
 
@@ -759,7 +936,7 @@ Progression Resource
 URL
 ----
 
-api.keen.io/<version>/projects/<project_id>/probes/progression
+https://api.keen.io/<version>/projects/<project_id>/probes/progression
 
 -----------------
 Supported Methods
@@ -792,7 +969,7 @@ None
 Example Response
 ----------------
 
-::
+.. code-block:: javascript
 
   {
     "results": [
@@ -838,7 +1015,7 @@ Saved Insights List Resource
 URL
 ----
 
-api.keen.io/<version>/projects/<project_id>/insights
+https://api.keen.io/<version>/projects/<project_id>/insights
 
 -----------------
 Supported Methods
@@ -862,7 +1039,7 @@ None
 Example Response
 ----------------
 
-::
+.. code-block:: javascript
 
   [
     {
@@ -906,7 +1083,7 @@ Saved Insight Row Resource
 URL
 ----
 
-api.keen.io/<version>/projects/<project_id>/insights/<insight_name>
+https://api.keen.io/<version>/projects/<project_id>/insights/<insight_name>
 
 -----------------
 Supported Methods
@@ -926,7 +1103,7 @@ When inserting a new saved insight, the body of the PUT request should be a JSON
 
 When updating a saved insight, the body of the PUT request only needs to include the properties you want to update. For example, if you have a saved insight that does a Count and want to change its :doc:`/data_analysis/filters`, just include the **filters** property.
 
-.. note:: If you update a saved insight's **analysis_type** and the NEW type doesn't allow for some of the properties of the OLD type, Keen will delete the definition of those properties. For example, if you have an insight that does a Count Unique and you change it to do a Count, we will delete the **unique_property** property.
+.. note:: If you update a saved insight's **analysis_type** and the NEW type doesn't allow for some of the properties of the OLD type, Keen will delete the definition of those properties. For example, if you have an insight that does a Count Unique and you change it to do a Count, we will delete the **target_property** property.
 
 DELETE just plain old deletes the insight.
 
@@ -946,7 +1123,7 @@ None
 Example GET Response
 --------------------
 
-::
+.. code-block:: javascript
 
   {
     "analysis_type": "count", 
@@ -968,7 +1145,7 @@ Example GET Response
 POST Request Body
 -----------------
 
-::
+.. code-block:: javascript
 
 	{
 	  "analysis_type": "count", 
@@ -979,7 +1156,7 @@ POST Request Body
 Example POST Response
 ---------------------
 
-::
+.. code-block:: javascript
 
   {
     "created": true, 
@@ -1010,7 +1187,7 @@ Saved Insight Row Result Resource
 URL
 ----
 
-api.keen.io/<version>/projects/<project_id>/insights/<event_name>/results
+https://api.keen.io/<version>/projects/<project_id>/insights/<event_name>/results
 
 -----------------
 Supported Methods
@@ -1034,7 +1211,7 @@ None
 Example Response
 ----------------
 
-::
+.. code-block:: javascript
 
   {
     "result": 5
