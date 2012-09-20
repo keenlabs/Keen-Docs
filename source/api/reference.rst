@@ -267,6 +267,8 @@ GET returns schema information for all the collections in this project, includin
 
 POST is for bulk-inserting multiple events in a single request. See below for examples.
 
+.. note:: Make sure to set the request header "Content-Type" to "application/json" for POSTs.
+
 ----------------
 GET Request Body
 ----------------
@@ -436,7 +438,11 @@ Description
 
 GET returns available schema information for this event collection, including properties and their type. It also returns links to sub-resources.
 
-POST is for bulk-inserting multiple events in a single request. See below for examples.
+POST is for inserting one event at a time in a single request. See below for examples.
+
+.. note:: For performance gains, consider using bulk insert.
+
+.. note:: Make sure to set the request header "Content-Type" to "application/json" for POSTs.
 
 ----------------
 GET Request Body
@@ -1104,6 +1110,8 @@ When inserting a new saved insight, the body of the PUT request should be a JSON
 When updating a saved insight, the body of the PUT request only needs to include the properties you want to update. For example, if you have a saved insight that does a Count and want to change its :doc:`/data_analysis/filters`, just include the **filters** property.
 
 .. note:: If you update a saved insight's **analysis_type** and the NEW type doesn't allow for some of the properties of the OLD type, Keen will delete the definition of those properties. For example, if you have an insight that does a Count Unique and you change it to do a Count, we will delete the **target_property** property.
+
+.. note:: Make sure to set the request header "Content-Type" to "application/json" for PUTs.
 
 DELETE just plain old deletes the insight.
 
