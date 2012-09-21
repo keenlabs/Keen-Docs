@@ -664,7 +664,7 @@ GET, HEAD
 Description
 -----------
 
-GET returns the minimum value for the target property in the event collection matching the given criteria. The response will be a simple JSON object with one key: result, which maps to the numeric result described previously.
+GET returns the minimum numeric value for the target property in the event collection matching the given criteria. Non-numeric values are ignored. The response will be a simple JSON object with one key: result, which maps to the numeric result described previously.
 
 -----------------------
 Query String Parameters
@@ -709,7 +709,7 @@ GET, HEAD
 Description
 -----------
 
-GET returns the maximum value for the target property in the event collection matching the given criteria. The response will be a simple JSON object with one key: result, which maps to the numeric result described previously.
+GET returns the maximum numeric value for the target property in the event collection matching the given criteria. Non-numeric values are ignored. The response will be a simple JSON object with one key: result, which maps to the numeric result described previously.
 
 -----------------------
 Query String Parameters
@@ -754,7 +754,7 @@ GET, HEAD
 Description
 -----------
 
-GET returns the average across all numeric values for the target property in the event collection matching the given criteria. The response will be a simple JSON object with one key: result, which maps to the numeric result described previously.
+GET returns the average across all numeric values for the target property in the event collection matching the given criteria. Non-numeric values are ignored. The response will be a simple JSON object with one key: result, which maps to the numeric result described previously.
 
 -----------------------
 Query String Parameters
@@ -799,7 +799,7 @@ GET, HEAD
 Description
 -----------
 
-GET returns the sum of all numeric values for the target property in the event collection matching the given criteria. The response will be a simple JSON object with one key: result, which maps to the numeric result described previously.
+GET returns the sum of all numeric values for the target property in the event collection matching the given criteria. Non-numeric values are ignored. The response will be a simple JSON object with one key: result, which maps to the numeric result described previously.
 
 -----------------------
 Query String Parameters
