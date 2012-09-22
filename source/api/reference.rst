@@ -13,8 +13,8 @@ Contents:
 * :ref:`discovery-resource` - Returns the available child resources. Currently, the only child resource is the Projects Resource.
 * :ref:`projects-list-resource` - Returns the projects accessible to the API user, as well as links to project sub-resources for discovery.
 * :ref:`project-row-resource` - Returns detailed information about the specific project, as well as links to related resources.
-* :ref:`event-collections-list-resource` - Returns collection info including properties and their type. It also returns links to sub-resources. Also used for posting events.
-* :ref:`event-collection-row-resource` - Returns info about this specific event collection including properties and their type.
+* :ref:`event-collections-list-resource` - Used for bulk inserting events or for getting information about all the collections in a given project.
+* :ref:`event-collection-row-resource` - Used for inserting events or to get information about a specific event collection including properties and their type.
 * :ref:`count-resource` - Returns a count of items meeting specified criteria.
 * :ref:`count-unique-resource` - Returns a count of unique items meeting specified criteria.
 * :ref:`minimum-resource` - Returns the minimum value for a given property.
@@ -343,11 +343,76 @@ Example GET Response
     }
   ]
 
------------------
-POST Request Body
------------------
+--------------------------------------------------
+POST Request Body - Example of batch event posting
+--------------------------------------------------
+This example shows how multiple JSON events can be sent to Keen in a single POST. The API expects a JSON object whose keys are the names of each event collection you want to insert into. Each key should point to a list of events to insert for that collection.
 
-See :ref:`event-data` for more information about the shape of event data in Keen. The API expects a JSON object whose keys are the names of each event collection you want to insert into. Each key should point to a list of events to insert for that collection.
+Note that you need to use the key :ref:`"body" <property-types>` for your custom event properties. See :ref:`event-data` for more information about the shape of event data in Keen. 
+
+This example loads 3 events into the "purchases" event collection and 2 events into the "meme_generations" collection.
+
+.. code-block:: javascript
+
+  {
+    "purchases": [
+      {
+          "body": {
+         	 "itemID": 22654,
+			 "price": 455.65,
+			 "color": "yellow",
+			 "size": "gigantic",
+			 "smell": "foul",
+			 "taste": "salty"
+		  }
+      },
+      {
+          "body": {
+         	 "itemID": 22634,
+			 "price": 89.33,
+			 "color": "fuschia",
+			 "size": "medium",
+			 "smell": "suspicious",
+			 "taste": "milky"
+           }
+       },
+	   {
+          "body": {
+         	 "itemID": 22632,
+			 "price": 3.51,
+			 "color": "mauve",
+			 "size": "medium",
+			 "smell": "oregano",
+			 "taste": "pepperoni"
+           }
+    ],
+    "meme_generations": [
+       {
+         "body": {
+       	 	 "memeID": 226342
+			 "character": "Futurama Fry"
+			 "horribleness": "really horrible"
+			 "text": "Not sure if example is useful ... or just confusing"
+      		}
+       },
+	   {
+        "body": {
+       	 	 "memeID": 22632
+			 "character": "Good Guy Greg",
+			 "horribleness": "the worst.",
+			 "text": "Finds error in Keen docs ... let's team@keen.io know about it"
+      		}
+       }
+    ]
+  }
+
+
+
+--------------------------------------------------
+POST Request Body - Example with custom timestamps
+--------------------------------------------------
+
+This example shows how you can provide your own timestamp with an event. If you don't include the header:timestamp, Keen will automatically populate it at the time your event is received. See :ref:`property-types` for more information about the shape of event data in Keen. The API expects a JSON object whose keys are the names of each event collection you want to insert into. Each key should point to a list of events to insert for that collection.
 
 .. code-block:: javascript
 
