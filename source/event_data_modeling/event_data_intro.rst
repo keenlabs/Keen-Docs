@@ -94,14 +94,12 @@ Feel free to add or remove events and properties from your code at any time. Kee
 Property Types
 +++++++++++++++++++++++++++++++++
 
-Although you will spend most of your time working with your unique event properties, we wanted to let our advanced users know that there are actually two property types. This is particularly relevant for anyone with custom timestamp needs.
+We wanted to let our advanced users know that there are actually two different property types in Keen. A majority of folks don't need to know these property distinctions, but if you have advanced timestamp needs, you might find this useful.
 
-The two property types:
+These are the two property types:
 
-* **Header properties** are standard properties supported by Keen.
 * **Body properties** describe the event and are provided by you, the API user.
-
-Currently, the only header property supported by the Keen is the **header:timestamp** property. We reserved the header object so we can support more standard properties in the future.
+* **Header properties** are properties automatically provided by Keen. They can be overwritten by the API user.
 
 You might have noticed the “header” and “body” distinction in our example event POST payload:
 
@@ -127,7 +125,18 @@ You might have noticed the “header” and “body” distinction in our exampl
         }
     }
 
-Just in case you have a complex or atypical use case, our data collection API gives you the ability to modify and overwrite the header properties provided by Keen.  For example, when recording an event, you can provide your own timestamp to specify that an event happened in the past.
+
+All of your custom event properties are referred to by the "body" key. You might notice that whenever one of your properties is referenced in an analysis query, it is prepended with "body:" like this: "body:<your property name>". That's how the API knows that you're referring to a body property and not a header property. 
+
+The header:timestamp property is used by Keen's clients to capture the time when an event occurs. This can be overwritten if you provide you own value for this key. For example, when recording an event, you can provide your own header:timestamp to specify that an event happened in the past.
+
+If you're interacting with the REST API directly (not using a client), you should send a timestamp using the header:timestamp property, in the format shown in the example. If you don't provide a header:timestamp, Keen will add one at the time the event is received. 
+
+Header:timestamp is used for all of that analysis queries that use a :doc:`timeframe </data_analysis/timeframe>`. That's why we recommend that you use this property to store your timestamps. 
+
+Currently, the only header property supported by the Keen is the **header:timestamp** property. If we need to support any more standard properties in the future, we'll use the header object for them.
+
+
 
 .. _property hierarchy:
 
