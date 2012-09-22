@@ -1,7 +1,7 @@
 =======
 Metrics
 =======
-We use the world Metrics to describe analysis queries which return a single numeric value.  These simple yet powerful queries form the backbone of your analysis.  Metrics answer questions like “How many females in California used this feature yesterday?”
+We use the word Metrics to describe analysis queries which return a single numeric value.  These simple yet powerful queries form the backbone of your analysis.  Metrics answer questions like “How many females in California used this feature yesterday?”
 
 The following Metrics are currently supported in the Data Analysis API:
 
