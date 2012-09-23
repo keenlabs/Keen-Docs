@@ -6,14 +6,19 @@ Data Extractions are ways to get your data, or subsets of your data out of Keen 
 
 The following types of Data Extractions are currently supported in the Keen Analysis API:
 
-*  :ref:`extraction to file` - a .CSV file will all of your event properties
+*  :ref:`extraction to file` - a .CSV file with all of your events (or a subset of them)
 *  :doc:`list` - a list of unique properties (for example user names)
 
 .. _extraction to file:
 
 Data Extraction to File
 =======================
-Technical Reference: :ref:`extraction-resource`
+
+You can perform a data extraction at any time from the Keen.io website. If you don't specify any filters, your extract will include every event in an :ref:`Event Collection<event-collections>`. All :ref:`event-properties` are included for each event in the extract.  The files can get quite large and cumbersome. Use timeframes and filters to narrow the inventory of events that you extract.
+
+Shortly after requesting an extract from the Keen.io website, you will get an email letting you know that the extract is ready for download. When you click the link, your download will begin immediately (check the bottom of your browser -- you should see the download progress there).
+
+You can also programmatically request extractions via our API's: :ref:`extractions-resource`
 
 Requesting a Data Extraction to File will give you the events specified by any filters and/or timeframe in .csv format. The Data Extraction APIs can be used to set up a nightly job that will have the data you need ready and waiting in your inbox in the morning.
 
