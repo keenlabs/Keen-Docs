@@ -29,22 +29,28 @@ In terminal:
 	for example:
 	export KEEN_WEB_DIR=/Users/michellewetzler/Dev/Keen-Web
 	
-Note: See Keen-Docs/build.sh for the configuration of this deployment folder.
+Note: Keen-Docs/build.sh holds the configuration of this deployment folder.
 
-2. I'm not sure if this required, but run the make html command prior to the build.
 
-	for example:
-	[michelle] ~/Dev/Keen-Docs $ make html
-
-3. Now run the Sphinx build command to generate the html files in the Keen-Web folder.
+2. Now run the Sphinx build command to generate the html files in the Keen-Web folder.
 
 	[michelle] ~/Dev/Keen-Docs $ ./build.sh
 	
-4. If you have the Keen-Web environment on your local machine, you can checkout the deployment locally.
+3. If you have the Keen-Web environment on your local machine, you can checkout the deployment locally.
 
-5. Don't forget to commit your updated Sphinx docs (rst files) to the Keen-Docs repository on github. Make sure you're in the right branch (master)
+4. Don't forget to commit your updated Sphinx docs (rst files) to the Keen-Docs repository on github. Make sure you're in the right branch (master).
+	
+	Run these commands from Keen-Docs directory:
+	$ git status
+	$ git commit -a -m 'comments describing the build'
+	$ git push origin master
 
-6. Now you can push the final web code (html) to Keen-Web on github.
+5. Now you can push the final web code (html) to Keen-Web on github.
+
+	Run these commands from Keen-Web directory:
+	$ git status
+	$ git commit -a -m 'comments describing the build'
+	$ git push origin master
 
 7. To deploy the new Keen-web code to staging, type this in HipChat:
 

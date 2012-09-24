@@ -1,7 +1,7 @@
 =======
 Metrics
 =======
-We use the world Metrics to describe analysis queries which return a single numeric value.  These simple yet powerful queries form the backbone of your analysis.  Metrics answer questions like “How many females in California used this feature yesterday?”
+We use the word Metrics to describe analysis queries which return a single numeric value.  These simple yet powerful queries form the backbone of your analysis.  Metrics answer questions like “How many females in California used this feature yesterday?”
 
 The following Metrics are currently supported in the Data Analysis API:
 
@@ -119,7 +119,7 @@ Minimum
 =======
 Technical Reference: :ref:`minimum-resource`
 
-Keen's Minimum tool finds the minimum value for a given property.
+Keen's Minimum tool finds the minimum numeric value for a given property. All non-numeric values are ignored as part of the analysis (e.g. the minimum of 6, 28, and unicorn is 6). If none of the property values are numeric, the API call returns an error. 
 
 Finding the minimum value is done via an HTTP GET request that follows this pattern:
 
@@ -153,7 +153,7 @@ Maximum
 =======
 Technical Reference: :ref:`maximum-resource`
 
-Keen's Maximum tool finds the maximum value for a given property.
+Keen's Maximum tool finds the maximum numeric value for a given property. All non-numeric values are ignored as part of the analysis (e.g. the maximum of 6, 28, and unicorn is 28). If none of the property values are numeric, the API call  returns an error. 
 
 Finding the maximum value is done via an HTTP GET request that follows this pattern:
 
@@ -187,7 +187,7 @@ Average
 =======
 Technical Reference: :ref:`average-resource`
 
-Keen's Average tool finds the average value for a given property.
+Keen's Average tool finds the average value for a given property. All non-numeric values are ignored as part of the analysis (e.g. the average of 6, 28, and unicorn is 17). If none of the property values are numeric, the API call returns an error. 
 
 Finding the average value is done via an HTTP GET request that follows this pattern:
 
@@ -221,7 +221,7 @@ Sum
 ====
 Technical Reference: :ref:`sum-resource`
 
-Keen's Sum tool finds the sum of all values for a given property.
+Keen's Sum tool finds the sum of all numeric values for a given property. All non-numeric values are ignored as part of the analysis (e.g. the sum of 6, 28, and unicorn is 34). If none of the property values are numeric, the API call  returns an error. 
 
 Finding the sum value is done via an HTTP GET request that follows this pattern:
 

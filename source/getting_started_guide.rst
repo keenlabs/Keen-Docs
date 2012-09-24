@@ -47,9 +47,9 @@ Create a Project
 ------------------
 If you've not already done so, you need to `create a project <https://keen.io/add-project>`_. Since we're just practicing, you might want to give it a sufficiently silly name like "Getting Keeny" or "Windows ME". Make note of the Project ID and the API Key. You'll need those soon.  
 
--------------
+=============
 Send an Event
--------------
+=============
 
 Let's get to the heart of it - sending events. You need to know your Project ID, API Key,  and you'll need to name the event that you want to record. For this example, we’ll call our event collection "purchase", but you can pick almost any name!
 
@@ -97,9 +97,9 @@ The response should look like:
 	
 Winning!	
 	
-------------
+============
 Count Events
-------------
+============
 
 Through our data analysis API, you'll have access to a number of different tools. But, for the moment, let's just worry about one - counts. It exactly what it sounds like it does - counts the number of times an event has occurred. 
 
