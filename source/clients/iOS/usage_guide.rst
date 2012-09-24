@@ -7,8 +7,12 @@ Introduction
 
 The Keen iOS client is designed to be simple to develop with, yet incredibly flexible. Our goal is to let you decide what events are important to you, use your own vocabulary to describe them, and decide when you want to send them to Keen service.
 
+For a detailed class reference, please visit our `Keen iOS Client API Reference`_.
+
 Install Guide
 =============
+
+Installing the client should be a breeze. If it's not, please let us know at team@keen.io!
 
 ----------------
 Universal Binary
@@ -185,3 +189,4 @@ The Keen iOS client code does a lot of logging, but it’s usually turned off by
 
 As you can see, you’ll want to add a macro for Debug mode called KEEN_DEBUG and set its value to 1. If you want to disable the log lines, simply remove the macro or set its value to 0.
 
+.. _Keen iOS Client API Reference: https://keen.io/static/docs/clients/iOS/reference/index.html
