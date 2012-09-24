@@ -39,7 +39,7 @@ Send an Event
 =============
 
 
-Let's get to the heart of it - sending events. You need to know your Project ID, API Key, and you'll need to name the type of event that you want to record. For this example, we’ll call our new event collection "purchases", but you can pick almost any name!
+Let's get to the heart of it - sending events. You need to know your Project ID, API Key, and a name for your new Event Collection. For this example, we’ll call our new Event Collection "purchases", but you can pick almost any name!
 
 So we’ll insert a new "purchase" event into our project. The event looks like this::
 
