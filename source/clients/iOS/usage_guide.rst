@@ -189,4 +189,4 @@ The Keen iOS client code does a lot of logging, but it’s usually turned off by
 
 As you can see, you’ll want to add a macro for Debug mode called KEEN_DEBUG and set its value to 1. If you want to disable the log lines, simply remove the macro or set its value to 0.
 
-.. _Keen iOS Client API Reference: https://keen.io/static/docs/clients/iOS/reference/index.html
+.. _Keen iOS Client API Reference: https://keen.io/static/iOS-reference/index.html
