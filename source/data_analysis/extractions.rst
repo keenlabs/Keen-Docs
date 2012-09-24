@@ -13,10 +13,11 @@ The following types of Data Extractions are currently supported in the Keen Anal
 
 Data Extraction to File
 =======================
+Technical Reference: :ref:`extraction-resource`
 
 You can perform a data extraction at any time from the Keen.io website or via API. We wanted to let you know some things about the extraction file:
 
-* If you don't specify any filters, your extract will include every event in an :ref:`Event Collection<event-collections>`. All :ref:`event-properties` are included for each event in the extract. The files can get quite large and cumbersome. Use timeframes and filters to narrow the inventory of events that you extract.
+* If you don't specify any filters, your extract will include every event in an :ref:`Event Collection<event-collections>`. All :ref:`event-properties` are included for each event in the extract. The files can get quite large. Use timeframes and filters to narrow the inventory of events that you extract.
 
 * Every event in your extract will have a :ref:`header:timestamp <property-types>` property. That's the value used for sorting events by :doc:`timeframe`. The timezone of this timestamp is GMT.
 
@@ -24,9 +25,9 @@ You can perform a data extraction at any time from the Keen.io website or via AP
 
 * Shortly after requesting an extract from the Keen.io website, you will get an email letting you know that the extract is ready for download. The larger your extraction, the longer it will take to get the email. When you click the link, your download will begin immediately (check the bottom of your browser -- you should see the download progress there).
 
-* Extracts are done by :ref:`Event Collection<event-collections>`. If you want to extract 100% of your data from Keen, you'll need to run the extraction for each Event Collection.
+* Extractions are done by :ref:`Event Collection<event-collections>`. If you want to extract 100% of your data from Keen, you'll need to run the extraction for each Event Collection.
 
-You can also programmatically request extractions via our API's: :ref:`extractions-resource`. The Data Extraction APIs can be used to, for example, set up a nightly job that will have the data you need ready and waiting in your inbox in the morning.
+You can also programmatically request extractions via the :ref:`extraction-resource` or via :doc:`saved_insights` in our API. The Data Extraction APIs can be used to, for example, set up a nightly job that will have the data you need ready and waiting in your inbox in the morning.
 
 Performing a Data Extraction to File is done via an HTTP GET request that follows this pattern:
 

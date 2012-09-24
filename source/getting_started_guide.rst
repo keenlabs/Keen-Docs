@@ -14,7 +14,7 @@ Once you're through this guide, we hope you'll be square on the following:
 
 You don't need a preexisting application to walk through this guide, and we've tried to limit the technical background required of you as well. This is just about Keen. Once we get through that, we'll hand you off to the :doc:`data_collection/data_collection` and :doc:`data_analysis/data_analysis` documentation.
 
-This guide assumes that you've been granted developer preview access. Keen is still in private beta, so access is limited to the choicest of rockstars. If you don't have a Keen login yet, cou can request access `here <http://keen.io>`_. 
+This guide assumes that you've been granted developer preview access. Keen is still in private beta, so access is limited to the choicest of rockstars. If you don't have a Keen login yet, you can request access `here <http://keen.io>`_. 
 
 
 =========================
@@ -43,14 +43,14 @@ Let's get to the heart of it - sending events. You need to know your Project ID,
 
 So we’ll insert a new "purchase" event into our project. The event looks like this::
 
-	{
-		"body":{
-			"category": "magical animals",
-			"animal_type": "pegasus",
-			"username": "perseus",
-			"payment_type": "head of medusa"
-			}
-	}
+{
+  "body":{
+    "category": "magical animals",
+    "animal_type": "pegasus",
+    "username": "perseus",
+    "payment_type": "head of medusa"
+  }
+}
 
 The format of this event is called `JSON <http://en.wikipedia.org/wiki/JSON>`_. All events are sent to Keen in this format. 
 

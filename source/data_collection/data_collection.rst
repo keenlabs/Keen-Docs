@@ -4,7 +4,7 @@ Data Collection APIs
 
 We built a massively scalable event data warehouse so that you can send us whatever data you want without having to worry about storage or performance.
 
-Our public REST API lets you send data using standard HTTP POST methods, from any device. Try it our really quick using cURL in our :doc:`/getting_started_guide`.
+Our public REST API lets you send data using standard HTTP POST methods, from any device. Try it out really quickly using cURL in our :doc:`/getting_started_guide`.
 
 These two links have all the technical details you need for sending data to our REST API:
 
