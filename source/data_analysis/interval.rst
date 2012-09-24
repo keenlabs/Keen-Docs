@@ -6,9 +6,9 @@ Intervals are used when creating a :doc:`series` API call.  The interval specifi
 
 Keen currently supports these intervals:
 
-* **hourly** - breaks your timeframe into hour long chunks.
-* **daily** - breaks your timeframe into day long chunks.
-* **weekly** - breaks your timeframe into week long chunks.
+* **hourly** - breaks your timeframe into hourlong chunks.
+* **daily** - breaks your timeframe into daylong chunks.
+* **weekly** - breaks your timeframe into weeklong chunks.
 
 To add an Interval to your Series, simply add the “interval” parameter to your query string.
 

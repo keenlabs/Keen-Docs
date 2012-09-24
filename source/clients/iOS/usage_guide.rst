@@ -9,6 +9,13 @@ The Keen iOS client is designed to be simple to develop with, yet incredibly fle
 
 For a detailed class reference, please visit our `Keen iOS Client API Reference`_.
 
+* :ref:`install-guide` - How to install the Keen iOS Client into your application.
+* :ref:`register-client` - How to register your project ID and authorization token with the Keen iOS Client.
+* :ref:`add-events` - How to add an event with the Keen iOS Client.
+* :ref:`upload-events` - How to upload all previously saved events with the Keen iOS Client.
+
+.. _install-guide:
+
 Install Guide
 =============
 
@@ -69,6 +76,8 @@ Instrumentation
 
 Now it’s time to actually use the client!
 
+.. _register-client:
+
 ^^^^^^^^^^^^^^^
 Register Client
 ^^^^^^^^^^^^^^^
@@ -84,6 +93,8 @@ Register the KeenClient shared client with your project ID and authorization tok
   }
   
 The [KeenClient sharedClientWithProjectId: andAuthToken] does the registration. From now on, in your code, you can just reference the shared client by calling [KeenClient sharedClient].
+
+.. _add-events:
 
 ^^^^^^^^^^
 Add Events
@@ -134,11 +145,17 @@ The client will automatically stamp every event you track with a timestamp. If y
 Global Properties
 ^^^^^^^^^^^^^^^^^
 
-Now you might be thinking, "Okay, that looks pretty easy. But what if I want to send the same properties on EVERY event in a particular collection? Or just EVERY event, period?" We've got you covered through something we call Global Properties. After you register your client, you'll need to set a property on the KeenClient instance you're using. The property's value will be a block that you define. Every time an event is added, the block will be called. The client expects the block to return an NSDictionary consisting of the global properties for that event collection.
+Now you might be thinking, "Okay, that looks pretty easy. But what if I want to send the same properties on EVERY event in a particular collection? Or just EVERY event, period?" We've got you covered through something we call Global Properties. 
 
 Global properties are properties which are sent with EVERY event. For example, you may wish to always capture device information like OS version, handset type, orientation, etc.
 
-Here's an example:
+There are two ways to handle Global Properties - one is more simple but more limited, while the other is a bit more complex but much more powerful. For each of them, after you register your client, you'll need to set an Objective-C property on the KeenClient instance you're using. 
+
+**Dictionary-based Global Properties**
+
+For this, the Objective-C property is called *globalPropertiesDictionary*. The property's value will be an *NSDictionary* that you define. Each time an event is added, the iOS client will look at the value of this property and add all its contents to the user-defined event. Use this if you have a bunch of static properties that you want to add to every event.
+
+Here's an example using a dictionary:
 
 .. code-block:: objc
 
@@ -146,15 +163,41 @@ Here's an example:
   {
       [KeenClient sharedClientWithProjectId:@"4f4ed092163d663d3a000000" 
                                andAuthToken:@"9a9d92907c3e43c3a4742535fc2f78ec"];
-                               
+      client.globalPropertiesDictionary = @{@"some_standard_key": @"some_standard_value"};
+  }
+
+.. note:: If there are two properties with the same name specified in the user-defined event AND the global properties, the user-defined event's property will be the one used.
+
+**Block-based Global Properties**
+
+For this, the Objective-C property is called *globalPropertiesBlock*. The property's value will be a block that you define. Every time an event is added, the block will be called. The client expects the block to return an NSDictionary consisting of the global properties for that event collection. Use this if you have a bunch of dynamic properties (see below) that you want to add to every event.
+
+Here's an example using blocks:
+
+.. code-block:: objc
+
+  - (void)applicationDidBecomeActive:(UIApplication *)application
+  {
+      [KeenClient sharedClientWithProjectId:@"4f4ed092163d663d3a000000" 
+                               andAuthToken:@"9a9d92907c3e43c3a4742535fc2f78ec"];
       client.globalPropertiesBlock = ^NSDictionary *(NSString *eventName) {
-        return [NSDictionary dictionaryWithObject:@"some global value" forKey:@"global_property_name"];
+          if ([eventName isEqualToString:@"apples"]) {
+              return @{ @"color": @"red" };
+          } else if ([eventName isEqualToString:@"pears"]) {
+              return @{ @"color": @"green" };
+          } else {
+              return nil;
+          }
       };
   }
   
 The block takes in a single string parameter which corresponds to the name of this particular event. And we expect it to return an NSDictionary of your construction. This example doesn't make use of the parameter, but yours could!
 
 .. note:: Because we support a block here, you can create DYNAMIC global properties. For example, you might want to capture the orientation of the device, which obviously could change at run-time. With the block, you can use functional programming to ask the OS what the current orientation is, each time you add an event. Pretty useful, right?
+
+.. note:: Another note - you can use BOTH the dictionary property AND the block property at the same time. If there are conflicts between defined properties, the order of precedence is: user-defined event > block-defined event > dictionary-defined event. Meaning the properties you put in a single event will ALWAYS show up, even if you define the same property in one of your globals.
+
+.. _upload-events:
 
 ^^^^^^^^^^^^^^
 Upload to Keen
