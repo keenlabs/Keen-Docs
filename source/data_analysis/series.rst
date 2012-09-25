@@ -6,7 +6,9 @@ A Series allows you to analyze trends in :doc:`Metrics<metrics>` over time. It b
 
 Creating a series request is done by simply adding the :doc:`timeframe` and :doc:`interval` query string parameters to a :doc:`Metric<metrics>` request.
 
-.. note:: The **timeframe** parameter is already optional for Metrics.  If you are already using a timeframe with a Metric, you only need to add the **interval** query string parameter to turn your Metric into a Series.
+.. note:: If you are already using a timeframe with a Metric, you only need to add the **interval** query string parameter to turn your Metric into a Series.
+
+Please note that there is a limitation on the number of analyses that can be done in a single Series. The current limit is 31. That means your specified interval and timeframe can't have more than 31 buckets or "sub-timeframes". For example, running a Series with an "hourly" interval over the timeframe "last_5_days" would produce an analysis query with 24 hours x 5 days = 120 sub-timeframes. You will get an error about having too many sub-timeframes. If you run the same query with a "daily" interval and timeframe of "last week" you would have one sub-timeframe per day and a total of 5 sub-timeframes. Easily under the limit.
 
 Here’s an example that counts the number of purchases events we have recorded for each day last week.
 
