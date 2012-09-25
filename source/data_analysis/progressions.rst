@@ -73,7 +73,7 @@ The response from a Progression analysis looks like this:
 
    
    {
-       “results”:[
+       “result”:[
            9375,
            203
        ],
@@ -90,4 +90,4 @@ The response from a Progression analysis looks like this:
    }
    
 
-The results array details the number of users that successfully made it to each step in the Progression.  The **steps** array contains the definition of the steps passed in via the query string parameter.
+The result array details the number of users that successfully made it to each step in the Progression.  The **steps** array contains the definition of the steps passed in via the query string parameter.
