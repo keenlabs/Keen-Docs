@@ -1043,9 +1043,9 @@ Example Response
 .. code-block:: javascript
 
   {
-    "results": [
+    "result": [
       2, 
-      2
+      1
     ], 
     "steps": [
       {
@@ -1124,7 +1124,7 @@ Example Response
       "last_modified_date": "2012-09-14T22:23:50.259000", 
       "timeframe": null, 
       "urls": {
-        "insight_results_url": "/3.0/projects/abc/insights/insight_one/results", 
+        "insight_results_url": "/3.0/projects/abc/insights/insight_one/result", 
         "insight_url": "/3.0/projects/abc/insights/insight_one"
       }
     }, 
@@ -1139,7 +1139,7 @@ Example Response
       "last_modified_date": "2012-09-14T22:23:50.288000", 
       "timeframe": null, 
       "urls": {
-        "insight_results_url": "/3.0/projects/abc/insights/insight_two/results", 
+        "insight_results_url": "/3.0/projects/abc/insights/insight_two/result", 
         "insight_url": "/3.0/projects/abc/insights/insight_two"
       }
     }
@@ -1209,7 +1209,7 @@ Example GET Response
     "last_modified_date": "2012-09-14T22:23:50.259000", 
     "timeframe": null, 
     "urls": {
-      "insight_results_url": "/3.0/projects/abc/insights/insight_one/results", 
+      "insight_results_url": "/3.0/projects/abc/insights/insight_one/result", 
       "insight_url": "/3.0/projects/abc/insights/insight_one"
     }
   }
@@ -1244,7 +1244,7 @@ Example POST Response
       "last_modified_date": "2012-09-14T22:23:50.259178", 
       "timeframe": null, 
       "urls": {
-        "insight_results_url": "/3.0/projects/abc/insights/insight_one/results", 
+        "insight_results_url": "/3.0/projects/abc/insights/insight_one/result", 
         "insight_url": "/3.0/projects/abc/insights/insight_one"
       }
     }, 
@@ -1260,7 +1260,7 @@ Saved Insight Row Result Resource
 URL
 ----
 
-https://api.keen.io/<version>/projects/<project_id>/insights/<event_name>/results
+https://api.keen.io/<version>/projects/<project_id>/insights/<event_name>/result
 
 -----------------
 Supported Methods

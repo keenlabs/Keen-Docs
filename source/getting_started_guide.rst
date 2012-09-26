@@ -41,16 +41,18 @@ Send an Event
 
 Let's get to the heart of it - sending events. You need to know your Project ID, API Key, and a name for your new Event Collection. For this example, we’ll call our new Event Collection "purchases", but you can pick almost any name!
 
-So we’ll insert a new "purchase" event into our project. The event looks like this::
+So we’ll insert a new "purchase" event into our project. The event looks like this
 
-	{
-	  "body":{
-	    "category": "magical animals",
-	    "animal_type": "pegasus",
-	    "username": "perseus",
-	    "payment_type": "head of medusa"
-	  }
-	}
+.. code-block:: javascript
+
+  {
+    "body": {
+      "category": "magical animals",
+      "animal_type": "pegasus",
+      "username": "perseus",
+      "payment_type": "head of medusa"
+    }
+  }
 
 The format of this event is called `JSON <http://en.wikipedia.org/wiki/JSON>`_. All events are sent to Keen in this format. 
 

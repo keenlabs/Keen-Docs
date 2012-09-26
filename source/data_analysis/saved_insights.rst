@@ -91,7 +91,7 @@ If your attempt to save the insight succeeds, you'll get a response like:
       "last_modified_date": "2012-09-14T22:23:50.259178", 
       "timeframe": "today", 
       "urls": {
-        "insight_results_url": "/3.0/projects/abc/insights/insight_one/results", 
+        "insight_results_url": "/3.0/projects/abc/insights/insight_one/result", 
         "insight_url": "/3.0/projects/abc/insights/insight_one"
       }
     }, 
@@ -105,7 +105,7 @@ To get the results of an insight you've previously saved, send an HTTP GET to th
 
 ::
 
-  https://api.keen.io/<api_version>/projects/<project_id>/insights/<insight_name>/results
+  https://api.keen.io/<api_version>/projects/<project_id>/insights/<insight_name>/result
 
 The Results take the following parameter:
 
@@ -116,7 +116,7 @@ If your request succeeds, you'll get a response that looks like:
 ::
 
   {
-    "results": [
+    "result": [
       {
         "timeframe": {
           "end": "2012-09-15T01:00:00", 
