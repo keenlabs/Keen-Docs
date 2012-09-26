@@ -119,9 +119,7 @@ Response
         "result": 1
     }
 
-Yup. 1. We only inserted one event, so that's all we can count. This is just a getting started guide. 
-
-Check out the query builder on our website or dig into our API docs to learn about some other cool stuff you can do. Here a couple more simple examples just to show off:
+Yup. 1. We only inserted one event, so that's all we can count. This is just a getting started guide. Here a couple more simple examples just to show off:
 
 Add a :doc:`data_analysis/timeframe` parameter to limit the results to events that happened in the past 3 hours:
 
@@ -131,7 +129,7 @@ Request
 
 ::
 	
-	https://api.keen.io/3.0/projects/<PROJECT_ID>/probes/count?api_key=<API_KEY>&event_name=purchases&timeframe="last_3_hours"
+	https://api.keen.io/3.0/projects/<PROJECT_ID>/probes/count?api_key=<API_KEY>&event_name=purchases&timeframe=last_3_hours
 	
 --------
 Response
@@ -185,10 +183,9 @@ Response
 	  ]
 	}
 
-That's just the beginning. You'll find a lot more analysis tools on `our website <http://keen.io>`_ and our :doc:`api docs<data_analysis/data_analysis>`.
+That's just the beginning. You'll find a lot more analysis tools on `our website <http://keen.io>`_ and our :doc:`API docs<data_analysis/data_analysis>`.
 
 .. image:: keen_tools.*
-
 
 
 =======================
