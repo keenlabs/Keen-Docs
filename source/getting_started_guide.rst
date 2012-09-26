@@ -32,7 +32,7 @@ Before we jump into the tech, it's important to know how we think about things. 
 Project Setup
 ==============
 
-If you've not already done so, you need to `create a project <https://keen.io/add-project>`_. Since we're just practicing, you might want to give it a sufficiently silly name like "Getting Keeny" or "Windows ME". Make note of the Project ID and the API Key. You'll need those soon.  
+If you've not already done so, you need to `create a project <https://keen.io/projects>`_. Since we're just practicing, you might want to give it a sufficiently silly name like "Getting Keeny" or "Windows ME". Make note of the Project ID and the API Key. You'll need those soon.  
 
 =============
 Send an Event 
