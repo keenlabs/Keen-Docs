@@ -16,7 +16,7 @@ Example Probe::
 The Probe is a complex URL with all of the query parameters encoded in the URI. The advantages of Probes are:
 
 1. You can modify probe query parameters on the fly programmatically, or even in your browser bar. For example, you could take the probe above and replace "average" with "minimum" to change the nature of the calculation.
-2. You can generate probe queries programmatically. For example, suppose your app generates memes, each with a unique ID. Every time a user creates a new meme, you could generate a probe to count how many times that meme was shared.
+2. You can generate probe queries programmatically. For example, suppose your app generates memes, each with a unique ID. Every time a user creates a new meme, you could generate a probe to count how many times that meme is shared.
 3. You can see all of the parameters used in the query directly in the URI.
 
 

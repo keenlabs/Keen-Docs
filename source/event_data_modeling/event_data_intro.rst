@@ -87,7 +87,7 @@ When we talk about events and their properties, we are starting to dig into the 
 
 Though it might seem counter-intuitive and redundant to send the same information (e.g. user info, platform info) with every event, it will make it much easier for you to segment your data later.
 
-Feel free to add or remove events and properties from your code at any time. Keen will automatically keep track of whatever you send, and your new properties will be available for filtering immediately.
+Feel free to add or remove events and properties from your code at any time. Keen will automatically keep track of whatever you send, and your new properties will be available for analysis immediately.
 
 .. _property-types:
 
