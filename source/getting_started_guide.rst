@@ -151,7 +151,7 @@ Request
 
 ::
 
-	https://api.keen.io/3.<PROJECT_ID>/probes/count?api_key=<API_KEY>&event_name=purchases&timeframe=last_3_hours&interval=hours
+	https://api.keen.io/3.0/projects/<PROJECT_ID>/probes/count?api_key=<API_KEY>&event_name=purchases&timeframe=last_3_hours&interval=hourly
 
 --------
 Response
