@@ -43,42 +43,42 @@ Next, setup the Keen client. We named it "keen" in this example.
 
 Now, the fun part. Use *keen.add.event()* wherever you want to collect data.
 
-For each event, specify an :ref:`event collection <event-collections>` name (e.g. “arrivals”), then include as many :ref:`properties <event-properties>` as you want (eg. landing page, referring source, browser, user properties).
+For each event, specify an :ref:`event collection <event-collections>` name (e.g. "arrivals"), then include as many :ref:`properties <event-properties>` as you want (eg. landing page, referring source, browser, user properties).
 
 Here’s a simple example that records someone’s arrival to your site and sends it to the "Arrivals" Event Collection:
 
 .. code-block:: ruby
 
     keen.add_event("arrivals", {
-        :landing page => “Bayside High Class of 1989 Chess Club fanpage”
-        :referring_source => “google”,
-        :browser => “Firefox 3.0”,
+        :landing page => "Bayside High Class of 1989 Chess Club fanpage"
+        :referring_source => "google",
+        :browser => "Firefox 3.0",
     })
 
-Below is a more complex example for a purchase in a game. Notice how you can nest properties. “user” and “game” each have properties of their own. Check out our :doc:`/event_data_modeling/event_data_intro` to learn more about event data.
+Below is a more complex example for a purchase in a game. Notice how you can nest properties. "user" and "game" each have properties of their own. Check out our :doc:`/event_data_modeling/event_data_intro` to learn more about event data.
 
 .. code-block:: ruby
 
     keen.add_event("purchases", {
       :quantity   => 1,
       :cost       => 1.50,
-      :item       => “giant 80s cell phone”,
-      :screen     => “vanity goods store”,
+      :item       => "giant 80s cell phone",
+      :screen     => "vanity goods store",
       :user       =>  {
-            :name   => “Mark-Paul Gosselar”,
+            :name   => "Mark-Paul Gosselar",
             :id     => 12342,
-            :type   => “Premium”,
+            :type   => "Premium",
             :level  => 7,
             :age    => 38,
-            :gender => “male”
+            :gender => "male"
         },
       :game  => {
-            :name => “Saved By the Bell THE GAME”,
+            :name => "Saved By the Bell THE GAME",
             :version => 2.5.3,
-            :platform => “Facebook”
+            :platform => "Facebook"
       },
       :sessionlength => 11:35:07,
-      :browser => “Firefox 3.0”
+      :browser => "Firefox 3.0"
     })
 
 
@@ -89,9 +89,9 @@ Quick tip: if you want to check the status of the transaction in terminal, use "
 .. code-block:: ruby
 
     puts keen.add_event("arrivals", {
-        :landing page => “Bayside High Class of 1989 Chess Club fanpage”
-        :referring_source => “google”,
-        :browser => “Firefox 3.0”,
+        :landing_page => "Bayside High Class of 1989 Chess Club fanpage",
+        :referring_source => "google",
+        :browser => "Firefox 3.0",
     })
 
 
@@ -112,7 +112,7 @@ for example::
 .. Use a local storage handler to batch events
 .. -------------------------------------------
 .. 
-.. Using the default client properties, Keen will send your data each time an event fires. However, to minimize your API calls, we recommend that you batch your events. A free handler that we like a lot is called Redis. The configuration below describes how to use the “RedisHandler” which we built into the Keen ruby client.
+.. Using the default client properties, Keen will send your data each time an event fires. However, to minimize your API calls, we recommend that you batch your events. A free handler that we like a lot is called Redis. The configuration below describes how to use the "RedisHandler" which we built into the Keen ruby client.
 .. 
 .. To specify that you would like your events batched, set the cache_locally and storagemode properties when you define a new Keen client.
 .. 
