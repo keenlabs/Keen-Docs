@@ -5,12 +5,12 @@ We use the word Metrics to describe analysis queries which return a single numer
 
 The following Metrics are currently supported in the Data Analysis API:
 
-*  :ref:`count metric`
-*  :ref:`count unique metric`
-*  :ref:`minimum metric`
-*  :ref:`maximum metric`
-*  :ref:`sum metric`
-*  :ref:`average metric`
+*  :ref:`count-metric`
+*  :ref:`count-unique-metric`
+*  :ref:`minimum-metric`
+*  :ref:`maximum-metric`
+*  :ref:`sum-metric`
+*  :ref:`average-metric`
 
 .. toctree::
    :maxdepth: 3
@@ -30,7 +30,7 @@ The variables in the URL are defined as follows:
 
 Query string parameters specific to the analysis type will be also be present -- such as filters or a specific timeframe.  See the documentation for the specific Metric for more information.
 
-.. _count metric:
+.. _count-metric:
 
 Count
 =====
@@ -66,7 +66,7 @@ The response from a Count is a JSON object that looks like this:
     "result" : 7
   }
 
-.. _count unique metric:
+.. _count-unique-metric:
 
 Count Unique
 ============
@@ -113,7 +113,7 @@ The response from a Count Unique request is a JSON object that looks like the fo
     "result" : 7
   }
 
-.. _minimum metric:
+.. _minimum-metric:
 
 Minimum
 =======
@@ -147,7 +147,7 @@ The response from a Minimum request is a JSON object that looks like the followi
     "result": 1.34
   }
 
-.. _maximum metric:
+.. _maximum-metric:
 
 Maximum
 =======
@@ -181,7 +181,7 @@ The response from a Maximum request is a JSON object that looks like the followi
     "result": 503.98
   }
 
-.. _average metric:
+.. _average-metric:
 
 Average
 =======
@@ -215,7 +215,7 @@ The response from an Average request is a JSON object that looks like the follow
     "result": 93.31
   }
 
-.. _sum metric:
+.. _sum-metric:
 
 Sum
 ====
