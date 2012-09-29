@@ -1,7 +1,7 @@
 =======
 Metrics
 =======
-We use the word Metrics to describe analysis queries which return a single numeric value.  These simple yet powerful queries form the backbone of your analysis.  Metrics answer questions like “How many females in California used this feature yesterday?”
+We use the word Metrics to describe analysis queries which return a single numeric value.  These simple yet powerful queries form the backbone of your analysis.  Metrics answer questions like "How many females in California used this feature yesterday?"
 
 The following Metrics are currently supported in the Data Analysis API:
 
@@ -103,7 +103,7 @@ Here is an example of a request to return the number of unique users that logged
 
     https://api.keen.io/3.0/projects/your_project_id/probes/count_unique?event_name=logged_in&api_key=your_api_key&target_property=body:user:email&timeframe=today
 
-In this example, we are analyzing our “logged_in” event collection and telling it to count the target_property values in the **body:user:email** :ref:`hierarchical property <property hierarchy>`.  That property contains a way to identify a unique user -- the user’s email.
+In this example, we are analyzing our "logged_in" event collection and telling it to count the target_property values in the **body:user:email** :ref:`hierarchical property <property hierarchy>`.  That property contains a way to identify a unique user -- the user’s email.
 
 The response from a Count Unique request is a JSON object that looks like the following:
 

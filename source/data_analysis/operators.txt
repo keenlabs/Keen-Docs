@@ -8,5 +8,5 @@ Here is a list of operators you can use with :doc:`/data_analysis/filters`:
 * **lte** - Less than or equal to
 * **gt** - Greater than
 * **gte** - Greater than or equal to
-* **exists** - Whether or not a specific property exists on an event record.  When using the “exists” operator, the value passed in must be either “true” or “false”
-* **in** - Whether or not the property value is in a given set of values.  When using the “in” operator, the value must be a JSON array of values.  Example: [1,2,4,5]
+* **exists** - Whether or not a specific property exists on an event record.  When using the "exists" operator, the value passed in must be either "true" or "false"
+* **in** - Whether or not the property value is in a given set of values.  When using the "in" operator, the value must be a JSON array of values.  Example: [1,2,4,5]

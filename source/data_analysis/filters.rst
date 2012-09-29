@@ -8,9 +8,9 @@ Filters are passed into URLs as an array of JSON objects.  Each JSON object has 
 
 * **property_name** (required) - the name of the property on which you’d like to filter.
 * **operator** (required) - the string code for the filter operator you’d like to use.
-* **value** (required) - the value to compare to the property specified in “property_name”.
+* **value** (required) - the value to compare to the property specified in "property_name".
 
-.. note:: **property_name** will need the “body” prefix to filter on user defined properties.
+.. note:: **property_name** will need the "body" prefix to filter on user defined properties.
 
 .. include:: operators.txt
 
@@ -26,14 +26,14 @@ Example: Here is the JSON array for two filters.  The first one restricts our ev
 
     [
         {
-            “property_name” : “body:price”,
-            “operator” : “gte”,
-            “property_value” : .99
+            "property_name" : "body:price",
+            "operator" : "gte",
+            "property_value" : .99
         },
         {
-            “property_name” : “body:on_sale”
-            “operator” : “eq”
-            “property_value” : true
+            "property_name" : "body:on_sale"
+            "operator" : "eq"
+            "property_value" : true
         }
     ]
     
@@ -47,7 +47,7 @@ This is what the above example looks like URL encoded:
 
 I know, it's really ugly, but it's required so that the Keen API can understand what you need.
 
-Finally, set the “filters” parameter in your query string equal to the URL encoded string.
+Finally, set the "filters" parameter in your query string equal to the URL encoded string.
 
 Example:
 

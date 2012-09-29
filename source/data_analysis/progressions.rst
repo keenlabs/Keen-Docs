@@ -32,7 +32,7 @@ Progressions take in the following parameters:
 Steps
 -----
 
-A step is defined as an event or set of events that meet a given criteria.  Your first step, along with any filters that you provide, determine the starting data set of your progression. Each step includes something called an actor_property --- typically a user id -- that specifies the important thing you want to count in that step. Continuing our example, the first step would count the number of unique user ids in the event collection “Tutorial Completions”.
+A step is defined as an event or set of events that meet a given criteria.  Your first step, along with any filters that you provide, determine the starting data set of your progression. Each step includes something called an actor_property --- typically a user id -- that specifies the important thing you want to count in that step. Continuing our example, the first step would count the number of unique user ids in the event collection "Tutorial Completions".
 
 To create a Progression, you must define each of its steps.  A step is a JSON object with the following parameters:
 
@@ -41,7 +41,7 @@ To create a Progression, you must define each of its steps.  A step is a JSON ob
 * **timeframe** (optional) - A :doc:`timeframe` specifies the events to use for analysis based on a window of time.
 * **filters** (optional) - :doc:`filters` are used to narrow the scope of events used in this step of the progression.
 
-Each step of your Progression should be be inserted into a JSON array and URL encoded. Then you simply set the “steps” parameter in your query string.
+Each step of your Progression should be be inserted into a JSON array and URL encoded. Then you simply set the "steps" parameter in your query string.
 
 In this example, we want to find the drop off rate between users viewing our landing page and signing up for our service.  Note that timeframes are not specified, so it will be using all the data ever recorded for these two events.  Here is what the steps would look like in JSON form.
 
@@ -49,12 +49,12 @@ In this example, we want to find the drop off rate between users viewing our lan
 
     [
        {
-          “event_name”:”view_landing_page”,
-          ”actor_property”:”body:user:id”
+          "event_name":"view_landing_page",
+          "actor_property":"body:user:id"
        },
        {
-          “event_name”:”sign_up”,
-          ”actor_property”:”body:user:id”
+          "event_name":"sign_up",
+          "actor_property":"body:user:id"
        }
     ]
 
@@ -73,18 +73,18 @@ The response from a Progression analysis looks like this:
 
    
    {
-       “result”:[
+       "result":[
            9375,
            203
        ],
-       ”steps”:[
+       "steps":[
            {
-              “event_name”:”view_landing_page”,
-              ”actor_property”:”body:user:id”
+              "event_name":"view_landing_page",
+              "actor_property":"body:user:id"
            },
            {
-              “event_name”:”sign_up”,
-              ”actor_property”:”body:user:id”
+              "event_name":"sign_up",
+              "actor_property":"body:user:id"
            }
        ]
    }

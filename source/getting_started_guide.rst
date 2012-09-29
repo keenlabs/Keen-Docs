@@ -68,15 +68,6 @@ Note: Make sure to navigate your Terminal prompt to the place where you saved yo
 
     $ curl https://api.keen.io/3.0/projects/<PROJECT_ID>/events/purchases -H "Authorization: <API_KEY>" -H "Content-Type: application/json" -d @purchase1.json
 
-Breaking the request across a couple of lines makes it look like this. A bit easier to read, no?
-
-::
-
-    curl https://api.keen.io/3.0/projects/<PROJECT_ID>/events/purchases
-      -H "Authorization: <API_KEY>"
-      -H "Content-Type: application/json"
-      -d @purchase1.json
-
 There are a couple things going on here. 
 
 * First, we send the request to a URL that includes both the Project ID and the name of the :ref:`Event Collection <event-collections>` (purchases) where we want to store this event.

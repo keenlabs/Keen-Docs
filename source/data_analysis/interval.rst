@@ -10,7 +10,7 @@ Keen currently supports these intervals:
 * **daily** - breaks your timeframe into daylong chunks.
 * **weekly** - breaks your timeframe into weeklong chunks.
 
-To add an Interval to your Series, simply add the “interval” parameter to your query string.
+To add an Interval to your Series, simply add the "interval" parameter to your query string.
 
 An example Series call with a daily interval:
 
