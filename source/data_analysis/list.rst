@@ -28,7 +28,7 @@ Here’s a query populated with example values. We're looking at the Event Colle
 
 .. code-block:: none
 
-    https://api.keen.io/3.0/projects/<project_id>/probes/select_unique?event_name=logins&target_property=%5B%22body%3Auser%3Aemail%22%5D&api_key=<api_key>
+    https://api.keen.io/3.0/projects/<project_id>/probes/select_unique?event_name=logins&target_property=body:user:email&api_key=<api_key>
 
 The response is a JSON object that looks like this:
 
