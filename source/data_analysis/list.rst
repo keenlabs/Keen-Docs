@@ -20,15 +20,17 @@ Requesting the list is done via an HTTP GET request that uses the "select_unique
 Lists take the following parameters:
 
 * **api_key** (required) - The API key for the project containing the data you are analyzing.  This goes in the Authorization HTTP header.
-* **target_property** (required) - The name of the event property of interest. It should be a URL encoded JSON array containing one value.  If the property is a user defined property, it should be prepended with "body:" (e.g. body:email_address).  Otherwise, it should be prepended with "header:".
+* **target_property** (required) - The name of the event property of interest. For example "user.location.city". 
 * **filters** (optional) - :doc:`filters` are used to narrow down the events used in an analysis request based on property values.
 * **timeframe** (optional) - A :doc:`timeframe` specifies the events to use for analysis based on a window of time. If no timeframe is specified, all events will be counted.
 
-Here’s a query populated with example values. We're looking at the Event Collection "logins" and the target_property we're analyzing is "body:user:email".
+.. Note:: Query string parameters much be URL-encoded or they will not be understood correctly. The query builder on Keen.io automatically does encoding. You can also do it using a simple tool like `URL Encoder <http://meyerweb.com/eric/tools/dencoder/URL>`. 
+
+Here’s a query populated with example values. We're looking at the Event Collection "logins" and the target_property we're analyzing is "user.email".
 
 .. code-block:: none
 
-    https://api.keen.io/3.0/projects/<project_id>/probes/select_unique?event_name=logins&target_property=body:user:email&api_key=<api_key>
+    https://api.keen.io/3.0/projects/<project_id>/probes/select_unique?event_name=logins&api_key=<api_key>&target_property=user.email
 
 The response is a JSON object that looks like this:
 

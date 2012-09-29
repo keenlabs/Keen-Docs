@@ -19,7 +19,7 @@ You can perform a data extraction at any time from the Keen.io website or via AP
 
 * If you don't specify any filters, your extract will include every event in an :ref:`Event Collection<event-collections>`. All :ref:`event-properties` are included for each event in the extract. The files can get quite large. Use timeframes and filters to narrow the inventory of events that you extract.
 
-* Every event in your extract will have a :ref:`header:timestamp <property-types>` property. That's the value used for sorting events by :doc:`timeframe`. The timezone of this timestamp is GMT.
+* Every event in your extract will have a :ref:`keen:timestamp <property-types>` property. That's the value used for sorting events by :doc:`timeframe`. The timezone of this timestamp is GMT.
 
 * There is currently no way to specify the order of the properties (columns) in your extract file. They might not come out in the order you expect, but they will all be there.
 

@@ -41,23 +41,21 @@ Here is an example of a Purchase event and its properties. There's a timestamp p
 .. code-block:: none
 
     {
-        "header": {
+        "keen": {
             "timestamp": "2012-06-06T19:10:39.205000"
         },
-        "body": {
-            "item": "sophisticated orange turtleneck with deer on it",
-            "cost": 469.5,
-            "payment_method": "Bank Simple VISA",
-            "customer": {
-                "name": "Francis Woodbury",
-                "age": 28,
-            },
-            "store": {
-                "name": "Yupster Things",
-                "city": "San Francisco",
-                "address": "467 West Portal Ave",
+        "item": "sophisticated orange turtleneck with deer on it",
+        "cost": 469.5,
+        "payment_method": "Bank Simple VISA",
+        "customer": {
+            "name": "Francis Woodbury",
+            "age": 28,
+        },
+        "store": {
+            "name": "Yupster Things",
+            "city": "San Francisco",
+            "address": "467 West Portal Ave",
             }
-        }
     }
 
 
@@ -98,43 +96,39 @@ We wanted to let our advanced users know that there are actually two different p
 
 These are the two property types:
 
-* **Body properties** describe the event and are provided by you, the API user.
-* **Header properties** are properties automatically provided by Keen. They can be overwritten by the API user.
+* **Your properties** describe the event and are provided by you, the API user.
+* **Keen properties** are properties automatically provided by Keen. They can be overwritten by the API user.
 
-You might have noticed the "header" and "body" distinction in our example event POST payload:
+Here's an example event POST payload:
 
 .. code-block:: none
 
     {
-        "header": {
+        "keen": {
             "timestamp": "2012-06-06T19:10:39.205000"
-        },
-        "body": {
-            "item": "sophisticated orange turtleneck with deer on it",
-            "cost": 469.5,
-            "payment_method": "Bank Simple VISA",
-            "customer": {
-                "name": "Francis Woodbury",
-                "age": 28,
-            },
-            "store": {
-                "name": "Yupster Things",
-                "city": "San Francisco",
-                "address": "467 West Portal Ave",
-            }
-        }
+        	},
+        "item": "sophisticated orange turtleneck with deer on it",
+        "cost": 469.5,
+        "payment_method": "Bank Simple VISA",
+        "customer": {
+            "name": "Francis Woodbury",
+            "age": 28,
+        	},
+        "store": {
+            "name": "Yupster Things",
+            "city": "San Francisco",
+            "address": "467 West Portal Ave",
+        	}
     }
 
 
-All of your custom event properties are referred to by the "body" key. You might notice that whenever one of your properties is referenced in an analysis query, it is prepended with "body:" like this: "body:<your property name>". That's how the API knows that you're referring to a body property and not a header property. 
+The keen.timestamp property is used by Keen's clients to capture the time when an event occurs. This can be overwritten if you provide you own value for this key. For example, when recording an event, you can provide your own keen.timestamp to specify that an event happened in the past.
 
-The header:timestamp property is used by Keen's clients to capture the time when an event occurs. This can be overwritten if you provide you own value for this key. For example, when recording an event, you can provide your own header:timestamp to specify that an event happened in the past.
+If you're interacting with the REST API directly (not using a client), you should send a timestamp using the keen.timestamp property, in the format shown in the example. If you don't provide a keen.timestamp, Keen will add one at the time the event is received. 
 
-If you're interacting with the REST API directly (not using a client), you should send a timestamp using the header:timestamp property, in the format shown in the example. If you don't provide a header:timestamp, Keen will add one at the time the event is received. 
+keen.timestamp is used for all of that analysis queries that use a :doc:`timeframe </data_analysis/timeframe>`. That's why we recommend that you use this property to store your timestamps. 
 
-Header:timestamp is used for all of that analysis queries that use a :doc:`timeframe </data_analysis/timeframe>`. That's why we recommend that you use this property to store your timestamps. 
-
-Currently, the only header property supported by the Keen is the **header:timestamp** property. If we need to support any more standard properties in the future, we'll use the header object for them.
+Currently, the only special supported by the Keen is the **keen.timestamp** property. 
 
 
 
@@ -152,25 +146,23 @@ The ability to store the properties in this hierarchy makes it much simpler to n
 .. code-block:: none
 
     {
-        "body": {
-            "item": "sophisticated orange turtleneck with deer on it",
-            "cost": 469.50,
-            "payment_method": "Bank Simple VISA"
-            "customer": {
-                "id": 233255
-                "name": "Francis Woodbury",
-                "age": 28,
-                "address": {
-                    "city": "San Francisco",
-                    "country": "USA"
-                }
-            },
-            "store": {
-                "name": "Yupster Things",
-                "city": "San Francisco",
-                "address": "467 West Portal Ave"
-            }
-        }
+       "item": "sophisticated orange turtleneck with deer on it",
+       "cost": 469.50,
+       "payment_method": "Bank Simple VISA",
+       "customer": {
+           "id": 233255,
+           "name": "Francis Woodbury",
+           "age": 28,
+           "address": {
+               "city": "San Francisco",
+               "country": "USA"
+           }
+       },
+       "store": {
+           "name": "Yupster Things",
+           "city": "San Francisco",
+           "address": "467 West Portal Ave"
+       }
     }
 
 This is a simple example --- your hierarchy can have as many levels and properties as you want!

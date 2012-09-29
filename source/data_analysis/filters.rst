@@ -10,8 +10,6 @@ Filters are passed into URLs as an array of JSON objects.  Each JSON object has 
 * **operator** (required) - the string code for the filter operator you’d like to use.
 * **value** (required) - the value to compare to the property specified in "property_name".
 
-.. note:: **property_name** will need the "body" prefix to filter on user defined properties.
-
 .. include:: operators.txt
 
 Because not all filter operators make sense for the different property data types, only certain ones are valid for each type.
@@ -24,28 +22,20 @@ Example: Here is the JSON array for two filters.  The first one restricts our ev
 
 .. code-block:: none
 
-    [
-        {
-            "property_name" : "body:price",
-            "operator" : "gte",
-            "property_value" : .99
-        },
-        {
-            "property_name" : "body:on_sale"
-            "operator" : "eq"
-            "property_value" : true
-        }
-    ]
+	[
+	    {
+	        "property_name" : "price",
+	        "operator" : "gte",
+	        "property_value" : .99
+	    },
+	    {
+	        "property_name" : "on_sale"
+	        "operator" : "eq"
+	        "property_value" : true
+	    }
+	]
     
 Filters are either passed through a HTTP POST/PUT body, or through the query string of an HTTP GET. If you're making a GET request and you want to specify some filters, you'll have to URL encode your JSON string using the proper method in your language of choice.
-
-This is what the above example looks like URL encoded:
-
-.. code-block:: none
-
-    %5b%7b%22property_name%22%3a%22body%3aprice%22%2c%22operator%22%3a%22gte%22%2c%22property_value%22%3a.99%7d%2c%7b%22property_name%22%3a%22body%3aon_sale%22%2c%22operator%22%3a%22eq%22%2c%22property_value%22%3atrue%7d%5d
-
-I know, it's really ugly, but it's required so that the Keen API can understand what you need.
 
 Finally, set the "filters" parameter in your query string equal to the URL encoded string.
 
@@ -53,4 +43,6 @@ Example:
 
 .. code-block:: none
 
-    https://api.keen.io/3.0/projects/<project_id>/probes/count?api_key=<api_key>&event_name=<event_name>&filters=%5b%7b%22property_name%22%3a%22body%3aprice%22%2c%22operator%22%3a%22gte%22%2c%22property_value%22%3a.99%7d%2c%7b%22property_name%22%3a%22body%3aon_sale%22%2c%22operator%22%3a%22eq%22%2c%22property_value%22%3atrue%7d%5d
+    https://api.keen.io/3.0/projects/<project_id>/probes/count?api_key=<api_key>&event_name=<event_name>&filters=%5b%7b%22property_name%22%3a%22price%22%2c%22operator%22%3a%22gte%22%2c%22property_value%22%3a.99%7d%2c%7b%22property_name%22%3a%22on_sale%22%2c%22operator%22%3a%22eq%22%2c%22property_value%22%3atrue%7d%5d
+
+PS: The query builder on keen.io will construct and decode filters into a URL for you.

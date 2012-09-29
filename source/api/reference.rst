@@ -285,59 +285,59 @@ Example GET Response
     {
       "name": "purchases", 
       "properties": {
-        "body:item:id": "num", 
-        "body:item:on_sale": "bool", 
-        "body:item:price": "num", 
-        "body:quantity": "num", 
-        "body:screen:category": "string", 
-        "body:screen:name": "string", 
-        "body:user:has_paid": "bool", 
-        "body:user:id": "num", 
-        "body:user:level": "num", 
-        "body:user:prior_balance": "num", 
-        "body:user:referring_source": "string"
+        "item.id": "num", 
+        "item.on_sale": "bool", 
+        "item.price": "num", 
+        "quantity": "num", 
+        "screen.category": "string", 
+        "screen.name": "string", 
+        "user.has_paid": "bool", 
+        "user.id": "num", 
+        "user.level": "num", 
+        "user.prior_balance": "num", 
+        "user.referring_source": "string"
       }, 
       "url": "/3.0/projects/4fea721933da5b4e8e000002/events/purchases"
     }, 
     {
       "name": "level_up", 
       "properties": {
-        "body:from_level": "num", 
-        "body:level": "num", 
-        "body:screen:category": "string", 
-        "body:screen:name": "string", 
-        "body:to_level": "num", 
-        "body:user:has_paid": "bool", 
-        "body:user:id": "num", 
-        "body:user:level": "num", 
-        "body:user:prior_balance": "num", 
-        "body:user:referring_source": "string"
+        "from_level": "num", 
+        "level": "num", 
+        "screen.category": "string", 
+        "screen.name": "string", 
+        "to_level": "num", 
+        "user.has_paid": "bool", 
+        "user.id": "num", 
+        "user.level": "num", 
+        "user.prior_balance": "num", 
+        "user.referring_source": "string"
       }, 
       "url": "/3.0/projects/4fea721933da5b4e8e000002/events/level_up"
     }, 
     {
       "name": "inventory_changes", 
       "properties": {
-        "body:item:id": "num", 
-        "body:quantity": "num", 
-        "body:screen:category": "string", 
-        "body:screen:name": "string", 
-        "body:user:has_paid": "bool", 
-        "body:user:id": "num", 
-        "body:user:level": "num", 
-        "body:user:prior_balance": "num", 
-        "body:user:referring_source": "string"
+        "item.id": "num", 
+        "quantity": "num", 
+        "screen.category": "string", 
+        "screen.name": "string", 
+        "user.has_paid": "bool", 
+        "user.id": "num", 
+        "user.level": "num", 
+        "user.prior_balance": "num", 
+        "user.referring_source": "string"
       }, 
       "url": "/3.0/projects/4fea721933da5b4e8e000002/events/inventory_changes"
     }, 
     {
       "name": "login", 
       "properties": {
-        "body:user:email": "string", 
-        "body:user:id": "string", 
-        "body:user_agent:browser": "string", 
-        "body:user_agent:browser_version": "string", 
-        "body:user_agent:platform": "string"
+        "user.email": "string", 
+        "user.id": "string", 
+        "user_agent.browser": "string", 
+        "user_agent.browser_version": "string", 
+        "user_agent.platform": "string"
       }, 
       "url": "/3.0/projects/4fea721933da5b4e8e000002/events/login"
     }
@@ -356,52 +356,42 @@ This example loads 3 events into the "purchases" event collection and 2 events i
 
   {
     "purchases": [
-      {
-          "body": {
-         	 "itemID": 22654,
-			 "price": 455.65,
-			 "color": "yellow",
-			 "size": "gigantic",
-			 "smell": "foul",
-			 "taste": "salty"
-		  }
+      {      
+       	 "itemID": 22654,
+		 "price": 455.65,
+		 "color": "yellow",
+		 "size": "gigantic",
+		 "smell": "foul",
+		 "taste": "salty"	  
       },
       {
-          "body": {
-         	 "itemID": 22634,
-			 "price": 89.33,
-			 "color": "fuschia",
-			 "size": "medium",
-			 "smell": "suspicious",
-			 "taste": "milky"
-           }
+         "itemID": 22634,
+		 "price": 89.33,
+		 "color": "fuschia",
+		 "size": "medium",
+		 "smell": "suspicious",
+		 "taste": "milky"
        },
 	   {
-          "body": {
-         	 "itemID": 22632,
-			 "price": 3.51,
-			 "color": "mauve",
-			 "size": "medium",
-			 "smell": "oregano",
-			 "taste": "pepperoni"
-           }
+         "itemID": 22632,
+		 "price": 3.51,
+		 "color": "mauve",
+		 "size": "medium",
+		 "smell": "oregano",
+		 "taste": "pepperoni"
     ],
     "meme_generations": [
        {
-         "body": {
-       	 	 "memeID": 226342
-			 "character": "Futurama Fry"
-			 "horribleness": "really horrible"
-			 "text": "Not sure if example is useful ... or just confusing"
-      		}
+      	 "memeID": 226342
+		 "character": "Futurama Fry"
+		 "horribleness": "really horrible"
+		 "text": "Not sure if example is useful ... or just confusing"
        },
 	   {
-        "body": {
-       	 	 "memeID": 22632
-			 "character": "Good Guy Greg",
-			 "horribleness": "the worst.",
-			 "text": "Finds error in Keen docs ... let's team@keen.io know about it"
-      		}
+         "memeID": 22632
+		 "character": "Good Guy Greg",
+		 "horribleness": "the worst.",
+		 "text": "Finds error in Keen docs ... let's team@keen.io know about it"
        }
     ]
   }
@@ -412,45 +402,41 @@ This example loads 3 events into the "purchases" event collection and 2 events i
 POST Request Body - Example with custom timestamps
 --------------------------------------------------
 
-This example shows how you can provide your own timestamp with an event. If you don't include the header:timestamp, Keen will automatically populate it at the time your event is received. See :ref:`property-types` for more information about the shape of event data in Keen. The API expects a JSON object whose keys are the names of each event collection you want to insert into. Each key should point to a list of events to insert for that collection.
+This example shows how you can overwrite Keen's timestamp by sending a keen.timestamp property value. By default, Keen clients will automatically set this time at the time your event is recorded. 
+
+If you are not using one of our client libraries and you don't include this timestamp, Keen will automatically populate it at the time your event is received. 
+
+See :ref:`property-types` for more information about the shape of event data in Keen. 
 
 .. code-block:: javascript
 
   {
     "purchases": [
       {
-        "header": {
-          "timestamp": "2012-06-06T19:10:39.205000Z"
+        "keen": {
+          	"timestamp": "2012-06-06T19:10:39.205000Z"
         },
-        "body": {
-          "quantity": 5
-        }
+        "quantity": 5
       },
       {
-        "header": {
-          "timestamp": "2012-06-06T20:10:39.205000Z"
+        "keen": {
+          	"timestamp": "2012-06-06T20:10:39.205000Z"
         },
-        "body": {
-          "quantity": 25
-        }
+        "quantity": 25
       }
     ],
     "inventory_changes": [
       {
-        "header": {
+        "keen": {
           "timestamp": "2012-06-06T19:10:39.205000Z"
         },
-        "body": {
-          "quantity": 32
-        }
+        "quantity": 32
       },
       {
-        "header": {
+        "keen": {
           "timestamp": "2012-06-06T19:10:39.205000Z"
         },
-        "body": {
-          "quantity": 5
-        }
+        "quantity": 5
       }
     ]
   }
@@ -524,17 +510,17 @@ Example GET Response
   {
     "name": "purchases", 
     "properties": {
-      "body:item:id": "num", 
-      "body:item:on_sale": "bool", 
-      "body:item:price": "num", 
-      "body:quantity": "num", 
-      "body:screen:category": "string", 
-      "body:screen:name": "string", 
-      "body:user:has_paid": "bool", 
-      "body:user:id": "num", 
-      "body:user:level": "num", 
-      "body:user:prior_balance": "num", 
-      "body:user:referring_source": "string"
+      "item.id": "num", 
+      "item.on_sale": "bool", 
+      "item.price": "num", 
+      "quantity": "num", 
+      "screen.category": "string", 
+      "screen.name": "string", 
+      "user.has_paid": "bool", 
+      "user.id": "num", 
+      "user.level": "num", 
+      "user.prior_balance": "num", 
+      "user.referring_source": "string"
     }, 
     "url": "/3.0/projects/4fea721933da5b4e8e000002/events/purchases"
   }
@@ -548,14 +534,12 @@ See :ref:`event-data` for more information about the shape of event data in Keen
 .. code-block:: javascript
 
 	{
-		"header": {
+		"keen": {
 			"timestamp": "2012-06-06T19:10:39.205000Z"
 		},
-		"body": {
-			"type": "mouse_click",
-			"x_coord": 720,
-			"y_coord": 640
-		}
+		"type": "mouse_click",
+		"x_coord": 720,
+		"y_coord": 640
 	}
 
 ---------------------
@@ -994,7 +978,7 @@ GET (if **email** is not specified)
 
 ::
 
-  header.timestamp,user.referring_source,user.has_paid,user.level,screen.category,item.price,item.id,user.id,quantity,user.prior_balance,screen.name,item.on_sale
+  keen.timestamp,user.referring_source,user.has_paid,user.level,screen.category,item.price,item.id,user.id,quantity,user.prior_balance,screen.name,item.on_sale
   2012-07-11T05:08:05.352000,fb_ad_15,True,6,Shop,863,847,10,2,536,Equipment Store,False
   2012-07-11T05:08:06.284000,fb_ad_20,True,1,Shop,584,238,1,4,301,Equipment Store,False
 
@@ -1050,26 +1034,26 @@ Example Response
     "steps": [
       {
         "actor_property": [
-          "body:username"
+          "username"
         ], 
         "event_name": "landed", 
         "filters": [
           {
             "operator": "eq", 
-            "property_name": "body:device", 
+            "property_name": "device", 
             "property_value": "Android"
           }
         ]
       }, 
       {
         "actor_property": [
-          "body:username"
+          "username"
         ], 
         "event_name": "signed_up", 
         "filters": [
           {
             "operator": "eq", 
-            "property_name": "body:device", 
+            "property_name": "device", 
             "property_value": "Android"
           }
         ]

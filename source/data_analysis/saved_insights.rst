@@ -11,7 +11,7 @@ Saved insights allow you to take a complex query like a :doc:`Metric <metrics>`,
 
 Example Probe::
 
-	https://api.keen.io/3.0/projects/<projID>/probes/average?api_key=<key>&event_name=purchases&filters=%5B%7B%22property_name%22%3A%22body%3Auser%3Areferring_source%22%2C%22operator%22%3A%22eq%22%2C%22property_value%22%3A%22facebook%22%7D%5D&target_property=body:quantity&timeframe=yesterday
+	https://api.keen.io/3.0/projects/<projID>/probes/average?api_key=<key>&event_name=purchases&filters=%5B%7B%22property_name%22%3A%22user%3Areferring_source%22%2C%22operator%22%3A%22eq%22%2C%22property_value%22%3A%22facebook%22%7D%5D&target_property=quantity&timeframe=yesterday
 
 The Probe is a complex URL with all of the query parameters encoded in the URI. The advantages of Probes are:
 

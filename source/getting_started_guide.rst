@@ -35,13 +35,11 @@ Let's insert a new "purchase" event into the purchases collection. The event sho
 .. code-block:: javascript
 
   {
-    "body": {
-      "category": "magical animals",
-      "animal_type": "pegasus",
-      "username": "perseus",
-      "payment_type": "head of medusa",
-      "price": 4.50	
-    }
+    "category": "magical animals",
+    "animal_type": "pegasus",
+    "username": "perseus",
+    "payment_type": "head of medusa",
+    "price": 4.50	
   }
 
 
@@ -103,7 +101,7 @@ Response
 
 Yup. 1. We only inserted one event, so that's all we can count. This is just a getting started guide. Here a couple more simple examples just to show off:
 
-Now change :ref:`count-metric` to :ref:`average-metric` and add a target_property query string parameter to let the API know which numeric property you want average. Here's how you can run an average on the body:price property.
+Now change :ref:`count-metric` to :ref:`average-metric` and add a target_property query string parameter to let the API know which numeric property you want average. Here's how you can run an average on the "price" property.
 
 ---------------
 Average Request
@@ -111,7 +109,7 @@ Average Request
 
 ::
 
-	https://api.keen.io/3.0/projects/<PROJECT_ID>/probes/average?api_key=<API_KEY>&event_name=<EVENT_COLLECTION>&target_property=body:price
+	https://api.keen.io/3.0/projects/<PROJECT_ID>/probes/average?api_key=<API_KEY>&event_name=<EVENT_COLLECTION>&target_property=price
 
 
 

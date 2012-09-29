@@ -101,9 +101,9 @@ Here is an example of a request to return the number of unique users that logged
 
 .. code-block:: none
 
-    https://api.keen.io/3.0/projects/your_project_id/probes/count_unique?event_name=logged_in&api_key=your_api_key&target_property=body:user:email&timeframe=today
+    https://api.keen.io/3.0/projects/your_project_id/probes/count_unique?event_name=logged_in&api_key=your_api_key&target_property=user.email&timeframe=today
 
-In this example, we are analyzing our "logged_in" event collection and telling it to count the target_property values in the **body:user:email** :ref:`hierarchical property <property hierarchy>`.  That property contains a way to identify a unique user -- the user’s email.
+In this example, we are analyzing our "logged_in" event collection and telling it to count the target_property values in the **user.email** :ref:`hierarchical property <property hierarchy>`.  That property contains a way to identify a unique user -- the user’s email.
 
 The response from a Count Unique request is a JSON object that looks like the following:
 
@@ -135,9 +135,9 @@ Here is an example of a request to return the lowest amount a user paid you toda
 
 .. code-block:: none
 
-  https://api.keen.io/3.0/projects/your_project_id/probes/minimum?event_name=purchases&api_key=your_api_key&target_property=body:purchase:amount&timeframe=today
+  https://api.keen.io/3.0/projects/your_project_id/probes/minimum?event_name=purchases&api_key=your_api_key&target_property=purchase.amount&timeframe=today
 
-In this example, we are analyzing our "purchases" event collection and telling Keen to find the smallest value in the **body:purchase:amount** :ref:`hierarchical property <property hierarchy>`. That property has the amount of every purchase made.
+In this example, we are analyzing our "purchases" event collection and telling Keen to find the smallest value in the **purchase.amount** :ref:`hierarchical property <property hierarchy>`. That property has the amount of every purchase made.
 
 The response from a Minimum request is a JSON object that looks like the following: 
 
@@ -169,9 +169,9 @@ Here is an example of a request to return the highest amount a user paid you tod
 
 .. code-block:: none
 
-  https://api.keen.io/3.0/projects/your_project_id/probes/maximum?event_name=purchases&api_key=your_api_key&target_property=body:purchase:amount&timeframe=today
+  https://api.keen.io/3.0/projects/your_project_id/probes/maximum?event_name=purchases&api_key=your_api_key&target_property=purchase.amount&timeframe=today
 
-In this example, we are analyzing our "purchases" event collection and telling Keen to find the largest value in the **body:purchase:amount** :ref:`hierarchical property <property hierarchy>`. That property has the amount of every purchase made.
+In this example, we are analyzing our "purchases" event collection and telling Keen to find the largest value in the **purchase.amount** :ref:`hierarchical property <property hierarchy>`. That property has the amount of every purchase made.
 
 The response from a Maximum request is a JSON object that looks like the following: 
 
@@ -203,9 +203,9 @@ Here is an example of a request to return the average amount a user paid you tod
 
 .. code-block:: none
 
-  https://api.keen.io/3.0/projects/your_project_id/probes/average?event_name=purchases&api_key=your_api_key&target_property=body:purchase:amount&timeframe=today
+  https://api.keen.io/3.0/projects/your_project_id/probes/average?event_name=purchases&api_key=your_api_key&target_property=purchase.amount&timeframe=today
 
-In this example, we are analyzing our "purchases" event collection and telling Keen to find the average value across all the **body:purchase:amount** :ref:`hierarchical property <property hierarchy>`. That property has the amount of every purchase made.
+In this example, we are analyzing our "purchases" event collection and telling Keen to find the average value across all the **.purchase.amount** :ref:`hierarchical property <property hierarchy>`. That property has the amount of every purchase made.
 
 The response from an Average request is a JSON object that looks like the following: 
 
@@ -237,9 +237,9 @@ Here is an example of a request to return the amount all your users paid you tod
 
 .. code-block:: none
 
-  https://api.keen.io/3.0/projects/your_project_id/probes/sum?event_name=purchases&api_key=your_api_key&target_property=body:purchase:amount&timeframe=today
+  https://api.keen.io/3.0/projects/your_project_id/probes/sum?event_name=purchases&api_key=your_api_key&target_property=purchase.amount&timeframe=today
 
-In this example, we are analyzing our "purchases" event collection and telling Keen to find the sum of all values across the **body:purchase:amount** :ref:`hierarchical property <property hierarchy>`. That property has the amount of every purchase made.
+In this example, we are analyzing our "purchases" event collection and telling Keen to find the sum of all values across the **purchase.amount** :ref:`hierarchical property <property hierarchy>`. That property has the amount of every purchase made.
 
 The response from a Sum request is a JSON object that looks like the following: 
 
