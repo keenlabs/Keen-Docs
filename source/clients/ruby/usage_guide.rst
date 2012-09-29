@@ -5,10 +5,9 @@ Ruby Client Usage Guide
 Introduction
 ------------
 
-The Keen Ruby Client makes it easy for you to send event data from your Ruby app to Keen. It is designed to be simple yet flexible. Our goal is to let you decide what events are important to you and use your own vocabulary to describe them. This guide will walk you through the steps to send data to Keen (there are only a couple!). You might also want to check out the :doc:`/getting_started_guide` and the :doc:`/event_data_modeling/event_data_intro`.
+The Keen Ruby Client makes it easy for you to send event data from your Ruby app to Keen. It is designed to be simple yet flexible. You decide what events are important to you and use your own vocabulary to describe them. This guide will walk you through the steps to send data to Keen. You might also want to check out the :doc:`/getting_started_guide` and the :doc:`/event_data_modeling/event_data_intro`.
 
-First things first: Installing the Keen Gem
-It’s easy! Run this in the command line:
+First things first: Installing the Keen Gem. Run this in the command line:
 
 ::
 
@@ -50,7 +49,7 @@ Here’s a simple example that records someone’s arrival to your site and send
 .. code-block:: ruby
 
     keen.add_event("arrivals", {
-        :landing page => "Bayside High Class of 1989 Chess Club fanpage"
+        :landing_page => "Bayside High Class of 1989 Chess Club fanpage",
         :referring_source => "google",
         :browser => "Firefox 3.0",
     })
@@ -60,7 +59,6 @@ Below is a more complex example for a purchase in a game. Notice how you can nes
 .. code-block:: ruby
 
     keen.add_event("purchases", {
-      :quantity   => 1,
       :cost       => 1.50,
       :item       => "giant 80s cell phone",
       :screen     => "vanity goods store",
@@ -99,13 +97,18 @@ You should get a result like this::
  	
 	{"created"=>true}
 	
-You can also run a quick count of your event collection to check if your event count is going up::
+	
+
+Analysis
+----------------------
+		
+Run a quick count of your event collection to see how many events you sent so far::
 
 	https://api.keen.io/3.0/projects/<YOUR PROJECT ID>/probes/count?api_key=<YOUR API KEY>&event_name=<YOUR EVENT COLLECTION NAME>	
 	
-for example::
-	
-	https://api.keen.io/3.0/projects/5058bd022e7pp622b72222222/probes/count?api_key=3c3a313b97b3334a333faca08da3333d&event_name=purchases
+Counts are just the beginning. Check out the rest of our analysis queries in :doc:`our docs </data_analysis/data_analysis>` or using our query builder on `Keen.io <http://Keen.io/>`_.
+
+
 
 
 ..
