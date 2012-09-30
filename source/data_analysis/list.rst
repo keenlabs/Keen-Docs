@@ -15,7 +15,7 @@ Requesting the list is done via an HTTP GET request that uses the "select_unique
 
 .. code-block:: none
 
-    https://api.keen.io/3.0/projects/<project_id>/<event_collection>/select_unique?api_key=<key>&target_property=<event_property>
+    https://api.keen.io/3.0/projects/<project_id>/probes/select_unique?api_key=<key>&event_name=<collection_name>&target_property=<property>
 
 Lists take the following parameters:
 
