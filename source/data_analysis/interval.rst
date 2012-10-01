@@ -16,4 +16,4 @@ An example Series call with a daily interval:
 
 .. code-block:: none
 
-    https://api.keen.io/3.0/projects/<project_id>/probes/count?api_key=<api_key>&event_name=<event_name>&timeframe=last_week&interval=daily
+    https://api.keen.io/3.0/projects/<project_id>/queries/count?api_key=<api_key>&event_name=<event_name>&timeframe=last_week&interval=daily

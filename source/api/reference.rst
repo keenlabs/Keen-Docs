@@ -174,7 +174,7 @@ Example Response
       "id": "4fea721933da5b4e8e000002", 
       "insights": [], 
       "name": "Click to Buy (iOS)", 
-      "probes_url": "/3.0/projects/4fea721933da5b4e8e000002/probes", 
+      "queries_url": "/3.0/projects/4fea721933da5b4e8e000002/queries",
       "url": "/3.0/projects/4fea721933da5b4e8e000002"
     }
   ]
@@ -238,7 +238,7 @@ Example Response
     "id": "4fea721933da5b4e8e000002", 
     "insights": [], 
     "name": "Click to Buy (iOS)", 
-    "probes_url": "/3.0/projects/4fea721933da5b4e8e000002/probes", 
+    "queries_url": "/3.0/projects/4fea721933da5b4e8e000002/queries",
     "url": "/3.0/projects/4fea721933da5b4e8e000002"
   }
   
@@ -552,16 +552,16 @@ Example POST Response
 		"created": true
 	}
 
-.. _probes-resource:
+.. _queries-resource:
 
-Probes Resource
+Queries Resource
 ===============
 
 ----
 URL
 ----
 
-https://api.keen.io/<version>/projects/<project_id>/probes
+https://api.keen.io/<version>/projects/<project_id>/queries
 
 -----------------
 Supported Methods
@@ -573,7 +573,7 @@ GET, HEAD
 Description
 -----------
 
-GET returns the list of available probes and links to them. See :doc:`/data_analysis/data_analysis` for more information.
+GET returns the list of available queries and links to them. See :doc:`/data_analysis/data_analysis` for more information.
 
 ------------
 Request Body
@@ -588,11 +588,11 @@ Example Response
 .. code-block:: javascript
 
   {
-    "count_unique_url": "/3.0/projects/4fea721933da5b4e8e000002/probes/count_unique", 
-    "count_url": "/3.0/projects/4fea721933da5b4e8e000002/probes/count", 
-    "extraction_url": "/3.0/projects/4fea721933da5b4e8e000002/probes/extraction", 
-    "progression_url": "/3.0/projects/4fea721933da5b4e8e000002/probes/progression", 
-    "select_unique_url": "/3.0/projects/4fea721933da5b4e8e000002/probes/select_unique"
+    "count_unique_url": "/3.0/projects/4fea721933da5b4e8e000002/queries/count_unique",
+    "count_url": "/3.0/projects/4fea721933da5b4e8e000002/queries/count",
+    "extraction_url": "/3.0/projects/4fea721933da5b4e8e000002/queries/extraction",
+    "progression_url": "/3.0/projects/4fea721933da5b4e8e000002/queries/progression",
+    "select_unique_url": "/3.0/projects/4fea721933da5b4e8e000002/queries/select_unique"
   }
 
 .. _count-resource:
@@ -604,7 +604,7 @@ Count Resource
 URL
 ----
 
-https://api.keen.io/<version>/projects/<project_id>/probes/count
+https://api.keen.io/<version>/projects/<project_id>/queries/count
 
 -----------------
 Supported Methods
@@ -655,7 +655,7 @@ Count Unique Resource
 URL
 ----
 
-https://api.keen.io/<version>/projects/<project_id>/probes/count_unique
+https://api.keen.io/<version>/projects/<project_id>/queries/count_unique
 
 -----------------
 Supported Methods
@@ -701,7 +701,7 @@ Minimum Resource
 URL
 ----
 
-https://api.keen.io/<version>/projects/<project_id>/probes/minimum
+https://api.keen.io/<version>/projects/<project_id>/queries/minimum
 
 -----------------
 Supported Methods
@@ -746,7 +746,7 @@ Maximum Resource
 URL
 ----
 
-https://api.keen.io/<version>/projects/<project_id>/probes/maximum
+https://api.keen.io/<version>/projects/<project_id>/queries/maximum
 
 -----------------
 Supported Methods
@@ -791,7 +791,7 @@ Average Resource
 URL
 ----
 
-https://api.keen.io/<version>/projects/<project_id>/probes/average
+https://api.keen.io/<version>/projects/<project_id>/queries/average
 
 -----------------
 Supported Methods
@@ -836,7 +836,7 @@ Sum Resource
 URL
 ----
 
-https://api.keen.io/<version>/projects/<project_id>/probes/sum
+https://api.keen.io/<version>/projects/<project_id>/queries/sum
 
 -----------------
 Supported Methods
@@ -881,7 +881,7 @@ Select Unique Resource
 URL
 ----
 
-https://api.keen.io/<version>/projects/<project_id>/probes/select_unique
+https://api.keen.io/<version>/projects/<project_id>/queries/select_unique
 
 -----------------
 Supported Methods
@@ -933,7 +933,7 @@ Extraction Resource
 URL
 ----
 
-https://api.keen.io/<version>/projects/<project_id>/probes/extractions
+https://api.keen.io/<version>/projects/<project_id>/queries/extractions
 
 -----------------
 Supported Methods
@@ -991,7 +991,7 @@ Progression Resource
 URL
 ----
 
-https://api.keen.io/<version>/projects/<project_id>/probes/progression
+https://api.keen.io/<version>/projects/<project_id>/queries/progression
 
 -----------------
 Supported Methods

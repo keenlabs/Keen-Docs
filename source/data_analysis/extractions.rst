@@ -33,7 +33,7 @@ Performing a Data Extraction to File is done via an HTTP GET request that follow
 
 .. code-block:: none
 
-    https://api.keen.io/3.0/projects/<project_id>/probes/extraction?api_key=<api_key>&event_name=<event_name>
+    https://api.keen.io/3.0/projects/<project_id>/queries/extraction?api_key=<api_key>&event_name=<event_name>
 
 Extractions take the following parameters:
 

@@ -104,7 +104,7 @@ Analysis
 		
 Run a quick count of your event collection to see how many events you sent so far::
 
-	https://api.keen.io/3.0/projects/<YOUR PROJECT ID>/probes/count?api_key=<YOUR API KEY>&event_name=<YOUR EVENT COLLECTION NAME>	
+	https://api.keen.io/3.0/projects/<YOUR PROJECT ID>/queries/count?api_key=<YOUR API KEY>&collection=<YOUR EVENT COLLECTION NAME>
 	
 Counts are just the beginning. Check out the rest of our analysis queries in :doc:`our docs </data_analysis/data_analysis>` or using our query builder on `Keen.io <http://Keen.io/>`_.
 

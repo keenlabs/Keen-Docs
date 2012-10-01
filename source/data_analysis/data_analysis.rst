@@ -15,7 +15,7 @@ Data Analysis APIs
    timeframe
    interval
    meta_analysis
-   saved_insights
+   saved_queries
 
 We are passionate about building powerful analysis APIs so you can get the most out of your data. Our services could be the building blocks for your new custom dashboard or a real-time workflow. I'm sure you'll think of even more uses we haven't considered yet :)
 
@@ -27,7 +27,7 @@ Here is the inventory of tools we've built so far. We'd love to get your feedbac
 * :doc:`extractions` - Extract all or subsets of your data in its raw form.
 * :doc:`list` - Get a list of target_property values (for example user names).
 * :doc:`meta_analysis` - Get information about your projects, collections, extractions, etc.
-* :doc:`saved_insights` - Save your metric, series, or progression so you can reuse them later.
+* :doc:`saved_queries` - Save your metric, series, or progression so you can reuse them later.
 
 The analysis APIs have some common parameters that apply to all of them.
 

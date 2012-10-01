@@ -20,7 +20,7 @@ Metrics are retrieved using HTTP GET requests to a URL for this format:
 
 .. code-block:: none
 
-    https://api.keen.io/<api_version>/projects/<project_id>/probes/<metric_name>
+    https://api.keen.io/<api_version>/projects/<project_id>/queries/<metric_name>
 
 The variables in the URL are defined as follows:
 
@@ -47,12 +47,12 @@ Performing a Count is done via an HTTP GET request that follows this pattern:
 
 .. code-block:: none
 
-    https://api.keen.io/3.0/projects/<project_id>/probes/count?api_key=<api_key>&event_name=<event_name>
+    https://api.keen.io/3.0/projects/<project_id>/queries/count?api_key=<api_key>&collection=<event_collection>
 
 Counts take the following parameters:
 
 * **api_key** (optional) - The API Key for the project containing the data you are analyzing. See :doc:`authentication` for more information.
-* **event_name** (required) - The name of the event collection you are analyzing.
+* **collection** (required) - The name of the event collection you are analyzing.
 * **filters** (optional) - :doc:`filters` are used to narrow down the events used in an analysis request based on `event property <event_properties>`_ values.
 * **timeframe** (optional) - A :doc:`timeframe` specifies the events to use for analysis based on a window of time. If no timeframe is specified, all events will be counted.
 
@@ -85,12 +85,12 @@ Performing a Count Unique is done via an HTTP GET request that follows this patt
 
 .. code-block:: none
 
-    https://api.keen.io/3.0/projects/<project_id>/probes/count_unique?api_key=<api_key>&event_name=<event_name>&target_property=<property_name>
+    https://api.keen.io/3.0/projects/<project_id>/queries/count_unique?api_key=<api_key>&collection=<event_collection>&target_property=<property_name>
 
 Count Unique takes the following query string parameters:
 
 * **api_key** (optional) - The API Key for the project containing the data you are analyzing. See :doc:`authentication` for more information.
-* **event_name** (required) - The name of the event collection you are analyzing.
+* **collection** (required) - The name of the event collection you are analyzing.
 * **target_property** (required) - The property of which you want to count the unique values.
 * **filters** (optional) - :doc:`filters` are used to narrow down the events used in an analysis request based on `event property <event_properties>`_ values.
 * **timeframe** (optional) - Similar to filters, a :doc:`timeframe` is used to narrow down the events used in an analysis request based on the time that the event occurred.
@@ -101,7 +101,7 @@ Here is an example of a request to return the number of unique users that logged
 
 .. code-block:: none
 
-    https://api.keen.io/3.0/projects/your_project_id/probes/count_unique?event_name=logged_in&api_key=your_api_key&target_property=user.email&timeframe=today
+    https://api.keen.io/3.0/projects/your_project_id/queries/count_unique?collection=logged_in&api_key=your_api_key&target_property=user.email&timeframe=today
 
 In this example, we are analyzing our "logged_in" event collection and telling it to count the target_property values in the **user.email** :ref:`hierarchical property <property hierarchy>`.  That property contains a way to identify a unique user -- the user’s email.
 
@@ -125,7 +125,7 @@ Finding the minimum value is done via an HTTP GET request that follows this patt
 
 .. code-block:: none
 
-  https://api.keen.io/3.0/projects/<project_id>/probes/minimum?api_key=<api_key>&event_name=<event_name>&target_property=<property_name>
+  https://api.keen.io/3.0/projects/<project_id>/queries/minimum?api_key=<api_key>&collection=<event_collection>&target_property=<property_name>
   
 Minimum takes the following query string parameters:
 
@@ -135,7 +135,7 @@ Here is an example of a request to return the lowest amount a user paid you toda
 
 .. code-block:: none
 
-  https://api.keen.io/3.0/projects/your_project_id/probes/minimum?event_name=purchases&api_key=your_api_key&target_property=purchase.amount&timeframe=today
+  https://api.keen.io/3.0/projects/your_project_id/queries/minimum?collection=purchases&api_key=your_api_key&target_property=purchase.amount&timeframe=today
 
 In this example, we are analyzing our "purchases" event collection and telling Keen to find the smallest value in the **purchase.amount** :ref:`hierarchical property <property hierarchy>`. That property has the amount of every purchase made.
 
@@ -159,7 +159,7 @@ Finding the maximum value is done via an HTTP GET request that follows this patt
 
 .. code-block:: none
 
-  https://api.keen.io/3.0/projects/<project_id>/probes/maximum?api_key=<api_key>&event_name=<event_name>&target_property=<property_name>
+  https://api.keen.io/3.0/projects/<project_id>/queries/maximum?api_key=<api_key>&collection=<event_collection>&target_property=<property_name>
 
 Maximum takes the following query string parameters:
 
@@ -169,7 +169,7 @@ Here is an example of a request to return the highest amount a user paid you tod
 
 .. code-block:: none
 
-  https://api.keen.io/3.0/projects/your_project_id/probes/maximum?event_name=purchases&api_key=your_api_key&target_property=purchase.amount&timeframe=today
+  https://api.keen.io/3.0/projects/your_project_id/queries/maximum?collection=purchases&api_key=your_api_key&target_property=purchase.amount&timeframe=today
 
 In this example, we are analyzing our "purchases" event collection and telling Keen to find the largest value in the **purchase.amount** :ref:`hierarchical property <property hierarchy>`. That property has the amount of every purchase made.
 
@@ -193,7 +193,7 @@ Finding the average value is done via an HTTP GET request that follows this patt
 
 .. code-block:: none
 
-  https://api.keen.io/3.0/projects/<project_id>/probes/average?api_key=<api_key>&event_name=<event_name>&target_property=<property_name>
+  https://api.keen.io/3.0/projects/<project_id>/queries/average?api_key=<api_key>&collection=<event_collection>&target_property=<property_name>
 
 Average takes the following query string parameters:
 
@@ -203,7 +203,7 @@ Here is an example of a request to return the average amount a user paid you tod
 
 .. code-block:: none
 
-  https://api.keen.io/3.0/projects/your_project_id/probes/average?event_name=purchases&api_key=your_api_key&target_property=purchase.amount&timeframe=today
+  https://api.keen.io/3.0/projects/your_project_id/queries/average?collection=purchases&api_key=your_api_key&target_property=purchase.amount&timeframe=today
 
 In this example, we are analyzing our "purchases" event collection and telling Keen to find the average value across all the **.purchase.amount** :ref:`hierarchical property <property hierarchy>`. That property has the amount of every purchase made.
 
@@ -227,7 +227,7 @@ Finding the sum value is done via an HTTP GET request that follows this pattern:
 
 .. code-block:: none
 
-  https://api.keen.io/3.0/projects/<project_id>/probes/sum?api_key=<api_key>&event_name=<event_name>&target_property=<property_name>
+  https://api.keen.io/3.0/projects/<project_id>/queries/sum?api_key=<api_key>&collection=<event_collection>&target_property=<property_name>
 
 Sum takes the following query string parameters:
 
@@ -237,7 +237,7 @@ Here is an example of a request to return the amount all your users paid you tod
 
 .. code-block:: none
 
-  https://api.keen.io/3.0/projects/your_project_id/probes/sum?event_name=purchases&api_key=your_api_key&target_property=purchase.amount&timeframe=today
+  https://api.keen.io/3.0/projects/your_project_id/queries/sum?collection=purchases&api_key=your_api_key&target_property=purchase.amount&timeframe=today
 
 In this example, we are analyzing our "purchases" event collection and telling Keen to find the sum of all values across the **purchase.amount** :ref:`hierarchical property <property hierarchy>`. That property has the amount of every purchase made.
 

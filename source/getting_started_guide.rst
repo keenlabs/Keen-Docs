@@ -87,7 +87,7 @@ Simple Count Request
 
 ::
 
-	https://api.keen.io/3.0/projects/<PROJECT_ID>/probes/count?api_key=<API_KEY>&event_name=<EVENT_COLLECTION>
+	https://api.keen.io/3.0/projects/<PROJECT_ID>/queries/count?api_key=<API_KEY>&event_name=<EVENT_COLLECTION>
 
 --------
 Response
@@ -109,7 +109,7 @@ Average Request
 
 ::
 
-	https://api.keen.io/3.0/projects/<PROJECT_ID>/probes/average?api_key=<API_KEY>&event_name=<EVENT_COLLECTION>&target_property=price
+	https://api.keen.io/3.0/projects/<PROJECT_ID>/queries/average?api_key=<API_KEY>&event_name=<EVENT_COLLECTION>&target_property=price
 
 
 
@@ -132,7 +132,7 @@ Request with timeframe
 
 ::
 	
-	https://api.keen.io/3.0/projects/<PROJECT_ID>/probes/count?api_key=<API_KEY>&event_name=<EVENT_COLLECTION>&timeframe=today
+	https://api.keen.io/3.0/projects/<PROJECT_ID>/queries/count?api_key=<API_KEY>&event_name=<EVENT_COLLECTION>&timeframe=today
 	
 --------
 Response
@@ -153,7 +153,7 @@ Request with interval
 
 ::
 
-	https://api.keen.io/3.0/projects/<PROJECT_ID>/probes/count?api_key=<API_KEY>&event_name=<EVENT_COLLECTION>&timeframe=last_3_hours&interval=hourly
+	https://api.keen.io/3.0/projects/<PROJECT_ID>/queries/count?api_key=<API_KEY>&event_name=<EVENT_COLLECTION>&timeframe=last_3_hours&interval=hourly
 
 --------
 Response

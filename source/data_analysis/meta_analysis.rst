@@ -9,5 +9,5 @@ These tools can be used to get information about your projects, event collection
 * :ref:`project-row-resource` - Returns detailed information about the specific project, as well as links to related resources.
 * :ref:`event-collections-list-resource` - Returns detailed information about all the event collections in the specific project, as well as links to them. Also used for bulk-inserting events.
 * :ref:`event-collection-row-resource` - Returns event collection info including properties and their type. It also returns links to sub-resources. Also used for inserting events.
-* :ref:`probes-resource` - Returns links to the available probes, i.e. :doc:`metrics`, :doc:`progressions`, :doc:`extractions`.
+* :ref:`queries-resource` - Returns links to the available Queries, i.e. :doc:`metrics`, :doc:`progressions`, :doc:`extractions`.
 * :ref:`saved-insights-list-resource` - Returns all the available :doc:`saved_insights` in this project as well as links to each of their :ref:`saved-insight-row-resource`.

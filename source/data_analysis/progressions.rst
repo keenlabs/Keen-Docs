@@ -20,7 +20,7 @@ Progressions are performed by sending an HTTP GET request to a URL of the follow
 
 .. code-block:: none
 
-    https://api.keen.io/3.0/projects/<project_id>/probes/progression?api_key=<api_key>&steps=<[step1, step2, step3...]>
+    https://api.keen.io/3.0/projects/<project_id>/queries/progression?api_key=<api_key>&steps=<[step1, step2, step3...]>
 
 Progressions take in the following parameters:
 
@@ -36,7 +36,7 @@ A step is defined as an event or set of events that meet a given criteria.  Your
 
 To create a Progression, you must define each of its steps.  A step is a JSON object with the following parameters:
 
-* **event_name** (required) - a string containing the name of the event that defines the step.
+* **collection** (required) - a string containing the name of the event that defines the step.
 * **actor_property** (required) - a string containing the name of the property that can be used as a unique identifier for a user (or any type of actor).
 * **timeframe** (optional) - A :doc:`timeframe` specifies the events to use for analysis based on a window of time.
 * **filters** (optional) - :doc:`filters` are used to narrow the scope of events used in this step of the progression.
@@ -49,11 +49,11 @@ In this example, we want to find the drop off rate between users viewing our lan
 
     [
        {
-          "event_name":"view_landing_page",
+          "collection":"view_landing_page",
           "actor_property":"user.id"
        },
        {
-          "event_name":"sign_up",
+          "collection":"sign_up",
           "actor_property":"user.id"
        }
     ]
@@ -62,7 +62,7 @@ Here is what that JSON string looks like after URL encoding it:
 
 .. code-block:: none
 
-%5b%7b%22event_name%22%3a%22view_landing_page%22%2c%22actor_property%22%3a%22user%3aid%22%7d%2c%7b%22event_name%22%3a%22sign_up%22%2c%22actor_property%22%3a%22user%3aid%22%7d%5d
+%5b%7b%22collection%22%3a%22view_landing_page%22%2c%22actor_property%22%3a%22user%3aid%22%7d%2c%7b%22collection%22%3a%22sign_up%22%2c%22actor_property%22%3a%22user%3aid%22%7d%5d
 
 Finally, set that string equal to the **step** parameter in your query string.
 
@@ -79,11 +79,11 @@ The response from a Progression analysis looks like this:
        ],
        "steps":[
            {
-              "event_name":"view_landing_page",
+              "collection":"view_landing_page",
               "actor_property":"user.id"
            },
            {
-              "event_name":"sign_up",
+              "collection":"sign_up",
               "actor_property":"user.id"
            }
        ]
