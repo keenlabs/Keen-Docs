@@ -75,11 +75,11 @@ Winning!
 Analyze Events
 ==============
 
-Through our data analysis API, you'll have access to a number of different tools. But, for the moment, let's just worry about one - counts. It exactly what it sounds like it does - counts the number of times an event has occurred. 
+Through our data analysis API, you'll have access to a number of different tools. But, for the moment, let's just worry about one - counts. It does exactly what it sounds like it does - counts the number of times an event has occurred.
 
 We'll try a very simple version of a count here. The first query string parameter is the "api_key". You know where to find this from earlier. The second parameter is the name of the Event Collection "event_name" (e.g. purchases) where we want to do analysis. 
 
-Replace the <PROJECT_ID>, <API_KEY>, and <EVENT_COLLECTON> with your own, then enter this request in your browser bar. 
+Replace the <PROJECT_ID>, <API_KEY>, and <EVENT_COLLECTON> with your own, then enter this request in your browser bar.
 
 --------------------
 Simple Count Request

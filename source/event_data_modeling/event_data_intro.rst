@@ -55,7 +55,7 @@ Here is an example of a Purchase event and its properties. There's a timestamp p
             "name": "Yupster Things",
             "city": "San Francisco",
             "address": "467 West Portal Ave",
-            }
+        }
     }
 
 
@@ -63,7 +63,7 @@ This event is sent to Keen using an HTTP POST request to a URL of the following 
 
 .. code-block:: none
 
-   http://api.keen.io/3.0/projects/<project_id>/events/<event_collection_name>
+   http://api.keen.io/3.0/projects/<project_id>/events/<event_collection>
 
 Read on for more info on Event Properties and Event Collections.
 
@@ -106,19 +106,19 @@ Here's an example event POST payload:
     {
         "keen": {
             "timestamp": "2012-06-06T19:10:39.205000"
-        	},
+        },
         "item": "sophisticated orange turtleneck with deer on it",
         "cost": 469.5,
         "payment_method": "Bank Simple VISA",
         "customer": {
             "name": "Francis Woodbury",
             "age": 28,
-        	},
+        },
         "store": {
             "name": "Yupster Things",
             "city": "San Francisco",
             "address": "467 West Portal Ave",
-        	}
+        }
     }
 
 
