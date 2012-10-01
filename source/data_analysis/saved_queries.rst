@@ -4,39 +4,17 @@ Saved Queries & Queries
 
 We believe our analysis APIs are simple to use, but we're not satisfied with just simple - they need to be as easy as possible. To that end, we created a way to save and reference your favorite Queries by name.  We call them "Saved Queries."
 
-Saved Queries allow you to take a complex query like a :doc:`Metric <metrics>`, :doc:`Series <series>`, or :doc:`Progression <progressions>` and save it with a shortened, friendly name. We believe the simplified URL will make it easier for you to use your queries and build them into your applications. Saving your queries also allows you to easily update them on the fly using Keen's user interface. Plus, Saved Queries give us the opportunity to improve Keen response times for these known, saved queries.
+Saved Queries allow you to take a complex query like a :doc:`Metric <metrics>`, :doc:`Series <series>`, or :doc:`Progression <progressions>` and save it with a shortened, friendly name. This simplified URL will make it easier for you to build queries into your applications. Saving Queries also allows you to easily update them on the fly using Keen's user interface. Plus, Saved Queries give us the opportunity to improve Keen response times.
 
-"Saved Queries" are an alternative to "Queries", which are dynamically generated and used for exploratory purposes. I think an example is the best way to show the difference between Saved Queries and Queries. These two API requests yield the same result, but look different:
-
+Whenever you generate a query using the Keen.io UI, you'll see the query URL being generated on the fly as you add parameters. Once you save the query, a shorted "Saved Query" URL will be generated. 
 
 Example Query::
 
 	https://api.keen.io/3.0/projects/<project_id>/queries/average?api_key=<key>&collection=purchases&filters=%5B%7B%22property_name%22%3A%22user%3Areferring_source%22%2C%22operator%22%3A%22eq%22%2C%22property_value%22%3A%22facebook%22%7D%5D&target_property=quantity&timeframe=yesterday
 
-The Query is a complex URL with all of the parameters encoded in the URI. The advantages of Queries are:
-
-1. You can modify Query parameters on the fly programmatically, or even in your browser bar. For example, you could take the Query above and replace "average" with "minimum" to change the nature of the calculation.
-2. You can generate Queries programmatically. For example, suppose your app generates memes, each with a unique ID. Every time a user creates a new meme, you could generate a Query to count how many times that meme is shared.
-3. You can see all of the parameters used in the query directly in the URI.
-
-
 Example Saved Query::
 
 	http://api.keen.io/3.0/projects/<projID>/saved_queries/Avg_fb_purchases_yesterday/result?api_key=<key>
-
-A Saved Query is a Query that has been saved with a friendly name. The example Saved Query above is called "Avg_fb_purchases_yesterday". The advantages of Saved Queries:
-
-1. Shorter, friendlier URL.
-2. You can save your query and update it on the fly using the Keen user interface. That means if you use your Saved Query in code somewhere, and want to make an update to your :doc:`filter <filters>` logic, you don't need to deploy new code. Just log into Keen.io and modify the Saved Query. The URL won't change.
-3. In fact... you can generate Saved Queries programmatically too. Check out the :ref:`API <saved-query-API>` section of this page if you want to do some advanced stuff with Saved Queries.
-
-
-Create a Query or Saved Query via Keen UI
-=========================================
-
-You might have noticed that when you create a new :doc:`Metric <metrics>`, :doc:`Series <series>`, or :doc:`Progression <progressions>` using the Keen website that a Query URL is generated in real time as you specify your parameters. You can copy that URL into your browser at any time to get a result. If you choose to save your query, a Saved Query URL will also be generated and available for you to use. In fact both Queries & Saved Queries are always available for every analysis you save on Keen.io.
-
-
 
 .. _saved-query-API:
 
@@ -135,4 +113,5 @@ If your request succeeds, you'll get a response that looks like:
     ]
   }
   
-Once a Saved Insight has been created, you can update it by sending another PUT request to the same URL you used when creating it. Or you can delete it by sending a DELETE request to, again, that same URL.
+
+Once a Saved Query has been created, you can update it by sending another PUT request to the same URL you used when creating it. Or you can delete it by sending a DELETE request to, again, that same URL.
