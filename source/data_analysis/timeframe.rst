@@ -37,7 +37,7 @@ Example:
 
 .. code-block:: none
 
-    https://api.keen.io/3.0/projects/<project_id>/queries/count?api_key=<api_key>&collection=<event_collection>&timeframe=last_7_days
+    https://api.keen.io/3.0/projects/<project_id>/queries/count?api_key=<api_key>&collection=<event_collection_name>&timeframe=last_7_days
 
 .. _absolute-timeframes:
 
@@ -71,7 +71,7 @@ Example:
 
 .. code-block:: none
 
-    https://api.keen.io/3.0/projects/<project_id>/queries/count?api_key=<api_key>&collection=<event_collection>&timeframe=%7b%22start%22%3a%222012-08-13T19%3a00Z%22%2c%22end%22%3a%222013-09-20T19%3a00Z%22%7d
+    https://api.keen.io/3.0/projects/<project_id>/queries/count?api_key=<api_key>&collection=<event_collection_name>&timeframe=%7b%22start%22%3a%222012-08-13T19%3a00Z%22%2c%22end%22%3a%222013-09-20T19%3a00Z%22%7d
 
 .. _iso 8601 format:
 

@@ -47,7 +47,7 @@ For example, if you want to save a Series Count named "my_first_count" on the Ev
 
   {
     "analysis_type": "count", 
-    "event_name": "bought_ticket", 
+    "collection": "bought_ticket", 
     "interval": "hourly", 
     "timeframe": "today"
   }
@@ -63,7 +63,7 @@ If your attempt to save the insight succeeds, you'll get a response like:
     "insight": {
       "analysis_type": "count", 
       "created_date": "2012-09-14T22:23:50.259178", 
-      "event_name": "foo", 
+      "collection": "foo", 
       "filters": [], 
       "insight_name": "my_first_count", 
       "insight_type": "metric", 
