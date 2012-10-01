@@ -348,8 +348,6 @@ POST Request Body - Example of batch event posting
 --------------------------------------------------
 This example shows how multiple JSON events can be sent to Keen in a single POST. The API expects a JSON object whose keys are the names of each event collection you want to insert into. Each key should point to a list of events to insert for that collection.
 
-Note that you need to use the key :ref:`"body" <property-types>` for your custom event properties. See :ref:`event-data` for more information about the shape of event data in Keen. 
-
 This example loads 3 events into the "purchases" event collection and 2 events into the "meme_generations" collection.
 
 .. code-block:: javascript
@@ -1220,11 +1218,7 @@ Example POST Response
     "saved_query": {
       "analysis_type": "count", 
       "created_date": "2012-09-14T22:23:50.259178", 
-<<<<<<< HEAD
       "collection": "foo",
-=======
-      "collection": "foo", 
->>>>>>> 14eb76ab92fb8eed61b85660b18ebf3ca977de38
       "filters": [], 
       "saved_query_name": "query_four",
       "saved_query_type": "metric",
