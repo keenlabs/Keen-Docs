@@ -1,20 +1,20 @@
-The two parameters required for **every** saved insight are:
+The two parameters required for **every** Saved Query are:
 
-* **insight_name** - The name of the insight. This goes in the URL.
-* **analysis_type** - The type of analysis this saved insight is doing. Valid values are "count", "count_unique", "select_unique", "minimum", "maximum", "average", "sum", "extraction", and "progression".
+* **saved_query_name** - The name of the Saved Query. This goes in the URL.
+* **analysis_type** - The type of analysis this Saved Query is doing. Valid values are "count", "count_unique", "select_unique", "minimum", "maximum", "average", "sum", "extraction", and "progression".
 
-There are a number of read-only, Keen-specified properties available on a saved insight once it's been created. They are:
+There are a number of read-only, Keen-specified properties available on a Saved Query once it's been created. They are:
 
-* **insight_type** - Returns if the saved insight is a "metric", a "series", an "extraction", or a "progression".
-* **created_date** - When the insight was created.
-* **last_modified_date** - When the insight was last modified.
+* **saved_query_type** - Returns if the Saved Query is a "metric", a "series", an "extraction", or a "progression".
+* **created_date** - When the Saved Query was created.
+* **last_modified_date** - When the Saved Query was last modified.
 
-Then there are the properties for each specific **analysis type**. The table below describes all the properties that might appear in a saved insight and which analysis types they're applicable to. Please refer to the :doc:`/data_analysis/data_analysis` documentation for full descriptions of what each of these do.
+Then there are the properties for each specific **analysis type**. The table below describes all the properties that might appear in a Saved Query and which analysis types they're applicable to. Please refer to the :doc:`/data_analysis/data_analysis` documentation for full descriptions of what each of these do.
 
 +-----------------+----------+-------------------------------------------------------------+------------+------------+
 | Property Name   | Count    | Count Unique, Select Unique, Minimum, Maximum, Average, Sum | Extraction | Progression|
 +=================+==========+=============================================================+============+============+
-| insight_name    | Required | Required                                                    | Required   | Required   |
+| saved_query_name| Required | Required                                                    | Required   | Required   |
 +-----------------+----------+-------------------------------------------------------------+------------+------------+
 | analysis_type   | Required | Required                                                    | Required   | Required   |
 +-----------------+----------+-------------------------------------------------------------+------------+------------+

@@ -32,34 +32,34 @@ A Saved Query is a Query that has been saved with a friendly name. The example S
 
 
 Create a Query or Saved Query via Keen UI
-========================================
+=========================================
 
 You might have noticed that when you create a new :doc:`Metric <metrics>`, :doc:`Series <series>`, or :doc:`Progression <progressions>` using the Keen website that a Query URL is generated in real time as you specify your parameters. You can copy that URL into your browser at any time to get a result. If you choose to save your query, a Saved Query URL will also be generated and available for you to use. In fact both Queries & Saved Queries are always available for every analysis you save on Keen.io.
 
 
 
-.. _saved_query-API:
+.. _saved-query-API:
 
 Save a Query via API
 =======================
 
-Technical Reference: :ref:`saved-insight-row-resource`
+Technical Reference: :ref:`saved-query-row-resource`
 
 You can also programmatically create Saved Queries via API. Send an HTTP PUT to the following URL:
 
 ::
 
-  https://api.keen.io/<api_version>/projects/<project_id>/insights/<insight_name>
+  https://api.keen.io/<api_version>/projects/<project_id>/saved_queries/<saved_query_name>
   
 The variables in the URL are defined as follows:
 
 * **api_version** - the version of the API you want to use.
 * **project_id** - the ID of the project that contains the data you are analyzing.
-* **insight_name** - the name you want to give to the saved insight
+* **saved_query_name** - the name you want to give to the Saved Query
 
-The body of the HTTP PUT request needs to contain all the properties of your saved insight. The parameters will vary depending on what analysis type you're trying to save. 
+The body of the HTTP PUT request needs to contain all the properties of your Saved Query. The parameters will vary depending on what analysis type you're trying to save.
 
-.. include:: saved_insight_parameters.txt
+.. include:: saved_query_parameters.txt
 
 For example, if you want to save a Series Count named "my_first_count" on the Event Collection "bought_ticket" with the interval "hourly" and the timeframe "today", your HTTP Put body would look like:
 
@@ -74,38 +74,38 @@ For example, if you want to save a Series Count named "my_first_count" on the Ev
   
 Make sure to authenticate your request. See :doc:`authentication` for more information.
   
-If your attempt to save the insight succeeds, you'll get a response like:
+If your attempt to save the Query succeeds, you'll get a response like:
 
 ::
 
   {
     "created": true, 
-    "insight": {
+    "saved_query": {
       "analysis_type": "count", 
       "created_date": "2012-09-14T22:23:50.259178", 
-      "event_name": "foo", 
+      "collection": "foo",
       "filters": [], 
-      "insight_name": "my_first_count", 
-      "insight_type": "metric", 
+      "saved_query_name": "my_first_count",
+      "saved_query_type": "metric",
       "interval": "hourly", 
       "last_modified_date": "2012-09-14T22:23:50.259178", 
       "timeframe": "today", 
       "urls": {
-        "insight_results_url": "/3.0/projects/abc/insights/insight_one/result", 
-        "insight_url": "/3.0/projects/abc/insights/insight_one"
+        "saved_query_results_url": "/3.0/projects/abc/saved_queries/my_first_count/result",
+        "saved_query_url": "/3.0/projects/abc/saved_queries/my_first_count"
       }
     }, 
     "updated": false
   }
   
 Get the Results of a Saved Query
-=============================
+================================
 
-To get the results of an insight you've previously saved, send an HTTP GET to the following URL:
+To get the results of a Saved Query you've previously saved, send an HTTP GET to the following URL:
 
 ::
 
-  https://api.keen.io/<api_version>/projects/<project_id>/insights/<insight_name>/result
+  https://api.keen.io/<api_version>/projects/<project_id>/saved_queries/<saved_query_name>/result
 
 The Results take the following parameter:
 
@@ -135,4 +135,4 @@ If your request succeeds, you'll get a response that looks like:
     ]
   }
   
-Once an insight's been created, you can update it by sending another PUT request to the same URL you used when creating it. Or you can delete it by sending a DELETE request to, again, that same URL.
+Once a Saved Insight has been created, you can update it by sending another PUT request to the same URL you used when creating it. Or you can delete it by sending a DELETE request to, again, that same URL.

@@ -27,7 +27,7 @@ You can perform a data extraction at any time from the Keen.io website or via AP
 
 * Extractions are done by :ref:`Event Collection<event-collections>`. If you want to extract 100% of your data from Keen, you'll need to run the extraction for each Event Collection.
 
-You can also programmatically request extractions via the :ref:`extraction-resource` or via :doc:`saved_insights` in our API. The Data Extraction APIs can be used to, for example, set up a nightly job that will have the data you need ready and waiting in your inbox in the morning.
+You can also programmatically request extractions via the :ref:`extraction-resource` or via :doc:`saved_queries` in our API. The Data Extraction APIs can be used to, for example, set up a nightly job that will have the data you need ready and waiting in your inbox in the morning.
 
 Performing a Data Extraction to File is done via an HTTP GET request that follows this pattern:
 

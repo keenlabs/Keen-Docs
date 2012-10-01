@@ -24,9 +24,9 @@ Contents:
 * :ref:`select-unique-resource` - Returns a list of unique items meeting specified criteria.
 * :ref:`extraction-resource` - Returns data meeting specified criteria.
 * :ref:`progression-resource` - Returns a Progression. Read more about :doc:`/data_analysis/progressions`.
-* :ref:`saved-insights-list-resource` - Returns all the existing saved insights for the specific projects.
-* :ref:`saved-insight-row-resource` - Returns information about a single saved insight. Also supports inserting a new saved insight or updating an existing one.
-* :ref:`saved-insight-row-result-resource` - Returns the analysis results of a single saved insight.
+* :ref:`saved-query-list-resource` - Returns all the existing saved queries for the specific projects.
+* :ref:`saved-query-row-resource` - Returns information about a single Saved Query. Also supports inserting a new Saved Query or updating an existing one.
+* :ref:`saved-query-row-result-resource` - Returns the analysis results of a single Saved Query.
 
 .. _versions-resource:
 
@@ -172,7 +172,7 @@ Example Response
       ], 
       "events_url": "/3.0/projects/4fea721933da5b4e8e000002/events", 
       "id": "4fea721933da5b4e8e000002", 
-      "insights": [], 
+      "saved_queries": [],
       "name": "Click to Buy (iOS)", 
       "queries_url": "/3.0/projects/4fea721933da5b4e8e000002/queries",
       "url": "/3.0/projects/4fea721933da5b4e8e000002"
@@ -236,7 +236,7 @@ Example Response
     ], 
     "events_url": "/3.0/projects/4fea721933da5b4e8e000002/events", 
     "id": "4fea721933da5b4e8e000002", 
-    "insights": [], 
+    "saved_queries": [],
     "name": "Click to Buy (iOS)", 
     "queries_url": "/3.0/projects/4fea721933da5b4e8e000002/queries",
     "url": "/3.0/projects/4fea721933da5b4e8e000002"
@@ -555,7 +555,7 @@ Example POST Response
 .. _queries-resource:
 
 Queries Resource
-===============
+=================
 
 ----
 URL
@@ -1061,16 +1061,16 @@ Example Response
     ]
   }
   
-.. _saved-insights-list-resource:
+.. _saved-query-list-resource:
 
-Saved Insights List Resource
+Saved Queries List Resource
 ============================
 
 ----
 URL
 ----
 
-https://api.keen.io/<version>/projects/<project_id>/insights
+https://api.keen.io/<version>/projects/<project_id>/saved_queries
 
 -----------------
 Supported Methods
@@ -1082,7 +1082,7 @@ GET, HEAD
 Description
 -----------
 
-GET returns all the available saved insights for the specified project as well as links to child-resources.
+GET returns all the available Saved Queries for the specified project as well as links to child-resources.
 
 ------------
 Request Body
@@ -1102,14 +1102,14 @@ Example Response
       "created_date": "2012-09-14T22:23:50.259000", 
       "event_name": "foo", 
       "filters": [], 
-      "insight_name": "insight_one", 
-      "insight_type": "metric", 
+      "saved_query_name": "query_one",
+      "saved_query_type": "metric",
       "interval": null, 
       "last_modified_date": "2012-09-14T22:23:50.259000", 
       "timeframe": null, 
       "urls": {
-        "insight_results_url": "/3.0/projects/abc/insights/insight_one/result", 
-        "insight_url": "/3.0/projects/abc/insights/insight_one"
+        "saved_query_results_url": "/3.0/projects/abc/saved_queries/query_one/result",
+        "saved_query_url": "/3.0/projects/abc/saved_queries/query_one"
       }
     }, 
     {
@@ -1117,28 +1117,28 @@ Example Response
       "created_date": "2012-09-14T22:23:50.288000", 
       "event_name": "bar", 
       "filters": [], 
-      "insight_name": "insight_two", 
-      "insight_type": "metric", 
+      "saved_query_name": "query_two",
+      "saved_query_type": "metric",
       "interval": null, 
       "last_modified_date": "2012-09-14T22:23:50.288000", 
       "timeframe": null, 
       "urls": {
-        "insight_results_url": "/3.0/projects/abc/insights/insight_two/result", 
-        "insight_url": "/3.0/projects/abc/insights/insight_two"
+        "saved_query_results_url": "/3.0/projects/abc/saved_queries/query_two/result",
+        "saved_query_url": "/3.0/projects/abc/saved_queries/query_two"
       }
     }
   ]
 
-.. _saved-insight-row-resource:
+.. _saved-query-row-resource:
 
-Saved Insight Row Resource
+Saved Query Row Resource
 ==========================
 
 ----
 URL
 ----
 
-https://api.keen.io/<version>/projects/<project_id>/insights/<insight_name>
+https://api.keen.io/<version>/projects/<project_id>/saved_queries/<saved_query_name>
 
 -----------------
 Supported Methods
@@ -1150,25 +1150,25 @@ GET, HEAD, PUT, DELETE
 Description
 -----------
 
-GET returns information about the specified saved insight and includes links to child-resources.
+GET returns information about the specified Saved Query and includes links to child-resources.
 
-PUT either inserts a new saved insight if it doesn't already exist, or updates an existing insight if it does exist.
+PUT either inserts a new Saved Query if it doesn't already exist, or updates an existing Saved Query if it does exist.
 
-When inserting a new saved insight, the body of the PUT request should be a JSON object with all the required properties for that particular analysis type. The optional properties, are, well, optional.
+When inserting a new Saved Query, the body of the PUT request should be a JSON object with all the required properties for that particular analysis type. The optional properties, are, well, optional.
 
-When updating a saved insight, the body of the PUT request only needs to include the properties you want to update. For example, if you have a saved insight that does a Count and want to change its :doc:`/data_analysis/filters`, just include the **filters** property.
+When updating a Saved Query, the body of the PUT request only needs to include the properties you want to update. For example, if you have a Saved Query that does a Count and want to change its :doc:`/data_analysis/filters`, just include the **filters** property.
 
-.. note:: If you update a saved insight's **analysis_type** and the NEW type doesn't allow for some of the properties of the OLD type, Keen will delete the definition of those properties. For example, if you have an insight that does a Count Unique and you change it to do a Count, we will delete the **target_property** property.
+.. note:: If you update a Saved Query's **analysis_type** and the NEW type doesn't allow for some of the properties of the OLD type, Keen will delete the definition of those properties. For example, if you have a Saved Query that does a Count Unique and you change it to do a Count, we will delete the **target_property** property.
 
 .. note:: Make sure to set the request header "Content-Type" to "application/json" for PUTs.
 
-DELETE just plain old deletes the insight.
+DELETE just plain old deletes the Saved Query.
 
 ----------
 Parameters
 ----------
 
-.. include:: /data_analysis/saved_insight_parameters.txt
+.. include:: /data_analysis/saved_query_parameters.txt
 
 ----------------
 GET Request Body
@@ -1187,14 +1187,14 @@ Example GET Response
     "created_date": "2012-09-14T22:23:50.259000", 
     "event_name": "foo", 
     "filters": [], 
-    "insight_name": "insight_one", 
-    "insight_type": "metric", 
+    "saved_query_name": "query_three",
+    "saved_query_type": "metric",
     "interval": null, 
     "last_modified_date": "2012-09-14T22:23:50.259000", 
     "timeframe": null, 
     "urls": {
-      "insight_results_url": "/3.0/projects/abc/insights/insight_one/result", 
-      "insight_url": "/3.0/projects/abc/insights/insight_one"
+      "saved_query_results_url": "/3.0/projects/abc/saved_queries/query_three/result",
+      "saved_query_url": "/3.0/projects/abc/saved_queries/query_three"
     }
   }
 
@@ -1217,34 +1217,34 @@ Example POST Response
 
   {
     "created": true, 
-    "insight": {
+    "saved_query": {
       "analysis_type": "count", 
       "created_date": "2012-09-14T22:23:50.259178", 
-      "event_name": "foo", 
+      "collection": "foo",
       "filters": [], 
-      "insight_name": "insight_one", 
-      "insight_type": "metric", 
+      "saved_query_name": "query_four",
+      "saved_query_type": "metric",
       "interval": null, 
       "last_modified_date": "2012-09-14T22:23:50.259178", 
       "timeframe": null, 
       "urls": {
-        "insight_results_url": "/3.0/projects/abc/insights/insight_one/result", 
-        "insight_url": "/3.0/projects/abc/insights/insight_one"
+        "saved_query_results_url": "/3.0/projects/abc/saved_queries/query_four/result",
+        "saved_query_url": "/3.0/projects/abc/saved_queries/query_four"
       }
     }, 
     "updated": false
   }
   
-.. _saved-insight-row-result-resource:
+.. _saved-query-row-result-resource:
 
-Saved Insight Row Result Resource
+Saved Query Row Result Resource
 =================================
 
 ----
 URL
 ----
 
-https://api.keen.io/<version>/projects/<project_id>/insights/<event_name>/result
+https://api.keen.io/<version>/projects/<project_id>/saved_queries/<event_collection>/result
 
 -----------------
 Supported Methods
@@ -1256,7 +1256,7 @@ GET, HEAD
 Description
 -----------
 
-GET returns the results of the specified saved insight.
+GET returns the results of the specified Saved Query.
 
 ------------
 Request Body
