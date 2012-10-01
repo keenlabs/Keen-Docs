@@ -47,7 +47,7 @@ Performing a Count is done via an HTTP GET request that follows this pattern:
 
 .. code-block:: none
 
-    https://api.keen.io/3.0/projects/<project_id>/queries/count?api_key=<api_key>&collection=<event_collection>
+    https://api.keen.io/3.0/projects/<project_id>/queries/count?api_key=<api_key>&collection=<event_collection_name>
 
 Counts take the following parameters:
 
@@ -85,7 +85,7 @@ Performing a Count Unique is done via an HTTP GET request that follows this patt
 
 .. code-block:: none
 
-    https://api.keen.io/3.0/projects/<project_id>/queries/count_unique?api_key=<api_key>&collection=<event_collection>&target_property=<property_name>
+    https://api.keen.io/3.0/projects/<project_id>/queries/count_unique?api_key=<api_key>&collection=<event_collection_name>&target_property=<property_name>
 
 Count Unique takes the following query string parameters:
 
@@ -125,7 +125,7 @@ Finding the minimum value is done via an HTTP GET request that follows this patt
 
 .. code-block:: none
 
-  https://api.keen.io/3.0/projects/<project_id>/queries/minimum?api_key=<api_key>&collection=<event_collection>&target_property=<property_name>
+  https://api.keen.io/3.0/projects/<project_id>/queries/minimum?api_key=<api_key>&collection=<event_collection_name>&target_property=<property_name>
   
 Minimum takes the following query string parameters:
 
@@ -159,7 +159,7 @@ Finding the maximum value is done via an HTTP GET request that follows this patt
 
 .. code-block:: none
 
-  https://api.keen.io/3.0/projects/<project_id>/queries/maximum?api_key=<api_key>&collection=<event_collection>&target_property=<property_name>
+  https://api.keen.io/3.0/projects/<project_id>/queries/maximum?api_key=<api_key>&collection=<event_collection_name>&target_property=<property_name>
 
 Maximum takes the following query string parameters:
 
@@ -193,7 +193,7 @@ Finding the average value is done via an HTTP GET request that follows this patt
 
 .. code-block:: none
 
-  https://api.keen.io/3.0/projects/<project_id>/queries/average?api_key=<api_key>&collection=<event_collection>&target_property=<property_name>
+  https://api.keen.io/3.0/projects/<project_id>/queries/average?api_key=<api_key>&collection=<event_collection_name>&target_property=<property_name>
 
 Average takes the following query string parameters:
 
@@ -227,7 +227,7 @@ Finding the sum value is done via an HTTP GET request that follows this pattern:
 
 .. code-block:: none
 
-  https://api.keen.io/3.0/projects/<project_id>/queries/sum?api_key=<api_key>&collection=<event_collection>&target_property=<property_name>
+  https://api.keen.io/3.0/projects/<project_id>/queries/sum?api_key=<api_key>&collection=<event_collection_name>&target_property=<property_name>
 
 Sum takes the following query string parameters:
 

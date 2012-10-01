@@ -63,7 +63,7 @@ This event is sent to Keen using an HTTP POST request to a URL of the following 
 
 .. code-block:: none
 
-   http://api.keen.io/3.0/projects/<project_id>/events/<event_collection>
+   http://api.keen.io/3.0/projects/<project_id>/events/<event_collection_name>
 
 Read on for more info on Event Properties and Event Collections.
 

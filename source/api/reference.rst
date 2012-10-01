@@ -475,7 +475,7 @@ Event Collection Row Resource
 URL
 ----
 
-https://api.keen.io/<version>/projects/<project_id>/events/<event_name>
+https://api.keen.io/<version>/projects/<project_id>/events/<collection>
 
 -----------------
 Supported Methods
@@ -623,7 +623,7 @@ Query String Parameters
 -----------------------
 
 * **api_key** (optional) - The API Key for the project containing the data you are analyzing. See :doc:`/data_analysis/authentication` for more information.
-* **event_name** (required) - The name of the event collection you are analyzing.
+* **collection** (required) - The name of the event collection you are analyzing.
 * **filters** (optional) - :doc:`/data_analysis/filters` are used to narrow down the events used in an analysis request based on `event property <event_properties>`_ values.
 * **timeframe** (optional) - A :doc:`/data_analysis/timeframe` specifies the events to use for analysis based on a window of time. If no timeframe is specified, all events will be counted.
 
@@ -901,7 +901,7 @@ Query String Parameters
 -----------------------
 
 * **api_key** (optional) - The API Key for the project containing the data you are analyzing. See :doc:`/data_analysis/authentication` for more information.
-* **event_name** (required) - The name of the event collection you are analyzing.
+* **collection** (required) - The name of the event collection you are analyzing.
 * **target_property** (required) - The property of which you want to count the unique values.
 * **filters** (optional) - :doc:`/data_analysis/filters` are used to narrow down the events used in an analysis request based on `event property <event_properties>`_ values.
 * **timeframe** (optional) - Similar to filters, a :doc:`/data_analysis/timeframe` is used to narrow down the events used in an analysis request based on the time that the event occurred.
@@ -952,7 +952,7 @@ Query String Parameters
 -----------------------
 
 * **api_key** (optional) - The API Key for the project containing the data you are analyzing. See :doc:`/data_analysis/authentication` for more information.
-* **event_name** (required) - The name of the event collection you are analyzing.
+* **collection** (required) - The name of the event collection you are analyzing.
 * **filters** (optional) - :doc:`/data_analysis/filters` are used to narrow down the events used in an analysis request based on `event property <event_properties>`_ values.
 * **timeframe** (optional) - Similar to filters, a :doc:`/data_analysis/timeframe` is used to narrow down the events used in an analysis request based on the time that the event occurred.
 
@@ -1036,7 +1036,7 @@ Example Response
         "actor_property": [
           "username"
         ], 
-        "event_name": "landed", 
+        "collection": "landed", 
         "filters": [
           {
             "operator": "eq", 
@@ -1049,7 +1049,7 @@ Example Response
         "actor_property": [
           "username"
         ], 
-        "event_name": "signed_up", 
+        "collection": "signed_up", 
         "filters": [
           {
             "operator": "eq", 
@@ -1100,7 +1100,7 @@ Example Response
     {
       "analysis_type": "count", 
       "created_date": "2012-09-14T22:23:50.259000", 
-      "event_name": "foo", 
+      "collection": "foo", 
       "filters": [], 
       "saved_query_name": "query_one",
       "saved_query_type": "metric",
@@ -1115,7 +1115,7 @@ Example Response
     {
       "analysis_type": "count", 
       "created_date": "2012-09-14T22:23:50.288000", 
-      "event_name": "bar", 
+      "collection": "bar", 
       "filters": [], 
       "saved_query_name": "query_two",
       "saved_query_type": "metric",
@@ -1185,7 +1185,7 @@ Example GET Response
   {
     "analysis_type": "count", 
     "created_date": "2012-09-14T22:23:50.259000", 
-    "event_name": "foo", 
+    "collection": "foo", 
     "filters": [], 
     "saved_query_name": "query_three",
     "saved_query_type": "metric",
@@ -1206,7 +1206,7 @@ POST Request Body
 
 	{
 	  "analysis_type": "count", 
-	  "event_name": "foo"
+	  "collection": "foo"
 	}
 
 ---------------------
@@ -1220,7 +1220,11 @@ Example POST Response
     "saved_query": {
       "analysis_type": "count", 
       "created_date": "2012-09-14T22:23:50.259178", 
+<<<<<<< HEAD
       "collection": "foo",
+=======
+      "collection": "foo", 
+>>>>>>> 14eb76ab92fb8eed61b85660b18ebf3ca977de38
       "filters": [], 
       "saved_query_name": "query_four",
       "saved_query_type": "metric",

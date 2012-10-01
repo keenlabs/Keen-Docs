@@ -49,7 +49,7 @@ Next you'll send this event to Keen using a command line interface like Mac's Te
 
 ::
 
-    curl https://api.keen.io/3.0/projects/<PROJECT_ID>/events/<EVENT_COLLECTION>\
+    curl https://api.keen.io/3.0/projects/<PROJECT_ID>/events/<EVENT_COLLECTION_NAME>\
 	 -H "Authorization: <API_KEY>"\
 	 -H "Content-Type: application/json"\
 	 -d @purchase1.json
@@ -77,9 +77,9 @@ Analyze Events
 
 Through our data analysis API, you'll have access to a number of different tools. But, for the moment, let's just worry about one - counts. It does exactly what it sounds like it does - counts the number of times an event has occurred.
 
-We'll try a very simple version of a count here. The first query string parameter is the "api_key". You know where to find this from earlier. The second parameter is the name of the Event Collection "event_name" (e.g. purchases) where we want to do analysis. 
+We'll try a very simple version of a count here. The first query string parameter is the "api_key". You know where to find this from earlier. The second parameter is the name of the Event Collection "collection" (e.g. purchases) where we want to do analysis. 
 
-Replace the <PROJECT_ID>, <API_KEY>, and <EVENT_COLLECTON> with your own, then enter this request in your browser bar.
+Replace the <PROJECT_ID>, <API_KEY>, and <EVENT_COLLECTON_NAME> with your own, then enter this request in your browser bar.
 
 --------------------
 Simple Count Request
@@ -87,7 +87,7 @@ Simple Count Request
 
 ::
 
-	https://api.keen.io/3.0/projects/<PROJECT_ID>/queries/count?api_key=<API_KEY>&event_name=<EVENT_COLLECTION>
+	https://api.keen.io/3.0/projects/<PROJECT_ID>/queries/count?api_key=<API_KEY>&collection=<EVENT_COLLECTION_NAME>
 
 --------
 Response
@@ -109,7 +109,7 @@ Average Request
 
 ::
 
-	https://api.keen.io/3.0/projects/<PROJECT_ID>/queries/average?api_key=<API_KEY>&event_name=<EVENT_COLLECTION>&target_property=price
+	https://api.keen.io/3.0/projects/<PROJECT_ID>/queries/average?api_key=<API_KEY>&collection=<EVENT_COLLECTION_NAME>&target_property=price
 
 
 
@@ -132,7 +132,7 @@ Request with timeframe
 
 ::
 	
-	https://api.keen.io/3.0/projects/<PROJECT_ID>/queries/count?api_key=<API_KEY>&event_name=<EVENT_COLLECTION>&timeframe=today
+	https://api.keen.io/3.0/projects/<PROJECT_ID>/queries/count?api_key=<API_KEY>&collection=<EVENT_COLLECTION_NAME>&timeframe=today
 	
 --------
 Response
@@ -153,7 +153,7 @@ Request with interval
 
 ::
 
-	https://api.keen.io/3.0/projects/<PROJECT_ID>/queries/count?api_key=<API_KEY>&event_name=<EVENT_COLLECTION>&timeframe=last_3_hours&interval=hourly
+	https://api.keen.io/3.0/projects/<PROJECT_ID>/queries/count?api_key=<API_KEY>&collection=<EVENT_COLLECTION_NAME>&timeframe=last_3_hours&interval=hourly
 
 --------
 Response

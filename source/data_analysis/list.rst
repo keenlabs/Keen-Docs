@@ -15,7 +15,7 @@ Requesting the list is done via an HTTP GET request that uses the "select_unique
 
 .. code-block:: none
 
-    https://api.keen.io/3.0/projects/<project_id>/queries/select_unique?api_key=<key>&event_name=<collection_name>&target_property=<property>
+    https://api.keen.io/3.0/projects/<project_id>/queries/select_unique?api_key=<key>&collection=<collection_name>&target_property=<property>
 
 Lists take the following parameters:
 
@@ -30,7 +30,7 @@ Here’s a query populated with example values. We're looking at the Event Colle
 
 .. code-block:: none
 
-    https://api.keen.io/3.0/projects/<project_id>/queries/select_unique?event_name=logins&api_key=<api_key>&target_property=user.email
+    https://api.keen.io/3.0/projects/<project_id>/queries/select_unique?collection=logins&api_key=<api_key>&target_property=user.email
 
 The response is a JSON object that looks like this:
 
