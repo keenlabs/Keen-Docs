@@ -77,10 +77,6 @@ Try and compile. It should work! If it doesn't, you probably forgot to enable th
 Usage Guide
 ===========
 
----------------
-Instrumentation
----------------
-
 Now it’s time to actually use the client!
 
 .. _register-client:

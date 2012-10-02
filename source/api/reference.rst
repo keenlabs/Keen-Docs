@@ -943,7 +943,7 @@ GET, HEAD
 Description
 -----------
 
-GET creates an extraction request. See :doc:`/data_analysis/extraction` for more details. If the query string parameter **email** is specified, then the extraction will be processed asynchronously and an e-mail will be sent to the specified address when it completes. If **email** is omitted, then the extraction will be processed in-line and the CSV results will be returned in the GET request.
+GET creates an extraction request. See :doc:`/data_analysis/extractions` for more details. If the query string parameter **email** is specified, then the extraction will be processed asynchronously and an e-mail will be sent to the specified address when it completes. If **email** is omitted, then the extraction will be processed in-line and the CSV results will be returned in the GET request.
 
 -----------------------
 Query String Parameters
