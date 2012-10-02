@@ -75,7 +75,7 @@ Below is a more complex example for a purchase in a game. Notice how you can nes
             :version => 2.3,
             :platform => "Facebook"
       },
-      :sessionlength => "11:35:07",
+      :sessionlength => 756,
       :browser => "Firefox 3.0"
     })
 
