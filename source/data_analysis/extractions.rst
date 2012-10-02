@@ -41,6 +41,6 @@ Extractions take the following parameters:
 * **event_collection** (required) - The name of the event collection you are analyzing.
 * **filters** (optional) - :doc:`filters` are used to narrow down the events used in an analysis request based on `event property <event_properties>`_ values.
 * **timeframe** (optional) - A :doc:`timeframe` specifies the events to use for analysis based on a window of time. If no timeframe is specified, all events will be counted.
-* **email_address** (optional) - If an email address is specified, an email will be sent that address when the extraction is complete.
+* **email_address** (optional) - If an email address is specified, an email will be sent this address when the extraction is complete.
 
 .. note:: There are two forms of responses. If **email_address** is specified, then the request will be processed asynchronously and an email will be delivered when it completes. If **email_address** is omitted, the request is processed synchronously and the response will be a CSV file containing the results of the extraction.

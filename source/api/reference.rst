@@ -953,6 +953,7 @@ Query String Parameters
 * **event_collection** (required) - The name of the event collection you are analyzing.
 * **filters** (optional) - :doc:`/data_analysis/filters` are used to narrow down the events used in an analysis request based on `event property <event_properties>`_ values.
 * **timeframe** (optional) - Similar to filters, a :doc:`/data_analysis/timeframe` is used to narrow down the events used in an analysis request based on the time that the event occurred.
+* **email_address** (optional) - If an email address is specified, an email will be sent to this address when the extraction is complete.
 
 .. note:: :doc:`/data_analysis/series` are not supported for the Extraction Resource. The **interval** query string parameter is not used here.
 
