@@ -14,6 +14,12 @@ For a detailed class reference, please visit our `Keen iOS Client API Reference`
 * :ref:`add-events` - How to add an event with the Keen iOS Client.
 * :ref:`upload-events` - How to upload all previously saved events with the Keen iOS Client.
 
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Get Project ID & Auth Token
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+If you haven't done so already, login to `Keen.io <http://keen.io/login>`_ to generate a :ref:`project <projects>` for your app. Select "+ Create a new project" from the projects drop down in the upper left navigation.
+
 .. _install-guide:
 
 Install Guide
@@ -67,6 +73,7 @@ Compile
 Try and compile. It should work! If it doesn't, you probably forgot to enable the linker flag (see above). If you still can't get it to work, let us know at team@keen.io and one of us will help you right away.
 
 
+
 Usage Guide
 ===========
 
@@ -78,11 +85,12 @@ Now it’s time to actually use the client!
 
 .. _register-client:
 
+
 ^^^^^^^^^^^^^^^
 Register Client
 ^^^^^^^^^^^^^^^
 
-Register the KeenClient shared client with your project ID and authorization token. The recommended place to do this is in one of your application delegates. Here’s some example code: 
+Register the KeenClient shared client with your project ID and authorization token. The recommended place to register the client is in one of your application delegates. Here’s some example code: 
 
 .. code-block:: objc
 
@@ -203,7 +211,7 @@ The block takes in a single string parameter which corresponds to the name of th
 Upload to Keen
 ^^^^^^^^^^^^^^
 
-Upload the captured events to the Keen service. This must be done explicitly. We recommend doing the upload when your application is sent to the background, but you can do it whenever you’d like (for example, if your application typically has very long user sessions). The uploader spawns its own background thread so the main UI thread is not blocked.
+Upload the captured 1s to the Keen service. This must be done explicitly. We recommend doing the upload when your application is sent to the background, but you can do it whenever you’d like (for example, if your application typically has very long user sessions). The uploader spawns its own background thread so the main UI thread is not blocked.
 
 .. code-block:: objc
 

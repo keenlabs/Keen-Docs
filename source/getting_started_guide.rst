@@ -18,7 +18,7 @@ This guide assumes that you've been granted developer preview access. Keen is st
 Project Setup
 ==============
 
-If you've not already done so, you need to `create a project <https://keen.io/projects>`_. Since we're just practicing, you might want to give it a sufficiently silly name like "Getting Keeny" or "Windows ME". Make note of the Project ID and the API Key. You'll need those soon.  
+If you haven't done so already, login to `Keen.io <http://keen.io/login>`_ to generate a :ref:`project <projects>` for your app. Select "+ Create a new project" from the projects drop down in the upper left navigation. Since we're just practicing, you might want to give it a sufficiently silly name like "Getting Keeny" or "Windows ME". Make note of the Project ID and the API Key. You'll need those soon.  
 
 What is a project? - A project amounts to a data silo. The information in one project isn't available to other projects. Practically speaking, in the mobile world, a project is an app. 
 

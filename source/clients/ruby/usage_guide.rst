@@ -25,7 +25,7 @@ First, load the required libraries by including this at the beginning of your pr
     require 'rubygems'
     require 'keen'
 
-Before doing this next step, `login to Keen.io <https://keen.io/login>`_ to get your project ID & auth token. These are automatically generated when you create a new Keen.io :ref:`project <projects>`. You can get this information anytime by going to your project settings page.
+If you haven't done so already, login to `Keen.io <http://keen.io/login>`_ to generate a :ref:`project <projects>` for your app. Select "+ Create a new project" from the projects drop down in the upper left navigation.
 
 Define these variables in your Ruby program:
 
