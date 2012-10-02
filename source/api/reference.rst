@@ -263,7 +263,7 @@ GET, HEAD, POST
 Description
 -----------
 
-GET returns schema information for all the collections in this project, including properties and their type. It also returns links to sub-resources.
+GET returns schema information for all the event collections in this project, including properties and their type. It also returns links to sub-resources.
 
 POST is for bulk-inserting multiple events in a single request. See below for examples.
 
@@ -346,9 +346,9 @@ Example GET Response
 --------------------------------------------------
 POST Request Body - Example of batch event posting
 --------------------------------------------------
-This example shows how multiple JSON events can be sent to Keen in a single POST. The API expects a JSON object whose keys are the names of each event collection you want to insert into. Each key should point to a list of events to insert for that collection.
+This example shows how multiple JSON events can be sent to Keen in a single POST. The API expects a JSON object whose keys are the names of each event collection you want to insert into. Each key should point to a list of events to insert for that event collection.
 
-This example loads 3 events into the "purchases" event collection and 2 events into the "meme_generations" collection.
+This example loads 3 events into the "purchases" event collection and 2 events into the "meme_generations" event collection.
 
 .. code-block:: javascript
 
@@ -473,7 +473,7 @@ Event Collection Row Resource
 URL
 ----
 
-https://api.keen.io/<version>/projects/<project_id>/events/<collection>
+https://api.keen.io/<version>/projects/<project_id>/events/<event_collection>
 
 -----------------
 Supported Methods
@@ -614,14 +614,14 @@ GET, HEAD
 Description
 -----------
 
-GET returns the number of resources in the collection matching the given criteria. The response will be a simple JSON object with one key: a numeric result.
+GET returns the number of resources in the event collection matching the given criteria. The response will be a simple JSON object with one key: a numeric result.
 
 -----------------------
 Query String Parameters
 -----------------------
 
 * **api_key** (optional) - The API Key for the project containing the data you are analyzing. See :doc:`/data_analysis/authentication` for more information.
-* **collection** (required) - The name of the event collection you are analyzing.
+* **event_collection** (required) - The name of the event collection you are analyzing.
 * **filters** (optional) - :doc:`/data_analysis/filters` are used to narrow down the events used in an analysis request based on `event property <event_properties>`_ values.
 * **timeframe** (optional) - A :doc:`/data_analysis/timeframe` specifies the events to use for analysis based on a window of time. If no timeframe is specified, all events will be counted.
 
@@ -665,7 +665,7 @@ GET, HEAD
 Description
 -----------
 
-GET returns the number of UNIQUE resources in the collection matching the given criteria. The response will be a simple
+GET returns the number of UNIQUE resources in the event collection matching the given criteria. The response will be a simple
 JSON object with one key: result, which maps to the numeric result described previously.
 
 -----------------------
@@ -891,7 +891,7 @@ GET, HEAD
 Description
 -----------
 
-GET returns a list of UNIQUE resources in the collection matching the given criteria. The response will be a simple
+GET returns a list of UNIQUE resources in the event collection matching the given criteria. The response will be a simple
 JSON object with one key: result, which maps to the numeric result described previously.
 
 -----------------------
@@ -899,7 +899,7 @@ Query String Parameters
 -----------------------
 
 * **api_key** (optional) - The API Key for the project containing the data you are analyzing. See :doc:`/data_analysis/authentication` for more information.
-* **collection** (required) - The name of the event collection you are analyzing.
+* **event_collection** (required) - The name of the event collection you are analyzing.
 * **target_property** (required) - The property of which you want to count the unique values.
 * **filters** (optional) - :doc:`/data_analysis/filters` are used to narrow down the events used in an analysis request based on `event property <event_properties>`_ values.
 * **timeframe** (optional) - Similar to filters, a :doc:`/data_analysis/timeframe` is used to narrow down the events used in an analysis request based on the time that the event occurred.
@@ -950,7 +950,7 @@ Query String Parameters
 -----------------------
 
 * **api_key** (optional) - The API Key for the project containing the data you are analyzing. See :doc:`/data_analysis/authentication` for more information.
-* **collection** (required) - The name of the event collection you are analyzing.
+* **event_collection** (required) - The name of the event collection you are analyzing.
 * **filters** (optional) - :doc:`/data_analysis/filters` are used to narrow down the events used in an analysis request based on `event property <event_properties>`_ values.
 * **timeframe** (optional) - Similar to filters, a :doc:`/data_analysis/timeframe` is used to narrow down the events used in an analysis request based on the time that the event occurred.
 
@@ -1034,7 +1034,7 @@ Example Response
         "actor_property": [
           "username"
         ], 
-        "collection": "landed", 
+        "event_collection": "landed", 
         "filters": [
           {
             "operator": "eq", 
@@ -1047,7 +1047,7 @@ Example Response
         "actor_property": [
           "username"
         ], 
-        "collection": "signed_up", 
+        "event_collection": "signed_up", 
         "filters": [
           {
             "operator": "eq", 
@@ -1098,7 +1098,7 @@ Example Response
     {
       "analysis_type": "count", 
       "created_date": "2012-09-14T22:23:50.259000", 
-      "collection": "foo", 
+      "event_collection": "foo", 
       "filters": [], 
       "query_name": "query_one",
       "query_type": "metric",
@@ -1113,7 +1113,7 @@ Example Response
     {
       "analysis_type": "count", 
       "created_date": "2012-09-14T22:23:50.288000", 
-      "collection": "bar", 
+      "event_collection": "bar", 
       "filters": [], 
       "query_name": "query_two",
       "query_type": "metric",
@@ -1183,7 +1183,7 @@ Example GET Response
   {
     "analysis_type": "count", 
     "created_date": "2012-09-14T22:23:50.259000", 
-    "collection": "foo", 
+    "event_collection": "foo", 
     "filters": [], 
     "query_name": "query_three",
     "query_type": "metric",
@@ -1204,7 +1204,7 @@ POST Request Body
 
 	{
 	  "analysis_type": "count", 
-	  "collection": "foo"
+	  "event_collection": "foo"
 	}
 
 ---------------------
@@ -1218,7 +1218,7 @@ Example POST Response
     "saved_query": {
       "analysis_type": "count", 
       "created_date": "2012-09-14T22:23:50.259178", 
-      "collection": "foo",
+      "event_collection": "foo",
       "filters": [], 
       "query_name": "query_four",
       "query_type": "metric",

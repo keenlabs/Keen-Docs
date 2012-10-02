@@ -33,12 +33,12 @@ Performing a Data Extraction to File is done via an HTTP GET request that follow
 
 .. code-block:: none
 
-    https://api.keen.io/3.0/projects/<project_id>/queries/extraction?api_key=<api_key>&collection=<event_collection_name>
+    https://api.keen.io/3.0/projects/<project_id>/queries/extraction?api_key=<api_key>&event_collection=<event_collection>
 
 Extractions take the following parameters:
 
 * **api_key** (optional) - The API Key for the project containing the data you are analyzing. See :doc:`authentication` for more information.
-* **collection** (required) - The name of the event collection you are analyzing.
+* **event_collection** (required) - The name of the event collection you are analyzing.
 * **filters** (optional) - :doc:`filters` are used to narrow down the events used in an analysis request based on `event property <event_properties>`_ values.
 * **timeframe** (optional) - A :doc:`timeframe` specifies the events to use for analysis based on a window of time. If no timeframe is specified, all events will be counted.
 * **email_address** (optional) - If an email address is specified, an email will be sent that address when the extraction is complete.

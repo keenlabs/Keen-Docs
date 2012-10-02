@@ -11,7 +11,7 @@ Here’s an example that counts the number of purchases events we have recorded 
 
 .. code-block:: none
 
-    http://api.keen.io/3.0/projects/<project_id>/queries/count?api_key=<key>&collection=purchases&interval=daily&timeframe=last_3_days
+    http://api.keen.io/3.0/projects/<project_id>/queries/count?api_key=<key>&event_collection=purchases&interval=daily&timeframe=last_3_days
 
 The output of a Series request is an array of JSON dictionaries which include the value for each interval in the timeframe.  Here is what the output looks like in our example:
 

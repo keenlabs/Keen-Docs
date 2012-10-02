@@ -28,7 +28,7 @@ Send an Event
 
 Let's get to the heart of it - sending events. :ref:`Events <event-data>` are the actions that are happening in your app that you want to track.  Events are stored in :ref:`event-collections`. We’ll call our new Event Collection "purchases", but you can pick any name that doesn't have spaces or weird characters.
 
-Let's insert a new "purchase" event into the purchases collection. The event should be in `JSON <http://en.wikipedia.org/wiki/JSON>`_ format and look like this example.
+Let's insert a new "purchase" event into the purchases event collection. The event should be in `JSON <http://en.wikipedia.org/wiki/JSON>`_ format and look like this example.
 
 **STEP 1:** Copy this example, paste it into a text editor, and save it as a "purchase1.json".
 
@@ -49,7 +49,7 @@ Next you'll send this event to Keen using a command line interface like Mac's Te
 
 ::
 
-    curl https://api.keen.io/3.0/projects/<PROJECT_ID>/events/<EVENT_COLLECTION_NAME>\
+    curl https://api.keen.io/3.0/projects/<PROJECT_ID>/events/<EVENT_COLLECTION>\
 	 -H "Authorization: <API_KEY>"\
 	 -H "Content-Type: application/json"\
 	 -d @purchase1.json
@@ -59,7 +59,7 @@ Note: Make sure to navigate your Terminal prompt to the place where you saved yo
 There are a couple things going on here. 
 
 * First, we send the request to a URL that includes both the Project ID and the name of the :ref:`Event Collection <event-collections>` (e.g. purchases) where we want to store this event.
-* Since the collection "purchases" doesn't exist yet, Keen creates a new event collection for you called "purchases" and stores your event there. Now you have a place to send all your purchase events in the future. 
+* Since the event collection "purchases" doesn't exist yet, Keen creates a new event collection for you called "purchases" and stores your event there. Now you have a place to send all your purchase events in the future. 
 * Second, we set headers for both authorization (with your API Key) and content-type (so the API knows it’s getting a JSON request). 
 * Third, we set the body of the HTTP request to the contents of the file that we saved.
 
@@ -77,7 +77,7 @@ Analyze Events
 
 Through our data analysis API, you'll have access to a number of different tools. But, for the moment, let's just worry about one - counts. It does exactly what it sounds like it does - counts the number of times an event has occurred.
 
-We'll try a very simple version of a count here. The first query string parameter is the "api_key". You know where to find this from earlier. The second parameter is the name of the Event Collection "collection" (e.g. purchases) where we want to do analysis. 
+We'll try a very simple version of a count here. The first query string parameter is the "api_key". You know where to find this from earlier. The second parameter is the "event_collection" (e.g. purchases) where we want to do analysis. 
 
 Replace the <PROJECT_ID>, <API_KEY>, and <EVENT_COLLECTON_NAME> with your own, then enter this request in your browser bar.
 
@@ -87,7 +87,7 @@ Simple Count Request
 
 ::
 
-	https://api.keen.io/3.0/projects/<PROJECT_ID>/queries/count?api_key=<API_KEY>&collection=<EVENT_COLLECTION_NAME>
+	https://api.keen.io/3.0/projects/<PROJECT_ID>/queries/count?api_key=<API_KEY>&event_collection=<EVENT_COLLECTION>
 
 --------
 Response
@@ -109,7 +109,7 @@ Average Request
 
 ::
 
-	https://api.keen.io/3.0/projects/<PROJECT_ID>/queries/average?api_key=<API_KEY>&collection=<EVENT_COLLECTION_NAME>&target_property=price
+	https://api.keen.io/3.0/projects/<PROJECT_ID>/queries/average?api_key=<API_KEY>&event_collection=<EVENT_COLLECTION>&target_property=price
 
 
 
@@ -132,7 +132,7 @@ Request with timeframe
 
 ::
 	
-	https://api.keen.io/3.0/projects/<PROJECT_ID>/queries/count?api_key=<API_KEY>&collection=<EVENT_COLLECTION_NAME>&timeframe=today
+	https://api.keen.io/3.0/projects/<PROJECT_ID>/queries/count?api_key=<API_KEY>&event_collection=<EVENT_COLLECTION>&timeframe=today
 	
 --------
 Response
@@ -153,7 +153,7 @@ Request with interval
 
 ::
 
-	https://api.keen.io/3.0/projects/<PROJECT_ID>/queries/count?api_key=<API_KEY>&collection=<EVENT_COLLECTION_NAME>&timeframe=last_3_hours&interval=hourly
+	https://api.keen.io/3.0/projects/<PROJECT_ID>/queries/count?api_key=<API_KEY>&event_collection=<EVENT_COLLECTION>&timeframe=last_3_hours&interval=hourly
 
 --------
 Response

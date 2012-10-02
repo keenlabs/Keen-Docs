@@ -63,7 +63,7 @@ This event is sent to Keen using an HTTP POST request to a URL of the following 
 
 .. code-block:: none
 
-   http://api.keen.io/3.0/projects/<project_id>/events/<event_collection_name>
+   http://api.keen.io/3.0/projects/<project_id>/events/<event_collection>
 
 Read on for more info on Event Properties and Event Collections.
 
@@ -202,11 +202,11 @@ As soon as an Event Collection’s first event is recorded, the collection will 
 
 Best Practices for Event Collections
 ++++++++++++++++++++++++++++++++++++
-Some things to consider when creating your collections:
+Some things to consider when creating your event collections:
 
 #. Events in an Event Collection have similar properties. For example, all Logins share properties like first name, last name, app version, platform, and time since last login.
 #. Events Collections for a given application share many "global properties". For example, most events in your application probably share some properties like user ID, app version, and platform. It’s a good planning exercise to identify those properties that you want to include in every Event Collection so you can structure them the same way each time.
-#. When possible, minimize the number of distinct Event Collections. Let’s say you’re analyzing purchases across many devices and you want to compare them. You've got purchases from multiple versions of your iPhone app and multiple versions of your iPad app.  It’s logical to think of creating separate collections for each of them, but it’s not the best way. Instead, consider creating a single collection called Purchases. Each purchase in your collection share many properties like item description, unit price, quantity, payment method, and customer. Additionally, you can include the property DeviceType (iPhone, iPad, etc) and Version (2.4A, 2.4B, 1.3).
+#. When possible, minimize the number of distinct Event Collections. Let’s say you’re analyzing purchases across many devices and you want to compare them. You've got purchases from multiple versions of your iPhone app and multiple versions of your iPad app.  It’s logical to think of creating separate event collections for each of them, but it’s not the best way. Instead, consider creating a single event collection called Purchases. Each purchase in your event collection share many properties like item description, unit price, quantity, payment method, and customer. Additionally, you can include the property DeviceType (iPhone, iPad, etc) and Version (2.4A, 2.4B, 1.3).
 
   Since you’re now tracking those Device & Version properties for every purchase, it’s very easy to do the following:
 

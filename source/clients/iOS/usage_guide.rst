@@ -153,7 +153,7 @@ The client will automatically stamp every event you track with a timestamp. If y
 Global Properties
 ^^^^^^^^^^^^^^^^^
 
-Now you might be thinking, "Okay, that looks pretty easy. But what if I want to send the same properties on EVERY event in a particular collection? Or just EVERY event, period?" We've got you covered through something we call Global Properties. 
+Now you might be thinking, "Okay, that looks pretty easy. But what if I want to send the same properties on EVERY event in a particular event collection? Or just EVERY event, period?" We've got you covered through something we call Global Properties. 
 
 Global properties are properties which are sent with EVERY event. For example, you may wish to always capture device information like OS version, handset type, orientation, etc.
 

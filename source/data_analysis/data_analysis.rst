@@ -26,7 +26,7 @@ Here is the inventory of tools we've built so far. We'd love to get your feedbac
 * :doc:`progressions` - Analyze the dropoff rates of users as they progress through a set of steps.  Example: What is the conversion rate of users landing on the site to creating an account to upgrading their account?
 * :doc:`extractions` - Extract all or subsets of your data in its raw form.
 * :doc:`list` - Get a list of target_property values (for example user names).
-* :doc:`meta_analysis` - Get information about your projects, collections, extractions, etc.
+* :doc:`meta_analysis` - Get information about your projects, event collections, extractions, etc.
 * :doc:`saved_queries` - Save your metric, series, or progression so you can reuse them later.
 
 The analysis APIs have some common parameters that apply to all of them.

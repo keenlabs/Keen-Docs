@@ -10,7 +10,7 @@ Whenever you generate a query using the Keen.io UI, you'll see the query URL bei
 
 Example Query::
 
-	https://api.keen.io/3.0/projects/<project_id>/queries/average?api_key=<key>&collection=purchases&filters=%5B%7B%22property_name%22%3A%22user%3Areferring_source%22%2C%22operator%22%3A%22eq%22%2C%22property_value%22%3A%22facebook%22%7D%5D&target_property=quantity&timeframe=yesterday
+	https://api.keen.io/3.0/projects/<project_id>/queries/average?api_key=<key>&event_collection=purchases&filters=%5B%7B%22property_name%22%3A%22user%3Areferring_source%22%2C%22operator%22%3A%22eq%22%2C%22property_value%22%3A%22facebook%22%7D%5D&target_property=quantity&timeframe=yesterday
 
 Example Saved Query::
 
@@ -45,7 +45,7 @@ For example, if you want to save a Series Count named "my_first_count" on the Ev
 
   {
     "analysis_type": "count", 
-    "collection": "bought_ticket", 
+    "event_collection": "bought_ticket", 
     "interval": "hourly", 
     "timeframe": "today"
   }
@@ -61,7 +61,7 @@ If your attempt to save the Query succeeds, you'll get a response like:
     "saved_query": {
       "analysis_type": "count", 
       "created_date": "2012-09-14T22:23:50.259178",
-      "collection": "foo",
+      "event_collection": "foo",
       "filters": [], 
       "saved_query_name": "my_first_count",
       "saved_query_type": "metric",

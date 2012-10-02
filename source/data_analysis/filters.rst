@@ -2,7 +2,7 @@
 Filters
 =======
 
-A filter is a criterion applied to a collection of events to narrow down the events used for analysis.  For example, you could apply a filter so you are only analyzing events that came from Android users.
+A filter is a criterion applied to a collection of events to narrow down the set of events used for analysis.  For example, you could apply a filter so you are only analyzing events that came from Android users.
 
 Filters are passed into URLs as an array of JSON objects.  Each JSON object has three properties:
 
@@ -43,6 +43,6 @@ Example:
 
 .. code-block:: none
 
-    https://api.keen.io/3.0/projects/<project_id>/queries/count?api_key=<api_key>&collection=<event_collection_name>&filters=%5b%7b%22property_name%22%3a%22price%22%2c%22operator%22%3a%22gte%22%2c%22property_value%22%3a.99%7d%2c%7b%22property_name%22%3a%22on_sale%22%2c%22operator%22%3a%22eq%22%2c%22property_value%22%3atrue%7d%5d
+    https://api.keen.io/3.0/projects/<project_id>/queries/count?api_key=<api_key>&event_collection=<event_collection>&filters=%5b%7b%22property_name%22%3a%22price%22%2c%22operator%22%3a%22gte%22%2c%22property_value%22%3a.99%7d%2c%7b%22property_name%22%3a%22on_sale%22%2c%22operator%22%3a%22eq%22%2c%22property_value%22%3atrue%7d%5d
 
 PS: The query builder on keen.io will construct and decode filters into a URL for you.
