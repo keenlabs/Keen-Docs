@@ -72,7 +72,7 @@ Below is a more complex example for a purchase in a game. Notice how you can nes
         },
       :game  => {
             :name => "Saved By the Bell THE GAME",
-            :version => 2.5.3,
+            :version => 2.3,
             :platform => "Facebook"
       },
       :sessionlength => 11:35:07,
