@@ -25,7 +25,7 @@ First, load the required libraries by including this at the beginning of your pr
     require 'rubygems'
     require 'keen'
 
-If you haven't done so already, login to `Keen.io <http://keen.io/login>`_ to generate a :ref:`project <projects>` for your app. Select "+ Create a new project" from the projects drop down in the upper left navigation.
+If you haven't done so already, login to `Keen.io <https://keen.io/login>`_ to generate a :ref:`project <projects>` for your app. Select "+ Create a new project" from the projects drop down in the upper left navigation.
 
 Define these variables in your Ruby program:
 
@@ -106,7 +106,7 @@ Run a quick count of your event collection to see how many events you sent so fa
 
 	https://api.keen.io/3.0/projects/<YOUR PROJECT ID>/queries/count?api_key=<YOUR API KEY>&event_collection=<YOUR EVENT COLLECTION>
 	
-Counts are just the beginning. Check out the rest of our analysis queries in :doc:`our docs </data_analysis/data_analysis>` or using our query builder on `Keen.io <http://Keen.io/>`_.
+Counts are just the beginning. Check out the rest of our analysis queries in :doc:`our docs </data_analysis/data_analysis>` or using our query builder on `Keen.io <https://keen.io/>`_.
 
 
 

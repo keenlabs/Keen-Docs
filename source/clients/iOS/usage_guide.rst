@@ -10,13 +10,13 @@ The Keen iOS client is designed to be simple to develop with, yet incredibly fle
 For a detailed class reference, please visit our `Keen iOS Client API Reference`_.
 
 * :ref:`install-guide` - How to install the Keen iOS Client into your application.
-* :ref:`register-client` - How to register your project ID and authorization token with the Keen iOS Client.
+* :ref:`register-client` - How to register your project ID and API key with the Keen iOS Client.
 * :ref:`add-events` - How to add an event with the Keen iOS Client.
 * :ref:`upload-events` - How to upload all previously saved events with the Keen iOS Client.
 
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
+---------------------------
 Get Project ID & Auth Token
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
+---------------------------
 
 If you haven't done so already, login to `Keen.io <http://keen.io/login>`_ to generate a :ref:`project <projects>` for your app. Select "+ Create a new project" from the projects drop down in the upper left navigation.
 
@@ -73,30 +73,32 @@ Compile
 Try and compile. It should work! If it doesn't, you probably forgot to enable the linker flag (see above). If you still can't get it to work, let us know at team@keen.io and one of us will help you right away.
 
 
-
 Usage Guide
 ===========
+
+---------------
+Instrumentation
+---------------
 
 Now it’s time to actually use the client!
 
 .. _register-client:
 
-
 ^^^^^^^^^^^^^^^
 Register Client
 ^^^^^^^^^^^^^^^
 
-Register the KeenClient shared client with your project ID and authorization token. The recommended place to register the client is in one of your application delegates. Here’s some example code: 
+Register the KeenClient shared client with your project ID and authorization token. The recommended place to do this is in one of your application delegates. Here’s some example code: 
 
 .. code-block:: objc
 
   - (void)applicationDidBecomeActive:(UIApplication *)application
   {
       [KeenClient sharedClientWithProjectId:@"4f4ed092163d663d3a000000" 
-                               andAuthToken:@"9a9d92907c3e43c3a4742535fc2f78ec"];
+                                  andApiKey:@"9a9d92907c3e43c3a4742535fc2f78ec"];
   }
   
-The [KeenClient sharedClientWithProjectId: andAuthToken] does the registration. From now on, in your code, you can just reference the shared client by calling [KeenClient sharedClient].
+The [KeenClient sharedClientWithProjectId: andApiKey] does the registration. From now on, in your code, you can just reference the shared client by calling [KeenClient sharedClient].
 
 .. _add-events:
 
@@ -149,7 +151,7 @@ The client will automatically stamp every event you track with a timestamp. If y
 Global Properties
 ^^^^^^^^^^^^^^^^^
 
-Now you might be thinking, "Okay, that looks pretty easy. But what if I want to send the same properties on EVERY event in a particular event collection? Or just EVERY event, period?" We've got you covered through something we call Global Properties. 
+Now you might be thinking, "Okay, that looks pretty easy. But what if I want to send the same properties on EVERY event in a particular collection? Or just EVERY event, period?" We've got you covered through something we call Global Properties. 
 
 Global properties are properties which are sent with EVERY event. For example, you may wish to always capture device information like OS version, handset type, orientation, etc.
 
@@ -166,7 +168,7 @@ Here's an example using a dictionary:
   - (void)applicationDidBecomeActive:(UIApplication *)application
   {
       [KeenClient sharedClientWithProjectId:@"4f4ed092163d663d3a000000" 
-                               andAuthToken:@"9a9d92907c3e43c3a4742535fc2f78ec"];
+                                  andApiKey:@"9a9d92907c3e43c3a4742535fc2f78ec"];
       client.globalPropertiesDictionary = @{@"some_standard_key": @"some_standard_value"};
   }
 
@@ -183,11 +185,11 @@ Here's an example using blocks:
   - (void)applicationDidBecomeActive:(UIApplication *)application
   {
       [KeenClient sharedClientWithProjectId:@"4f4ed092163d663d3a000000" 
-                               andAuthToken:@"9a9d92907c3e43c3a4742535fc2f78ec"];
-      client.globalPropertiesBlock = ^NSDictionary *(NSString *eventName) {
-          if ([eventName isEqualToString:@"apples"]) {
+                                  andApiKey:@"9a9d92907c3e43c3a4742535fc2f78ec"];
+      client.globalPropertiesBlock = ^NSDictionary *(NSString *eventCollection) {
+          if ([eventCollection isEqualToString:@"apples"]) {
               return @{ @"color": @"red" };
-          } else if ([eventName isEqualToString:@"pears"]) {
+          } else if ([eventCollection isEqualToString:@"pears"]) {
               return @{ @"color": @"green" };
           } else {
               return nil;
@@ -207,7 +209,7 @@ The block takes in a single string parameter which corresponds to the name of th
 Upload to Keen
 ^^^^^^^^^^^^^^
 
-Upload the captured 1s to the Keen service. This must be done explicitly. We recommend doing the upload when your application is sent to the background, but you can do it whenever you’d like (for example, if your application typically has very long user sessions). The uploader spawns its own background thread so the main UI thread is not blocked.
+Upload the captured events to the Keen service. This must be done explicitly. We recommend doing the upload when your application is sent to the background, but you can do it whenever you’d like (for example, if your application typically has very long user sessions). The uploader spawns its own background thread so the main UI thread is not blocked.
 
 .. code-block:: objc
 
