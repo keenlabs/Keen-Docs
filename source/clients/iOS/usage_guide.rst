@@ -116,7 +116,7 @@ Add events to track. Here’s a very basic example for an app that includes two 
       
       NSDictionary *event = [NSDictionary dictionaryWithObjectsAndKeys:@"first view", @"view_name",
                              @"going to", @"action", nil];
-      [[KeenClient sharedClient] addEvent:event toCollection:@"tab_views"];
+      [[KeenClient sharedClient] addEvent:event toCollection:@"tab_views" error:nil];
   }
   
 The idea is to first create an arbitrary dictionary of JSON-serializable values. We support: ::
@@ -144,7 +144,8 @@ The client will automatically stamp every event you track with a timestamp. If y
                                                                    forKey:@"timestamp"];
       [[KeenClient sharedClient] addEvent:event
                      withHeaderProperties:headerProperties
-                             toCollection:@"tab_views"];
+                             toCollection:@"tab_views"
+                                    error:nil];
   }
   
 ^^^^^^^^^^^^^^^^^
