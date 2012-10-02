@@ -32,13 +32,13 @@ Define these variables in your Ruby program:
 .. code-block:: ruby
 
     project_id = 'asdfasldkfjalsdkfalskdfj'
-    auth_token = 'asldfjklj325tkl32jaskdlfjaf'
+    api_key = 'asldfjklj325tkl32jaskdlfjaf'
 
 Next, setup the Keen client. We named it "keen" in this example.  
 
 .. code-block:: ruby
 
-    keen = Keen::Client.new(project_id, auth_token)
+    keen = Keen::Client.new(project_id, api_key)
 
 Now, the fun part. Use *keen.add.event()* wherever you want to collect data.
 
@@ -121,7 +121,7 @@ Counts are just the beginning. Check out the rest of our analysis queries in :do
 .. 
 .. .. code-block:: ruby
 .. 
-..     mykeenclient = Keen::Client.new(project_id, auth_token, :cache_locally => true, :storagemode => RedisHandler)
+..     mykeenclient = Keen::Client.new(project_id, api_key, :cache_locally => true, :storagemode => RedisHandler)
 .. 
 .. RedisHandler requires you to install `Redis <http://redis.io/>`_. It’s free and only takes a couple of minutes.
 .. 
@@ -146,10 +146,10 @@ Counts are just the beginning. Check out the rest of our analysis queries in :do
 ..     require 'keen'
 .. 
 ..     project_id = '4fdf5ae25g546f1b6a200003'
-..     auth_token = '97s79e30cb894628386f189ae539d12f'
+..     api_key = '97s79e30cb894628386f189ae539d12f'
 .. 
 ..     ..Establish the Keen client
-..     client = Keen::Client.new(project_id, auth_token,
+..     client = Keen::Client.new(project_id, api_key,
 ..                 :storage_class => Keen::Async::Storage::RedisHandler,
 ..                 :cache_locally => true)
 ..                 )
@@ -190,10 +190,10 @@ Below is a sample ruby program which is instrumented to send data to Keen.
 
     # Define properties for your unique Keen project. Get these from project settings page.
     project_id = '4fdf5ae25g546f1b6a200003'
-    auth_token = '97s79e30cb894628386f189ae539d12f'
+    api_key = '97s79e30cb894628386f189ae539d12f'
 
     # Define the Keen client.
-    mykeenclient = Keen::Client.new(project_id, auth_token)
+    mykeenclient = Keen::Client.new(project_id, api_key)
 
     # The first question the program asks (puts to the command line)
     creepy_greeting = "Hello gorgeous. What is your name?"
@@ -243,10 +243,10 @@ We'd love your feedback on this guide. Drop us a note at team@keen.io!
 .. 
 ..     # Define properties for your unique Keen project. Get these from project settings page.
 ..     project_id = '4fdf5ae25g546f1b6a200003'
-..     auth_token = '97s79e30cb894628386f189ae539d12f'
+..     api_key = '97s79e30cb894628386f189ae539d12f'
 .. 
 ..     # Define the Keen client. In this example we’ll use a storage handler.
-..     mykeenclient = Keen::Client.new(project_id, auth_token,
+..     mykeenclient = Keen::Client.new(project_id, api_key,
 ..                 :storage_class => Keen::Async::Storage::RedisHandler,
 ..                 :cache_locally => true,
 ..             	:logging => false
