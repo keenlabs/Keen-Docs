@@ -4,7 +4,7 @@ Getting Started Guide
 ==================
 What Are We Doing?
 ==================
-This we believe: Getting started with Keen APIs should be easy. For the technical wizards among you, this guide will take you 8 minutes and you can dig into the advanced documentation. For the sorcerer's apprentices, this shouldn't take much more than 20 minutes. If it does, we've failed. `Let us know <team@keen.io?Subject=Getting Started Feedback>`_. Chat with us at `users.keen.io <http://users.keen.io/>`_. 
+This we believe: Getting started with Keen APIs should be easy. For the technical wizards among you, this guide will take you 8 minutes and you can dig into the advanced documentation. For the sorcerer's apprentices, this shouldn't take much more than 20 minutes. If it does, we've failed. `Let us know via email <team@keen.io?Subject=Getting Started Feedback>`_ or `come chat with us at users.keen.io <http://users.keen.io/>`_. 
 
 Once you're through this guide, we hope you'll be square on the following: 
 

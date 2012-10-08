@@ -14,11 +14,13 @@ For a detailed class reference, please visit our `Keen iOS Client API Reference`
 * :ref:`add-events` - How to add an event with the Keen iOS Client.
 * :ref:`upload-events` - How to upload all previously saved events with the Keen iOS Client.
 
+Got questions or feedback? Come hang out with us in the Keen chat: `users.keen.io <http://users.keen.io/>`_. 
+
 ---------------------------
 Get Project ID & Auth Token
 ---------------------------
 
-If you haven't done so already, login to `Keen.io <http://keen.io/login>`_ to generate a :ref:`project <projects>` for your app. Select "+ Create a new project" from the projects drop down in the upper left navigation.
+If you haven't done so already,  `login to Keen.io to create a project <https://keen.io/add-project>`_  for your app. 
 
 .. _install-guide:
 
