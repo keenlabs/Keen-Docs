@@ -13,7 +13,7 @@ Choose one of these options to get started:
 
 	* Our :doc:`getting_started_guide` will walk you through a hands-on cURL example. 
 	* iOS devs: jump straight into :doc:`integrating your iOS app <clients/iOS/usage_guide>`. Download `our SDK <http://keen.io/static/code/KeenClient.zip>`_.
-	* Ruby folks: Gem install Keen. Reference :doc:`our Ruby Client Usage Guide <clients/iOS/usage_guide>`.
+	* Ruby folks: Gem install Keen. Reference :doc:`our Ruby Client Usage Guide <clients/ruby/usage_guide>`.
 
 Need help? Want to tell us what could make Keen.io better? Chat with us at `users.keen.io <http://users.keen.io/>`_. 
 
