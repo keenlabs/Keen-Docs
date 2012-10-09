@@ -1,0 +1,161 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Data Extractions &mdash; Keen Documentation</title>
+    
+    <link rel="stylesheet" href="../_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '2.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="top" title="Keen Documentation" href="../index.html" />
+    <link rel="up" title="Data Analysis APIs" href="data_analysis.html" />
+    <link rel="next" title="List of Unique Properties" href="list.html" />
+    <link rel="prev" title="Progressions" href="progressions.html" />
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-26950640-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+ 
+
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="list.html" title="List of Unique Properties"
+             accesskey="N">next</a></li>
+        <li class="right" >
+          <a href="progressions.html" title="Progressions"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">Keen Documentation</a> &raquo;</li>
+          <li><a href="data_analysis.html" accesskey="U">Data Analysis APIs</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="data-extractions">
+<h1>Data Extractions<a class="headerlink" href="#data-extractions" title="Permalink to this headline">¶</a></h1>
+<p>Data Extractions are ways to get your data, or subsets of your data out of Keen and into other tools.  We strongly believe that you should always have full access to all of your data, and we aim to make it as simple and painless as possible.</p>
+<p>The following types of Data Extractions are currently supported in the Keen Analysis API:</p>
+<ul class="simple">
+<li><a class="reference internal" href="#extraction-to-file"><em>Data Extraction to File</em></a> - a .CSV file with all of your events (or a subset of them)</li>
+<li><a class="reference internal" href="list.html"><em>List of Unique Properties</em></a> - a list of unique properties (for example user names)</li>
+</ul>
+<div class="section" id="data-extraction-to-file">
+<span id="extraction-to-file"></span><h2>Data Extraction to File<a class="headerlink" href="#data-extraction-to-file" title="Permalink to this headline">¶</a></h2>
+<p>Technical Reference: <a class="reference internal" href="../api/reference.html#extraction-resource"><em>Extraction Resource</em></a></p>
+<p>You can perform a data extraction at any time from the Keen.io website or via API. We wanted to let you know some things about the extraction file:</p>
+<ul class="simple">
+<li>If you don&#8217;t specify any filters, your extract will include every event in an <a class="reference internal" href="../event_data_modeling/event_data_intro.html#event-collections"><em>Event Collection</em></a>. All <a class="reference internal" href="../event_data_modeling/event_data_intro.html#event-properties"><em>Event Properties</em></a> are included for each event in the extract. The files can get quite large. Use timeframes and filters to narrow the inventory of events that you extract.</li>
+<li>Every event in your extract will have a <a class="reference internal" href="../event_data_modeling/event_data_intro.html#property-types"><em>keen:timestamp</em></a> property. That&#8217;s the value used for sorting events by <a class="reference internal" href="timeframe.html"><em>Timeframe</em></a>. The timezone of this timestamp is GMT.</li>
+<li>There is currently no way to specify the order of the properties (columns) in your extract file. They might not come out in the order you expect, but they will all be there.</li>
+<li>Shortly after requesting an extract from the Keen.io website, you will get an email letting you know that the extract is ready for download. The larger your extraction, the longer it will take to get the email. When you click the link, your download will begin immediately (check the bottom of your browser &#8211; you should see the download progress there).</li>
+<li>Extractions are done by <a class="reference internal" href="../event_data_modeling/event_data_intro.html#event-collections"><em>Event Collection</em></a>. If you want to extract 100% of your data from Keen, you&#8217;ll need to run the extraction for each Event Collection.</li>
+</ul>
+<p>You can also programmatically request extractions via the <a class="reference internal" href="../api/reference.html#extraction-resource"><em>Extraction Resource</em></a> or via <a class="reference internal" href="saved_queries.html"><em>Saved Queries &amp; Queries</em></a> in our API. The Data Extraction APIs can be used to, for example, set up a nightly job that will have the data you need ready and waiting in your inbox in the morning.</p>
+<p>Performing a Data Extraction to File is done via an HTTP GET request that follows this pattern:</p>
+<div class="highlight-none"><div class="highlight"><pre>https://api.keen.io/3.0/projects/&lt;project_id&gt;/queries/extraction?api_key=&lt;api_key&gt;&amp;event_collection=&lt;event_collection&gt;
+</pre></div>
+</div>
+<p>Extractions take the following parameters:</p>
+<ul class="simple">
+<li><strong>api_key</strong> (optional) - The API Key for the project containing the data you are analyzing. See <a class="reference internal" href="authentication.html"><em>Authentication</em></a> for more information.</li>
+<li><strong>event_collection</strong> (required) - The name of the event collection you are analyzing.</li>
+<li><strong>filters</strong> (optional) - <a class="reference internal" href="filters.html"><em>Filters</em></a> are used to narrow down the events used in an analysis request based on <a class="reference external" href="event_properties">event property</a> values.</li>
+<li><strong>timeframe</strong> (optional) - A <a class="reference internal" href="timeframe.html"><em>Timeframe</em></a> specifies the events to use for analysis based on a window of time. If no timeframe is specified, all events will be counted.</li>
+<li><strong>email_address</strong> (optional) - If an email address is specified, an email will be sent this address when the extraction is complete.</li>
+</ul>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">There are two forms of responses. If <strong>email_address</strong> is specified, then the request will be processed asynchronously and an email will be delivered when it completes. If <strong>email_address</strong> is omitted, the request is processed synchronously and the response will be a CSV file containing the results of the extraction.</p>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+<h3><a href="../index.html">Table Of Contents</a></h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../getting_started_guide.html">Getting Started Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../event_data_modeling/event_data_intro.html">Data Modeling Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data_collection/data_collection.html">Data Collection APIs</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="data_analysis.html">Data Analysis APIs</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="metrics.html">Metrics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="series.html">Series</a></li>
+<li class="toctree-l2"><a class="reference internal" href="progressions.html">Progressions</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="">Data Extractions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="list.html">List of Unique Properties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="authentication.html">Authentication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="filters.html">Filters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="timeframe.html">Timeframe</a></li>
+<li class="toctree-l2"><a class="reference internal" href="interval.html">Interval</a></li>
+<li class="toctree-l2"><a class="reference internal" href="meta_analysis.html">Meta Analysis Tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="saved_queries.html">Saved Queries &amp; Queries</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../api/reference.html">API Technical Reference</a></li>
+</ul>
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="list.html" title="List of Unique Properties"
+             >next</a></li>
+        <li class="right" >
+          <a href="progressions.html" title="Progressions"
+             >previous</a> |</li>
+        <li><a href="../index.html">Keen Documentation</a> &raquo;</li>
+          <li><a href="data_analysis.html" >Data Analysis APIs</a> &raquo;</li> 
+      </ul>
+    </div>
+
+    <div class="footer">
+        &copy; Copyright 2012, Keen Labs.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+
+
+
+  </body>
+</html>

@@ -1,0 +1,169 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Series &mdash; Keen Documentation</title>
+    
+    <link rel="stylesheet" href="../_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '2.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="top" title="Keen Documentation" href="../index.html" />
+    <link rel="up" title="Data Analysis APIs" href="data_analysis.html" />
+    <link rel="next" title="Progressions" href="progressions.html" />
+    <link rel="prev" title="Metrics" href="metrics.html" />
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-26950640-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+ 
+
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="progressions.html" title="Progressions"
+             accesskey="N">next</a></li>
+        <li class="right" >
+          <a href="metrics.html" title="Metrics"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">Keen Documentation</a> &raquo;</li>
+          <li><a href="data_analysis.html" accesskey="U">Data Analysis APIs</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="series">
+<h1>Series<a class="headerlink" href="#series" title="Permalink to this headline">¶</a></h1>
+<p>A Series allows you to analyze trends in <a class="reference internal" href="metrics.html"><em>Metrics</em></a> over time. It breaks a timeframe into intervals of hours, days, or weeks, and returns Metrics (numbers) for each of those intervals.</p>
+<p>Creating a series request is done by simply adding the <a class="reference internal" href="timeframe.html"><em>Timeframe</em></a> and <a class="reference internal" href="interval.html"><em>Interval</em></a> query string parameters to a <a class="reference internal" href="metrics.html"><em>Metric</em></a> request. If you are already using a timeframe with a Metric, you only need to add the <a class="reference internal" href="interval.html"><em>Interval</em></a> query string parameter to turn your Metric into a Series. Pretty cool, huh?</p>
+<p>Here’s an example that counts the number of purchases events we have recorded for each day last week.</p>
+<div class="highlight-none"><div class="highlight"><pre>http://api.keen.io/3.0/projects/&lt;project_id&gt;/queries/count?api_key=&lt;key&gt;&amp;event_collection=purchases&amp;interval=daily&amp;timeframe=last_3_days
+</pre></div>
+</div>
+<p>The output of a Series request is an array of JSON dictionaries which include the value for each interval in the timeframe.  Here is what the output looks like in our example:</p>
+<div class="highlight-none"><div class="highlight"><pre>{
+    &quot;result&quot;:[
+        {
+            &quot;value&quot;: 12,
+            &quot;timeframe&quot;: {
+                &quot;start&quot;: &quot;2012-08-05T00:00:00&quot;,
+                &quot;end&quot;: &quot;2012-08-06T00:00:00&quot;
+            }
+        },
+        {
+            &quot;value&quot;: 6585,
+            &quot;timeframe&quot;:{
+                &quot;start&quot;: &quot;2012-08-06T00:00:00&quot;,
+                &quot;end&quot;: &quot;2012-08-07T00:00:00&quot;
+            }
+        },
+        {
+            &quot;value&quot;: 3586,
+            &quot;timeframe&quot;: {
+                &quot;start&quot;: &quot;2012-08-07T00:00:00&quot;,
+                &quot;end&quot;: &quot;2012-08-08T00:00:00&quot;
+            }
+        },
+    ]
+}
+</pre></div>
+</div>
+<p>As you might have noticed, the series output forms the data set for a basic bar chart or line graph.</p>
+<p>Please note that there is a limitation on the number of analyses that can be done in a single Series. The current limit is 31. That means your specified interval and timeframe can&#8217;t have more than 31 buckets or &#8220;sub-timeframes&#8221;. For example, running a Series with an &#8220;hourly&#8221; interval over the timeframe &#8220;last_5_days&#8221; would produce an analysis query with 24 hours x 5 days = 120 sub-timeframes. You will get an error about having too many sub-timeframes. If you run the same query with a &#8220;daily&#8221; interval and timeframe of &#8220;last_5_days&#8221; you would have one sub-timeframe per day and a total of 5 sub-timeframes. Easily under the limit.</p>
+<p>Here are some example questions you could answer with a Series:</p>
+<ul class="simple">
+<li>How many times was content shared in the last 24 hours? When was the most popular time to share?</li>
+<li>How much revenue was generated for each of the past 8 weeks?</li>
+<li>Is the usage of our new feature increasing?</li>
+<li>How many users signed up each day last week?</li>
+</ul>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+<h3><a href="../index.html">Table Of Contents</a></h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../getting_started_guide.html">Getting Started Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../event_data_modeling/event_data_intro.html">Data Modeling Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data_collection/data_collection.html">Data Collection APIs</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="data_analysis.html">Data Analysis APIs</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="metrics.html">Metrics</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="">Series</a></li>
+<li class="toctree-l2"><a class="reference internal" href="progressions.html">Progressions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="extractions.html">Data Extractions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="list.html">List of Unique Properties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="authentication.html">Authentication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="filters.html">Filters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="timeframe.html">Timeframe</a></li>
+<li class="toctree-l2"><a class="reference internal" href="interval.html">Interval</a></li>
+<li class="toctree-l2"><a class="reference internal" href="meta_analysis.html">Meta Analysis Tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="saved_queries.html">Saved Queries &amp; Queries</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../api/reference.html">API Technical Reference</a></li>
+</ul>
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="progressions.html" title="Progressions"
+             >next</a></li>
+        <li class="right" >
+          <a href="metrics.html" title="Metrics"
+             >previous</a> |</li>
+        <li><a href="../index.html">Keen Documentation</a> &raquo;</li>
+          <li><a href="data_analysis.html" >Data Analysis APIs</a> &raquo;</li> 
+      </ul>
+    </div>
+
+    <div class="footer">
+        &copy; Copyright 2012, Keen Labs.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+
+
+
+  </body>
+</html>

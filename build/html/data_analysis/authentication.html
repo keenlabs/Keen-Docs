@@ -1,0 +1,139 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Authentication &mdash; Keen Documentation</title>
+    
+    <link rel="stylesheet" href="../_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '2.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="top" title="Keen Documentation" href="../index.html" />
+    <link rel="up" title="Data Analysis APIs" href="data_analysis.html" />
+    <link rel="next" title="Filters" href="filters.html" />
+    <link rel="prev" title="List of Unique Properties" href="list.html" />
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-26950640-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+ 
+
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="filters.html" title="Filters"
+             accesskey="N">next</a></li>
+        <li class="right" >
+          <a href="list.html" title="List of Unique Properties"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">Keen Documentation</a> &raquo;</li>
+          <li><a href="data_analysis.html" accesskey="U">Data Analysis APIs</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="authentication">
+<h1>Authentication<a class="headerlink" href="#authentication" title="Permalink to this headline">¶</a></h1>
+<p>Keen supports two mechanisms for authenticating API requests. For both of them, you&#8217;ll need to know one key piece of information: the API Key for the Project you want to use. This is easily retrievable from the Keen UI. Login with your username and password to <a class="reference external" href="https://keen.io">Keen</a>. Navigate to your project, make sure the &#8220;Project Overview&#8221; tab is selected, and you should see your API Key. Now that you have your API Key, let&#8217;s talk about how you actually authenticate your requests.</p>
+<div class="section" id="http-header">
+<h2>HTTP Header<a class="headerlink" href="#http-header" title="Permalink to this headline">¶</a></h2>
+<p>The first way to authenticate is through a HTTP header called &#8220;Authorization&#8221;. This method is supported for EVERY API call, so it will always work. To use it, simply send a HTTP header with your request. Its name should be &#8220;Authorization&#8221; and its value should just be your API Key. That&#8217;s all you have to do.</p>
+</div>
+<div class="section" id="query-string-param">
+<h2>Query String Param<a class="headerlink" href="#query-string-param" title="Permalink to this headline">¶</a></h2>
+<p>The second way to authenticate is through a query string parameter called &#8220;api_key&#8221;. Its value should just be your API Key.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This mechanism for authentication is ONLY supported for the <a class="reference internal" href="data_analysis.html"><em>Data Analysis APIs</em></a>. We support this so that links to analysis results can be embedded in HTML documents as links.</p>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+<h3><a href="../index.html">Table Of Contents</a></h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../getting_started_guide.html">Getting Started Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../event_data_modeling/event_data_intro.html">Data Modeling Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data_collection/data_collection.html">Data Collection APIs</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="data_analysis.html">Data Analysis APIs</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="metrics.html">Metrics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="series.html">Series</a></li>
+<li class="toctree-l2"><a class="reference internal" href="progressions.html">Progressions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="extractions.html">Data Extractions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="list.html">List of Unique Properties</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="">Authentication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="filters.html">Filters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="timeframe.html">Timeframe</a></li>
+<li class="toctree-l2"><a class="reference internal" href="interval.html">Interval</a></li>
+<li class="toctree-l2"><a class="reference internal" href="meta_analysis.html">Meta Analysis Tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="saved_queries.html">Saved Queries &amp; Queries</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../api/reference.html">API Technical Reference</a></li>
+</ul>
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="filters.html" title="Filters"
+             >next</a></li>
+        <li class="right" >
+          <a href="list.html" title="List of Unique Properties"
+             >previous</a> |</li>
+        <li><a href="../index.html">Keen Documentation</a> &raquo;</li>
+          <li><a href="data_analysis.html" >Data Analysis APIs</a> &raquo;</li> 
+      </ul>
+    </div>
+
+    <div class="footer">
+        &copy; Copyright 2012, Keen Labs.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+
+
+
+  </body>
+</html>

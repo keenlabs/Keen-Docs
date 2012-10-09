@@ -1,0 +1,199 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Progressions &mdash; Keen Documentation</title>
+    
+    <link rel="stylesheet" href="../_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '2.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="top" title="Keen Documentation" href="../index.html" />
+    <link rel="up" title="Data Analysis APIs" href="data_analysis.html" />
+    <link rel="next" title="Data Extractions" href="extractions.html" />
+    <link rel="prev" title="Series" href="series.html" />
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-26950640-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+ 
+
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="extractions.html" title="Data Extractions"
+             accesskey="N">next</a></li>
+        <li class="right" >
+          <a href="series.html" title="Series"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">Keen Documentation</a> &raquo;</li>
+          <li><a href="data_analysis.html" accesskey="U">Data Analysis APIs</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="progressions">
+<h1>Progressions<a class="headerlink" href="#progressions" title="Permalink to this headline">¶</a></h1>
+<p>A Progression is a flow of events that a user performs on their way to reaching a goal.  This flow could be a checkout process, registration, or lead conversion.  When analyzing a Progression, you are concerned with the number of users that successfully make it to the next step as well as the number of users that drop off.  This will show you where your flow loses the most users so you know where to focus your attention.  The result from a progression is a list of counts for each of the steps you specify.</p>
+<p>For example, your progression could have these steps:</p>
+<ol class="arabic simple">
+<li>Successful completion of an app’s tutorial.</li>
+<li>Creation of content in the app.</li>
+<li>Sharing of content with another user.</li>
+</ol>
+<p>A progression analysis with those steps would work like this:</p>
+<ol class="arabic simple">
+<li>Count the number of unique users who completed the app’s tutorial.</li>
+<li>Of the users who were counted in step 1, count the number of them who created content.</li>
+<li>Of the users who were counted in step 2, count the number of them who shared content.</li>
+</ol>
+<p>Progressions are performed by sending an HTTP GET request to a URL of the following form:</p>
+<div class="highlight-none"><div class="highlight"><pre>https://api.keen.io/3.0/projects/&lt;project_id&gt;/queries/progression?api_key=&lt;api_key&gt;&amp;steps=&lt;[step1, step2, step3...]&gt;
+</pre></div>
+</div>
+<p>Progressions take in the following parameters:</p>
+<ul class="simple">
+<li><strong>api_key</strong> (optional) - The API key for the project containing the data you are analyzing.</li>
+<li><strong>steps</strong> (required) - A URL encoded JSON array defining the <a class="reference internal" href="#steps"><em>Steps</em></a> in the Progression.  See the Steps section below for details.</li>
+</ul>
+<div class="section" id="steps">
+<span id="id1"></span><h2>Steps<a class="headerlink" href="#steps" title="Permalink to this headline">¶</a></h2>
+<p>A step is defined as an event or set of events that meet a given criteria.  Your first step, along with any filters that you provide, determine the starting data set of your progression. Each step includes something called an actor_property &#8212; typically a user id &#8211; that specifies the important thing you want to count in that step. Continuing our example, the first step would count the number of unique user ids in the event collection &#8220;Tutorial Completions&#8221;.</p>
+<p>To create a Progression, you must define each of its steps.  A step is a JSON object with the following parameters:</p>
+<ul class="simple">
+<li><strong>event_collection</strong> (required) - a string containing the name of the event that defines the step.</li>
+<li><strong>actor_property</strong> (required) - a string containing the name of the property that can be used as a unique identifier for a user (or any type of actor).</li>
+<li><strong>timeframe</strong> (optional) - A <a class="reference internal" href="timeframe.html"><em>Timeframe</em></a> specifies the events to use for analysis based on a window of time.</li>
+<li><strong>filters</strong> (optional) - <a class="reference internal" href="filters.html"><em>Filters</em></a> are used to narrow the scope of events used in this step of the progression.</li>
+</ul>
+<p>Each step of your Progression should be be inserted into a JSON array and URL encoded. Then you simply set the &#8220;steps&#8221; parameter in your query string.</p>
+<p>In this example, we want to find the drop off rate between users viewing our landing page and signing up for our service.  Note that timeframes are not specified, so it will be using all the data ever recorded for these two events.  Here is what the steps would look like in JSON form.</p>
+<div class="highlight-none"><div class="highlight"><pre>[
+   {
+      &quot;event_collection&quot;:&quot;view_landing_page&quot;,
+      &quot;actor_property&quot;:&quot;user.id&quot;
+   },
+   {
+      &quot;event_collection&quot;:&quot;sign_up&quot;,
+      &quot;actor_property&quot;:&quot;user.id&quot;
+   }
+]
+</pre></div>
+</div>
+<p>Here is what that JSON string looks like after URL encoding it:</p>
+<div class="highlight-none"><div class="highlight"><pre>
+</pre></div>
+</div>
+<p>%5b%7b%22event_collection%22%3a%22view_landing_page%22%2c%22actor_property%22%3a%22user%3aid%22%7d%2c%7b%22event_collection%22%3a%22sign_up%22%2c%22actor_property%22%3a%22user%3aid%22%7d%5d</p>
+<p>Finally, set that string equal to the <strong>step</strong> parameter in your query string.</p>
+<p>The response from a Progression analysis looks like this:</p>
+<div class="highlight-none"><div class="highlight"><pre>{
+    &quot;result&quot;:[
+        9375,
+        203
+    ],
+    &quot;steps&quot;:[
+        {
+           &quot;event_collection&quot;:&quot;view_landing_page&quot;,
+           &quot;actor_property&quot;:&quot;user.id&quot;
+        },
+        {
+           &quot;event_collection&quot;:&quot;sign_up&quot;,
+           &quot;actor_property&quot;:&quot;user.id&quot;
+        }
+    ]
+}
+</pre></div>
+</div>
+<p>The result array details the number of users that successfully made it to each step in the Progression.  The <strong>steps</strong> array contains the definition of the steps passed in via the query string parameter.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+<h3><a href="../index.html">Table Of Contents</a></h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../getting_started_guide.html">Getting Started Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../event_data_modeling/event_data_intro.html">Data Modeling Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data_collection/data_collection.html">Data Collection APIs</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="data_analysis.html">Data Analysis APIs</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="metrics.html">Metrics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="series.html">Series</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="">Progressions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="extractions.html">Data Extractions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="list.html">List of Unique Properties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="authentication.html">Authentication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="filters.html">Filters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="timeframe.html">Timeframe</a></li>
+<li class="toctree-l2"><a class="reference internal" href="interval.html">Interval</a></li>
+<li class="toctree-l2"><a class="reference internal" href="meta_analysis.html">Meta Analysis Tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="saved_queries.html">Saved Queries &amp; Queries</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../api/reference.html">API Technical Reference</a></li>
+</ul>
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="extractions.html" title="Data Extractions"
+             >next</a></li>
+        <li class="right" >
+          <a href="series.html" title="Series"
+             >previous</a> |</li>
+        <li><a href="../index.html">Keen Documentation</a> &raquo;</li>
+          <li><a href="data_analysis.html" >Data Analysis APIs</a> &raquo;</li> 
+      </ul>
+    </div>
+
+    <div class="footer">
+        &copy; Copyright 2012, Keen Labs.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+
+
+
+  </body>
+</html>

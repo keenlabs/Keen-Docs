@@ -1,0 +1,143 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Data Analysis APIs &mdash; Keen Documentation</title>
+    
+    <link rel="stylesheet" href="../_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '2.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="top" title="Keen Documentation" href="../index.html" />
+    <link rel="next" title="Metrics" href="metrics.html" />
+    <link rel="prev" title="Ruby Client Usage Guide" href="../clients/ruby/usage_guide.html" />
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-26950640-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+ 
+
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="metrics.html" title="Metrics"
+             accesskey="N">next</a></li>
+        <li class="right" >
+          <a href="../clients/ruby/usage_guide.html" title="Ruby Client Usage Guide"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">Keen Documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="data-analysis-apis">
+<h1>Data Analysis APIs<a class="headerlink" href="#data-analysis-apis" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+</div>
+<p>We are passionate about building powerful analysis APIs so you can get the most out of your data. Our services could be the building blocks for your new custom dashboard or a real-time workflow. I&#8217;m sure you&#8217;ll think of even more uses we haven&#8217;t considered yet :)</p>
+<p>Here is the inventory of tools we&#8217;ve built so far. We&#8217;d love to get your feedback or ideas about what to build next. Let us know at <a class="reference external" href="mailto:team&#37;&#52;&#48;keen&#46;io">team<span>&#64;</span>keen<span>&#46;</span>io</a>.</p>
+<ul class="simple">
+<li><a class="reference internal" href="metrics.html"><em>Metrics</em></a> - Answer questions about events that happened over a single period of time.  Example: The number of users that signed up last month.</li>
+<li><a class="reference internal" href="series.html"><em>Series</em></a> - Analyze data over a period of time broken into smaller periods of time.  Example: The number of users that signed up each day last week.</li>
+<li><a class="reference internal" href="progressions.html"><em>Progressions</em></a> - Analyze the dropoff rates of users as they progress through a set of steps.  Example: What is the conversion rate of users landing on the site to creating an account to upgrading their account?</li>
+<li><a class="reference internal" href="extractions.html"><em>Data Extractions</em></a> - Extract all or subsets of your data in its raw form.</li>
+<li><a class="reference internal" href="list.html"><em>List of Unique Properties</em></a> - Get a list of target_property values (for example user names).</li>
+<li><a class="reference internal" href="meta_analysis.html"><em>Meta Analysis Tools</em></a> - Get information about your projects, event collections, extractions, etc.</li>
+<li><a class="reference internal" href="saved_queries.html"><em>Saved Queries &amp; Queries</em></a> - Save your metric, series, or progression so you can reuse them later.</li>
+</ul>
+<p>The analysis APIs have some common parameters that apply to all of them.</p>
+<ul class="simple">
+<li><a class="reference internal" href="authentication.html"><em>Authentication</em></a> - Used to tell us who you are, so that unauthorized people can&#8217;t see your data.</li>
+<li><a class="reference internal" href="filters.html"><em>Filters</em></a> - Used to narrow down your data to the sub-selection based on event properties.</li>
+<li><a class="reference internal" href="timeframe.html"><em>Timeframe</em></a> - Used to narrow down your data to a sub-selection based on timestamp.</li>
+<li><a class="reference internal" href="interval.html"><em>Interval</em></a> - Used to specify the time intervals in a <a class="reference internal" href="series.html"><em>Series</em></a>.</li>
+</ul>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+<h3><a href="../index.html">Table Of Contents</a></h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../getting_started_guide.html">Getting Started Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../event_data_modeling/event_data_intro.html">Data Modeling Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data_collection/data_collection.html">Data Collection APIs</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">Data Analysis APIs</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="metrics.html">Metrics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="series.html">Series</a></li>
+<li class="toctree-l2"><a class="reference internal" href="progressions.html">Progressions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="extractions.html">Data Extractions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="list.html">List of Unique Properties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="authentication.html">Authentication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="filters.html">Filters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="timeframe.html">Timeframe</a></li>
+<li class="toctree-l2"><a class="reference internal" href="interval.html">Interval</a></li>
+<li class="toctree-l2"><a class="reference internal" href="meta_analysis.html">Meta Analysis Tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="saved_queries.html">Saved Queries &amp; Queries</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../api/reference.html">API Technical Reference</a></li>
+</ul>
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="metrics.html" title="Metrics"
+             >next</a></li>
+        <li class="right" >
+          <a href="../clients/ruby/usage_guide.html" title="Ruby Client Usage Guide"
+             >previous</a> |</li>
+        <li><a href="../index.html">Keen Documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+
+    <div class="footer">
+        &copy; Copyright 2012, Keen Labs.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+
+
+
+  </body>
+</html>

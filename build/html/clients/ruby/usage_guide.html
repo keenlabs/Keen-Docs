@@ -1,0 +1,243 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Ruby Client Usage Guide &mdash; Keen Documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '2.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+    <link rel="top" title="Keen Documentation" href="../../index.html" />
+    <link rel="up" title="Data Collection APIs" href="../../data_collection/data_collection.html" />
+    <link rel="next" title="Data Analysis APIs" href="../../data_analysis/data_analysis.html" />
+    <link rel="prev" title="iOS Client Usage Guide" href="../iOS/usage_guide.html" />
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-26950640-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+ 
+
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../data_analysis/data_analysis.html" title="Data Analysis APIs"
+             accesskey="N">next</a></li>
+        <li class="right" >
+          <a href="../iOS/usage_guide.html" title="iOS Client Usage Guide"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../../index.html">Keen Documentation</a> &raquo;</li>
+          <li><a href="../../data_collection/data_collection.html" accesskey="U">Data Collection APIs</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="ruby-client-usage-guide">
+<h1>Ruby Client Usage Guide<a class="headerlink" href="#ruby-client-usage-guide" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<p>The Keen Ruby Client makes it easy for you to send event data from your Ruby app to Keen. It is designed to be simple yet flexible. You decide what events are important to you and use your own vocabulary to describe them. This guide will walk you through the steps to send data to Keen. You might also want to check out the <a class="reference internal" href="../../getting_started_guide.html"><em>Getting Started Guide</em></a> and the <a class="reference internal" href="../../event_data_modeling/event_data_intro.html"><em>Data Modeling Guide</em></a>.</p>
+<p>First things first: Installing the Keen Gem. Run this in the command line:</p>
+<div class="highlight-python"><pre>$ gem install keen</pre>
+</div>
+</div>
+<div class="section" id="instrumenting-your-app">
+<h2>Instrumenting your App<a class="headerlink" href="#instrumenting-your-app" title="Permalink to this headline">¶</a></h2>
+<p>Now let&#8217;s add code to your app so you can begin collecting event data.</p>
+<p>First, load the required libraries by including this at the beginning of your program:</p>
+<div class="highlight-ruby"><div class="highlight"><pre><span class="nb">require</span> <span class="s1">&#39;rubygems&#39;</span>
+<span class="nb">require</span> <span class="s1">&#39;keen&#39;</span>
+</pre></div>
+</div>
+<p>If you haven&#8217;t done so already,  <a class="reference external" href="https://keen.io/add-project">login to Keen.io to generate a project</a>  for your app. Select &#8220;+ Create a new project&#8221; from the projects drop down in the upper left navigation.</p>
+<p>Define these variables in your Ruby program:</p>
+<div class="highlight-ruby"><div class="highlight"><pre><span class="n">project_id</span> <span class="o">=</span> <span class="s1">&#39;asdfasldkfjalsdkfalskdfj&#39;</span>
+<span class="n">api_key</span> <span class="o">=</span> <span class="s1">&#39;asldfjklj325tkl32jaskdlfjaf&#39;</span>
+</pre></div>
+</div>
+<p>Next, setup the Keen client. We named it &#8220;keen&#8221; in this example.</p>
+<div class="highlight-ruby"><div class="highlight"><pre><span class="n">keen</span> <span class="o">=</span> <span class="no">Keen</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">project_id</span><span class="p">,</span> <span class="n">api_key</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Now, the fun part. Use <em>keen.add.event()</em> wherever you want to collect data.</p>
+<p>For each event, specify an <a class="reference internal" href="../../event_data_modeling/event_data_intro.html#event-collections"><em>event collection</em></a> name (e.g. &#8220;arrivals&#8221;), then include as many <a class="reference internal" href="../../event_data_modeling/event_data_intro.html#event-properties"><em>properties</em></a> as you want (eg. landing page, referring source, browser, user properties).</p>
+<p>Here’s a simple example that records someone’s arrival to your site and sends it to the &#8220;Arrivals&#8221; Event Collection:</p>
+<div class="highlight-ruby"><div class="highlight"><pre><span class="n">keen</span><span class="o">.</span><span class="n">add_event</span><span class="p">(</span><span class="s2">&quot;arrivals&quot;</span><span class="p">,</span> <span class="p">{</span>
+    <span class="ss">:landing_page</span> <span class="o">=&gt;</span> <span class="s2">&quot;Bayside High Class of 1989 Chess Club fanpage&quot;</span><span class="p">,</span>
+    <span class="ss">:referring_source</span> <span class="o">=&gt;</span> <span class="s2">&quot;google&quot;</span><span class="p">,</span>
+    <span class="ss">:browser</span> <span class="o">=&gt;</span> <span class="s2">&quot;Firefox 3.0&quot;</span><span class="p">,</span>
+<span class="p">})</span>
+</pre></div>
+</div>
+<p>Below is a more complex example for a purchase in a game. Notice how you can nest properties. &#8220;user&#8221; and &#8220;game&#8221; each have properties of their own. Check out our <a class="reference internal" href="../../event_data_modeling/event_data_intro.html"><em>Data Modeling Guide</em></a> to learn more about event data.</p>
+<div class="highlight-ruby"><div class="highlight"><pre><span class="n">keen</span><span class="o">.</span><span class="n">add_event</span><span class="p">(</span><span class="s2">&quot;purchases&quot;</span><span class="p">,</span> <span class="p">{</span>
+  <span class="ss">:cost</span>       <span class="o">=&gt;</span> <span class="mi">1</span><span class="o">.</span><span class="mi">50</span><span class="p">,</span>
+  <span class="ss">:item</span>       <span class="o">=&gt;</span> <span class="s2">&quot;giant 80s cell phone&quot;</span><span class="p">,</span>
+  <span class="ss">:screen</span>     <span class="o">=&gt;</span> <span class="s2">&quot;vanity goods store&quot;</span><span class="p">,</span>
+  <span class="ss">:user</span>       <span class="o">=&gt;</span>  <span class="p">{</span>
+        <span class="ss">:name</span>   <span class="o">=&gt;</span> <span class="s2">&quot;Mark-Paul Gosselar&quot;</span><span class="p">,</span>
+        <span class="ss">:id</span>     <span class="o">=&gt;</span> <span class="mi">12342</span><span class="p">,</span>
+        <span class="ss">:type</span>   <span class="o">=&gt;</span> <span class="s2">&quot;Premium&quot;</span><span class="p">,</span>
+        <span class="ss">:level</span>  <span class="o">=&gt;</span> <span class="mi">7</span><span class="p">,</span>
+        <span class="ss">:age</span>    <span class="o">=&gt;</span> <span class="mi">38</span><span class="p">,</span>
+        <span class="ss">:gender</span> <span class="o">=&gt;</span> <span class="s2">&quot;male&quot;</span>
+    <span class="p">},</span>
+  <span class="ss">:game</span>  <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="ss">:name</span> <span class="o">=&gt;</span> <span class="s2">&quot;Saved By the Bell THE GAME&quot;</span><span class="p">,</span>
+        <span class="ss">:version</span> <span class="o">=&gt;</span> <span class="mi">2</span><span class="o">.</span><span class="mi">3</span><span class="p">,</span>
+        <span class="ss">:platform</span> <span class="o">=&gt;</span> <span class="s2">&quot;Facebook&quot;</span>
+  <span class="p">},</span>
+  <span class="ss">:sessionlength</span> <span class="o">=&gt;</span> <span class="mi">756</span><span class="p">,</span>
+  <span class="ss">:browser</span> <span class="o">=&gt;</span> <span class="s2">&quot;Firefox 3.0&quot;</span>
+<span class="p">})</span>
+</pre></div>
+</div>
+<p>That&#8217;s it. Whenever keen.add_event runs, an event will be sent to Keen.</p>
+<p>Quick tip: if you want to check the status of the transaction in terminal, use &#8220;puts&#8221; in front of the keen.add_event command like this:</p>
+<div class="highlight-ruby"><div class="highlight"><pre><span class="nb">puts</span> <span class="n">keen</span><span class="o">.</span><span class="n">add_event</span><span class="p">(</span><span class="s2">&quot;arrivals&quot;</span><span class="p">,</span> <span class="p">{</span>
+    <span class="ss">:landing_page</span> <span class="o">=&gt;</span> <span class="s2">&quot;Bayside High Class of 1989 Chess Club fanpage&quot;</span><span class="p">,</span>
+    <span class="ss">:referring_source</span> <span class="o">=&gt;</span> <span class="s2">&quot;google&quot;</span><span class="p">,</span>
+    <span class="ss">:browser</span> <span class="o">=&gt;</span> <span class="s2">&quot;Firefox 3.0&quot;</span><span class="p">,</span>
+<span class="p">})</span>
+</pre></div>
+</div>
+<p>You should get a result like this:</p>
+<div class="highlight-python"><pre>{"created"=&gt;true}</pre>
+</div>
+</div>
+<div class="section" id="analysis">
+<h2>Analysis<a class="headerlink" href="#analysis" title="Permalink to this headline">¶</a></h2>
+<p>Run a quick count of your event collection to see how many events you sent so far:</p>
+<div class="highlight-python"><pre>https://api.keen.io/3.0/projects/&lt;YOUR PROJECT ID&gt;/queries/count?api_key=&lt;YOUR API KEY&gt;&amp;event_collection=&lt;YOUR EVENT COLLECTION&gt;</pre>
+</div>
+<p>Counts are just the beginning. Check out the rest of our analysis queries in <a class="reference internal" href="../../data_analysis/data_analysis.html"><em>our docs</em></a> or using our query builder on <a class="reference external" href="https://keen.io/">Keen.io</a>.</p>
+</div>
+<div class="section" id="example-ruby-program-with-keen">
+<h2>Example Ruby program with Keen<a class="headerlink" href="#example-ruby-program-with-keen" title="Permalink to this headline">¶</a></h2>
+<p>Below is a sample ruby program which is instrumented to send data to Keen.</p>
+<div class="highlight-ruby"><div class="highlight"><pre><span class="c1">#=======================================================================#</span>
+<span class="c1"># This little app asks a user a question and then replies to the user.</span>
+<span class="c1"># These events are captured in a single event which is sent to Keen.</span>
+<span class="c1">#=======================================================================#</span>
+
+<span class="c1"># Load the libraries required for Keen</span>
+<span class="nb">require</span> <span class="s1">&#39;rubygems&#39;</span>
+<span class="nb">require</span> <span class="s1">&#39;keen&#39;</span>
+
+<span class="c1"># Define properties for your unique Keen project. Get these from project settings page.</span>
+<span class="n">project_id</span> <span class="o">=</span> <span class="s1">&#39;4fdf5ae25g546f1b6a200003&#39;</span>
+<span class="n">api_key</span> <span class="o">=</span> <span class="s1">&#39;97s79e30cb894628386f189ae539d12f&#39;</span>
+
+<span class="c1"># Define the Keen client.</span>
+<span class="n">mykeenclient</span> <span class="o">=</span> <span class="no">Keen</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">project_id</span><span class="p">,</span> <span class="n">api_key</span><span class="p">)</span>
+
+<span class="c1"># The first question the program asks (puts to the command line)</span>
+<span class="n">creepy_greeting</span> <span class="o">=</span> <span class="s2">&quot;Hello gorgeous. What is your name?&quot;</span>
+<span class="nb">puts</span> <span class="n">creepy_greeting</span>
+
+<span class="c1"># This line captures the response from the user. STDIN.gets collects their response from the command line interface.</span>
+    <span class="c1"># Chomp trims off any extra spaces or carriage returns.</span>
+<span class="n">user_name</span> <span class="o">=</span> <span class="no">STDIN</span><span class="o">.</span><span class="n">gets</span><span class="o">.</span><span class="n">chomp</span>
+
+<span class="c1"># This is the program&#39;s response to the user</span>
+<span class="n">creepy_response</span> <span class="o">=</span> <span class="s2">&quot;Hi &quot;</span><span class="o">+</span><span class="n">user_name</span><span class="o">+</span><span class="s2">&quot;. You are my friend now. I&#39;ll be watching you. &lt;3 &lt;3 &lt;3&quot;</span>
+<span class="nb">puts</span> <span class="n">creepy_response</span>
+
+<span class="c1"># Let&#39;s see how much the user likes the program after this interaction.</span>
+<span class="nb">puts</span> <span class="s1">&#39;How much do you like this program on a scale of 1-10? 10 means you really, really like it.&#39;</span>
+<span class="n">rating</span> <span class="o">=</span> <span class="no">STDIN</span><span class="o">.</span><span class="n">gets</span><span class="o">.</span><span class="n">chomp</span>
+
+<span class="c1"># Let’s store this information as an event. The Event Collection Name is &quot;creeperconvos&quot;.</span>
+    <span class="c1"># The event has four properties.</span>
+
+<span class="n">mykeenclient</span><span class="o">.</span><span class="n">add_event</span><span class="p">(</span><span class="s2">&quot;creeperconvos&quot;</span><span class="p">,</span> <span class="p">{</span>
+               <span class="ss">:program_greeting</span> <span class="o">=&gt;</span> <span class="n">creepy_greeting</span><span class="p">,</span>
+               <span class="ss">:user_response</span> <span class="o">=&gt;</span> <span class="n">user_name</span><span class="p">,</span>
+               <span class="ss">:program_response</span> <span class="o">=&gt;</span> <span class="n">creepy_response</span><span class="p">,</span>
+               <span class="ss">:user_rating</span> <span class="o">=&gt;</span> <span class="n">rating</span><span class="p">,</span>
+             <span class="p">})</span>
+</pre></div>
+</div>
+<p>We&#8217;d love your feedback on this guide. Drop us a note at <a class="reference external" href="mailto:team&#37;&#52;&#48;keen&#46;io">team<span>&#64;</span>keen<span>&#46;</span>io</a>!</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+<h3><a href="../../index.html">Table Of Contents</a></h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../getting_started_guide.html">Getting Started Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../event_data_modeling/event_data_intro.html">Data Modeling Guide</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../data_collection/data_collection.html">Data Collection APIs</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../iOS/usage_guide.html">iOS Client Usage Guide</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="">Ruby Client Usage Guide</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../data_analysis/data_analysis.html">Data Analysis APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/reference.html">API Technical Reference</a></li>
+</ul>
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../data_analysis/data_analysis.html" title="Data Analysis APIs"
+             >next</a></li>
+        <li class="right" >
+          <a href="../iOS/usage_guide.html" title="iOS Client Usage Guide"
+             >previous</a> |</li>
+        <li><a href="../../index.html">Keen Documentation</a> &raquo;</li>
+          <li><a href="../../data_collection/data_collection.html" >Data Collection APIs</a> &raquo;</li> 
+      </ul>
+    </div>
+
+    <div class="footer">
+        &copy; Copyright 2012, Keen Labs.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+
+
+
+  </body>
+</html>

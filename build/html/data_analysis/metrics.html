@@ -1,0 +1,349 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Metrics &mdash; Keen Documentation</title>
+    
+    <link rel="stylesheet" href="../_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '2.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="top" title="Keen Documentation" href="../index.html" />
+    <link rel="up" title="Data Analysis APIs" href="data_analysis.html" />
+    <link rel="next" title="Series" href="series.html" />
+    <link rel="prev" title="Data Analysis APIs" href="data_analysis.html" />
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-26950640-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+ 
+
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="series.html" title="Series"
+             accesskey="N">next</a></li>
+        <li class="right" >
+          <a href="data_analysis.html" title="Data Analysis APIs"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">Keen Documentation</a> &raquo;</li>
+          <li><a href="data_analysis.html" accesskey="U">Data Analysis APIs</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="metrics">
+<h1>Metrics<a class="headerlink" href="#metrics" title="Permalink to this headline">¶</a></h1>
+<p>We use the word Metrics to describe analysis queries which return a single numeric value.  These simple yet powerful queries form the backbone of your analysis.  Metrics answer questions like &#8220;How many females in California used this feature yesterday?&#8221;</p>
+<p>The following Metrics are currently supported in the Data Analysis API:</p>
+<ul class="simple">
+<li><a class="reference internal" href="#count-metric"><em>Count</em></a></li>
+<li><a class="reference internal" href="#count-unique-metric"><em>Count Unique</em></a></li>
+<li><a class="reference internal" href="#minimum-metric"><em>Minimum</em></a></li>
+<li><a class="reference internal" href="#maximum-metric"><em>Maximum</em></a></li>
+<li><a class="reference internal" href="#sum-metric"><em>Sum</em></a></li>
+<li><a class="reference internal" href="#average-metric"><em>Average</em></a></li>
+</ul>
+<div class="toctree-wrapper compound">
+<ul class="simple">
+</ul>
+</div>
+<p>Metrics are retrieved using HTTP GET requests to a URL for this format:</p>
+<div class="highlight-none"><div class="highlight"><pre>https://api.keen.io/&lt;api_version&gt;/projects/&lt;project_id&gt;/queries/&lt;metric_name&gt;
+</pre></div>
+</div>
+<p>The variables in the URL are defined as follows:</p>
+<ul class="simple">
+<li><strong>api_version</strong> - the version of the API you want to use.</li>
+<li><strong>project_id</strong> - the ID of the project that contains the data you are analyzing.</li>
+<li><strong>metric_name</strong> - the type of Metric you wish to use in this analysis. Example: count_unique</li>
+</ul>
+<p>Query string parameters specific to the analysis type will be also be present &#8211; such as filters or a specific timeframe.  See the documentation for the specific Metric for more information.</p>
+<div class="section" id="count">
+<span id="count-metric"></span><h2>Count<a class="headerlink" href="#count" title="Permalink to this headline">¶</a></h2>
+<p>Technical Reference: <a class="reference internal" href="../api/reference.html#count-resource"><em>Count Resource</em></a></p>
+<p>Keen’s Count tool counts the number of events recorded that meet criteria you provide.</p>
+<p>Some examples of questions you could answer with Counts:</p>
+<ul class="simple">
+<li>How many purchases have been made by users from Iowa in the last two weeks?</li>
+<li>How many times has a landing page been viewed?</li>
+</ul>
+<p>Performing a Count is done via an HTTP GET request that follows this pattern:</p>
+<div class="highlight-none"><div class="highlight"><pre>https://api.keen.io/3.0/projects/&lt;project_id&gt;/queries/count?api_key=&lt;api_key&gt;&amp;event_collection=&lt;event_collection&gt;
+</pre></div>
+</div>
+<p>Counts take the following parameters:</p>
+<ul class="simple">
+<li><strong>api_key</strong> (optional) - The API Key for the project containing the data you are analyzing. See <a class="reference internal" href="authentication.html"><em>Authentication</em></a> for more information.</li>
+<li><strong>event_collection</strong> (required) - The name of the event collection you are analyzing.</li>
+<li><strong>filters</strong> (optional) - <a class="reference internal" href="filters.html"><em>Filters</em></a> are used to narrow down the events used in an analysis request based on <a class="reference external" href="event_properties">event property</a> values.</li>
+<li><strong>timeframe</strong> (optional) - A <a class="reference internal" href="timeframe.html"><em>Timeframe</em></a> specifies the events to use for analysis based on a window of time. If no timeframe is specified, all events will be counted.</li>
+</ul>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Adding <a class="reference internal" href="timeframe.html"><em>Timeframe</em></a> and <a class="reference internal" href="interval.html"><em>Interval</em></a> query string parameters will turn the Count request into a Series.  See the documentation on <a class="reference internal" href="series.html"><em>Series</em></a> for more information.</p>
+</div>
+<p>The response from a Count is a JSON object that looks like this:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+  <span class="s2">&quot;result&quot;</span> <span class="o">:</span> <span class="mi">7</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="count-unique">
+<span id="count-unique-metric"></span><h2>Count Unique<a class="headerlink" href="#count-unique" title="Permalink to this headline">¶</a></h2>
+<p>Technical Reference: <a class="reference internal" href="../api/reference.html#count-unique-resource"><em>Count Unique Resource</em></a></p>
+<p>Keen’s Count Unique tool counts the number of events that have a unique value for a given property.  A common use for this is to count the number of unique users that performed an event.</p>
+<p>Some examples of questions you can answer with Count Unique:</p>
+<ul class="simple">
+<li>How many unique users have logged in to my application?</li>
+<li>How many unique people have viewed a landing page last week?</li>
+<li>How many different companies are using our app?</li>
+<li>In how many different countries is our app being used?</li>
+</ul>
+<p>Performing a Count Unique is done via an HTTP GET request that follows this pattern:</p>
+<div class="highlight-none"><div class="highlight"><pre>https://api.keen.io/3.0/projects/&lt;project_id&gt;/queries/count_unique?api_key=&lt;api_key&gt;&amp;event_collection=&lt;event_collection&gt;&amp;target_property=&lt;property_name&gt;
+</pre></div>
+</div>
+<p>Count Unique takes the following query string parameters:</p>
+<ul class="simple">
+<li><strong>api_key</strong> (optional) - The API Key for the project containing the data you are analyzing. See <a class="reference internal" href="authentication.html"><em>Authentication</em></a> for more information.</li>
+<li><strong>event_collection</strong> (required) - The name of the event collection you are analyzing.</li>
+<li><strong>target_property</strong> (required) - The property of which you want to count the unique values.</li>
+<li><strong>filters</strong> (optional) - <a class="reference internal" href="filters.html"><em>Filters</em></a> are used to narrow down the events used in an analysis request based on <a class="reference external" href="event_properties">event property</a> values.</li>
+<li><strong>timeframe</strong> (optional) - Similar to filters, a <a class="reference internal" href="timeframe.html"><em>Timeframe</em></a> is used to narrow down the events used in an analysis request based on the time that the event occurred.</li>
+</ul>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Adding <strong>timeframe</strong> and <strong>interval</strong> query string parameters will turn the Count Unique request into a Series.  See the documentation on <a class="reference internal" href="series.html"><em>Series</em></a> for more information.</p>
+</div>
+<p>Here is an example of a request to return the number of unique users that logged in today:</p>
+<div class="highlight-none"><div class="highlight"><pre>https://api.keen.io/3.0/projects/your_project_id/queries/count_unique?event_collection=logged_in&amp;api_key=your_api_key&amp;target_property=user.email&amp;timeframe=today
+</pre></div>
+</div>
+<p>In this example, we are analyzing our &#8220;logged_in&#8221; event collection and telling it to count the target_property values in the <strong>user.email</strong> <a class="reference internal" href="../event_data_modeling/event_data_intro.html#property-hierarchy"><em>hierarchical property</em></a>.  That property contains a way to identify a unique user &#8211; the user’s email.</p>
+<p>The response from a Count Unique request is a JSON object that looks like the following:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+  <span class="s2">&quot;result&quot;</span> <span class="o">:</span> <span class="mi">7</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="minimum">
+<span id="minimum-metric"></span><h2>Minimum<a class="headerlink" href="#minimum" title="Permalink to this headline">¶</a></h2>
+<p>Technical Reference: <a class="reference internal" href="../api/reference.html#minimum-resource"><em>Minimum Resource</em></a></p>
+<p>Keen&#8217;s Minimum tool finds the minimum numeric value for a given property. All non-numeric values are ignored as part of the analysis (e.g. the minimum of 6, 28, and unicorn is 6). If none of the property values are numeric, the API call returns an error.</p>
+<p>Finding the minimum value is done via an HTTP GET request that follows this pattern:</p>
+<div class="highlight-none"><div class="highlight"><pre>https://api.keen.io/3.0/projects/&lt;project_id&gt;/queries/minimum?api_key=&lt;api_key&gt;&amp;event_collection=&lt;event_collection&gt;&amp;target_property=&lt;property_name&gt;
+</pre></div>
+</div>
+<p>Minimum takes the following query string parameters:</p>
+<ul class="simple">
+<li><strong>api_key</strong> (optional) - The API Key for the project containing the data you are analyzing. See <a class="reference internal" href="authentication.html"><em>Authentication</em></a> for more information.</li>
+<li><strong>event_collection</strong> (required) - The name of the event collection you are analyzing.</li>
+<li><strong>target_property</strong> (required) - The name of the property you are analyzing.</li>
+<li><strong>filters</strong> (optional) - <a class="reference internal" href="filters.html"><em>Filters</em></a> are used to narrow down the events used in an analysis request based on <a class="reference external" href="event_properties">event property</a> values.</li>
+<li><strong>timeframe</strong> (optional) - Similar to filters, a <a class="reference internal" href="timeframe.html"><em>Timeframe</em></a> is used to narrow down the events used in an analysis request based on the time that the event occurred.</li>
+</ul>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Adding <strong>timeframe</strong> and <strong>interval</strong> query string parameters will turn the request into a Series.  See the documentation on <a class="reference internal" href="series.html"><em>Series</em></a> for more information.</p>
+</div>
+<p>Here is an example of a request to return the lowest amount a user paid you today:</p>
+<div class="highlight-none"><div class="highlight"><pre>https://api.keen.io/3.0/projects/your_project_id/queries/minimum?event_collection=purchases&amp;api_key=your_api_key&amp;target_property=purchase.amount&amp;timeframe=today
+</pre></div>
+</div>
+<p>In this example, we are analyzing our &#8220;purchases&#8221; event collection and telling Keen to find the smallest value in the <strong>purchase.amount</strong> <a class="reference internal" href="../event_data_modeling/event_data_intro.html#property-hierarchy"><em>hierarchical property</em></a>. That property has the amount of every purchase made.</p>
+<p>The response from a Minimum request is a JSON object that looks like the following:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+  <span class="s2">&quot;result&quot;</span><span class="o">:</span> <span class="mf">1.34</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="maximum">
+<span id="maximum-metric"></span><h2>Maximum<a class="headerlink" href="#maximum" title="Permalink to this headline">¶</a></h2>
+<p>Technical Reference: <a class="reference internal" href="../api/reference.html#maximum-resource"><em>Maximum Resource</em></a></p>
+<p>Keen&#8217;s Maximum tool finds the maximum numeric value for a given property. All non-numeric values are ignored as part of the analysis (e.g. the maximum of 6, 28, and unicorn is 28). If none of the property values are numeric, the API call  returns an error.</p>
+<p>Finding the maximum value is done via an HTTP GET request that follows this pattern:</p>
+<div class="highlight-none"><div class="highlight"><pre>https://api.keen.io/3.0/projects/&lt;project_id&gt;/queries/maximum?api_key=&lt;api_key&gt;&amp;event_collection=&lt;event_collection&gt;&amp;target_property=&lt;property_name&gt;
+</pre></div>
+</div>
+<p>Maximum takes the following query string parameters:</p>
+<ul class="simple">
+<li><strong>api_key</strong> (optional) - The API Key for the project containing the data you are analyzing. See <a class="reference internal" href="authentication.html"><em>Authentication</em></a> for more information.</li>
+<li><strong>event_collection</strong> (required) - The name of the event collection you are analyzing.</li>
+<li><strong>target_property</strong> (required) - The name of the property you are analyzing.</li>
+<li><strong>filters</strong> (optional) - <a class="reference internal" href="filters.html"><em>Filters</em></a> are used to narrow down the events used in an analysis request based on <a class="reference external" href="event_properties">event property</a> values.</li>
+<li><strong>timeframe</strong> (optional) - Similar to filters, a <a class="reference internal" href="timeframe.html"><em>Timeframe</em></a> is used to narrow down the events used in an analysis request based on the time that the event occurred.</li>
+</ul>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Adding <strong>timeframe</strong> and <strong>interval</strong> query string parameters will turn the request into a Series.  See the documentation on <a class="reference internal" href="series.html"><em>Series</em></a> for more information.</p>
+</div>
+<p>Here is an example of a request to return the highest amount a user paid you today:</p>
+<div class="highlight-none"><div class="highlight"><pre>https://api.keen.io/3.0/projects/your_project_id/queries/maximum?event_collection=purchases&amp;api_key=your_api_key&amp;target_property=purchase.amount&amp;timeframe=today
+</pre></div>
+</div>
+<p>In this example, we are analyzing our &#8220;purchases&#8221; event collection and telling Keen to find the largest value in the <strong>purchase.amount</strong> <a class="reference internal" href="../event_data_modeling/event_data_intro.html#property-hierarchy"><em>hierarchical property</em></a>. That property has the amount of every purchase made.</p>
+<p>The response from a Maximum request is a JSON object that looks like the following:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+  <span class="s2">&quot;result&quot;</span><span class="o">:</span> <span class="mf">503.98</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="average">
+<span id="average-metric"></span><h2>Average<a class="headerlink" href="#average" title="Permalink to this headline">¶</a></h2>
+<p>Technical Reference: <a class="reference internal" href="../api/reference.html#average-resource"><em>Average Resource</em></a></p>
+<p>Keen&#8217;s Average tool finds the average value for a given property. All non-numeric values are ignored as part of the analysis (e.g. the average of 6, 28, and unicorn is 17). If none of the property values are numeric, the API call returns an error.</p>
+<p>Finding the average value is done via an HTTP GET request that follows this pattern:</p>
+<div class="highlight-none"><div class="highlight"><pre>https://api.keen.io/3.0/projects/&lt;project_id&gt;/queries/average?api_key=&lt;api_key&gt;&amp;event_collection=&lt;event_collection&gt;&amp;target_property=&lt;property_name&gt;
+</pre></div>
+</div>
+<p>Average takes the following query string parameters:</p>
+<ul class="simple">
+<li><strong>api_key</strong> (optional) - The API Key for the project containing the data you are analyzing. See <a class="reference internal" href="authentication.html"><em>Authentication</em></a> for more information.</li>
+<li><strong>event_collection</strong> (required) - The name of the event collection you are analyzing.</li>
+<li><strong>target_property</strong> (required) - The name of the property you are analyzing.</li>
+<li><strong>filters</strong> (optional) - <a class="reference internal" href="filters.html"><em>Filters</em></a> are used to narrow down the events used in an analysis request based on <a class="reference external" href="event_properties">event property</a> values.</li>
+<li><strong>timeframe</strong> (optional) - Similar to filters, a <a class="reference internal" href="timeframe.html"><em>Timeframe</em></a> is used to narrow down the events used in an analysis request based on the time that the event occurred.</li>
+</ul>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Adding <strong>timeframe</strong> and <strong>interval</strong> query string parameters will turn the request into a Series.  See the documentation on <a class="reference internal" href="series.html"><em>Series</em></a> for more information.</p>
+</div>
+<p>Here is an example of a request to return the average amount a user paid you today:</p>
+<div class="highlight-none"><div class="highlight"><pre>https://api.keen.io/3.0/projects/your_project_id/queries/average?event_collection=purchases&amp;api_key=your_api_key&amp;target_property=purchase.amount&amp;timeframe=today
+</pre></div>
+</div>
+<p>In this example, we are analyzing our &#8220;purchases&#8221; event collection and telling Keen to find the average value across all the <strong>.purchase.amount</strong> <a class="reference internal" href="../event_data_modeling/event_data_intro.html#property-hierarchy"><em>hierarchical property</em></a>. That property has the amount of every purchase made.</p>
+<p>The response from an Average request is a JSON object that looks like the following:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+  <span class="s2">&quot;result&quot;</span><span class="o">:</span> <span class="mf">93.31</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="sum">
+<span id="sum-metric"></span><h2>Sum<a class="headerlink" href="#sum" title="Permalink to this headline">¶</a></h2>
+<p>Technical Reference: <a class="reference internal" href="../api/reference.html#sum-resource"><em>Sum Resource</em></a></p>
+<p>Keen&#8217;s Sum tool finds the sum of all numeric values for a given property. All non-numeric values are ignored as part of the analysis (e.g. the sum of 6, 28, and unicorn is 34). If none of the property values are numeric, the API call  returns an error.</p>
+<p>Finding the sum value is done via an HTTP GET request that follows this pattern:</p>
+<div class="highlight-none"><div class="highlight"><pre>https://api.keen.io/3.0/projects/&lt;project_id&gt;/queries/sum?api_key=&lt;api_key&gt;&amp;event_collection=&lt;event_collection&gt;&amp;target_property=&lt;property_name&gt;
+</pre></div>
+</div>
+<p>Sum takes the following query string parameters:</p>
+<ul class="simple">
+<li><strong>api_key</strong> (optional) - The API Key for the project containing the data you are analyzing. See <a class="reference internal" href="authentication.html"><em>Authentication</em></a> for more information.</li>
+<li><strong>event_collection</strong> (required) - The name of the event collection you are analyzing.</li>
+<li><strong>target_property</strong> (required) - The name of the property you are analyzing.</li>
+<li><strong>filters</strong> (optional) - <a class="reference internal" href="filters.html"><em>Filters</em></a> are used to narrow down the events used in an analysis request based on <a class="reference external" href="event_properties">event property</a> values.</li>
+<li><strong>timeframe</strong> (optional) - Similar to filters, a <a class="reference internal" href="timeframe.html"><em>Timeframe</em></a> is used to narrow down the events used in an analysis request based on the time that the event occurred.</li>
+</ul>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Adding <strong>timeframe</strong> and <strong>interval</strong> query string parameters will turn the request into a Series.  See the documentation on <a class="reference internal" href="series.html"><em>Series</em></a> for more information.</p>
+</div>
+<p>Here is an example of a request to return the amount all your users paid you today:</p>
+<div class="highlight-none"><div class="highlight"><pre>https://api.keen.io/3.0/projects/your_project_id/queries/sum?event_collection=purchases&amp;api_key=your_api_key&amp;target_property=purchase.amount&amp;timeframe=today
+</pre></div>
+</div>
+<p>In this example, we are analyzing our &#8220;purchases&#8221; event collection and telling Keen to find the sum of all values across the <strong>purchase.amount</strong> <a class="reference internal" href="../event_data_modeling/event_data_intro.html#property-hierarchy"><em>hierarchical property</em></a>. That property has the amount of every purchase made.</p>
+<p>The response from a Sum request is a JSON object that looks like the following:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+  <span class="s2">&quot;result&quot;</span><span class="o">:</span> <span class="mf">82395.76</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+<h3><a href="../index.html">Table Of Contents</a></h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../getting_started_guide.html">Getting Started Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../event_data_modeling/event_data_intro.html">Data Modeling Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data_collection/data_collection.html">Data Collection APIs</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="data_analysis.html">Data Analysis APIs</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="">Metrics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="series.html">Series</a></li>
+<li class="toctree-l2"><a class="reference internal" href="progressions.html">Progressions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="extractions.html">Data Extractions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="list.html">List of Unique Properties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="authentication.html">Authentication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="filters.html">Filters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="timeframe.html">Timeframe</a></li>
+<li class="toctree-l2"><a class="reference internal" href="interval.html">Interval</a></li>
+<li class="toctree-l2"><a class="reference internal" href="meta_analysis.html">Meta Analysis Tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="saved_queries.html">Saved Queries &amp; Queries</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../api/reference.html">API Technical Reference</a></li>
+</ul>
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="series.html" title="Series"
+             >next</a></li>
+        <li class="right" >
+          <a href="data_analysis.html" title="Data Analysis APIs"
+             >previous</a> |</li>
+        <li><a href="../index.html">Keen Documentation</a> &raquo;</li>
+          <li><a href="data_analysis.html" >Data Analysis APIs</a> &raquo;</li> 
+      </ul>
+    </div>
+
+    <div class="footer">
+        &copy; Copyright 2012, Keen Labs.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+
+
+
+  </body>
+</html>
