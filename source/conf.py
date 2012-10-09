@@ -2,7 +2,13 @@
 #
 # Keen documentation build configuration file, created by
 # sphinx-quickstart on Tue Jul 10 14:25:13 2012.
-#
+
+ 
+# TODO: Figure out how to hook into the html builder & change "[" and "]" characters
+# to some sort of code, which Keen-Web's controller will translate back into
+# literals.
+
+
 # This file is execfile()d with the current directory set to its containing dir.
 #
 # Note that not all possible configuration values are present in this
