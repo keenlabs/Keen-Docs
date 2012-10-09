@@ -1,24 +1,60 @@
-{% extends "basic/layout.html" %}
+[% extends "public_layout.html" %]
 
-{%- block extrahead %}
-<script type="text/javascript">
+{%- set render_sidebar = (not embedded) and (not theme_nosidebar|tobool) and (sidebars != []) %}
+{%- set url_root = pathto('', 1) %}
+{%- if url_root == '#' %}{% set url_root = '' %}{% endif %}
 
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-26950640-1']);
-  _gaq.push(['_trackPageview']);
+{%- macro sidebar() %}
+    {%- if render_sidebar %}
+        <div class="sphinxsidebar">
+            <div class="sphinxsidebarwrapper">
+                {%- if sidebars != None %}
+                    {#- new style sidebar: explicitly include/exclude templates #}
+                    {%- for sidebartemplate in sidebars %}
+                        {%- include sidebartemplate %}
+                    {%- endfor %}
+                {%- else %}
+                    {#- old style sidebars: using blocks -- should be deprecated #}
+                    {%- block sidebartoc %}
+                        {%- include "localtoc.html" %}
+                    {%- endblock %}
+                    {%- block sidebarrel %}
+                        {%- include "relations.html" %}
+                    {%- endblock %}
+                    {%- block sidebarsourcelink %}
+                        {%- include "sourcelink.html" %}
+                    {%- endblock %}
+                    {%- if customsidebar %}
+                        {%- include customsidebar %}
+                    {%- endif %}
+                {%- endif %}
+            </div>
+        </div>
+    {%- endif %}
+{%- endmacro -%}
 
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
+[% block body %]
 
-</script>
-{{ super() }}
-{% endblock %}
+{%- block content %}
+    {%- block sidebar1 %} {# possible location for sidebar #} {% endblock %}
+    <div class="container">
+        <div class="content row">
+            {%- block document %}
+                <div class="span3">
+                    {{ sidebar() }}
+                </div>
+                <div class="span9">
+                    {% block body %} {% endblock %}
+                    {% if theme_disqus_shortname %}
+                        <div id="disqus_thread"></div>
+                        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+                    {% endif %}
+                </div>
+            {%- endblock %}
+            {%- block sidebar2 %}
+            {% endblock %}
+        </div>
+    </div>
+{%- endblock %}
 
-{% block footer %}
-{{ super() }}
-
-
-{% endblock %}
+[% endblock %]
