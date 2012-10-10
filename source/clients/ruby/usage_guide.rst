@@ -7,6 +7,8 @@ Introduction
 
 The Keen Ruby Client makes it easy for you to send event data from your Ruby app to Keen. It is designed to be simple yet flexible. You decide what events are important to you and use your own vocabulary to describe them. This guide will walk you through the steps to send data to Keen. You might also want to check out the :doc:`/getting_started_guide` and the :doc:`/event_data_modeling/event_data_intro`.
 
+A link to our *github repo*: https://github.com/keenlabs/KeenClient-Ruby
+
 Got questions or feedback? Come hang out with us in the Keen chat: `users.keen.io <http://users.keen.io/>`_. 
 
 First things first: Installing the Keen Gem. Run this in the command line:
