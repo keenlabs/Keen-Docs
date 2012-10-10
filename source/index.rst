@@ -7,7 +7,7 @@
 Welcome
 =======
 
-Keen.io helps developers understand how people are using their applications. We provide cloud infrastructure and REST APIs for :doc:`Data Collection <data_collection/data_collection>` and :doc:`Data Analysis <data_analysis/data_analysis>`. Use Keen.io to record user interactions, then use our APIs to analyze your data. One more thing - we also support full data extraction so you can get your data into Excel, Hadoop, or any other tools you might need. 
+Keen.io helps developers understand how people use the applications they create. We provide cloud infrastructure and REST APIs for :doc:`Data Collection <data_collection/data_collection>` and :doc:`Data Analysis <data_analysis/data_analysis>`. Use Keen.io to record user interactions, then use our APIs to analyze your data. One more thing - we also support full data extraction so you can get your data into Excel, Hadoop, or any other tools you might need. 
 
 Choose one of these options to get started:
 
