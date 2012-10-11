@@ -7,12 +7,15 @@
 Welcome
 =======
 
-Welcome to Keen's documentation. Keen provides public REST APIs to perform both :doc:`Data Collection <data_collection/data_collection>` and :doc:`Data Analysis <data_analysis/data_analysis>`. 
+Keen.io helps developers understand how people use the applications they create. We provide cloud infrastructure and REST APIs for :doc:`Data Collection <data_collection/data_collection>` and :doc:`Data Analysis <data_analysis/data_analysis>`. Use Keen.io to record user interactions, then use our APIs to analyze your data. One more thing - we also support full data extraction so you can get your data into Excel, Hadoop, or any other tools you might need. 
 
-We're trying our best to communicate how stuff works so we'd love to get your advice on what could make this documentation simpler or more powerful. Please share your thoughts with team@keen.io!
+Choose one of these options to get started:
 
-If it's your first time here, checkout our :doc:`getting_started_guide`. It'll walk you through a hands-on example from start to finish.
+	* Our :doc:`getting_started_guide` will walk you through a hands-on cURL example. 
+	* iOS devs: jump straight into :doc:`integrating your iOS app <clients/iOS/usage_guide>`. Download `our SDK <http://keen.io/static/code/KeenClient.zip>`_.
+	* Ruby folks: Gem install Keen. Reference :doc:`our Ruby Client Usage Guide <clients/ruby/usage_guide>`.
 
+Need help? Want to tell us what could make Keen.io better? Chat with us at `users.keen.io <http://users.keen.io/>`_. 
 
 -Keen Team
 

@@ -4,7 +4,7 @@ Getting Started Guide
 ==================
 What Are We Doing?
 ==================
-This we believe: Getting started with Keen APIs should be easy. For the technical wizards among you, this guide will take you 8 minutes and you can dig into the advanced documentation. For the sorcerer's apprentices, this shouldn't take much more than 20 minutes. If it does, we've failed. `Let us know <team@keen.io?Subject=Getting Started Feedback>`_. 
+This we believe: Getting started with Keen APIs should be easy. For the technical wizards among you, this guide will take you 8 minutes and you can dig into the advanced documentation. For the sorcerer's apprentices, this shouldn't take much more than 20 minutes. If it does, we've failed. `Let us know via email <team@keen.io?Subject=Getting Started Feedback>`_ or `come chat with us at users.keen.io <http://users.keen.io/>`_. 
 
 Once you're through this guide, we hope you'll be square on the following: 
 
@@ -18,7 +18,7 @@ This guide assumes that you've been granted developer preview access. Keen is st
 Project Setup
 ==============
 
-If you haven't done so already, login to `Keen.io <http://keen.io/login>`_ to generate a :ref:`project <projects>` for your app. Select "+ Create a new project" from the projects drop down in the upper left navigation. Since we're just practicing, you might want to give it a sufficiently silly name like "Getting Keeny" or "Windows ME". Make note of the Project ID and the API Key. You'll need those soon.  
+If you haven't done so already, login to Keen.io and `create a new project <https://keen.io/add-project>`_.  Since we're just practicing, you might want to give it a sufficiently silly name like "Getting Keeny" or "Windows ME". Make note of the Project ID and the API Key. You'll need those soon.  
 
 What is a project? - A project amounts to a data silo. The information in one project isn't available to other projects. Practically speaking, in the mobile world, a project is an app. 
 
