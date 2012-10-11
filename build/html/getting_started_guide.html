@@ -1,11 +1,9 @@
 
 [% extends "public_layout.html" %][% block body %]  
-    <div class="container">
-        <div class="content row">
-                <div class="span3">
-                    
+    <div id="main">
+            <div class="sideBar">
+                
         <div class="sphinxsidebar">
-            <div class="sphinxsidebarwrapper">
 <h3><a href="index.html">Table Of Contents</a></h3>
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="">Getting Started Guide</a><ul>
@@ -22,10 +20,10 @@
 <li class="toctree-l1"><a class="reference internal" href="api/reference.html">API Technical Reference</a></li>
 </ul>
 
-            </div>
         </div>
-                </div>
-                <div class="span9">
+            </div>
+            <div id="content">
+                <div class="contentContainer">                        
                     
   <div class="section" id="getting-started-guide">
 <h1>Getting Started Guide<a class="headerlink" href="#getting-started-guide" title="Permalink to this headline">¶</a></h1>
@@ -202,8 +200,8 @@ Here&#8217;s an example with a <a class="reference internal" href="data_analysis
                         <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
                     
                 </div>
-            
-        </div>
+            </div>
+        
     </div>
 
 [% endblock %]
