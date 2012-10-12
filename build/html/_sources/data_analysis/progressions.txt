@@ -58,9 +58,7 @@ In this example, we want to find the drop off rate between users viewing our lan
        }
     ]
 
-Here is what that JSON string looks like after URL encoding it:
-
-.. code-block:: none
+Here is what that JSON string looks like after URL encoding it::
 
 %5b%7b%22event_collection%22%3a%22view_landing_page%22%2c%22actor_property%22%3a%22user%3aid%22%7d%2c%7b%22event_collection%22%3a%22sign_up%22%2c%22actor_property%22%3a%22user%3aid%22%7d%5d
 
