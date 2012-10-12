@@ -1,4 +1,18 @@
-[% extends "public_layout.html" %]
+[% extends "layout_fluid.html" %]
+
+<!-- this is for the page title -->
+[% block title %]Documentation[% endblock %]
+
+<!-- this should reflect the page you're on. -->
+<!-- it adds an ID to the body so elements can  -->
+<!-- be targeted on this specific page. -->
+[% block body_id %]docBody[% endblock body_id %]
+
+[% block head_scripts %]
+    [[ super() ]]
+    <!-- add your additional head scripts here -->    
+[% endblock head_scripts %]
+
 
 {%- set render_sidebar = (not embedded) and (not theme_nosidebar|tobool) and (sidebars != []) %}
 {%- set url_root = pathto('', 1) %}
@@ -31,28 +45,22 @@
     {%- endif %}
 {%- endmacro -%}
 
-[% block body %]
-
 {%- block content %}
     {%- block sidebar1 %} {# possible location for sidebar #} {% endblock %}
-    <div id="main">
         {%- block document %}
-            <div class="sideBar">
+            [% block sidebar %]
                 {{ sidebar() }}
+            [% endblock sidebar %]
+            [% block content %]
+            <div class="container-fluid">                        
+                {% block body %} {% endblock %}
+                {% if theme_disqus_shortname %}
+                    <div id="disqus_thread"></div>
+                    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+                {% endif %}
             </div>
-            <div id="content">
-                <div class="contentContainer">                        
-                    {% block body %} {% endblock %}
-                    {% if theme_disqus_shortname %}
-                        <div id="disqus_thread"></div>
-                        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-                    {% endif %}
-                </div>
-            </div>
+            [% endblock content %]
         {%- endblock %}
         {%- block sidebar2 %}
         {% endblock %}
-    </div>
 {%- endblock %}
-
-[% endblock %]

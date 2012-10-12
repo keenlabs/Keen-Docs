@@ -1,7 +1,19 @@
 
-[% extends "public_layout.html" %][% block body %]  
-    <div id="main">
-            <div class="sideBar">
+[% extends "layout_fluid.html" %]
+
+<!-- this is for the page title -->
+[% block title %]Documentation[% endblock %]
+
+<!-- this should reflect the page you're on. -->
+<!-- it adds an ID to the body so elements can  -->
+<!-- be targeted on this specific page. -->
+[% block body_id %]docBody[% endblock body_id %]
+
+[% block head_scripts %]
+    [[ super() ]]
+    <!-- add your additional head scripts here -->    
+[% endblock head_scripts %]  
+            [% block sidebar %]
                 
         <div class="sphinxsidebar">
 <h3><a href="../index.html">Table Of Contents</a></h3>
@@ -27,10 +39,10 @@
 </ul>
 
         </div>
-            </div>
-            <div id="content">
-                <div class="contentContainer">                        
-                    
+            [% endblock sidebar %]
+            [% block content %]
+            <div class="container-fluid">                        
+                
   <div class="section" id="progressions">
 <h1>Progressions<a class="headerlink" href="#progressions" title="Permalink to this headline">¶</a></h1>
 <p>A Progression is a flow of events that a user performs on their way to reaching a goal.  This flow could be a checkout process, registration, or lead conversion.  When analyzing a Progression, you are concerned with the number of users that successfully make it to the next step as well as the number of users that drop off.  This will show you where your flow loses the most users so you know where to focus your attention.  The result from a progression is a list of counts for each of the steps you specify.</p>
@@ -107,13 +119,10 @@
 </div>
 
 
-                    
-                        <div id="disqus_thread"></div>
-                        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-                    
-                </div>
+                
+                    <div id="disqus_thread"></div>
+                    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+                
             </div>
+            [% endblock content %]
         
-    </div>
-
-[% endblock %]

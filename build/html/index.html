@@ -1,7 +1,19 @@
 
-[% extends "public_layout.html" %][% block body %]  
-    <div id="main">
-            <div class="sideBar">
+[% extends "layout_fluid.html" %]
+
+<!-- this is for the page title -->
+[% block title %]Documentation[% endblock %]
+
+<!-- this should reflect the page you're on. -->
+<!-- it adds an ID to the body so elements can  -->
+<!-- be targeted on this specific page. -->
+[% block body_id %]docBody[% endblock body_id %]
+
+[% block head_scripts %]
+    [[ super() ]]
+    <!-- add your additional head scripts here -->    
+[% endblock head_scripts %]  
+            [% block sidebar %]
                 
         <div class="sphinxsidebar">
 <h3><a href="#">Table Of Contents</a></h3>
@@ -14,10 +26,10 @@
 </ul>
 
         </div>
-            </div>
-            <div id="content">
-                <div class="contentContainer">                        
-                    
+            [% endblock sidebar %]
+            [% block content %]
+            <div class="container-fluid">                        
+                
   <div class="section" id="welcome">
 <h1>Welcome<a class="headerlink" href="#welcome" title="Permalink to this headline">¶</a></h1>
 <p>Keen.io helps developers understand how people use the applications they create. We provide cloud infrastructure and REST APIs for <a class="reference internal" href="data_collection/data_collection.html"><em>Data Collection</em></a> and <a class="reference internal" href="data_analysis/data_analysis.html"><em>Data Analysis</em></a>. Use Keen.io to record user interactions, then use our APIs to analyze your data. One more thing - we also support full data extraction so you can get your data into Excel, Hadoop, or any other tools you might need.</p>
@@ -36,13 +48,10 @@
 </div>
 
 
-                    
-                        <div id="disqus_thread"></div>
-                        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-                    
-                </div>
+                
+                    <div id="disqus_thread"></div>
+                    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+                
             </div>
+            [% endblock content %]
         
-    </div>
-
-[% endblock %]

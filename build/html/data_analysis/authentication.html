@@ -1,7 +1,19 @@
 
-[% extends "public_layout.html" %][% block body %]  
-    <div id="main">
-            <div class="sideBar">
+[% extends "layout_fluid.html" %]
+
+<!-- this is for the page title -->
+[% block title %]Documentation[% endblock %]
+
+<!-- this should reflect the page you're on. -->
+<!-- it adds an ID to the body so elements can  -->
+<!-- be targeted on this specific page. -->
+[% block body_id %]docBody[% endblock body_id %]
+
+[% block head_scripts %]
+    [[ super() ]]
+    <!-- add your additional head scripts here -->    
+[% endblock head_scripts %]  
+            [% block sidebar %]
                 
         <div class="sphinxsidebar">
 <h3><a href="../index.html">Table Of Contents</a></h3>
@@ -27,10 +39,10 @@
 </ul>
 
         </div>
-            </div>
-            <div id="content">
-                <div class="contentContainer">                        
-                    
+            [% endblock sidebar %]
+            [% block content %]
+            <div class="container-fluid">                        
+                
   <div class="section" id="authentication">
 <h1>Authentication<a class="headerlink" href="#authentication" title="Permalink to this headline">¶</a></h1>
 <p>Keen supports two mechanisms for authenticating API requests. For both of them, you&#8217;ll need to know one key piece of information: the API Key for the Project you want to use. This is easily retrievable from the Keen UI. Login with your username and password to <a class="reference external" href="https://keen.io">Keen</a>. Navigate to your project, make sure the &#8220;Project Overview&#8221; tab is selected, and you should see your API Key. Now that you have your API Key, let&#8217;s talk about how you actually authenticate your requests.</p>
@@ -49,13 +61,10 @@
 </div>
 
 
-                    
-                        <div id="disqus_thread"></div>
-                        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-                    
-                </div>
+                
+                    <div id="disqus_thread"></div>
+                    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+                
             </div>
+            [% endblock content %]
         
-    </div>
-
-[% endblock %]

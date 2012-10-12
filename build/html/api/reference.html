@@ -1,7 +1,19 @@
 
-[% extends "public_layout.html" %][% block body %]  
-    <div id="main">
-            <div class="sideBar">
+[% extends "layout_fluid.html" %]
+
+<!-- this is for the page title -->
+[% block title %]Documentation[% endblock %]
+
+<!-- this should reflect the page you're on. -->
+<!-- it adds an ID to the body so elements can  -->
+<!-- be targeted on this specific page. -->
+[% block body_id %]docBody[% endblock body_id %]
+
+[% block head_scripts %]
+    [[ super() ]]
+    <!-- add your additional head scripts here -->    
+[% endblock head_scripts %]  
+            [% block sidebar %]
                 
         <div class="sphinxsidebar">
 <h3><a href="../index.html">Table Of Contents</a></h3>
@@ -35,10 +47,10 @@
 </ul>
 
         </div>
-            </div>
-            <div id="content">
-                <div class="contentContainer">                        
-                    
+            [% endblock sidebar %]
+            [% block content %]
+            <div class="container-fluid">                        
+                
   <div class="section" id="api-technical-reference">
 <h1>API Technical Reference<a class="headerlink" href="#api-technical-reference" title="Permalink to this headline">¶</a></h1>
 <p>This document lists all of the technical resources available on Keen API.</p>
@@ -1197,13 +1209,10 @@ JSON object with one key: result, which maps to the numeric result described pre
 </div>
 
 
-                    
-                        <div id="disqus_thread"></div>
-                        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-                    
-                </div>
+                
+                    <div id="disqus_thread"></div>
+                    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+                
             </div>
+            [% endblock content %]
         
-    </div>
-
-[% endblock %]
