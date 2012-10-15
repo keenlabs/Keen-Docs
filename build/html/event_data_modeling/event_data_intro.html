@@ -1,5 +1,5 @@
 
-[% extends "layout_fluid.html" %]
+[% extends "layout_fixed.html" %]
 
 <!-- this is for the page title -->
 [% block title %]Documentation[% endblock %]
@@ -13,29 +13,11 @@
     [[ super() ]]
     <!-- add your additional head scripts here -->    
 [% endblock head_scripts %]  
-            [% block sidebar %]
-                
-        <div class="sphinxsidebar">
-<h3><a href="../index.html">Table Of Contents</a></h3>
-<ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../getting_started_guide.html">Getting Started Guide</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="">Data Modeling Guide</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#projects">Projects</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#events-event-data">Events &amp; Event Data</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#event-properties">Event Properties</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#event-collections">Event Collections</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="../data_collection/data_collection.html">Data Collection APIs</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../data_analysis/data_analysis.html">Data Analysis APIs</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../api/reference.html">API Technical Reference</a></li>
-</ul>
-
-        </div>
-            [% endblock sidebar %]
             [% block content %]
-            <div class="container-fluid">                        
-                
+            <div class="container">
+                <div class="row">
+                    <div class="span9">                        
+                        
   <div class="section" id="data-modeling-guide">
 <h1>Data Modeling Guide<a class="headerlink" href="#data-modeling-guide" title="Permalink to this headline">¶</a></h1>
 <p>Keen provides public REST APIs to perform both <a class="reference internal" href="../data_collection/data_collection.html"><em>Data Collection</em></a> and <a class="reference internal" href="../data_analysis/data_analysis.html"><em>Data Analysis</em></a>. We also offer full export so you can pump data into your existing analysis workflow and flex your muscles in Excel, Tableau, or Hadoop.</p>
@@ -212,10 +194,30 @@
 </div>
 
 
-                
-                    <div id="disqus_thread"></div>
-                    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-                
+                    </div>
+                    <div class="span3">
+                        <div class="well">                            
+                        
+        <div class="sphinxsidebar">
+<h3><a href="../index.html">Table Of Contents</a></h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../getting_started_guide.html">Getting Started Guide</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">Data Modeling Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#projects">Projects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#events-event-data">Events &amp; Event Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#event-properties">Event Properties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#event-collections">Event Collections</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../data_collection/data_collection.html">Data Collection APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data_analysis/data_analysis.html">Data Analysis APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/reference.html">API Technical Reference</a></li>
+</ul>
+
+        </div>
+                        </div>
+                    </div>
+                </div>
             </div>
             [% endblock content %]
         

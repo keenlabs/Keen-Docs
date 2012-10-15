@@ -1,5 +1,5 @@
 
-[% extends "layout_fluid.html" %]
+[% extends "layout_fixed.html" %]
 
 <!-- this is for the page title -->
 [% block title %]Documentation[% endblock %]
@@ -13,8 +13,31 @@
     [[ super() ]]
     <!-- add your additional head scripts here -->    
 [% endblock head_scripts %]  
-            [% block sidebar %]
-                
+            [% block content %]
+            <div class="container">
+                <div class="row">
+                    <div class="span9">                        
+                        
+  <div class="section" id="meta-analysis-tools">
+<h1>Meta Analysis Tools<a class="headerlink" href="#meta-analysis-tools" title="Permalink to this headline">¶</a></h1>
+<p>These tools can be used to get information about your projects, event collections, Saved Queries, etc.</p>
+<ul class="simple">
+<li><a class="reference internal" href="../api/reference.html#versions-resource"><em>Versions Resource</em></a> - The entry point to our APIs. Returns the available API versions and links to the <a class="reference internal" href="../api/reference.html#discovery-resource"><em>Discovery Resource</em></a>.</li>
+<li><a class="reference internal" href="../api/reference.html#discovery-resource"><em>Discovery Resource</em></a> - Returns the available child resources. Currently, the only child resource is the <a class="reference internal" href="../api/reference.html#projects-list-resource"><em>Projects Resource</em></a>.</li>
+<li><a class="reference internal" href="../api/reference.html#projects-list-resource"><em>Projects Resource</em></a> - Returns the projects accessible to the API user, as well as links to the <a class="reference internal" href="../api/reference.html#project-row-resource"><em>Project Row Resource</em></a> for discovery.</li>
+<li><a class="reference internal" href="../api/reference.html#project-row-resource"><em>Project Row Resource</em></a> - Returns detailed information about the specific project, as well as links to related resources.</li>
+<li><a class="reference internal" href="../api/reference.html#event-collections-list-resource"><em>Event Collections List Resource</em></a> - Returns detailed information about all the event collections in the specific project, as well as links to them. Also used for bulk-inserting events.</li>
+<li><a class="reference internal" href="../api/reference.html#event-collection-row-resource"><em>Event Collection Row Resource</em></a> - Returns event collection info including properties and their type. It also returns links to sub-resources. Also used for inserting events.</li>
+<li><a class="reference internal" href="../api/reference.html#queries-resource"><em>Queries Resource</em></a> - Returns links to the available Queries, i.e. <a class="reference internal" href="metrics.html"><em>Metrics</em></a>, <a class="reference internal" href="progressions.html"><em>Progressions</em></a>, <a class="reference internal" href="extractions.html"><em>Data Extractions</em></a>.</li>
+<li><a class="reference internal" href="../api/reference.html#saved-query-list-resource"><em>Saved Queries List Resource</em></a> - Returns all the available <a class="reference internal" href="saved_queries.html"><em>Saved Queries &amp; Queries</em></a> in this project as well as links to each of their <a class="reference internal" href="../api/reference.html#saved-query-row-resource"><em>Saved Query Row Resource</em></a>.</li>
+</ul>
+</div>
+
+
+                    </div>
+                    <div class="span3">
+                        <div class="well">                            
+                        
         <div class="sphinxsidebar">
 <h3><a href="../index.html">Table Of Contents</a></h3>
 <ul class="current">
@@ -39,30 +62,9 @@
 </ul>
 
         </div>
-            [% endblock sidebar %]
-            [% block content %]
-            <div class="container-fluid">                        
-                
-  <div class="section" id="meta-analysis-tools">
-<h1>Meta Analysis Tools<a class="headerlink" href="#meta-analysis-tools" title="Permalink to this headline">¶</a></h1>
-<p>These tools can be used to get information about your projects, event collections, Saved Queries, etc.</p>
-<ul class="simple">
-<li><a class="reference internal" href="../api/reference.html#versions-resource"><em>Versions Resource</em></a> - The entry point to our APIs. Returns the available API versions and links to the <a class="reference internal" href="../api/reference.html#discovery-resource"><em>Discovery Resource</em></a>.</li>
-<li><a class="reference internal" href="../api/reference.html#discovery-resource"><em>Discovery Resource</em></a> - Returns the available child resources. Currently, the only child resource is the <a class="reference internal" href="../api/reference.html#projects-list-resource"><em>Projects Resource</em></a>.</li>
-<li><a class="reference internal" href="../api/reference.html#projects-list-resource"><em>Projects Resource</em></a> - Returns the projects accessible to the API user, as well as links to the <a class="reference internal" href="../api/reference.html#project-row-resource"><em>Project Row Resource</em></a> for discovery.</li>
-<li><a class="reference internal" href="../api/reference.html#project-row-resource"><em>Project Row Resource</em></a> - Returns detailed information about the specific project, as well as links to related resources.</li>
-<li><a class="reference internal" href="../api/reference.html#event-collections-list-resource"><em>Event Collections List Resource</em></a> - Returns detailed information about all the event collections in the specific project, as well as links to them. Also used for bulk-inserting events.</li>
-<li><a class="reference internal" href="../api/reference.html#event-collection-row-resource"><em>Event Collection Row Resource</em></a> - Returns event collection info including properties and their type. It also returns links to sub-resources. Also used for inserting events.</li>
-<li><a class="reference internal" href="../api/reference.html#queries-resource"><em>Queries Resource</em></a> - Returns links to the available Queries, i.e. <a class="reference internal" href="metrics.html"><em>Metrics</em></a>, <a class="reference internal" href="progressions.html"><em>Progressions</em></a>, <a class="reference internal" href="extractions.html"><em>Data Extractions</em></a>.</li>
-<li><a class="reference internal" href="../api/reference.html#saved-query-list-resource"><em>Saved Queries List Resource</em></a> - Returns all the available <a class="reference internal" href="saved_queries.html"><em>Saved Queries &amp; Queries</em></a> in this project as well as links to each of their <a class="reference internal" href="../api/reference.html#saved-query-row-resource"><em>Saved Query Row Resource</em></a>.</li>
-</ul>
-</div>
-
-
-                
-                    <div id="disqus_thread"></div>
-                    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-                
+                        </div>
+                    </div>
+                </div>
             </div>
             [% endblock content %]
         

@@ -1,5 +1,5 @@
 
-[% extends "layout_fluid.html" %]
+[% extends "layout_fixed.html" %]
 
 <!-- this is for the page title -->
 [% block title %]Documentation[% endblock %]
@@ -13,44 +13,11 @@
     [[ super() ]]
     <!-- add your additional head scripts here -->    
 [% endblock head_scripts %]  
-            [% block sidebar %]
-                
-        <div class="sphinxsidebar">
-<h3><a href="../index.html">Table Of Contents</a></h3>
-<ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../getting_started_guide.html">Getting Started Guide</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../event_data_modeling/event_data_intro.html">Data Modeling Guide</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../data_collection/data_collection.html">Data Collection APIs</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../data_analysis/data_analysis.html">Data Analysis APIs</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="">API Technical Reference</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#versions-resource">Versions Resource</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#discovery-resource">Discovery Resource</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#projects-resource">Projects Resource</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#project-row-resource">Project Row Resource</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#event-collections-list-resource">Event Collections List Resource</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#event-collection-row-resource">Event Collection Row Resource</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#queries-resource">Queries Resource</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#count-resource">Count Resource</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#count-unique-resource">Count Unique Resource</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#minimum-resource">Minimum Resource</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#maximum-resource">Maximum Resource</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#average-resource">Average Resource</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#sum-resource">Sum Resource</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#select-unique-resource">Select Unique Resource</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#extraction-resource">Extraction Resource</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#progression-resource">Progression Resource</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#saved-queries-list-resource">Saved Queries List Resource</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#saved-query-row-resource">Saved Query Row Resource</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#saved-query-row-result-resource">Saved Query Row Result Resource</a></li>
-</ul>
-</li>
-</ul>
-
-        </div>
-            [% endblock sidebar %]
             [% block content %]
-            <div class="container-fluid">                        
-                
+            <div class="container">
+                <div class="row">
+                    <div class="span9">                        
+                        
   <div class="section" id="api-technical-reference">
 <h1>API Technical Reference<a class="headerlink" href="#api-technical-reference" title="Permalink to this headline">¶</a></h1>
 <p>This document lists all of the technical resources available on Keen API.</p>
@@ -1209,10 +1176,45 @@ JSON object with one key: result, which maps to the numeric result described pre
 </div>
 
 
-                
-                    <div id="disqus_thread"></div>
-                    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-                
+                    </div>
+                    <div class="span3">
+                        <div class="well">                            
+                        
+        <div class="sphinxsidebar">
+<h3><a href="../index.html">Table Of Contents</a></h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../getting_started_guide.html">Getting Started Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../event_data_modeling/event_data_intro.html">Data Modeling Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data_collection/data_collection.html">Data Collection APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data_analysis/data_analysis.html">Data Analysis APIs</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">API Technical Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#versions-resource">Versions Resource</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#discovery-resource">Discovery Resource</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#projects-resource">Projects Resource</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#project-row-resource">Project Row Resource</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#event-collections-list-resource">Event Collections List Resource</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#event-collection-row-resource">Event Collection Row Resource</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#queries-resource">Queries Resource</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#count-resource">Count Resource</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#count-unique-resource">Count Unique Resource</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#minimum-resource">Minimum Resource</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#maximum-resource">Maximum Resource</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#average-resource">Average Resource</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#sum-resource">Sum Resource</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#select-unique-resource">Select Unique Resource</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#extraction-resource">Extraction Resource</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#progression-resource">Progression Resource</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#saved-queries-list-resource">Saved Queries List Resource</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#saved-query-row-resource">Saved Query Row Resource</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#saved-query-row-result-resource">Saved Query Row Result Resource</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+                        </div>
+                    </div>
+                </div>
             </div>
             [% endblock content %]
         

@@ -1,5 +1,5 @@
 
-[% extends "layout_fluid.html" %]
+[% extends "layout_fixed.html" %]
 
 <!-- this is for the page title -->
 [% block title %]Documentation[% endblock %]
@@ -13,23 +13,11 @@
     [[ super() ]]
     <!-- add your additional head scripts here -->    
 [% endblock head_scripts %]  
-            [% block sidebar %]
-                
-        <div class="sphinxsidebar">
-<h3><a href="index.html">Table Of Contents</a></h3>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="getting_started_guide.html">Getting Started Guide</a></li>
-<li class="toctree-l1"><a class="reference internal" href="event_data_modeling/event_data_intro.html">Data Modeling Guide</a></li>
-<li class="toctree-l1"><a class="reference internal" href="data_collection/data_collection.html">Data Collection APIs</a></li>
-<li class="toctree-l1"><a class="reference internal" href="data_analysis/data_analysis.html">Data Analysis APIs</a></li>
-<li class="toctree-l1"><a class="reference internal" href="api/reference.html">API Technical Reference</a></li>
-</ul>
-
-        </div>
-            [% endblock sidebar %]
             [% block content %]
-            <div class="container-fluid">                        
-                
+            <div class="container">
+                <div class="row">
+                    <div class="span9">                        
+                        
   <h1 id="search-documentation">Search</h1>
   <div id="fallback" class="admonition warning">
   <script type="text/javascript">$('#fallback').hide();</script>
@@ -54,10 +42,24 @@
   
   </div>
 
-                
-                    <div id="disqus_thread"></div>
-                    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-                
+                    </div>
+                    <div class="span3">
+                        <div class="well">                            
+                        
+        <div class="sphinxsidebar">
+<h3><a href="index.html">Table Of Contents</a></h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="getting_started_guide.html">Getting Started Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="event_data_modeling/event_data_intro.html">Data Modeling Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data_collection/data_collection.html">Data Collection APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data_analysis/data_analysis.html">Data Analysis APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/reference.html">API Technical Reference</a></li>
+</ul>
+
+        </div>
+                        </div>
+                    </div>
+                </div>
             </div>
             [% endblock content %]
         

@@ -1,4 +1,4 @@
-[% extends "layout_fluid.html" %]
+[% extends "layout_fixed.html" %]
 
 <!-- this is for the page title -->
 [% block title %]Documentation[% endblock %]
@@ -45,19 +45,17 @@
     {%- endif %}
 {%- endmacro -%}
 
+
 {%- block content %}
     {%- block sidebar1 %} {# possible location for sidebar #} {% endblock %}
         {%- block document %}
-            [% block sidebar %]
-                {{ sidebar() }}
-            [% endblock sidebar %]
             [% block content %]
-            <div class="container-fluid">                        
-                {% block body %} {% endblock %}
-                {% if theme_disqus_shortname %}
-                    <div id="disqus_thread"></div>
-                    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-                {% endif %}
+            <div class="container">
+                <div class="row">
+                    <div class="span9">                        
+                        {% block body %} {% endblock %}
+                    </div>
+                </div>
             </div>
             [% endblock content %]
         {%- endblock %}
