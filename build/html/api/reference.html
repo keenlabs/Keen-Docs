@@ -1216,3 +1216,16 @@ JSON object with one key: result, which maps to the numeric result described pre
             </div>
             [% endblock content %]
         
+
+[% block bottom_scripts %]
+    [[ super() ]]
+    <script>
+
+    $(document).ready(function(){
+        $('.sidebar').css({'height':(($(window).height())-($('header').outerHeight()))+'px'});
+        $(window).resize(function(){
+              $('.sidebar').css({'height':(($(window).height())-($('header').outerHeight()))+'px'});
+        });
+    });    
+    </script>    
+[% endblock bottom_scripts %]
