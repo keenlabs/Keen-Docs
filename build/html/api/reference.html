@@ -49,14 +49,14 @@
 <p class="first admonition-title">Note</p>
 <p class="last">This API is part of a developer preview and may change without notice!</p>
 </div>
-<p>Contents:</p>
+<p>Resource Inventory:</p>
 <ul class="simple">
 <li><a class="reference internal" href="#versions-resource"><em>Versions Resource</em></a> - Returns the available API versions.</li>
-<li><a class="reference internal" href="#discovery-resource"><em>Discovery Resource</em></a> - Returns the available child resources. Currently, the only child resource is the Projects Resource.</li>
+<li><a class="reference internal" href="#discovery-resource"><em>Discovery Resource</em></a> - Returns the available child resources.</li>
 <li><a class="reference internal" href="#projects-list-resource"><em>Projects Resource</em></a> - Returns the projects accessible to the API user, as well as links to project sub-resources for discovery.</li>
 <li><a class="reference internal" href="#project-row-resource"><em>Project Row Resource</em></a> - Returns detailed information about the specific project, as well as links to related resources.</li>
 <li><a class="reference internal" href="#event-collections-list-resource"><em>Event Collections List Resource</em></a> - Used for bulk inserting events or for getting information about all the collections in a given project.</li>
-<li><a class="reference internal" href="#event-collection-row-resource"><em>Event Collection Row Resource</em></a> - Used for inserting events or to get information about a specific event collection including properties and their type.</li>
+<li><a class="reference internal" href="#event-collection-row-resource"><em>Event Collection Row Resource</em></a> - Used for inserting events or to get information about a specific event collection.</li>
 <li><a class="reference internal" href="#count-resource"><em>Count Resource</em></a> - Returns a count of items meeting specified criteria.</li>
 <li><a class="reference internal" href="#count-unique-resource"><em>Count Unique Resource</em></a> - Returns a count of unique items meeting specified criteria.</li>
 <li><a class="reference internal" href="#minimum-resource"><em>Minimum Resource</em></a> - Returns the minimum value for a given property.</li>
@@ -72,18 +72,23 @@
 </ul>
 <div class="section" id="versions-resource">
 <span id="id1"></span><h2>Versions Resource<a class="headerlink" href="#versions-resource" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="url">
-<h3>URL<a class="headerlink" href="#url" title="Permalink to this headline">¶</a></h3>
-<p><a class="reference external" href="https://api.keen.io/">https://api.keen.io/</a></p>
-</div>
-<div class="section" id="description">
-<h3>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h3>
-<p>Returns the available API versions. Please only use API version 3.0. Versions 1.0 and 2.0 will work but will be deprecated shortly.</p>
-</div>
-<div class="section" id="request-body">
-<h3>Request Body<a class="headerlink" href="#request-body" title="Permalink to this headline">¶</a></h3>
-<p>None</p>
-</div>
+<table border="1" class="docutils">
+<colgroup>
+<col width="12%" />
+<col width="88%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>URL</td>
+<td><a class="reference external" href="https://api.keen.io/">https://api.keen.io/</a></td>
+</tr>
+<tr class="row-even"><td>Description</td>
+<td>Returns the available API versions. Please only use API version 3.0. Versions 1.0 and 2.0 will work but will be deprecated shortly.</td>
+</tr>
+<tr class="row-odd"><td>Supported Methods</td>
+<td>GET, HEAD</td>
+</tr>
+</tbody>
+</table>
 <div class="section" id="example-response">
 <h3>Example Response<a class="headerlink" href="#example-response" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-javascript"><div class="highlight"><pre><span class="p">[</span>
@@ -109,24 +114,25 @@
 </div>
 <div class="section" id="discovery-resource">
 <span id="id2"></span><h2>Discovery Resource<a class="headerlink" href="#discovery-resource" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="12%" />
+<col width="88%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>URL</td>
+<td><a class="reference external" href="https://api.keen.io">https://api.keen.io</a>/&lt;version&gt;</td>
+</tr>
+<tr class="row-even"><td>Description</td>
+<td>Returns the available child resources. Currently, the only child resource is the Projects Resource.</td>
+</tr>
+<tr class="row-odd"><td>Supported Methods</td>
+<td>GET, HEAD</td>
+</tr>
+</tbody>
+</table>
 <div class="section" id="id3">
-<h3>URL<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
-<p><a class="reference external" href="https://api.keen.io">https://api.keen.io</a>/&lt;version&gt;</p>
-</div>
-<div class="section" id="supported-methods">
-<h3>Supported Methods<a class="headerlink" href="#supported-methods" title="Permalink to this headline">¶</a></h3>
-<p>GET, HEAD</p>
-</div>
-<div class="section" id="id4">
-<h3>Description<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
-<p>Returns the available child resources. Currently, the only child resource is the Projects Resource.</p>
-</div>
-<div class="section" id="id5">
-<h3>Request Body<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
-<p>None</p>
-</div>
-<div class="section" id="id6">
-<h3>Example Response<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<h3>Example Response<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
   <span class="s2">&quot;projects_resource_url&quot;</span><span class="o">:</span> <span class="s2">&quot;/3.0/projects&quot;</span>
 <span class="p">}</span>
@@ -136,24 +142,25 @@
 </div>
 <div class="section" id="projects-resource">
 <span id="projects-list-resource"></span><h2>Projects Resource<a class="headerlink" href="#projects-resource" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="id7">
-<h3>URL<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
-<p><a class="reference external" href="https://api.keen.io">https://api.keen.io</a>/&lt;version&gt;/projects</p>
-</div>
-<div class="section" id="id8">
-<h3>Supported Methods<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
-<p>GET, HEAD</p>
-</div>
-<div class="section" id="id9">
-<h3>Description<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
-<p>Returns the projects accessible to the API user, as well as links to project sub-resources for discovery.</p>
-</div>
-<div class="section" id="id10">
-<h3>Request Body<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
-<p>None</p>
-</div>
-<div class="section" id="id11">
-<h3>Example Response<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="docutils">
+<colgroup>
+<col width="12%" />
+<col width="88%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>URL</td>
+<td><a class="reference external" href="https://api.keen.io">https://api.keen.io</a>/&lt;version&gt;/projects</td>
+</tr>
+<tr class="row-even"><td>Description</td>
+<td>Returns the projects accessible to the API user, as well as links to project sub-resources for discovery.</td>
+</tr>
+<tr class="row-odd"><td>Supported Methods</td>
+<td>GET, HEAD</td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="id4">
+<h3>Example Response<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-javascript"><div class="highlight"><pre><span class="p">[</span>
   <span class="p">{</span>
     <span class="s2">&quot;api_key&quot;</span><span class="o">:</span> <span class="s2">&quot;a62538e817dd49fc9101fd0c1fa3c892&quot;</span><span class="p">,</span>
@@ -188,25 +195,26 @@
 </div>
 </div>
 <div class="section" id="project-row-resource">
-<span id="id12"></span><h2>Project Row Resource<a class="headerlink" href="#project-row-resource" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="id13">
-<h3>URL<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h3>
-<p><a class="reference external" href="https://api.keen.io">https://api.keen.io</a>/&lt;version&gt;/projects/&lt;project_id&gt;</p>
-</div>
-<div class="section" id="id14">
-<h3>Supported Methods<a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h3>
-<p>GET, HEAD</p>
-</div>
-<div class="section" id="id15">
-<h3>Description<a class="headerlink" href="#id15" title="Permalink to this headline">¶</a></h3>
-<p>Returns detailed information about the specific project, as well as links to related resources.</p>
-</div>
-<div class="section" id="id16">
-<h3>Request Body<a class="headerlink" href="#id16" title="Permalink to this headline">¶</a></h3>
-<p>None</p>
-</div>
-<div class="section" id="id17">
-<h3>Example Response<a class="headerlink" href="#id17" title="Permalink to this headline">¶</a></h3>
+<span id="id5"></span><h2>Project Row Resource<a class="headerlink" href="#project-row-resource" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="12%" />
+<col width="88%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>URL</td>
+<td><a class="reference external" href="https://api.keen.io">https://api.keen.io</a>/&lt;version&gt;/projects/&lt;project_id&gt;</td>
+</tr>
+<tr class="row-even"><td>Description</td>
+<td>Returns detailed information about the specific project, as well as links to related resources.</td>
+</tr>
+<tr class="row-odd"><td>Supported Methods</td>
+<td>GET, HEAD</td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="id6">
+<h3>Example Response<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
   <span class="s2">&quot;api_key&quot;</span><span class="o">:</span> <span class="s2">&quot;a62538e817dd49fc9101fd0c1fa3c892&quot;</span><span class="p">,</span>
   <span class="s2">&quot;events&quot;</span><span class="o">:</span> <span class="p">[</span>
@@ -239,27 +247,34 @@
 </div>
 </div>
 <div class="section" id="event-collections-list-resource">
-<span id="id18"></span><h2>Event Collections List Resource<a class="headerlink" href="#event-collections-list-resource" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="id19">
-<h3>URL<a class="headerlink" href="#id19" title="Permalink to this headline">¶</a></h3>
-<p><a class="reference external" href="https://api.keen.io">https://api.keen.io</a>/&lt;version&gt;/projects/&lt;project_id&gt;/events</p>
+<span id="id7"></span><h2>Event Collections List Resource<a class="headerlink" href="#event-collections-list-resource" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="11%" />
+<col width="89%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>URL</td>
+<td><a class="reference external" href="https://api.keen.io">https://api.keen.io</a>/&lt;version&gt;/projects/&lt;project_id&gt;/events/</td>
+</tr>
+<tr class="row-even"><td>Description</td>
+<td><div class="first last line-block">
+<div class="line">GET returns schema information for all the event collections in this project, including properties and their type. It also returns links to sub-resources.</div>
+<div class="line">POST is for inserting multiple events in one or more collections, in a single request. See below for examples.</div>
 </div>
-<div class="section" id="id20">
-<h3>Supported Methods<a class="headerlink" href="#id20" title="Permalink to this headline">¶</a></h3>
-<p>GET, HEAD, POST</p>
-</div>
-<div class="section" id="id21">
-<h3>Description<a class="headerlink" href="#id21" title="Permalink to this headline">¶</a></h3>
-<p>GET returns schema information for all the event collections in this project, including properties and their type. It also returns links to sub-resources.</p>
-<p>POST is for bulk-inserting multiple events in a single request. See below for examples.</p>
+</td>
+</tr>
+<tr class="row-odd"><td>Supported Methods</td>
+<td>GET, HEAD, POST</td>
+</tr>
+<tr class="row-even"><td>POST Request Body</td>
+<td>JSON arrays of events. See example below</td>
+</tr>
+</tbody>
+</table>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">Make sure to set the request header &#8220;Content-Type&#8221; to &#8220;application/json&#8221; for POSTs.</p>
-</div>
-</div>
-<div class="section" id="get-request-body">
-<h3>GET Request Body<a class="headerlink" href="#get-request-body" title="Permalink to this headline">¶</a></h3>
-<p>None</p>
 </div>
 <div class="section" id="example-get-response">
 <h3>Example GET Response<a class="headerlink" href="#example-get-response" title="Permalink to this headline">¶</a></h3>
@@ -331,6 +346,10 @@
 <h3>POST Request Body - Example of batch event posting<a class="headerlink" href="#post-request-body-example-of-batch-event-posting" title="Permalink to this headline">¶</a></h3>
 <p>This example shows how multiple JSON events can be sent to Keen in a single POST. The API expects a JSON object whose keys are the names of each event collection you want to insert into. Each key should point to a list of events to insert for that event collection.</p>
 <p>This example loads 3 events into the &#8220;purchases&#8221; event collection and 2 events into the &#8220;meme_generations&#8221; event collection.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Make sure to set the request header &#8220;Content-Type&#8221; to &#8220;application/json&#8221; for POSTs.</p>
+</div>
 <div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
   <span class="s2">&quot;purchases&quot;</span><span class="o">:</span> <span class="p">[</span>
     <span class="p">{</span>
@@ -438,34 +457,33 @@
 </div>
 </div>
 <div class="section" id="event-collection-row-resource">
-<span id="id22"></span><h2>Event Collection Row Resource<a class="headerlink" href="#event-collection-row-resource" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="id23">
-<h3>URL<a class="headerlink" href="#id23" title="Permalink to this headline">¶</a></h3>
-<p><a class="reference external" href="https://api.keen.io">https://api.keen.io</a>/&lt;version&gt;/projects/&lt;project_id&gt;/events/&lt;event_collection&gt;</p>
+<span id="id8"></span><h2>Event Collection Row Resource<a class="headerlink" href="#event-collection-row-resource" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="11%" />
+<col width="89%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>URL</td>
+<td><a class="reference external" href="https://api.keen.io">https://api.keen.io</a>/&lt;version&gt;/projects/&lt;project_id&gt;/events/&lt;event_collection&gt;</td>
+</tr>
+<tr class="row-even"><td>Description</td>
+<td><div class="first last line-block">
+<div class="line">GET returns available schema information for this event collection, including properties and their type. It also returns links to sub-resources.</div>
+<div class="line">POST is for inserting one event at a time in a single request. Examples below.</div>
 </div>
-<div class="section" id="id24">
-<h3>Supported Methods<a class="headerlink" href="#id24" title="Permalink to this headline">¶</a></h3>
-<p>GET, HEAD, POST</p>
-</div>
-<div class="section" id="id25">
-<h3>Description<a class="headerlink" href="#id25" title="Permalink to this headline">¶</a></h3>
-<p>GET returns available schema information for this event collection, including properties and their type. It also returns links to sub-resources.</p>
-<p>POST is for inserting one event at a time in a single request. See below for examples.</p>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">For performance gains, consider using bulk insert.</p>
-</div>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">Make sure to set the request header &#8220;Content-Type&#8221; to &#8220;application/json&#8221; for POSTs.</p>
-</div>
-</div>
-<div class="section" id="id26">
-<h3>GET Request Body<a class="headerlink" href="#id26" title="Permalink to this headline">¶</a></h3>
-<p>None</p>
-</div>
-<div class="section" id="id27">
-<h3>Example GET Response<a class="headerlink" href="#id27" title="Permalink to this headline">¶</a></h3>
+</td>
+</tr>
+<tr class="row-odd"><td>Supported Methods</td>
+<td>GET, HEAD, POST</td>
+</tr>
+<tr class="row-even"><td>POST Request Body</td>
+<td>Single JSON event. See example below</td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="id9">
+<h3>Example GET Response<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
   <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;purchases&quot;</span><span class="p">,</span>
   <span class="s2">&quot;properties&quot;</span><span class="o">:</span> <span class="p">{</span>
@@ -500,8 +518,8 @@
 </pre></div>
 </div>
 </div>
-<div class="section" id="id28">
-<h3>Example POST Response<a class="headerlink" href="#id28" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id10">
+<h3>Example POST Response<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
         <span class="s2">&quot;created&quot;</span><span class="o">:</span> <span class="kc">true</span>
 <span class="p">}</span>
@@ -510,25 +528,26 @@
 </div>
 </div>
 <div class="section" id="queries-resource">
-<span id="id29"></span><h2>Queries Resource<a class="headerlink" href="#queries-resource" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="id30">
-<h3>URL<a class="headerlink" href="#id30" title="Permalink to this headline">¶</a></h3>
-<p><a class="reference external" href="https://api.keen.io">https://api.keen.io</a>/&lt;version&gt;/projects/&lt;project_id&gt;/queries</p>
-</div>
-<div class="section" id="id31">
-<h3>Supported Methods<a class="headerlink" href="#id31" title="Permalink to this headline">¶</a></h3>
-<p>GET, HEAD</p>
-</div>
-<div class="section" id="id32">
-<h3>Description<a class="headerlink" href="#id32" title="Permalink to this headline">¶</a></h3>
-<p>GET returns the list of available queries and links to them. See <a class="reference internal" href="../data_analysis/data_analysis.html"><em>Data Analysis APIs</em></a> for more information.</p>
-</div>
-<div class="section" id="id33">
-<h3>Request Body<a class="headerlink" href="#id33" title="Permalink to this headline">¶</a></h3>
-<p>None</p>
-</div>
-<div class="section" id="id34">
-<h3>Example Response<a class="headerlink" href="#id34" title="Permalink to this headline">¶</a></h3>
+<span id="id11"></span><h2>Queries Resource<a class="headerlink" href="#queries-resource" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="11%" />
+<col width="89%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>URL</td>
+<td><a class="reference external" href="https://api.keen.io">https://api.keen.io</a>/&lt;version&gt;/projects/&lt;project_id&gt;/queries</td>
+</tr>
+<tr class="row-even"><td>Description</td>
+<td>GET returns the list of available queries and links to them. See <a class="reference internal" href="../data_analysis/data_analysis.html"><em>Data Analysis APIs</em></a> for more information on query types.</td>
+</tr>
+<tr class="row-odd"><td>Supported Methods</td>
+<td>GET, HEAD</td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="id12">
+<h3>Example Response<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
   <span class="s2">&quot;count_unique_url&quot;</span><span class="o">:</span> <span class="s2">&quot;/3.0/projects/4fea721933da5b4e8e000002/queries/count_unique&quot;</span><span class="p">,</span>
   <span class="s2">&quot;count_url&quot;</span><span class="o">:</span> <span class="s2">&quot;/3.0/projects/4fea721933da5b4e8e000002/queries/count&quot;</span><span class="p">,</span>
@@ -541,19 +560,24 @@
 </div>
 </div>
 <div class="section" id="count-resource">
-<span id="id35"></span><h2>Count Resource<a class="headerlink" href="#count-resource" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="id36">
-<h3>URL<a class="headerlink" href="#id36" title="Permalink to this headline">¶</a></h3>
-<p><a class="reference external" href="https://api.keen.io">https://api.keen.io</a>/&lt;version&gt;/projects/&lt;project_id&gt;/queries/count</p>
-</div>
-<div class="section" id="id37">
-<h3>Supported Methods<a class="headerlink" href="#id37" title="Permalink to this headline">¶</a></h3>
-<p>GET, HEAD</p>
-</div>
-<div class="section" id="id38">
-<h3>Description<a class="headerlink" href="#id38" title="Permalink to this headline">¶</a></h3>
-<p>GET returns the number of resources in the event collection matching the given criteria. The response will be a simple JSON object with one key: a numeric result.</p>
-</div>
+<span id="id13"></span><h2>Count Resource<a class="headerlink" href="#count-resource" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>URL</td>
+<td><a class="reference external" href="https://api.keen.io">https://api.keen.io</a>/&lt;version&gt;/projects/&lt;project_id&gt;/queries/count</td>
+</tr>
+<tr class="row-even"><td>Description</td>
+<td>GET returns the number of resources in the event collection matching the given criteria. The response will be a simple JSON object with one key: a numeric result.</td>
+</tr>
+<tr class="row-odd"><td>Supported Methods</td>
+<td>GET, HEAD</td>
+</tr>
+</tbody>
+</table>
 <div class="section" id="query-string-parameters">
 <h3>Query String Parameters<a class="headerlink" href="#query-string-parameters" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
@@ -567,12 +591,8 @@
 <p class="last">Adding <a class="reference internal" href="../data_analysis/timeframe.html"><em>Timeframe</em></a> and <a class="reference internal" href="../data_analysis/interval.html"><em>Interval</em></a> query string parameters will turn the Count request into a Series.  See the documentation on <a class="reference internal" href="../data_analysis/series.html"><em>Series</em></a> for more information.</p>
 </div>
 </div>
-<div class="section" id="id39">
-<h3>Request Body<a class="headerlink" href="#id39" title="Permalink to this headline">¶</a></h3>
-<p>None</p>
-</div>
-<div class="section" id="id40">
-<h3>Example Response<a class="headerlink" href="#id40" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id14">
+<h3>Example Response<a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
     <span class="s2">&quot;result&quot;</span><span class="o">:</span> <span class="mi">10</span>
 <span class="p">}</span>
@@ -581,24 +601,29 @@
 </div>
 </div>
 <div class="section" id="count-unique-resource">
-<span id="id41"></span><h2>Count Unique Resource<a class="headerlink" href="#count-unique-resource" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="id42">
-<h3>URL<a class="headerlink" href="#id42" title="Permalink to this headline">¶</a></h3>
-<p><a class="reference external" href="https://api.keen.io">https://api.keen.io</a>/&lt;version&gt;/projects/&lt;project_id&gt;/queries/count_unique</p>
-</div>
-<div class="section" id="id43">
-<h3>Supported Methods<a class="headerlink" href="#id43" title="Permalink to this headline">¶</a></h3>
-<p>GET, HEAD</p>
-</div>
-<div class="section" id="id44">
-<h3>Description<a class="headerlink" href="#id44" title="Permalink to this headline">¶</a></h3>
-<p>GET returns the number of UNIQUE resources in the event collection matching the given criteria. The response will be a simple
-JSON object with one key: result, which maps to the numeric result described previously.</p>
-</div>
-<div class="section" id="id45">
-<h3>Query String Parameters<a class="headerlink" href="#id45" title="Permalink to this headline">¶</a></h3>
+<span id="id15"></span><h2>Count Unique Resource<a class="headerlink" href="#count-unique-resource" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="13%" />
+<col width="87%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>URL</td>
+<td><a class="reference external" href="https://api.keen.io">https://api.keen.io</a>/&lt;version&gt;/projects/&lt;project_id&gt;/queries/count_unique</td>
+</tr>
+<tr class="row-even"><td>Description</td>
+<td>GET returns the number of UNIQUE resources in the event collection matching the given criteria.
+The response will be a simple JSON object with one key: result, which maps to the numeric result described previously.</td>
+</tr>
+<tr class="row-odd"><td>Supported Methods</td>
+<td>GET, HEAD</td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="id16">
+<h3>Query String Parameters<a class="headerlink" href="#id16" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li><strong>api_key</strong> (optional) - The API Key for the project containing the data you are analyzing. See <a class="reference internal" href="../data_analysis/authentication.html"><em>Authentication</em></a> for more information.</li>
+<li><strong>api_key</strong> (optional) - The API Key for the project containing the data you are analyzing. If you don&#8217;t include it as a query string parameter you must include it in the header. See <a class="reference internal" href="../data_analysis/authentication.html"><em>Authentication</em></a> for more information.</li>
 <li><strong>event_collection</strong> (required) - The name of the event collection you are analyzing.</li>
 <li><strong>target_property</strong> (required) - The name of the property you are analyzing.</li>
 <li><strong>filters</strong> (optional) - <a class="reference internal" href="../data_analysis/filters.html"><em>Filters</em></a> are used to narrow down the events used in an analysis request based on <a class="reference external" href="event_properties">event property</a> values.</li>
@@ -609,12 +634,8 @@ JSON object with one key: result, which maps to the numeric result described pre
 <p class="last">Adding <strong>timeframe</strong> and <strong>interval</strong> query string parameters will turn the request into a Series.  See the documentation on <a class="reference internal" href="../data_analysis/series.html"><em>Series</em></a> for more information.</p>
 </div>
 </div>
-<div class="section" id="id47">
-<h3>Request Body<a class="headerlink" href="#id47" title="Permalink to this headline">¶</a></h3>
-<p>None</p>
-</div>
-<div class="section" id="id48">
-<h3>Example Response<a class="headerlink" href="#id48" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id18">
+<h3>Example Response<a class="headerlink" href="#id18" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
   <span class="s2">&quot;result&quot;</span><span class="o">:</span> <span class="mi">7</span>
 <span class="p">}</span>
@@ -623,23 +644,30 @@ JSON object with one key: result, which maps to the numeric result described pre
 </div>
 </div>
 <div class="section" id="minimum-resource">
-<span id="id49"></span><h2>Minimum Resource<a class="headerlink" href="#minimum-resource" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="id50">
-<h3>URL<a class="headerlink" href="#id50" title="Permalink to this headline">¶</a></h3>
-<p><a class="reference external" href="https://api.keen.io">https://api.keen.io</a>/&lt;version&gt;/projects/&lt;project_id&gt;/queries/minimum</p>
-</div>
-<div class="section" id="id51">
-<h3>Supported Methods<a class="headerlink" href="#id51" title="Permalink to this headline">¶</a></h3>
-<p>GET, HEAD</p>
-</div>
-<div class="section" id="id52">
-<h3>Description<a class="headerlink" href="#id52" title="Permalink to this headline">¶</a></h3>
-<p>GET returns the minimum numeric value for the target property in the event collection matching the given criteria. Non-numeric values are ignored. The response will be a simple JSON object with one key: result, which maps to the numeric result described previously.</p>
-</div>
-<div class="section" id="id53">
-<h3>Query String Parameters<a class="headerlink" href="#id53" title="Permalink to this headline">¶</a></h3>
+<span id="id19"></span><h2>Minimum Resource<a class="headerlink" href="#minimum-resource" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="11%" />
+<col width="89%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>URL</td>
+<td><a class="reference external" href="https://api.keen.io">https://api.keen.io</a>/&lt;version&gt;/projects/&lt;project_id&gt;/queries/minimum</td>
+</tr>
+<tr class="row-even"><td>Description</td>
+<td>GET returns the minimum numeric value for the target property in the event collection matching the given criteria.
+Non-numeric values are ignored. The response will be a simple JSON object with one key: result, which maps to the numeric result described previously.
+The response will be a simple JSON object with one key: result, which maps to the numeric result described previously.</td>
+</tr>
+<tr class="row-odd"><td>Supported Methods</td>
+<td>GET, HEAD</td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="id20">
+<h3>Query String Parameters<a class="headerlink" href="#id20" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li><strong>api_key</strong> (optional) - The API Key for the project containing the data you are analyzing. See <a class="reference internal" href="../data_analysis/authentication.html"><em>Authentication</em></a> for more information.</li>
+<li><strong>api_key</strong> (optional) - The API Key for the project containing the data you are analyzing. If you don&#8217;t include it as a query string parameter you must include it in the header. See <a class="reference internal" href="../data_analysis/authentication.html"><em>Authentication</em></a> for more information.</li>
 <li><strong>event_collection</strong> (required) - The name of the event collection you are analyzing.</li>
 <li><strong>target_property</strong> (required) - The name of the property you are analyzing.</li>
 <li><strong>filters</strong> (optional) - <a class="reference internal" href="../data_analysis/filters.html"><em>Filters</em></a> are used to narrow down the events used in an analysis request based on <a class="reference external" href="event_properties">event property</a> values.</li>
@@ -650,12 +678,8 @@ JSON object with one key: result, which maps to the numeric result described pre
 <p class="last">Adding <strong>timeframe</strong> and <strong>interval</strong> query string parameters will turn the request into a Series.  See the documentation on <a class="reference internal" href="../data_analysis/series.html"><em>Series</em></a> for more information.</p>
 </div>
 </div>
-<div class="section" id="id55">
-<h3>Request Body<a class="headerlink" href="#id55" title="Permalink to this headline">¶</a></h3>
-<p>None</p>
-</div>
-<div class="section" id="id56">
-<h3>Example Response<a class="headerlink" href="#id56" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id22">
+<h3>Example Response<a class="headerlink" href="#id22" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
   <span class="s2">&quot;result&quot;</span><span class="o">:</span> <span class="mi">7</span>
 <span class="p">}</span>
@@ -664,23 +688,30 @@ JSON object with one key: result, which maps to the numeric result described pre
 </div>
 </div>
 <div class="section" id="maximum-resource">
-<span id="id57"></span><h2>Maximum Resource<a class="headerlink" href="#maximum-resource" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="id58">
-<h3>URL<a class="headerlink" href="#id58" title="Permalink to this headline">¶</a></h3>
-<p><a class="reference external" href="https://api.keen.io">https://api.keen.io</a>/&lt;version&gt;/projects/&lt;project_id&gt;/queries/maximum</p>
-</div>
-<div class="section" id="id59">
-<h3>Supported Methods<a class="headerlink" href="#id59" title="Permalink to this headline">¶</a></h3>
-<p>GET, HEAD</p>
-</div>
-<div class="section" id="id60">
-<h3>Description<a class="headerlink" href="#id60" title="Permalink to this headline">¶</a></h3>
-<p>GET returns the maximum numeric value for the target property in the event collection matching the given criteria. Non-numeric values are ignored. The response will be a simple JSON object with one key: result, which maps to the numeric result described previously.</p>
-</div>
-<div class="section" id="id61">
-<h3>Query String Parameters<a class="headerlink" href="#id61" title="Permalink to this headline">¶</a></h3>
+<span id="id23"></span><h2>Maximum Resource<a class="headerlink" href="#maximum-resource" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="11%" />
+<col width="89%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>URL</td>
+<td><a class="reference external" href="https://api.keen.io">https://api.keen.io</a>/&lt;version&gt;/projects/&lt;project_id&gt;/queries/maximum</td>
+</tr>
+<tr class="row-even"><td>Description</td>
+<td>GET returns the maximum numeric value for the target property in the event collection matching the given criteria.
+Non-numeric values are ignored. The response will be a simple JSON object with one key: result, which maps to the numeric result described previously.
+The response will be a simple JSON object with one key: result, which maps to the numeric result described previously.</td>
+</tr>
+<tr class="row-odd"><td>Supported Methods</td>
+<td>GET, HEAD</td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="id24">
+<h3>Query String Parameters<a class="headerlink" href="#id24" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li><strong>api_key</strong> (optional) - The API Key for the project containing the data you are analyzing. See <a class="reference internal" href="../data_analysis/authentication.html"><em>Authentication</em></a> for more information.</li>
+<li><strong>api_key</strong> (optional) - The API Key for the project containing the data you are analyzing. If you don&#8217;t include it as a query string parameter you must include it in the header. See <a class="reference internal" href="../data_analysis/authentication.html"><em>Authentication</em></a> for more information.</li>
 <li><strong>event_collection</strong> (required) - The name of the event collection you are analyzing.</li>
 <li><strong>target_property</strong> (required) - The name of the property you are analyzing.</li>
 <li><strong>filters</strong> (optional) - <a class="reference internal" href="../data_analysis/filters.html"><em>Filters</em></a> are used to narrow down the events used in an analysis request based on <a class="reference external" href="event_properties">event property</a> values.</li>
@@ -691,12 +722,8 @@ JSON object with one key: result, which maps to the numeric result described pre
 <p class="last">Adding <strong>timeframe</strong> and <strong>interval</strong> query string parameters will turn the request into a Series.  See the documentation on <a class="reference internal" href="../data_analysis/series.html"><em>Series</em></a> for more information.</p>
 </div>
 </div>
-<div class="section" id="id63">
-<h3>Request Body<a class="headerlink" href="#id63" title="Permalink to this headline">¶</a></h3>
-<p>None</p>
-</div>
-<div class="section" id="id64">
-<h3>Example Response<a class="headerlink" href="#id64" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id26">
+<h3>Example Response<a class="headerlink" href="#id26" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
   <span class="s2">&quot;result&quot;</span><span class="o">:</span> <span class="mi">7</span>
 <span class="p">}</span>
@@ -705,23 +732,30 @@ JSON object with one key: result, which maps to the numeric result described pre
 </div>
 </div>
 <div class="section" id="average-resource">
-<span id="id65"></span><h2>Average Resource<a class="headerlink" href="#average-resource" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="id66">
-<h3>URL<a class="headerlink" href="#id66" title="Permalink to this headline">¶</a></h3>
-<p><a class="reference external" href="https://api.keen.io">https://api.keen.io</a>/&lt;version&gt;/projects/&lt;project_id&gt;/queries/average</p>
-</div>
-<div class="section" id="id67">
-<h3>Supported Methods<a class="headerlink" href="#id67" title="Permalink to this headline">¶</a></h3>
-<p>GET, HEAD</p>
-</div>
-<div class="section" id="id68">
-<h3>Description<a class="headerlink" href="#id68" title="Permalink to this headline">¶</a></h3>
-<p>GET returns the average across all numeric values for the target property in the event collection matching the given criteria. Non-numeric values are ignored. The response will be a simple JSON object with one key: result, which maps to the numeric result described previously.</p>
-</div>
-<div class="section" id="id69">
-<h3>Query String Parameters<a class="headerlink" href="#id69" title="Permalink to this headline">¶</a></h3>
+<span id="id27"></span><h2>Average Resource<a class="headerlink" href="#average-resource" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="11%" />
+<col width="89%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>URL</td>
+<td><a class="reference external" href="https://api.keen.io">https://api.keen.io</a>/&lt;version&gt;/projects/&lt;project_id&gt;/queries/average</td>
+</tr>
+<tr class="row-even"><td>Description</td>
+<td>GET returns the average across all numeric values for the target property in the event collection matching the given criteria.
+Non-numeric values are ignored. The response will be a simple JSON object with one key: result, which maps to the numeric result described previously.
+The response will be a simple JSON object with one key: result, which maps to the numeric result described previously.</td>
+</tr>
+<tr class="row-odd"><td>Supported Methods</td>
+<td>GET, HEAD</td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="id28">
+<h3>Query String Parameters<a class="headerlink" href="#id28" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li><strong>api_key</strong> (optional) - The API Key for the project containing the data you are analyzing. See <a class="reference internal" href="../data_analysis/authentication.html"><em>Authentication</em></a> for more information.</li>
+<li><strong>api_key</strong> (optional) - The API Key for the project containing the data you are analyzing. If you don&#8217;t include it as a query string parameter you must include it in the header. See <a class="reference internal" href="../data_analysis/authentication.html"><em>Authentication</em></a> for more information.</li>
 <li><strong>event_collection</strong> (required) - The name of the event collection you are analyzing.</li>
 <li><strong>target_property</strong> (required) - The name of the property you are analyzing.</li>
 <li><strong>filters</strong> (optional) - <a class="reference internal" href="../data_analysis/filters.html"><em>Filters</em></a> are used to narrow down the events used in an analysis request based on <a class="reference external" href="event_properties">event property</a> values.</li>
@@ -732,12 +766,8 @@ JSON object with one key: result, which maps to the numeric result described pre
 <p class="last">Adding <strong>timeframe</strong> and <strong>interval</strong> query string parameters will turn the request into a Series.  See the documentation on <a class="reference internal" href="../data_analysis/series.html"><em>Series</em></a> for more information.</p>
 </div>
 </div>
-<div class="section" id="id71">
-<h3>Request Body<a class="headerlink" href="#id71" title="Permalink to this headline">¶</a></h3>
-<p>None</p>
-</div>
-<div class="section" id="id72">
-<h3>Example Response<a class="headerlink" href="#id72" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id30">
+<h3>Example Response<a class="headerlink" href="#id30" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
   <span class="s2">&quot;result&quot;</span><span class="o">:</span> <span class="mi">7</span>
 <span class="p">}</span>
@@ -746,23 +776,30 @@ JSON object with one key: result, which maps to the numeric result described pre
 </div>
 </div>
 <div class="section" id="sum-resource">
-<span id="id73"></span><h2>Sum Resource<a class="headerlink" href="#sum-resource" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="id74">
-<h3>URL<a class="headerlink" href="#id74" title="Permalink to this headline">¶</a></h3>
-<p><a class="reference external" href="https://api.keen.io">https://api.keen.io</a>/&lt;version&gt;/projects/&lt;project_id&gt;/queries/sum</p>
-</div>
-<div class="section" id="id75">
-<h3>Supported Methods<a class="headerlink" href="#id75" title="Permalink to this headline">¶</a></h3>
-<p>GET, HEAD</p>
-</div>
-<div class="section" id="id76">
-<h3>Description<a class="headerlink" href="#id76" title="Permalink to this headline">¶</a></h3>
-<p>GET returns the sum of all numeric values for the target property in the event collection matching the given criteria. Non-numeric values are ignored. The response will be a simple JSON object with one key: result, which maps to the numeric result described previously.</p>
-</div>
-<div class="section" id="id77">
-<h3>Query String Parameters<a class="headerlink" href="#id77" title="Permalink to this headline">¶</a></h3>
+<span id="id31"></span><h2>Sum Resource<a class="headerlink" href="#sum-resource" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="11%" />
+<col width="89%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>URL</td>
+<td><a class="reference external" href="https://api.keen.io">https://api.keen.io</a>/&lt;version&gt;/projects/&lt;project_id&gt;/queries/sum</td>
+</tr>
+<tr class="row-even"><td>Description</td>
+<td>GET returns the sum of all numeric values for the target property in the event collection matching the given criteria.
+Non-numeric values are ignored. The response will be a simple JSON object with one key: result, which maps to the numeric result described previously.
+The response will be a simple JSON object with one key: result, which maps to the numeric result described previously.</td>
+</tr>
+<tr class="row-odd"><td>Supported Methods</td>
+<td>GET, HEAD</td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="id32">
+<h3>Query String Parameters<a class="headerlink" href="#id32" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li><strong>api_key</strong> (optional) - The API Key for the project containing the data you are analyzing. See <a class="reference internal" href="../data_analysis/authentication.html"><em>Authentication</em></a> for more information.</li>
+<li><strong>api_key</strong> (optional) - The API Key for the project containing the data you are analyzing. If you don&#8217;t include it as a query string parameter you must include it in the header. See <a class="reference internal" href="../data_analysis/authentication.html"><em>Authentication</em></a> for more information.</li>
 <li><strong>event_collection</strong> (required) - The name of the event collection you are analyzing.</li>
 <li><strong>target_property</strong> (required) - The name of the property you are analyzing.</li>
 <li><strong>filters</strong> (optional) - <a class="reference internal" href="../data_analysis/filters.html"><em>Filters</em></a> are used to narrow down the events used in an analysis request based on <a class="reference external" href="event_properties">event property</a> values.</li>
@@ -773,12 +810,8 @@ JSON object with one key: result, which maps to the numeric result described pre
 <p class="last">Adding <strong>timeframe</strong> and <strong>interval</strong> query string parameters will turn the request into a Series.  See the documentation on <a class="reference internal" href="../data_analysis/series.html"><em>Series</em></a> for more information.</p>
 </div>
 </div>
-<div class="section" id="id79">
-<h3>Request Body<a class="headerlink" href="#id79" title="Permalink to this headline">¶</a></h3>
-<p>None</p>
-</div>
-<div class="section" id="id80">
-<h3>Example Response<a class="headerlink" href="#id80" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id34">
+<h3>Example Response<a class="headerlink" href="#id34" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
   <span class="s2">&quot;result&quot;</span><span class="o">:</span> <span class="mi">7</span>
 <span class="p">}</span>
@@ -787,24 +820,29 @@ JSON object with one key: result, which maps to the numeric result described pre
 </div>
 </div>
 <div class="section" id="select-unique-resource">
-<span id="id81"></span><h2>Select Unique Resource<a class="headerlink" href="#select-unique-resource" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="id82">
-<h3>URL<a class="headerlink" href="#id82" title="Permalink to this headline">¶</a></h3>
-<p><a class="reference external" href="https://api.keen.io">https://api.keen.io</a>/&lt;version&gt;/projects/&lt;project_id&gt;/queries/select_unique</p>
-</div>
-<div class="section" id="id83">
-<h3>Supported Methods<a class="headerlink" href="#id83" title="Permalink to this headline">¶</a></h3>
-<p>GET, HEAD</p>
-</div>
-<div class="section" id="id84">
-<h3>Description<a class="headerlink" href="#id84" title="Permalink to this headline">¶</a></h3>
-<p>GET returns a list of UNIQUE resources in the event collection matching the given criteria. The response will be a simple
-JSON object with one key: result, which maps to the numeric result described previously.</p>
-</div>
-<div class="section" id="id85">
-<h3>Query String Parameters<a class="headerlink" href="#id85" title="Permalink to this headline">¶</a></h3>
+<span id="id35"></span><h2>Select Unique Resource<a class="headerlink" href="#select-unique-resource" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="11%" />
+<col width="89%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>URL</td>
+<td><a class="reference external" href="https://api.keen.io">https://api.keen.io</a>/&lt;version&gt;/projects/&lt;project_id&gt;/queries/select_unique</td>
+</tr>
+<tr class="row-even"><td>Description</td>
+<td>GET returns a list of UNIQUE resources in the event collection matching the given criteria.
+The response will be a simple JSON object with one key: result, which maps to an array of unique property values.</td>
+</tr>
+<tr class="row-odd"><td>Supported Methods</td>
+<td>GET, HEAD</td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="id36">
+<h3>Query String Parameters<a class="headerlink" href="#id36" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li><strong>api_key</strong> (optional) - The API Key for the project containing the data you are analyzing. See <a class="reference internal" href="../data_analysis/authentication.html"><em>Authentication</em></a> for more information.</li>
+<li><strong>api_key</strong> (optional) - The API Key for the project containing the data you are analyzing. If you don&#8217;t include it as a query string parameter you must include it in the header. See <a class="reference internal" href="../data_analysis/authentication.html"><em>Authentication</em></a> for more information.</li>
 <li><strong>event_collection</strong> (required) - The name of the event collection you are analyzing.</li>
 <li><strong>target_property</strong> (required) - The property of which you want to count the unique values.</li>
 <li><strong>filters</strong> (optional) - <a class="reference internal" href="../data_analysis/filters.html"><em>Filters</em></a> are used to narrow down the events used in an analysis request based on <a class="reference external" href="event_properties">event property</a> values.</li>
@@ -815,12 +853,8 @@ JSON object with one key: result, which maps to the numeric result described pre
 <p class="last">Adding <strong>timeframe</strong> and <strong>interval</strong> query string parameters will turn the Select Unique request into a Series.  See the documentation on <a class="reference internal" href="../data_analysis/series.html"><em>Series</em></a> for more information.</p>
 </div>
 </div>
-<div class="section" id="id87">
-<h3>Request Body<a class="headerlink" href="#id87" title="Permalink to this headline">¶</a></h3>
-<p>None</p>
-</div>
-<div class="section" id="id88">
-<h3>Example Response<a class="headerlink" href="#id88" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id38">
+<h3>Example Response<a class="headerlink" href="#id38" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
     <span class="s2">&quot;result&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;hello&quot;</span><span class="p">,</span> <span class="s2">&quot;goodbye&quot;</span><span class="p">,</span> <span class="s2">&quot;welcome&quot;</span><span class="p">]</span>
 <span class="p">}</span>
@@ -829,21 +863,32 @@ JSON object with one key: result, which maps to the numeric result described pre
 </div>
 </div>
 <div class="section" id="extraction-resource">
-<span id="id89"></span><h2>Extraction Resource<a class="headerlink" href="#extraction-resource" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="id90">
-<h3>URL<a class="headerlink" href="#id90" title="Permalink to this headline">¶</a></h3>
-<p><a class="reference external" href="https://api.keen.io">https://api.keen.io</a>/&lt;version&gt;/projects/&lt;project_id&gt;/queries/extraction</p>
+<span id="id39"></span><h2>Extraction Resource<a class="headerlink" href="#extraction-resource" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="9%" />
+<col width="91%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>URL</td>
+<td><a class="reference external" href="https://api.keen.io">https://api.keen.io</a>/&lt;version&gt;/projects/&lt;project_id&gt;/queries/extraction</td>
+</tr>
+<tr class="row-even"><td>Description</td>
+<td><div class="first last line-block">
+<div class="line">GET creates an extraction request for full-form event data with all property values. See <a class="reference internal" href="../data_analysis/extractions.html"><em>Data Extractions</em></a> for more details.</div>
+<div class="line">If the query string parameter <strong>email</strong> is specified, then the extraction will be processed asynchronously and an e-mail will be sent to the specified address when it completes.</div>
+<div class="line">The email will include a link to a downloadable CSV file.</div>
+<div class="line">If <strong>email</strong> is omitted, then the extraction will be processed in-line and JSON results will be returned in the GET request.</div>
 </div>
-<div class="section" id="id91">
-<h3>Supported Methods<a class="headerlink" href="#id91" title="Permalink to this headline">¶</a></h3>
-<p>GET, HEAD</p>
-</div>
-<div class="section" id="id92">
-<h3>Description<a class="headerlink" href="#id92" title="Permalink to this headline">¶</a></h3>
-<p>GET creates an extraction request. See <a class="reference internal" href="../data_analysis/extractions.html"><em>Data Extractions</em></a> for more details. If the query string parameter <strong>email</strong> is specified, then the extraction will be processed asynchronously and an e-mail will be sent to the specified address when it completes. If <strong>email</strong> is omitted, then the extraction will be processed in-line and the CSV results will be returned in the GET request.</p>
-</div>
-<div class="section" id="id93">
-<h3>Query String Parameters<a class="headerlink" href="#id93" title="Permalink to this headline">¶</a></h3>
+</td>
+</tr>
+<tr class="row-odd"><td>Supported Methods</td>
+<td>GET, HEAD</td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="id40">
+<h3>Query String Parameters<a class="headerlink" href="#id40" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><strong>api_key</strong> (optional) - The API Key for the project containing the data you are analyzing. See <a class="reference internal" href="../data_analysis/authentication.html"><em>Authentication</em></a> for more information.</li>
 <li><strong>event_collection</strong> (required) - The name of the event collection you are analyzing.</li>
@@ -856,41 +901,91 @@ JSON object with one key: result, which maps to the numeric result described pre
 <p class="last"><a class="reference internal" href="../data_analysis/series.html"><em>Series</em></a> are not supported for the Extraction Resource. The <strong>interval</strong> query string parameter is not used here.</p>
 </div>
 </div>
-<div class="section" id="id95">
-<h3>Request Body<a class="headerlink" href="#id95" title="Permalink to this headline">¶</a></h3>
-<p>None</p>
-</div>
-<div class="section" id="id96">
-<h3>Example Response<a class="headerlink" href="#id96" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id42">
+<h3>Example Response<a class="headerlink" href="#id42" title="Permalink to this headline">¶</a></h3>
 <p>GET (if <strong>email</strong> is specified)</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="p">{</span><span class="s">&quot;result&quot;</span><span class="p">:</span> <span class="s">&quot;Processing. Check the specified email for the extraction results.&quot;</span><span class="p">}</span>
 </pre></div>
 </div>
 <p>GET (if <strong>email</strong> is not specified)</p>
-<div class="highlight-python"><pre>keen.timestamp,user.referring_source,user.has_paid,user.level,screen.category,item.price,item.id,user.id,quantity,user.prior_balance,screen.name,item.on_sale
-2012-07-11T05:08:05.352000,fb_ad_15,True,6,Shop,863,847,10,2,536,Equipment Store,False
-2012-07-11T05:08:06.284000,fb_ad_20,True,1,Shop,584,238,1,4,301,Equipment Store,False</pre>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">[{</span>
+    <span class="s">&quot;keen&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s">&quot;timestamp&quot;</span><span class="p">:</span> <span class="s">&quot;2012-06-06T19:10:39.205000&quot;</span>
+    <span class="p">},</span>
+    <span class="s">&quot;item&quot;</span><span class="p">:</span> <span class="s">&quot;old rusty key with french words on it&quot;</span><span class="p">,</span>
+    <span class="s">&quot;cost&quot;</span><span class="p">:</span> <span class="mf">330.23</span><span class="p">,</span>
+    <span class="s">&quot;payment_method&quot;</span><span class="p">:</span> <span class="s">&quot;Cash&quot;</span><span class="p">,</span>
+    <span class="s">&quot;customer&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Shelby Frothsworth&quot;</span><span class="p">,</span>
+        <span class="s">&quot;age&quot;</span><span class="p">:</span> <span class="mi">22</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="s">&quot;store&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Yupster Things&quot;</span><span class="p">,</span>
+        <span class="s">&quot;city&quot;</span><span class="p">:</span> <span class="s">&quot;San Francisco&quot;</span><span class="p">,</span>
+        <span class="s">&quot;address&quot;</span><span class="p">:</span> <span class="s">&quot;467 West Portal Ave&quot;</span><span class="p">,</span>
+    <span class="p">}</span>
+<span class="p">},</span>
+<span class="p">{</span>
+    <span class="s">&quot;keen&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s">&quot;timestamp&quot;</span><span class="p">:</span> <span class="s">&quot;2012-06-07T13:10:35.203000&quot;</span>
+    <span class="p">},</span>
+    <span class="s">&quot;item&quot;</span><span class="p">:</span> <span class="s">&quot;sophisticated orange turtleneck with deer on it&quot;</span><span class="p">,</span>
+    <span class="s">&quot;cost&quot;</span><span class="p">:</span> <span class="mf">469.5</span><span class="p">,</span>
+    <span class="s">&quot;payment_method&quot;</span><span class="p">:</span> <span class="s">&quot;Bank Simple VISA&quot;</span><span class="p">,</span>
+    <span class="s">&quot;customer&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Francis Woodbury&quot;</span><span class="p">,</span>
+        <span class="s">&quot;age&quot;</span><span class="p">:</span> <span class="mi">28</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="s">&quot;store&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Yupster Things&quot;</span><span class="p">,</span>
+        <span class="s">&quot;city&quot;</span><span class="p">:</span> <span class="s">&quot;San Francisco&quot;</span><span class="p">,</span>
+        <span class="s">&quot;address&quot;</span><span class="p">:</span> <span class="s">&quot;467 West Portal Ave&quot;</span><span class="p">,</span>
+    <span class="p">}</span>
+<span class="p">},</span>
+<span class="p">{</span>
+    <span class="s">&quot;keen&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s">&quot;timestamp&quot;</span><span class="p">:</span> <span class="s">&quot;2012-06-07T13:10:35.203000&quot;</span>
+    <span class="p">},</span>
+    <span class="s">&quot;item&quot;</span><span class="p">:</span> <span class="s">&quot;antique gumball machine filled with marbles&quot;</span><span class="p">,</span>
+    <span class="s">&quot;cost&quot;</span><span class="p">:</span> <span class="mf">65.00</span><span class="p">,</span>
+    <span class="s">&quot;payment_method&quot;</span><span class="p">:</span> <span class="s">&quot;Amex&quot;</span><span class="p">,</span>
+    <span class="s">&quot;customer&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Izzy Graybeard&quot;</span><span class="p">,</span>
+        <span class="s">&quot;age&quot;</span><span class="p">:</span> <span class="mi">31</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="s">&quot;store&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Yupster Things&quot;</span><span class="p">,</span>
+        <span class="s">&quot;city&quot;</span><span class="p">:</span> <span class="s">&quot;San Francisco&quot;</span><span class="p">,</span>
+        <span class="s">&quot;address&quot;</span><span class="p">:</span> <span class="s">&quot;467 West Portal Ave&quot;</span><span class="p">,</span>
+    <span class="p">}</span>
+<span class="p">}]</span>
+</pre></div>
 </div>
 </div>
 </div>
 <div class="section" id="progression-resource">
-<span id="id97"></span><h2>Progression Resource<a class="headerlink" href="#progression-resource" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="id98">
-<h3>URL<a class="headerlink" href="#id98" title="Permalink to this headline">¶</a></h3>
-<p><a class="reference external" href="https://api.keen.io">https://api.keen.io</a>/&lt;version&gt;/projects/&lt;project_id&gt;/queries/progression</p>
-</div>
-<div class="section" id="id99">
-<h3>Supported Methods<a class="headerlink" href="#id99" title="Permalink to this headline">¶</a></h3>
-<p>GET, HEAD</p>
-</div>
-<div class="section" id="id100">
-<h3>Description<a class="headerlink" href="#id100" title="Permalink to this headline">¶</a></h3>
-<p>See <a class="reference internal" href="../data_analysis/progressions.html"><em>Progressions</em></a> for more details!</p>
-</div>
-<div class="section" id="id101">
-<h3>Query String Parameters<a class="headerlink" href="#id101" title="Permalink to this headline">¶</a></h3>
+<span id="id43"></span><h2>Progression Resource<a class="headerlink" href="#progression-resource" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="9%" />
+<col width="91%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>URL</td>
+<td><a class="reference external" href="https://api.keen.io">https://api.keen.io</a>/&lt;version&gt;/projects/&lt;project_id&gt;/queries/progression</td>
+</tr>
+<tr class="row-even"><td>Description</td>
+<td>Progressions count relevant events in succession. See <a class="reference internal" href="../data_analysis/progressions.html"><em>Progressions</em></a> for more details!</td>
+</tr>
+<tr class="row-odd"><td>Supported Methods</td>
+<td>GET, HEAD</td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="id44">
+<h3>Query String Parameters<a class="headerlink" href="#id44" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li><strong>api_key</strong> (optional) - The API Key for the project containing the data you are analyzing. See <a class="reference internal" href="../data_analysis/authentication.html"><em>Authentication</em></a> for more information.</li>
+<li><strong>api_key</strong> (optional) - The API Key for the project containing the data you are analyzing. If you don&#8217;t include it as a query string parameter you must include it in the header. See <a class="reference internal" href="../data_analysis/authentication.html"><em>Authentication</em></a> for more information.</li>
 <li><strong>steps</strong> (required) - A URL encoded JSON Array defining the <a class="reference internal" href="../data_analysis/progressions.html#steps"><em>Steps</em></a> in the Progression.</li>
 </ul>
 <div class="admonition note">
@@ -898,12 +993,8 @@ JSON object with one key: result, which maps to the numeric result described pre
 <p class="last"><a class="reference internal" href="../data_analysis/series.html"><em>Series</em></a> are not supported for the Progression Resource. The <strong>interval</strong> query string parameter is not used here.</p>
 </div>
 </div>
-<div class="section" id="id102">
-<h3>Request Body<a class="headerlink" href="#id102" title="Permalink to this headline">¶</a></h3>
-<p>None</p>
-</div>
-<div class="section" id="id103">
-<h3>Example Response<a class="headerlink" href="#id103" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id45">
+<h3>Example Response<a class="headerlink" href="#id45" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
   <span class="s2">&quot;result&quot;</span><span class="o">:</span> <span class="p">[</span>
     <span class="mi">2</span><span class="p">,</span>
@@ -944,24 +1035,31 @@ JSON object with one key: result, which maps to the numeric result described pre
 </div>
 <div class="section" id="saved-queries-list-resource">
 <span id="saved-query-list-resource"></span><h2>Saved Queries List Resource<a class="headerlink" href="#saved-queries-list-resource" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="id104">
-<h3>URL<a class="headerlink" href="#id104" title="Permalink to this headline">¶</a></h3>
-<p><a class="reference external" href="https://api.keen.io">https://api.keen.io</a>/&lt;version&gt;/projects/&lt;project_id&gt;/saved_queries</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="9%" />
+<col width="91%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>URL</td>
+<td><a class="reference external" href="https://api.keen.io">https://api.keen.io</a>/&lt;version&gt;/projects/&lt;project_id&gt;/saved_queries</td>
+</tr>
+<tr class="row-even"><td>Description</td>
+<td>GET returns all the available Saved Queries for the specified project as well as links to child-resources.</td>
+</tr>
+<tr class="row-odd"><td>Supported Methods</td>
+<td>GET, HEAD</td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="id46">
+<h3>Query String Parameters<a class="headerlink" href="#id46" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><strong>api_key</strong>  - The API Key for the project containing the data you are analyzing. If you don&#8217;t include it as a query string parameter you must include it in the header. See <a class="reference internal" href="../data_analysis/authentication.html"><em>Authentication</em></a> for more information.</li>
+</ul>
 </div>
-<div class="section" id="id105">
-<h3>Supported Methods<a class="headerlink" href="#id105" title="Permalink to this headline">¶</a></h3>
-<p>GET, HEAD</p>
-</div>
-<div class="section" id="id106">
-<h3>Description<a class="headerlink" href="#id106" title="Permalink to this headline">¶</a></h3>
-<p>GET returns all the available Saved Queries for the specified project as well as links to child-resources.</p>
-</div>
-<div class="section" id="id107">
-<h3>Request Body<a class="headerlink" href="#id107" title="Permalink to this headline">¶</a></h3>
-<p>None</p>
-</div>
-<div class="section" id="id108">
-<h3>Example Response<a class="headerlink" href="#id108" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id47">
+<h3>Example Response<a class="headerlink" href="#id47" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-javascript"><div class="highlight"><pre><span class="p">[</span>
   <span class="p">{</span>
     <span class="s2">&quot;analysis_type&quot;</span><span class="o">:</span> <span class="s2">&quot;count&quot;</span><span class="p">,</span>
@@ -999,19 +1097,31 @@ JSON object with one key: result, which maps to the numeric result described pre
 </div>
 </div>
 <div class="section" id="saved-query-row-resource">
-<span id="id109"></span><h2>Saved Query Row Resource<a class="headerlink" href="#saved-query-row-resource" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="id110">
-<h3>URL<a class="headerlink" href="#id110" title="Permalink to this headline">¶</a></h3>
-<p><a class="reference external" href="https://api.keen.io">https://api.keen.io</a>/&lt;version&gt;/projects/&lt;project_id&gt;/saved_queries/&lt;saved_query_name&gt;</p>
+<span id="id48"></span><h2>Saved Query Row Resource<a class="headerlink" href="#saved-query-row-resource" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="9%" />
+<col width="91%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>URL</td>
+<td><a class="reference external" href="https://api.keen.io">https://api.keen.io</a>/&lt;version&gt;/projects/&lt;project_id&gt;/saved_queries/&lt;saved_query_name&gt;</td>
+</tr>
+<tr class="row-even"><td>Description</td>
+<td><div class="first last line-block">
+<div class="line">GET returns information about the specified Saved Query and includes links to child-resources.</div>
+<div class="line">PUT either inserts a new Saved Query if it doesn&#8217;t already exist, or updates an existing Saved Query if it does exist.</div>
+<div class="line">DELETE just plain old deletes the Saved Query.</div>
 </div>
-<div class="section" id="id111">
-<h3>Supported Methods<a class="headerlink" href="#id111" title="Permalink to this headline">¶</a></h3>
-<p>GET, HEAD, PUT, DELETE</p>
-</div>
-<div class="section" id="id112">
-<h3>Description<a class="headerlink" href="#id112" title="Permalink to this headline">¶</a></h3>
-<p>GET returns information about the specified Saved Query and includes links to child-resources.</p>
-<p>PUT either inserts a new Saved Query if it doesn&#8217;t already exist, or updates an existing Saved Query if it does exist.</p>
+</td>
+</tr>
+<tr class="row-odd"><td>Supported Methods</td>
+<td>GET, HEAD, PUT, DELETE</td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="notes">
+<h3>Notes<a class="headerlink" href="#notes" title="Permalink to this headline">¶</a></h3>
 <p>When inserting a new Saved Query, the body of the PUT request should be a JSON object with all the required properties for that particular analysis type. The optional properties, are, well, optional.</p>
 <p>When updating a Saved Query, the body of the PUT request only needs to include the properties you want to update. For example, if you have a Saved Query that does a Count and want to change its <a class="reference internal" href="../data_analysis/filters.html"><em>Filters</em></a>, just include the <strong>filters</strong> property.</p>
 <div class="admonition note">
@@ -1022,10 +1132,9 @@ JSON object with one key: result, which maps to the numeric result described pre
 <p class="first admonition-title">Note</p>
 <p class="last">Make sure to set the request header &#8220;Content-Type&#8221; to &#8220;application/json&#8221; for PUTs.</p>
 </div>
-<p>DELETE just plain old deletes the Saved Query.</p>
 </div>
-<div class="section" id="parameters">
-<h3>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id49">
+<h3>Query String Parameters<a class="headerlink" href="#id49" title="Permalink to this headline">¶</a></h3>
 <p>The two parameters required for <strong>every</strong> Saved Query are:</p>
 <ul class="simple">
 <li><strong>saved_query_name</strong> - The name of the Saved Query. This goes in the URL.</li>
@@ -1112,12 +1221,8 @@ JSON object with one key: result, which maps to the numeric result described pre
 </tbody>
 </table>
 </div>
-<div class="section" id="id113">
-<h3>GET Request Body<a class="headerlink" href="#id113" title="Permalink to this headline">¶</a></h3>
-<p>None</p>
-</div>
-<div class="section" id="id114">
-<h3>Example GET Response<a class="headerlink" href="#id114" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id50">
+<h3>Example GET Response<a class="headerlink" href="#id50" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
   <span class="s2">&quot;analysis_type&quot;</span><span class="o">:</span> <span class="s2">&quot;count&quot;</span><span class="p">,</span>
   <span class="s2">&quot;created_date&quot;</span><span class="o">:</span> <span class="s2">&quot;2012-09-14T22:23:50.259000&quot;</span><span class="p">,</span>
@@ -1136,8 +1241,8 @@ JSON object with one key: result, which maps to the numeric result described pre
 </pre></div>
 </div>
 </div>
-<div class="section" id="id115">
-<h3>POST Request Body<a class="headerlink" href="#id115" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="put-request-body">
+<h3>PUT Request Body<a class="headerlink" href="#put-request-body" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
   <span class="s2">&quot;analysis_type&quot;</span><span class="o">:</span> <span class="s2">&quot;count&quot;</span><span class="p">,</span>
   <span class="s2">&quot;event_collection&quot;</span><span class="o">:</span> <span class="s2">&quot;foo&quot;</span>
@@ -1145,8 +1250,8 @@ JSON object with one key: result, which maps to the numeric result described pre
 </pre></div>
 </div>
 </div>
-<div class="section" id="id116">
-<h3>Example POST Response<a class="headerlink" href="#id116" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id51">
+<h3>Example POST Response<a class="headerlink" href="#id51" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
   <span class="s2">&quot;created&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
   <span class="s2">&quot;saved_query&quot;</span><span class="o">:</span> <span class="p">{</span>
@@ -1171,25 +1276,26 @@ JSON object with one key: result, which maps to the numeric result described pre
 </div>
 </div>
 <div class="section" id="saved-query-row-result-resource">
-<span id="id117"></span><h2>Saved Query Row Result Resource<a class="headerlink" href="#saved-query-row-result-resource" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="id118">
-<h3>URL<a class="headerlink" href="#id118" title="Permalink to this headline">¶</a></h3>
-<p><a class="reference external" href="https://api.keen.io">https://api.keen.io</a>/&lt;version&gt;/projects/&lt;project_id&gt;/saved_queries/&lt;event_collection&gt;/result</p>
-</div>
-<div class="section" id="id119">
-<h3>Supported Methods<a class="headerlink" href="#id119" title="Permalink to this headline">¶</a></h3>
-<p>GET, HEAD</p>
-</div>
-<div class="section" id="id120">
-<h3>Description<a class="headerlink" href="#id120" title="Permalink to this headline">¶</a></h3>
-<p>GET returns the results of the specified Saved Query.</p>
-</div>
-<div class="section" id="id121">
-<h3>Request Body<a class="headerlink" href="#id121" title="Permalink to this headline">¶</a></h3>
-<p>None</p>
-</div>
-<div class="section" id="id122">
-<h3>Example Response<a class="headerlink" href="#id122" title="Permalink to this headline">¶</a></h3>
+<span id="id52"></span><h2>Saved Query Row Result Resource<a class="headerlink" href="#saved-query-row-result-resource" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="9%" />
+<col width="91%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>URL</td>
+<td><a class="reference external" href="https://api.keen.io">https://api.keen.io</a>/&lt;version&gt;/projects/&lt;project_id&gt;/saved_queries/&lt;event_collection&gt;/result</td>
+</tr>
+<tr class="row-even"><td>Description</td>
+<td>GET returns the results of the specified Saved Query.</td>
+</tr>
+<tr class="row-odd"><td>Supported Methods</td>
+<td>GET, HEAD</td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="id53">
+<h3>Example Response<a class="headerlink" href="#id53" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
   <span class="s2">&quot;result&quot;</span><span class="o">:</span> <span class="mi">5</span>
 <span class="p">}</span>
