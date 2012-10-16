@@ -7,14 +7,14 @@ This document lists all of the technical resources available on Keen API.
 
 .. note:: This API is part of a developer preview and may change without notice!
 
-Contents:
+Resource Inventory:
 
 * :ref:`versions-resource` - Returns the available API versions.
-* :ref:`discovery-resource` - Returns the available child resources. Currently, the only child resource is the Projects Resource.
+* :ref:`discovery-resource` - Returns the available child resources.
 * :ref:`projects-list-resource` - Returns the projects accessible to the API user, as well as links to project sub-resources for discovery.
 * :ref:`project-row-resource` - Returns detailed information about the specific project, as well as links to related resources.
 * :ref:`event-collections-list-resource` - Used for bulk inserting events or for getting information about all the collections in a given project.
-* :ref:`event-collection-row-resource` - Used for inserting events or to get information about a specific event collection including properties and their type.
+* :ref:`event-collection-row-resource` - Used for inserting events or to get information about a specific event collection.
 * :ref:`count-resource` - Returns a count of items meeting specified criteria.
 * :ref:`count-unique-resource` - Returns a count of unique items meeting specified criteria.
 * :ref:`minimum-resource` - Returns the minimum value for a given property.
@@ -40,8 +40,6 @@ Versions Resource
 | Description       | Returns the available API versions. Please only use API version 3.0. Versions 1.0 and 2.0 will work but will be deprecated shortly.        |
 +-------------------+--------------------------------------------------------------------------------------------------------------------------------------------+
 | Supported Methods | GET, HEAD                                                                                                                                  |
-+-------------------+--------------------------------------------------------------------------------------------------------------------------------------------+
-| Request Body      | None                                                                                                                                       |
 +-------------------+--------------------------------------------------------------------------------------------------------------------------------------------+
 
 
@@ -81,8 +79,6 @@ Discovery Resource
 +-------------------+--------------------------------------------------------------------------------------------------------------------------------------------+
 | Supported Methods | GET, HEAD                                                                                                                                  |
 +-------------------+--------------------------------------------------------------------------------------------------------------------------------------------+
-| Request Body      | None                                                                                                                                       |
-+-------------------+--------------------------------------------------------------------------------------------------------------------------------------------+
 
 
 ----------------
@@ -106,8 +102,6 @@ Projects Resource
 | Description       | Returns the projects accessible to the API user, as well as links to project sub-resources for discovery.                                  |
 +-------------------+--------------------------------------------------------------------------------------------------------------------------------------------+
 | Supported Methods | GET, HEAD                                                                                                                                  |
-+-------------------+--------------------------------------------------------------------------------------------------------------------------------------------+
-| Request Body      | None                                                                                                                                       |
 +-------------------+--------------------------------------------------------------------------------------------------------------------------------------------+
 
 
@@ -152,29 +146,14 @@ Example Response
 Project Row Resource
 ====================
 
-----
-URL
-----
++-------------------+--------------------------------------------------------------------------------------------------------------------------------------------+
+| URL               | https://api.keen.io/<version>/projects/<project_id>                                                                                        | 
++-------------------+--------------------------------------------------------------------------------------------------------------------------------------------+
+| Description       | Returns detailed information about the specific project, as well as links to related resources.                                            |
++-------------------+--------------------------------------------------------------------------------------------------------------------------------------------+
+| Supported Methods | GET, HEAD                                                                                                                                  |
++-------------------+--------------------------------------------------------------------------------------------------------------------------------------------+
 
-https://api.keen.io/<version>/projects/<project_id>
-
------------------
-Supported Methods
------------------
-
-GET, HEAD
-
------------
-Description
------------
-
-Returns detailed information about the specific project, as well as links to related resources.
-
-------------
-Request Body
-------------
-
-None
 
 ----------------
 Example Response
@@ -215,16 +194,16 @@ Example Response
 Event Collections List Resource
 ===============================
 
-+-------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------+
-| URL               | https://api.keen.io/<version>/projects/<project_id>/events/                                                                                               | 
-+-------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Description       | GET returns schema information for all the event collections in this project, including properties and their type. It also returns links to sub-resources.|
-|                   | \ POST is for inserting one event at a time in a single request. See below for examples.                                                                  |
-+-------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Supported Methods | GET, HEAD, POST                                                                                                                                           |
-+-------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------+
-| POST Request Body | Single JSON event. See example below                                                                                                                      |
-+-------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------+
++-------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| URL               | https://api.keen.io/<version>/projects/<project_id>/events/                                                                                                 | 
++-------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Description       | | GET returns schema information for all the event collections in this project, including properties and their type. It also returns links to sub-resources.|
+|                   | | POST is for inserting multiple events in one or more collections, in a single request. See below for examples.                                            |
++-------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Supported Methods | GET, HEAD, POST                                                                                                                                             |
++-------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| POST Request Body | JSON arrays of events. See example below                                                                                                                    |
++-------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 
 .. note:: Make sure to set the request header "Content-Type" to "application/json" for POSTs.
@@ -427,16 +406,17 @@ Example POST Response
 Event Collection Row Resource
 =============================
 
-+-------------------+-------------------------------------------------------------------------------------------------------------------------------------------------+
-| URL               | https://api.keen.io/<version>/projects/<project_id>/events/<event_collection>                                                                   | 
-+-------------------+-------------------------------------------------------------------------------------------------------------------------------------------------+
-| Description       | GET returns available schema information for this event collection, including properties and their type. It also returns links to sub-resources.|
-|                   | \ POST is for inserting one event at a time in a single request. See below for examples.                                                        |
-+-------------------+-------------------------------------------------------------------------------------------------------------------------------------------------+
-| Supported Methods | GET, HEAD, POST                                                                                                                                 |
-+-------------------+-------------------------------------------------------------------------------------------------------------------------------------------------+
-| POST Request Body | Single JSON event. See example below                                                                                                            |
-+-------------------+-------------------------------------------------------------------------------------------------------------------------------------------------+
++-------------------+----------------------------------------------------------------------------------------------------------------------------------------------------+
+| URL               | https://api.keen.io/<version>/projects/<project_id>/events/<event_collection>                                                                      | 
++-------------------+----------------------------------------------------------------------------------------------------------------------------------------------------+
+| Description       | | GET returns available schema information for this event collection, including properties and their type. It also returns links to sub-resources. |
+|                   | | POST is for inserting one event at a time in a single request. Examples below.                                                                   |
++-------------------+----------------------------------------------------------------------------------------------------------------------------------------------------+
+| Supported Methods | GET, HEAD, POST                                                                                                                                    |
++-------------------+----------------------------------------------------------------------------------------------------------------------------------------------------+
+| POST Request Body | Single JSON event. See example below                                                                                                               |
++-------------------+----------------------------------------------------------------------------------------------------------------------------------------------------+
+
 
 
 
@@ -496,29 +476,14 @@ Example POST Response
 Queries Resource
 =================
 
-----
-URL
-----
++-------------------+----------------------------------------------------------------------------------------------------------------------------------------------------+
+| URL               | https://api.keen.io/<version>/projects/<project_id>/queries                                                                                        | 
++-------------------+----------------------------------------------------------------------------------------------------------------------------------------------------+
+| Description       | GET returns the list of available queries and links to them. See :doc:`/data_analysis/data_analysis` for more information on query types.          |
++-------------------+----------------------------------------------------------------------------------------------------------------------------------------------------+
+| Supported Methods | GET, HEAD                                                                                                                                          |
++-------------------+----------------------------------------------------------------------------------------------------------------------------------------------------+
 
-https://api.keen.io/<version>/projects/<project_id>/queries
-
------------------
-Supported Methods
------------------
-
-GET, HEAD
-
------------
-Description
------------
-
-GET returns the list of available queries and links to them. See :doc:`/data_analysis/data_analysis` for more information.
-
-------------
-Request Body
-------------
-
-None
 
 ----------------
 Example Response
@@ -539,23 +504,14 @@ Example Response
 Count Resource
 ==============
 
-----
-URL
-----
++-------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| URL               | https://api.keen.io/<version>/projects/<project_id>/queries/count                                                                                                           | 
++-------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Description       | GET returns the number of resources in the event collection matching the given criteria. The response will be a simple JSON object with one key: a numeric result.          |
++-------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Supported Methods | GET, HEAD                                                                                                                                                                   |
++-------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
-https://api.keen.io/<version>/projects/<project_id>/queries/count
-
------------------
-Supported Methods
------------------
-
-GET, HEAD
-
------------
-Description
------------
-
-GET returns the number of resources in the event collection matching the given criteria. The response will be a simple JSON object with one key: a numeric result.
 
 -----------------------
 Query String Parameters
@@ -567,12 +523,6 @@ Query String Parameters
 * **timeframe** (optional) - A :doc:`/data_analysis/timeframe` specifies the events to use for analysis based on a window of time. If no timeframe is specified, all events will be counted.
 
 .. note:: Adding :doc:`/data_analysis/timeframe` and :doc:`/data_analysis/interval` query string parameters will turn the Count request into a Series.  See the documentation on :doc:`/data_analysis/series` for more information.
-
-------------
-Request Body
-------------
-
-None
 
 ----------------
 Example Response
@@ -590,24 +540,15 @@ Example Response
 Count Unique Resource
 =====================
 
-----
-URL
-----
++-------------------+-------------------------------------------------------------------------------------------------------------------------------+
+| URL               | https://api.keen.io/<version>/projects/<project_id>/queries/count_unique                                                      | 
++-------------------+-------------------------------------------------------------------------------------------------------------------------------+
+| Description       | GET returns the number of UNIQUE resources in the event collection matching the given criteria.                               |
+|                   | The response will be a simple JSON object with one key: result, which maps to the numeric result described previously.        |
++-------------------+-------------------------------------------------------------------------------------------------------------------------------+
+| Supported Methods | GET, HEAD                                                                                                                     |
++-------------------+-------------------------------------------------------------------------------------------------------------------------------+
 
-https://api.keen.io/<version>/projects/<project_id>/queries/count_unique
-
------------------
-Supported Methods
------------------
-
-GET, HEAD
-
------------
-Description
------------
-
-GET returns the number of UNIQUE resources in the event collection matching the given criteria. The response will be a simple
-JSON object with one key: result, which maps to the numeric result described previously.
 
 -----------------------
 Query String Parameters
@@ -615,11 +556,6 @@ Query String Parameters
 
 .. include:: /data_analysis/metric_parameters.txt
 
-------------
-Request Body
-------------
-
-None
 
 ----------------
 Example Response
@@ -636,23 +572,16 @@ Example Response
 Minimum Resource
 ================
 
-----
-URL
-----
++-------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------+
+| URL               | https://api.keen.io/<version>/projects/<project_id>/queries/minimum                                                                                    | 
++-------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Description       | GET returns the minimum numeric value for the target property in the event collection matching the given criteria.                                     |
+|                   | Non-numeric values are ignored. The response will be a simple JSON object with one key: result, which maps to the numeric result described previously. |
+|                   | The response will be a simple JSON object with one key: result, which maps to the numeric result described previously.                                 |
++-------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Supported Methods | GET, HEAD                                                                                                                                              |
++-------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------+
 
-https://api.keen.io/<version>/projects/<project_id>/queries/minimum
-
------------------
-Supported Methods
------------------
-
-GET, HEAD
-
------------
-Description
------------
-
-GET returns the minimum numeric value for the target property in the event collection matching the given criteria. Non-numeric values are ignored. The response will be a simple JSON object with one key: result, which maps to the numeric result described previously.
 
 -----------------------
 Query String Parameters
@@ -660,11 +589,6 @@ Query String Parameters
 
 .. include:: /data_analysis/metric_parameters.txt
 
-------------
-Request Body
-------------
-
-None
 
 ----------------
 Example Response
@@ -681,23 +605,17 @@ Example Response
 Maximum Resource
 ================
 
-----
-URL
-----
++-------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------+
+| URL               | https://api.keen.io/<version>/projects/<project_id>/queries/maximum                                                                                    | 
++-------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Description       | GET returns the maximum numeric value for the target property in the event collection matching the given criteria.                                     |
+|                   | Non-numeric values are ignored. The response will be a simple JSON object with one key: result, which maps to the numeric result described previously. |
+|                   | The response will be a simple JSON object with one key: result, which maps to the numeric result described previously.                                 |
++-------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Supported Methods | GET, HEAD                                                                                                                                              |
++-------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------+
 
-https://api.keen.io/<version>/projects/<project_id>/queries/maximum
 
------------------
-Supported Methods
------------------
-
-GET, HEAD
-
------------
-Description
------------
-
-GET returns the maximum numeric value for the target property in the event collection matching the given criteria. Non-numeric values are ignored. The response will be a simple JSON object with one key: result, which maps to the numeric result described previously.
 
 -----------------------
 Query String Parameters
@@ -705,11 +623,6 @@ Query String Parameters
 
 .. include:: /data_analysis/metric_parameters.txt
 
-------------
-Request Body
-------------
-
-None
 
 ----------------
 Example Response
@@ -726,23 +639,17 @@ Example Response
 Average Resource
 ================
 
-----
-URL
-----
++-------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------+
+| URL               | https://api.keen.io/<version>/projects/<project_id>/queries/average                                                                                    | 
++-------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Description       | GET returns the average across all numeric values for the target property in the event collection matching the given criteria.                         |
+|                   | Non-numeric values are ignored. The response will be a simple JSON object with one key: result, which maps to the numeric result described previously. |
+|                   | The response will be a simple JSON object with one key: result, which maps to the numeric result described previously.                                 |
++-------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Supported Methods | GET, HEAD                                                                                                                                              |
++-------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------+
 
-https://api.keen.io/<version>/projects/<project_id>/queries/average
 
------------------
-Supported Methods
------------------
-
-GET, HEAD
-
------------
-Description
------------
-
-GET returns the average across all numeric values for the target property in the event collection matching the given criteria. Non-numeric values are ignored. The response will be a simple JSON object with one key: result, which maps to the numeric result described previously.
 
 -----------------------
 Query String Parameters
@@ -750,11 +657,6 @@ Query String Parameters
 
 .. include:: /data_analysis/metric_parameters.txt
 
-------------
-Request Body
-------------
-
-None
 
 ----------------
 Example Response
@@ -771,23 +673,15 @@ Example Response
 Sum Resource
 ============
 
-----
-URL
-----
-
-https://api.keen.io/<version>/projects/<project_id>/queries/sum
-
------------------
-Supported Methods
------------------
-
-GET, HEAD
-
------------
-Description
------------
-
-GET returns the sum of all numeric values for the target property in the event collection matching the given criteria. Non-numeric values are ignored. The response will be a simple JSON object with one key: result, which maps to the numeric result described previously.
++-------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------+
+| URL               | https://api.keen.io/<version>/projects/<project_id>/queries/sum                                                                                        | 
++-------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Description       | GET returns the sum of all numeric values for the target property in the event collection matching the given criteria.                                 |
+|                   | Non-numeric values are ignored. The response will be a simple JSON object with one key: result, which maps to the numeric result described previously. |
+|                   | The response will be a simple JSON object with one key: result, which maps to the numeric result described previously.                                 |
++-------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Supported Methods | GET, HEAD                                                                                                                                              |
++-------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 -----------------------
 Query String Parameters
@@ -795,11 +689,6 @@ Query String Parameters
 
 .. include:: /data_analysis/metric_parameters.txt
 
-------------
-Request Body
-------------
-
-None
 
 ----------------
 Example Response
@@ -816,30 +705,21 @@ Example Response
 Select Unique Resource
 ======================
 
-----
-URL
-----
++-------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------+
+| URL               | https://api.keen.io/<version>/projects/<project_id>/queries/select_unique                                                                              | 
++-------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Description       | GET returns a list of UNIQUE resources in the event collection matching the given criteria.                                                            |
+|                   | The response will be a simple JSON object with one key: result, which maps to an array of unique property values.                                      |
++-------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Supported Methods | GET, HEAD                                                                                                                                              |
++-------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------+
 
-https://api.keen.io/<version>/projects/<project_id>/queries/select_unique
-
------------------
-Supported Methods
------------------
-
-GET, HEAD
-
------------
-Description
------------
-
-GET returns a list of UNIQUE resources in the event collection matching the given criteria. The response will be a simple
-JSON object with one key: result, which maps to the numeric result described previously.
 
 -----------------------
 Query String Parameters
 -----------------------
 
-* **api_key** (optional) - The API Key for the project containing the data you are analyzing. See :doc:`/data_analysis/authentication` for more information.
+* **api_key** (optional) - The API Key for the project containing the data you are analyzing. If you don't include it as a query string parameter you must include it in the header. See :doc:`/data_analysis/authentication` for more information.
 * **event_collection** (required) - The name of the event collection you are analyzing.
 * **target_property** (required) - The property of which you want to count the unique values.
 * **filters** (optional) - :doc:`/data_analysis/filters` are used to narrow down the events used in an analysis request based on `event property <event_properties>`_ values.
@@ -847,11 +727,6 @@ Query String Parameters
 
 .. note:: Adding **timeframe** and **interval** query string parameters will turn the Select Unique request into a Series.  See the documentation on :doc:`Series</data_analysis/series>` for more information.
 
-------------
-Request Body
-------------
-
-None
 
 ----------------
 Example Response
@@ -868,23 +743,16 @@ Example Response
 Extraction Resource
 ===================
 
-----
-URL
-----
-
-https://api.keen.io/<version>/projects/<project_id>/queries/extraction
-
------------------
-Supported Methods
------------------
-
-GET, HEAD
-
------------
-Description
------------
-
-GET creates an extraction request. See :doc:`/data_analysis/extractions` for more details. If the query string parameter **email** is specified, then the extraction will be processed asynchronously and an e-mail will be sent to the specified address when it completes. If **email** is omitted, then the extraction will be processed in-line and the CSV results will be returned in the GET request.
++-------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| URL               | https://api.keen.io/<version>/projects/<project_id>/queries/extraction                                                                                                               | 
++-------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Description       | | GET creates an extraction request for full-form event data with all property values. See :doc:`/data_analysis/extractions` for more details.                                       |
+|                   | | If the query string parameter **email** is specified, then the extraction will be processed asynchronously and an e-mail will be sent to the specified address when it completes.  |
+|                   | | The email will include a link to a downloadable CSV file.                                                                                                                          |
+|                   | | If **email** is omitted, then the extraction will be processed in-line and JSON results will be returned in the GET request.                                                       |
++-------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Supported Methods | GET, HEAD                                                                                                                                                                            |
++-------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 -----------------------
 Query String Parameters
@@ -898,11 +766,7 @@ Query String Parameters
 
 .. note:: :doc:`/data_analysis/series` are not supported for the Extraction Resource. The **interval** query string parameter is not used here.
 
-------------
-Request Body
-------------
 
-None
 
 ----------------
 Example Response
@@ -918,47 +782,83 @@ GET (if **email** is not specified)
 
 ::
 
-  keen.timestamp,user.referring_source,user.has_paid,user.level,screen.category,item.price,item.id,user.id,quantity,user.prior_balance,screen.name,item.on_sale
-  2012-07-11T05:08:05.352000,fb_ad_15,True,6,Shop,863,847,10,2,536,Equipment Store,False
-  2012-07-11T05:08:06.284000,fb_ad_20,True,1,Shop,584,238,1,4,301,Equipment Store,False
+    [{
+        "keen": {
+            "timestamp": "2012-06-06T19:10:39.205000"
+        },
+        "item": "old rusty key with french words on it",
+        "cost": 330.23,
+        "payment_method": "Cash",
+        "customer": {
+            "name": "Shelby Frothsworth",
+            "age": 22,
+        },
+        "store": {
+            "name": "Yupster Things",
+            "city": "San Francisco",
+            "address": "467 West Portal Ave",
+        }
+    },
+    {
+        "keen": {
+            "timestamp": "2012-06-07T13:10:35.203000"
+        },
+        "item": "sophisticated orange turtleneck with deer on it",
+        "cost": 469.5,
+        "payment_method": "Bank Simple VISA",
+        "customer": {
+            "name": "Francis Woodbury",
+            "age": 28,
+        },
+        "store": {
+            "name": "Yupster Things",
+            "city": "San Francisco",
+            "address": "467 West Portal Ave",
+        }
+    },
+    {
+        "keen": {
+            "timestamp": "2012-06-07T13:10:35.203000"
+        },
+        "item": "antique gumball machine filled with marbles",
+        "cost": 65.00,
+        "payment_method": "Amex",
+        "customer": {
+            "name": "Izzy Graybeard",
+            "age": 31,
+        },
+        "store": {
+            "name": "Yupster Things",
+            "city": "San Francisco",
+            "address": "467 West Portal Ave",
+        }
+    }]
+
+
 
 .. _progression-resource:
 
 Progression Resource
 ====================
 
-----
-URL
-----
++-------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| URL               | https://api.keen.io/<version>/projects/<project_id>/queries/progression                                                                                                              | 
++-------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Description       | Progressions count relevant events in succession. See :doc:`/data_analysis/progressions` for more details!                                                                           |
++-------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Supported Methods | GET, HEAD                                                                                                                                                                            |
++-------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
-https://api.keen.io/<version>/projects/<project_id>/queries/progression
-
------------------
-Supported Methods
------------------
-
-GET, HEAD
-
------------
-Description
------------
-
-See :doc:`/data_analysis/progressions` for more details!
 
 -----------------------
 Query String Parameters
 -----------------------
 
-* **api_key** (optional) - The API Key for the project containing the data you are analyzing. See :doc:`/data_analysis/authentication` for more information.
+* **api_key** (optional) - The API Key for the project containing the data you are analyzing. If you don't include it as a query string parameter you must include it in the header. See :doc:`/data_analysis/authentication` for more information.
 * **steps** (required) - A URL encoded JSON Array defining the :ref:`steps` in the Progression.
 
 .. note:: :doc:`/data_analysis/series` are not supported for the Progression Resource. The **interval** query string parameter is not used here.
 
-------------
-Request Body
-------------
-
-None
 
 ----------------
 Example Response
@@ -1006,29 +906,20 @@ Example Response
 Saved Queries List Resource
 ============================
 
-----
-URL
-----
++-------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| URL               | https://api.keen.io/<version>/projects/<project_id>/saved_queries                                                                                                                    | 
++-------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Description       | GET returns all the available Saved Queries for the specified project as well as links to child-resources.                                                                           |
++-------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Supported Methods | GET, HEAD                                                                                                                                                                            |
++-------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
-https://api.keen.io/<version>/projects/<project_id>/saved_queries
 
------------------
-Supported Methods
------------------
+-----------------------
+Query String Parameters
+-----------------------
 
-GET, HEAD
-
------------
-Description
------------
-
-GET returns all the available Saved Queries for the specified project as well as links to child-resources.
-
-------------
-Request Body
-------------
-
-None
+* **api_key**  - The API Key for the project containing the data you are analyzing. If you don't include it as a query string parameter you must include it in the header. See :doc:`/data_analysis/authentication` for more information.
 
 ----------------
 Example Response
@@ -1074,25 +965,20 @@ Example Response
 Saved Query Row Resource
 ==========================
 
-----
-URL
-----
++-------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| URL               | https://api.keen.io/<version>/projects/<project_id>/saved_queries/<saved_query_name>                                                                                                 | 
++-------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Description       | | GET returns information about the specified Saved Query and includes links to child-resources.                                                                                     |
+|                   | | PUT either inserts a new Saved Query if it doesn't already exist, or updates an existing Saved Query if it does exist.                                                             |
+|                   | | DELETE just plain old deletes the Saved Query.                                                                                                                                     |
++-------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Supported Methods | GET, HEAD, PUT, DELETE                                                                                                                                                               |
++-------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
-https://api.keen.io/<version>/projects/<project_id>/saved_queries/<saved_query_name>
 
------------------
-Supported Methods
------------------
-
-GET, HEAD, PUT, DELETE
-
------------
-Description
------------
-
-GET returns information about the specified Saved Query and includes links to child-resources.
-
-PUT either inserts a new Saved Query if it doesn't already exist, or updates an existing Saved Query if it does exist.
+-----
+Notes
+-----
 
 When inserting a new Saved Query, the body of the PUT request should be a JSON object with all the required properties for that particular analysis type. The optional properties, are, well, optional.
 
@@ -1102,19 +988,15 @@ When updating a Saved Query, the body of the PUT request only needs to include t
 
 .. note:: Make sure to set the request header "Content-Type" to "application/json" for PUTs.
 
-DELETE just plain old deletes the Saved Query.
 
-----------
-Parameters
-----------
+
+-----------------------
+Query String Parameters
+-----------------------
 
 .. include:: /data_analysis/saved_query_parameters.txt
 
-----------------
-GET Request Body
-----------------
 
-None
 
 --------------------
 Example GET Response
@@ -1139,7 +1021,7 @@ Example GET Response
   }
 
 -----------------
-POST Request Body
+PUT Request Body
 -----------------
 
 .. code-block:: javascript
@@ -1180,29 +1062,15 @@ Example POST Response
 Saved Query Row Result Resource
 =================================
 
-----
-URL
-----
++-------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| URL               | https://api.keen.io/<version>/projects/<project_id>/saved_queries/<event_collection>/result                                                                                          | 
++-------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Description       | GET returns the results of the specified Saved Query.                                                                                                                                |
++-------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Supported Methods | GET, HEAD                                                                                                                                                                            |
++-------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
-https://api.keen.io/<version>/projects/<project_id>/saved_queries/<event_collection>/result
 
------------------
-Supported Methods
------------------
-
-GET, HEAD
-
------------
-Description
------------
-
-GET returns the results of the specified Saved Query.
-
-------------
-Request Body
-------------
-
-None
 
 ----------------
 Example Response
