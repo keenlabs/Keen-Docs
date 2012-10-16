@@ -3,7 +3,7 @@ cd "$(dirname "$0")"
 
 echo "Okay, first I'm going to run Sphinx."
 
-make clean html
+make clean dirhtml
 
 git status
 

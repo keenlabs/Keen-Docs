@@ -1,7 +1,0 @@
-* **api_key** (optional) - The API Key for the project containing the data you are analyzing. If you don't include it as a query string parameter you must include it in the header. See :doc:`/data_analysis/authentication` for more information.
-* **event_collection** (required) - The name of the event collection you are analyzing.
-* **target_property** (required) - The name of the property you are analyzing.
-* **filters** (optional) - :doc:`/data_analysis/filters` are used to narrow down the events used in an analysis request based on `event property <event_properties>`_ values.
-* **timeframe** (optional) - Similar to filters, a :doc:`/data_analysis/timeframe` is used to narrow down the events used in an analysis request based on the time that the event occurred.
-
-.. note:: Adding **timeframe** and **interval** query string parameters will turn the request into a Series.  See the documentation on :doc:`Series</data_analysis/series>` for more information.

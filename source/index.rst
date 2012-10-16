@@ -7,13 +7,13 @@
 Welcome
 =======
 
-Keen.io helps developers understand how people use the applications they create. We provide cloud infrastructure and REST APIs for :doc:`Data Collection <data_collection/data_collection>` and :doc:`Data Analysis <data_analysis/data_analysis>`. Use Keen.io to record user interactions, then use our APIs to analyze your data. One more thing - we also support full data extraction so you can get your data into Excel, Hadoop, or any other tools you might need. 
+Keen.io helps developers understand how people use the applications they create. We provide cloud infrastructure and REST APIs for :doc:`Data Collection <data-collection/index>` and :doc:`Data Analysis <data-analysis/index>`. Use Keen.io to record user interactions, then use our APIs to analyze your data. One more thing - we also support full data extraction so you can get your data into Excel, Hadoop, or any other tools you might need. 
 
 Choose one of these options to get started:
 
-	* Our :doc:`getting_started_guide` will walk you through a hands-on cURL example. 
-	* iOS devs: jump straight into :doc:`integrating your iOS app <clients/iOS/usage_guide>`. Download `our SDK <http://keen.io/static/code/KeenClient.zip>`_.
-	* Ruby folks: Gem install Keen. Reference :doc:`our Ruby Client Usage Guide <clients/ruby/usage_guide>`.
+	* Our :doc:`getting-started-guide` will walk you through a hands-on cURL example. 
+	* iOS devs: jump straight into :doc:`integrating your iOS app <clients/iOS/usage-guide>`. Download `our SDK <http://keen.io/static/code/KeenClient.zip>`_.
+	* Ruby folks: Gem install Keen. Reference :doc:`our Ruby Client Usage Guide <clients/ruby/usage-guide>`.
 
 Need help? Want to tell us what could make Keen.io better? Chat with us at `users.keen.io <http://users.keen.io/>`_. 
 
@@ -24,10 +24,10 @@ Need help? Want to tell us what could make Keen.io better? Chat with us at `user
    :maxdepth: 2
    :hidden:
 
-   getting_started_guide
-   event_data_modeling/event_data_intro
-   data_collection/data_collection
-   data_analysis/data_analysis
+   getting-started-guide
+   event-data-modeling/event-data-intro
+   data-collection/index
+   data-analysis/index
    api/reference
 
 .. _let us know: team@keen.io

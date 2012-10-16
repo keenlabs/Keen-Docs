@@ -23,7 +23,7 @@ Resource Inventory:
 * :ref:`sum-resource` - Returns the sum of all values for a given property.
 * :ref:`select-unique-resource` - Returns a list of unique items meeting specified criteria.
 * :ref:`extraction-resource` - Returns data meeting specified criteria.
-* :ref:`progression-resource` - Returns a Progression. Read more about :doc:`/data_analysis/progressions`.
+* :ref:`progression-resource` - Returns a Progression. Read more about :doc:`/data-analysis/progressions`.
 * :ref:`saved-query-list-resource` - Returns all the existing saved queries for the specific projects.
 * :ref:`saved-query-row-resource` - Returns information about a single Saved Query. Also supports inserting a new Saved Query or updating an existing one.
 * :ref:`saved-query-row-result-resource` - Returns the analysis results of a single Saved Query.
@@ -479,7 +479,7 @@ Queries Resource
 +-------------------+----------------------------------------------------------------------------------------------------------------------------------------------------+
 | URL               | https://api.keen.io/<version>/projects/<project_id>/queries                                                                                        | 
 +-------------------+----------------------------------------------------------------------------------------------------------------------------------------------------+
-| Description       | GET returns the list of available queries and links to them. See :doc:`/data_analysis/data_analysis` for more information on query types.          |
+| Description       | GET returns the list of available queries and links to them. See :doc:`/data-analysis/index` for more information on query types.                  |
 +-------------------+----------------------------------------------------------------------------------------------------------------------------------------------------+
 | Supported Methods | GET, HEAD                                                                                                                                          |
 +-------------------+----------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -517,12 +517,12 @@ Count Resource
 Query String Parameters
 -----------------------
 
-* **api_key** (optional) - The API Key for the project containing the data you are analyzing. See :doc:`/data_analysis/authentication` for more information.
+* **api_key** (optional) - The API Key for the project containing the data you are analyzing. See :doc:`/data-analysis/authentication` for more information.
 * **event_collection** (required) - The name of the event collection you are analyzing.
-* **filters** (optional) - :doc:`/data_analysis/filters` are used to narrow down the events used in an analysis request based on `event property <event_properties>`_ values.
-* **timeframe** (optional) - A :doc:`/data_analysis/timeframe` specifies the events to use for analysis based on a window of time. If no timeframe is specified, all events will be counted.
+* **filters** (optional) - :doc:`/data-analysis/filters` are used to narrow down the events used in an analysis request based on `event property <event_properties>`_ values.
+* **timeframe** (optional) - A :doc:`/data-analysis/timeframe` specifies the events to use for analysis based on a window of time. If no timeframe is specified, all events will be counted.
 
-.. note:: Adding :doc:`/data_analysis/timeframe` and :doc:`/data_analysis/interval` query string parameters will turn the Count request into a Series.  See the documentation on :doc:`/data_analysis/series` for more information.
+.. note:: Adding :doc:`/data-analysis/timeframe` and :doc:`/data-analysis/interval` query string parameters will turn the Count request into a Series.  See the documentation on :doc:`/data-analysis/series` for more information.
 
 ----------------
 Example Response
@@ -554,7 +554,7 @@ Count Unique Resource
 Query String Parameters
 -----------------------
 
-.. include:: /data_analysis/metric_parameters.txt
+.. include:: /data-analysis/metric-parameters.txt
 
 
 ----------------
@@ -587,7 +587,7 @@ Minimum Resource
 Query String Parameters
 -----------------------
 
-.. include:: /data_analysis/metric_parameters.txt
+.. include:: /data-analysis/metric-parameters.txt
 
 
 ----------------
@@ -621,7 +621,7 @@ Maximum Resource
 Query String Parameters
 -----------------------
 
-.. include:: /data_analysis/metric_parameters.txt
+.. include:: /data-analysis/metric-parameters.txt
 
 
 ----------------
@@ -655,7 +655,7 @@ Average Resource
 Query String Parameters
 -----------------------
 
-.. include:: /data_analysis/metric_parameters.txt
+.. include:: /data-analysis/metric-parameters.txt
 
 
 ----------------
@@ -687,7 +687,7 @@ Sum Resource
 Query String Parameters
 -----------------------
 
-.. include:: /data_analysis/metric_parameters.txt
+.. include:: /data-analysis/metric-parameters.txt
 
 
 ----------------
@@ -719,13 +719,13 @@ Select Unique Resource
 Query String Parameters
 -----------------------
 
-* **api_key** (optional) - The API Key for the project containing the data you are analyzing. If you don't include it as a query string parameter you must include it in the header. See :doc:`/data_analysis/authentication` for more information.
+* **api_key** (optional) - The API Key for the project containing the data you are analyzing. If you don't include it as a query string parameter you must include it in the header. See :doc:`/data-analysis/authentication` for more information.
 * **event_collection** (required) - The name of the event collection you are analyzing.
 * **target_property** (required) - The property of which you want to count the unique values.
-* **filters** (optional) - :doc:`/data_analysis/filters` are used to narrow down the events used in an analysis request based on `event property <event_properties>`_ values.
-* **timeframe** (optional) - Similar to filters, a :doc:`/data_analysis/timeframe` is used to narrow down the events used in an analysis request based on the time that the event occurred.
+* **filters** (optional) - :doc:`/data-analysis/filters` are used to narrow down the events used in an analysis request based on `event property <event_properties>`_ values.
+* **timeframe** (optional) - Similar to filters, a :doc:`/data-analysis/timeframe` is used to narrow down the events used in an analysis request based on the time that the event occurred.
 
-.. note:: Adding **timeframe** and **interval** query string parameters will turn the Select Unique request into a Series.  See the documentation on :doc:`Series</data_analysis/series>` for more information.
+.. note:: Adding **timeframe** and **interval** query string parameters will turn the Select Unique request into a Series.  See the documentation on :doc:`Series</data-analysis/series>` for more information.
 
 
 ----------------
@@ -746,7 +746,7 @@ Extraction Resource
 +-------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | URL               | https://api.keen.io/<version>/projects/<project_id>/queries/extraction                                                                                                               | 
 +-------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Description       | | GET creates an extraction request for full-form event data with all property values. See :doc:`/data_analysis/extractions` for more details.                                       |
+| Description       | | GET creates an extraction request for full-form event data with all property values. See :doc:`/data-analysis/extractions` for more details.                                       |
 |                   | | If the query string parameter **email** is specified, then the extraction will be processed asynchronously and an e-mail will be sent to the specified address when it completes.  |
 |                   | | The email will include a link to a downloadable CSV file.                                                                                                                          |
 |                   | | If **email** is omitted, then the extraction will be processed in-line and JSON results will be returned in the GET request.                                                       |
@@ -758,13 +758,13 @@ Extraction Resource
 Query String Parameters
 -----------------------
 
-* **api_key** (optional) - The API Key for the project containing the data you are analyzing. See :doc:`/data_analysis/authentication` for more information.
+* **api_key** (optional) - The API Key for the project containing the data you are analyzing. See :doc:`/data-analysis/authentication` for more information.
 * **event_collection** (required) - The name of the event collection you are analyzing.
-* **filters** (optional) - :doc:`/data_analysis/filters` are used to narrow down the events used in an analysis request based on `event property <event_properties>`_ values.
-* **timeframe** (optional) - Similar to filters, a :doc:`/data_analysis/timeframe` is used to narrow down the events used in an analysis request based on the time that the event occurred.
+* **filters** (optional) - :doc:`/data-analysis/filters` are used to narrow down the events used in an analysis request based on `event property <event_properties>`_ values.
+* **timeframe** (optional) - Similar to filters, a :doc:`/data-analysis/timeframe` is used to narrow down the events used in an analysis request based on the time that the event occurred.
 * **email_address** (optional) - If an email address is specified, an email will be sent to this address when the extraction is complete.
 
-.. note:: :doc:`/data_analysis/series` are not supported for the Extraction Resource. The **interval** query string parameter is not used here.
+.. note:: :doc:`/data-analysis/series` are not supported for the Extraction Resource. The **interval** query string parameter is not used here.
 
 
 
@@ -844,7 +844,7 @@ Progression Resource
 +-------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | URL               | https://api.keen.io/<version>/projects/<project_id>/queries/progression                                                                                                              | 
 +-------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Description       | Progressions count relevant events in succession. See :doc:`/data_analysis/progressions` for more details!                                                                           |
+| Description       | Progressions count relevant events in succession. See :doc:`/data-analysis/progressions` for more details!                                                                           |
 +-------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | Supported Methods | GET, HEAD                                                                                                                                                                            |
 +-------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -854,10 +854,10 @@ Progression Resource
 Query String Parameters
 -----------------------
 
-* **api_key** (optional) - The API Key for the project containing the data you are analyzing. If you don't include it as a query string parameter you must include it in the header. See :doc:`/data_analysis/authentication` for more information.
+* **api_key** (optional) - The API Key for the project containing the data you are analyzing. If you don't include it as a query string parameter you must include it in the header. See :doc:`/data-analysis/authentication` for more information.
 * **steps** (required) - A URL encoded JSON Array defining the :ref:`steps` in the Progression.
 
-.. note:: :doc:`/data_analysis/series` are not supported for the Progression Resource. The **interval** query string parameter is not used here.
+.. note:: :doc:`/data-analysis/series` are not supported for the Progression Resource. The **interval** query string parameter is not used here.
 
 
 ----------------
@@ -919,7 +919,7 @@ Saved Queries List Resource
 Query String Parameters
 -----------------------
 
-* **api_key**  - The API Key for the project containing the data you are analyzing. If you don't include it as a query string parameter you must include it in the header. See :doc:`/data_analysis/authentication` for more information.
+* **api_key**  - The API Key for the project containing the data you are analyzing. If you don't include it as a query string parameter you must include it in the header. See :doc:`/data-analysis/authentication` for more information.
 
 ----------------
 Example Response
@@ -982,7 +982,7 @@ Notes
 
 When inserting a new Saved Query, the body of the PUT request should be a JSON object with all the required properties for that particular analysis type. The optional properties, are, well, optional.
 
-When updating a Saved Query, the body of the PUT request only needs to include the properties you want to update. For example, if you have a Saved Query that does a Count and want to change its :doc:`/data_analysis/filters`, just include the **filters** property.
+When updating a Saved Query, the body of the PUT request only needs to include the properties you want to update. For example, if you have a Saved Query that does a Count and want to change its :doc:`/data-analysis/filters`, just include the **filters** property.
 
 .. note:: If you update a Saved Query's **analysis_type** and the NEW type doesn't allow for some of the properties of the OLD type, Keen will delete the definition of those properties. For example, if you have a Saved Query that does a Count Unique and you change it to do a Count, we will delete the **target_property** property.
 
@@ -994,7 +994,7 @@ When updating a Saved Query, the body of the PUT request only needs to include t
 Query String Parameters
 -----------------------
 
-.. include:: /data_analysis/saved_query_parameters.txt
+.. include:: /data-analysis/saved-query-parameters.txt
 
 
 
