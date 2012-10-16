@@ -1,4 +1,5 @@
 [% extends "public_layout.html" %]
+[% block body_id %]docBody[% endblock body_id %]
 
 {%- set render_sidebar = (not embedded) and (not theme_nosidebar|tobool) and (sidebars != []) %}
 {%- set url_root = pathto('', 1) %}
