@@ -1,8 +1,10 @@
 
 [% extends "public_layout.html" %][% block body %]  
-    <div id="main">
-            <div class="sideBar">
-                
+    <div class="container">        
+        <div class="row">
+                <div class="span3">
+                    <div class="well">                    
+                    
         <div class="sphinxsidebar">
 <h3><a href="../index.html">Table Of Contents</a></h3>
 <ul class="current">
@@ -35,9 +37,9 @@
 </ul>
 
         </div>
-            </div>
-            <div id="content">
-                <div class="contentContainer">                        
+                    </div>
+                </div>
+                <div class="span9">
                     
   <div class="section" id="api-technical-reference">
 <h1>API Technical Reference<a class="headerlink" href="#api-technical-reference" title="Permalink to this headline">¶</a></h1>
@@ -1202,8 +1204,8 @@ JSON object with one key: result, which maps to the numeric result described pre
                         <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
                     
                 </div>
-            </div>
-        
+            
+        </div>
     </div>
 
 [% endblock %]
