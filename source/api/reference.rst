@@ -31,25 +31,19 @@ Contents:
 .. _versions-resource:
 
 Versions Resource
-=================
+==================
 
-----
-URL
-----
 
-https://api.keen.io/
++-------------------+--------------------------------------------------------------------------------------------------------------------------------------------+
+| URL               | https://api.keen.io/                                                                                                                       | 
++-------------------+--------------------------------------------------------------------------------------------------------------------------------------------+
+| Description       | Returns the available API versions. Please only use API version 3.0. Versions 1.0 and 2.0 will work but will be deprecated shortly.        |
++-------------------+--------------------------------------------------------------------------------------------------------------------------------------------+
+| Supported Methods | GET, HEAD                                                                                                                                  |
++-------------------+--------------------------------------------------------------------------------------------------------------------------------------------+
+| Request Body      | None                                                                                                                                       |
++-------------------+--------------------------------------------------------------------------------------------------------------------------------------------+
 
------------
-Description
------------
-
-Returns the available API versions. Please only use API version 3.0. Versions 1.0 and 2.0 will work but will be deprecated shortly.
-
-------------
-Request Body
-------------
-
-None
 
 ----------------
 Example Response
@@ -80,29 +74,16 @@ Example Response
 Discovery Resource
 ==================
 
-----
-URL
-----
++-------------------+--------------------------------------------------------------------------------------------------------------------------------------------+
+| URL               | https://api.keen.io/<version>                                                                                                              | 
++-------------------+--------------------------------------------------------------------------------------------------------------------------------------------+
+| Description       | Returns the available child resources. Currently, the only child resource is the Projects Resource.                                        |
++-------------------+--------------------------------------------------------------------------------------------------------------------------------------------+
+| Supported Methods | GET, HEAD                                                                                                                                  |
++-------------------+--------------------------------------------------------------------------------------------------------------------------------------------+
+| Request Body      | None                                                                                                                                       |
++-------------------+--------------------------------------------------------------------------------------------------------------------------------------------+
 
-https://api.keen.io/<version>
-
------------------
-Supported Methods
------------------
-
-GET, HEAD
-
------------
-Description
------------
-
-Returns the available child resources. Currently, the only child resource is the Projects Resource.
-
-------------
-Request Body
-------------
-
-None
 
 ----------------
 Example Response
@@ -119,29 +100,16 @@ Example Response
 Projects Resource
 =================
 
-----
-URL
-----
++-------------------+--------------------------------------------------------------------------------------------------------------------------------------------+
+| URL               | https://api.keen.io/<version>/projects                                                                                                     | 
++-------------------+--------------------------------------------------------------------------------------------------------------------------------------------+
+| Description       | Returns the projects accessible to the API user, as well as links to project sub-resources for discovery.                                  |
++-------------------+--------------------------------------------------------------------------------------------------------------------------------------------+
+| Supported Methods | GET, HEAD                                                                                                                                  |
++-------------------+--------------------------------------------------------------------------------------------------------------------------------------------+
+| Request Body      | None                                                                                                                                       |
++-------------------+--------------------------------------------------------------------------------------------------------------------------------------------+
 
-https://api.keen.io/<version>/projects
-
------------------
-Supported Methods
------------------
-
-GET, HEAD
-
------------
-Description
------------
-
-Returns the projects accessible to the API user, as well as links to project sub-resources for discovery.
-
-------------
-Request Body
-------------
-
-None
 
 ----------------
 Example Response
@@ -247,33 +215,20 @@ Example Response
 Event Collections List Resource
 ===============================
 
-----
-URL
-----
++-------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------+
+| URL               | https://api.keen.io/<version>/projects/<project_id>/events/                                                                                               | 
++-------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Description       | GET returns schema information for all the event collections in this project, including properties and their type. It also returns links to sub-resources.|
+|                   | \ POST is for inserting one event at a time in a single request. See below for examples.                                                                  |
++-------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Supported Methods | GET, HEAD, POST                                                                                                                                           |
++-------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------+
+| POST Request Body | Single JSON event. See example below                                                                                                                      |
++-------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------+
 
-https://api.keen.io/<version>/projects/<project_id>/events
-
------------------
-Supported Methods
------------------
-
-GET, HEAD, POST
-
------------
-Description
------------
-
-GET returns schema information for all the event collections in this project, including properties and their type. It also returns links to sub-resources.
-
-POST is for bulk-inserting multiple events in a single request. See below for examples.
 
 .. note:: Make sure to set the request header "Content-Type" to "application/json" for POSTs.
 
-----------------
-GET Request Body
-----------------
-
-None
 
 --------------------
 Example GET Response
@@ -349,6 +304,9 @@ POST Request Body - Example of batch event posting
 This example shows how multiple JSON events can be sent to Keen in a single POST. The API expects a JSON object whose keys are the names of each event collection you want to insert into. Each key should point to a list of events to insert for that event collection.
 
 This example loads 3 events into the "purchases" event collection and 2 events into the "meme_generations" event collection.
+
+
+.. note:: Make sure to set the request header "Content-Type" to "application/json" for POSTs.
 
 .. code-block:: javascript
 
@@ -469,35 +427,18 @@ Example POST Response
 Event Collection Row Resource
 =============================
 
-----
-URL
-----
++-------------------+-------------------------------------------------------------------------------------------------------------------------------------------------+
+| URL               | https://api.keen.io/<version>/projects/<project_id>/events/<event_collection>                                                                   | 
++-------------------+-------------------------------------------------------------------------------------------------------------------------------------------------+
+| Description       | GET returns available schema information for this event collection, including properties and their type. It also returns links to sub-resources.|
+|                   | \ POST is for inserting one event at a time in a single request. See below for examples.                                                        |
++-------------------+-------------------------------------------------------------------------------------------------------------------------------------------------+
+| Supported Methods | GET, HEAD, POST                                                                                                                                 |
++-------------------+-------------------------------------------------------------------------------------------------------------------------------------------------+
+| POST Request Body | Single JSON event. See example below                                                                                                            |
++-------------------+-------------------------------------------------------------------------------------------------------------------------------------------------+
 
-https://api.keen.io/<version>/projects/<project_id>/events/<event_collection>
 
------------------
-Supported Methods
------------------
-
-GET, HEAD, POST
-
------------
-Description
------------
-
-GET returns available schema information for this event collection, including properties and their type. It also returns links to sub-resources.
-
-POST is for inserting one event at a time in a single request. See below for examples.
-
-.. note:: For performance gains, consider using bulk insert.
-
-.. note:: Make sure to set the request header "Content-Type" to "application/json" for POSTs.
-
-----------------
-GET Request Body
-----------------
-
-None
 
 --------------------
 Example GET Response
