@@ -1,44 +1,8 @@
 
-[% extends "layout_fixed.html" %]
-
-<!-- this is for the page title -->
-[% block title %]Documentation[% endblock %]
-
-<!-- this should reflect the page you're on. -->
-<!-- it adds an ID to the body so elements can  -->
-<!-- be targeted on this specific page. -->
-[% block body_id %]docBody[% endblock body_id %]
-
-[% block head_scripts %]
-    [[ super() ]]
-    <!-- add your additional head scripts here -->    
-[% endblock head_scripts %]  
-            [% block content %]
-            <div class="container">
-                <div class="row">
-                    <div class="span9">                        
-                        
-  <div class="section" id="interval">
-<h1>Interval<a class="headerlink" href="#interval" title="Permalink to this headline">¶</a></h1>
-<p>Intervals are used when creating a <a class="reference internal" href="series.html"><em>Series</em></a> API call.  The interval specifies the length of each sub-timeframe in a Series.  For example, if you want the know how many users signed up each day for the last 7 days, your timeframe is <strong>last 7 days</strong> and your interval is <strong>daily</strong>.</p>
-<p>Keen currently supports these intervals:</p>
-<ul class="simple">
-<li><strong>hourly</strong> - breaks your timeframe into hourlong chunks.</li>
-<li><strong>daily</strong> - breaks your timeframe into daylong chunks.</li>
-<li><strong>weekly</strong> - breaks your timeframe into weeklong chunks.</li>
-</ul>
-<p>To add an Interval to your Series, simply add the &#8220;interval&#8221; parameter to your query string.</p>
-<p>An example Series call with a daily interval:</p>
-<div class="highlight-none"><div class="highlight"><pre>https://api.keen.io/3.0/projects/&lt;project_id&gt;/queries/count?api_key=&lt;api_key&gt;&amp;event_collection=&lt;event_collection&gt;&amp;timeframe=last_week&amp;interval=daily
-</pre></div>
-</div>
-</div>
-
-
-                    </div>
-                    <div class="span3">
-                        <div class="well">                            
-                            
+[% extends "public_layout.html" %][% block body %]  
+    <div id="main">
+            <div class="sideBar">
+                
         <div class="sphinxsidebar">
 <h3><a href="../index.html">Table Of Contents</a></h3>
 <ul class="current">
@@ -63,22 +27,34 @@
 </ul>
 
         </div>
-                        </div>
-                    </div>
+            </div>
+            <div id="content">
+                <div class="contentContainer">                        
+                    
+  <div class="section" id="interval">
+<h1>Interval<a class="headerlink" href="#interval" title="Permalink to this headline">¶</a></h1>
+<p>Intervals are used when creating a <a class="reference internal" href="series.html"><em>Series</em></a> API call.  The interval specifies the length of each sub-timeframe in a Series.  For example, if you want the know how many users signed up each day for the last 7 days, your timeframe is <strong>last 7 days</strong> and your interval is <strong>daily</strong>.</p>
+<p>Keen currently supports these intervals:</p>
+<ul class="simple">
+<li><strong>hourly</strong> - breaks your timeframe into hourlong chunks.</li>
+<li><strong>daily</strong> - breaks your timeframe into daylong chunks.</li>
+<li><strong>weekly</strong> - breaks your timeframe into weeklong chunks.</li>
+</ul>
+<p>To add an Interval to your Series, simply add the &#8220;interval&#8221; parameter to your query string.</p>
+<p>An example Series call with a daily interval:</p>
+<div class="highlight-none"><div class="highlight"><pre>https://api.keen.io/3.0/projects/&lt;project_id&gt;/queries/count?api_key=&lt;api_key&gt;&amp;event_collection=&lt;event_collection&gt;&amp;timeframe=last_week&amp;interval=daily
+</pre></div>
+</div>
+</div>
+
+
+                    
+                        <div id="disqus_thread"></div>
+                        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+                    
                 </div>
             </div>
-            [% endblock content %]
         
+    </div>
 
-[% block bottom_scripts %]
-    [[ super() ]]
-    <script>
-
-    $(document).ready(function(){
-        $('.sidebar').css({'height':(($(window).height())-($('header').outerHeight()))+'px'});
-        $(window).resize(function(){
-              $('.sidebar').css({'height':(($(window).height())-($('header').outerHeight()))+'px'});
-        });
-    });    
-    </script>    
-[% endblock bottom_scripts %]
+[% endblock %]

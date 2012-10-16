@@ -1,18 +1,4 @@
-[% extends "layout_fixed.html" %]
-
-<!-- this is for the page title -->
-[% block title %]Documentation[% endblock %]
-
-<!-- this should reflect the page you're on. -->
-<!-- it adds an ID to the body so elements can  -->
-<!-- be targeted on this specific page. -->
-[% block body_id %]docBody[% endblock body_id %]
-
-[% block head_scripts %]
-    [[ super() ]]
-    <!-- add your additional head scripts here -->    
-[% endblock head_scripts %]
-
+[% extends "public_layout.html" %]
 
 {%- set render_sidebar = (not embedded) and (not theme_nosidebar|tobool) and (sidebars != []) %}
 {%- set url_root = pathto('', 1) %}
@@ -45,38 +31,28 @@
     {%- endif %}
 {%- endmacro -%}
 
+[% block body %]
 
 {%- block content %}
     {%- block sidebar1 %} {# possible location for sidebar #} {% endblock %}
+    <div id="main">
         {%- block document %}
-            [% block content %]
-            <div class="container">
-                <div class="row">
-                    <div class="span9">                        
-                        {% block body %} {% endblock %}
-                    </div>
-                    <div class="span3">
-                        <div class="well">                            
-                            {{ sidebar() }}
-                        </div>
-                    </div>
+            <div class="sideBar">
+                {{ sidebar() }}
+            </div>
+            <div id="content">
+                <div class="contentContainer">                        
+                    {% block body %} {% endblock %}
+                    {% if theme_disqus_shortname %}
+                        <div id="disqus_thread"></div>
+                        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+                    {% endif %}
                 </div>
             </div>
-            [% endblock content %]
         {%- endblock %}
         {%- block sidebar2 %}
         {% endblock %}
+    </div>
 {%- endblock %}
 
-[% block bottom_scripts %]
-    [[ super() ]]
-    <script>
-
-    $(document).ready(function(){
-        $('.sidebar').css({'height':(($(window).height())-($('header').outerHeight()))+'px'});
-        $(window).resize(function(){
-              $('.sidebar').css({'height':(($(window).height())-($('header').outerHeight()))+'px'});
-        });
-    });    
-    </script>    
-[% endblock bottom_scripts %]
+[% endblock %]
