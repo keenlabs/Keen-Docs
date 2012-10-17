@@ -24,54 +24,15 @@
 # TODO: Figure out how to hook into the html builder & change "[" and "]" characters
 # to some sort of code, which Keen-Web's controller will translate back into
 # literals.
-
 from sphinx.builders.html import DirectoryHTMLBuilder
 
-r = None
-
 class KeenDirectoryHTMLBuilder(DirectoryHTMLBuilder):
-
     name = "keenhtml"
 
-    def write_doc(self, *args, **kwargs):
-        sup = super(KeenDirectoryHTMLBuilder, self).write_doc(*args, **kwargs)
-        print "------------------------------------------------------"
-        print "write_doc:"
-        print sup
-        print "------------------------------------------------------"
-        return sup
-
-    def x(self, *args, **kwargs):
-        sup = super(KeenDirectoryHTMLBuilder, self).x(*args, **kwargs)
-        print "------------------------------------------------------"
-        print "x:"
-        print sup
-        print "------------------------------------------------------"
-        return sup
-
-    def x(self, *args, **kwargs):
-        sup = super(KeenDirectoryHTMLBuilder, self).x(*args, **kwargs)
-        print "------------------------------------------------------"
-        print "x:"
-        print sup
-        print "------------------------------------------------------"
-        return sup
-
-    def x(self, *args, **kwargs):
-        sup = super(KeenDirectoryHTMLBuilder, self).x(*args, **kwargs)
-        print "------------------------------------------------------"
-        print "x:"
-        print sup
-        print "------------------------------------------------------"
-        return sup
-
-    def x(self, *args, **kwargs):
-        sup = super(KeenDirectoryHTMLBuilder, self).x(*args, **kwargs)
-        print "------------------------------------------------------"
-        print "x:"
-        print sup
-        print "------------------------------------------------------"
-        return sup
+    def get_doc_context(self, docname, body, metatags):
+        body = body.replace("[", "&#91;")
+        body = body.replace("]", "&#93;")
+        return super(KeenDirectoryHTMLBuilder, self).get_doc_context(docname, body, metatags)
 
 def setup(app):
     app.add_builder(KeenDirectoryHTMLBuilder)
