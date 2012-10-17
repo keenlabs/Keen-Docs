@@ -11,9 +11,9 @@ Keen.io helps developers understand how people use the applications they create.
 
 Choose one of these options to get started:
 
-	* Our :doc:`getting-started-guide` will walk you through a hands-on cURL example. 
-	* iOS devs: jump straight into :doc:`integrating your iOS app <clients/iOS/usage-guide>`. Download `our SDK <http://keen.io/static/code/KeenClient.zip>`_.
-	* Ruby folks: Gem install Keen. Reference :doc:`our Ruby Client Usage Guide <clients/ruby/usage-guide>`.
+* Our :doc:`getting-started-guide` will walk you through a hands-on cURL example. 
+* iOS devs: jump straight into :doc:`integrating your iOS app <clients/iOS/usage-guide>`. Download `our SDK <http://keen.io/static/code/KeenClient.zip>`_.
+* Ruby folks: Gem install Keen. Reference :doc:`our Ruby Client Usage Guide <clients/ruby/usage-guide>`.
 
 Need help? Want to tell us what could make Keen.io better? Chat with us at `users.keen.io <http://users.keen.io/>`_. 
 
