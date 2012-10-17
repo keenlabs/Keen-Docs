@@ -4,11 +4,6 @@
 # sphinx-quickstart on Tue Jul 10 14:25:13 2012.
 
  
-# TODO: Figure out how to hook into the html builder & change "[" and "]" characters
-# to some sort of code, which Keen-Web's controller will translate back into
-# literals.
-
-
 # This file is execfile()d with the current directory set to its containing dir.
 #
 # Note that not all possible configuration values are present in this
@@ -17,12 +12,73 @@
 # All configuration values have a default; values that are commented out
 # serve to show the default.
 
-import sys, os
+#import sys, os
 
 # If extensions (or modules to document with autodoc) are in another directory,
 # add these directories to sys.path here. If the directory is relative to the
 # documentation root, use os.path.abspath to make it absolute, like shown here.
-#sys.path.insert(0, os.path.abspath('.'))
+#sys.path.insert(0, os.path.abspath('../source'))
+
+
+# -- Custom extensions ---------------------------------------------------------
+# TODO: Figure out how to hook into the html builder & change "[" and "]" characters
+# to some sort of code, which Keen-Web's controller will translate back into
+# literals.
+
+from sphinx.builders.html import DirectoryHTMLBuilder
+
+r = None
+
+class KeenDirectoryHTMLBuilder(DirectoryHTMLBuilder):
+
+    name = "keenhtml"
+
+    def write_doc(self, *args, **kwargs):
+        sup = super(KeenDirectoryHTMLBuilder, self).write_doc(*args, **kwargs)
+        print "------------------------------------------------------"
+        print "write_doc:"
+        print sup
+        print "------------------------------------------------------"
+        return sup
+
+    def x(self, *args, **kwargs):
+        sup = super(KeenDirectoryHTMLBuilder, self).x(*args, **kwargs)
+        print "------------------------------------------------------"
+        print "x:"
+        print sup
+        print "------------------------------------------------------"
+        return sup
+
+    def x(self, *args, **kwargs):
+        sup = super(KeenDirectoryHTMLBuilder, self).x(*args, **kwargs)
+        print "------------------------------------------------------"
+        print "x:"
+        print sup
+        print "------------------------------------------------------"
+        return sup
+
+    def x(self, *args, **kwargs):
+        sup = super(KeenDirectoryHTMLBuilder, self).x(*args, **kwargs)
+        print "------------------------------------------------------"
+        print "x:"
+        print sup
+        print "------------------------------------------------------"
+        return sup
+
+    def x(self, *args, **kwargs):
+        sup = super(KeenDirectoryHTMLBuilder, self).x(*args, **kwargs)
+        print "------------------------------------------------------"
+        print "x:"
+        print sup
+        print "------------------------------------------------------"
+        return sup
+
+def setup(app):
+    app.add_builder(KeenDirectoryHTMLBuilder)
+    
+
+
+
 
 # -- General configuration -----------------------------------------------------
 
