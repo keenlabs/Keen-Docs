@@ -1,0 +1,64 @@
+
+[% extends "public_layout.html" %]
+[% block body_id %]docBody[% endblock body_id %][% block body %]  
+    <div class="container">        
+        <div class="row">
+                <div class="span3">
+                    <div class="well">                    
+                    
+        <div class="sphinxsidebar">
+<h3><a href="../../">Table Of Contents</a></h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../getting-started-guide/">Getting Started Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../event-data-modeling/event-data-intro/">Data Modeling Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../data-collection/">Data Collection APIs</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../">Data Analysis APIs</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../metrics/">Metrics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../series/">Series</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../progressions/">Progressions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../extractions/">Data Extractions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../list/">List of Unique Properties</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="">Authentication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../filters/">Filters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../timeframe/">Timeframe</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../interval/">Interval</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../meta-analysis/">Meta Analysis Tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../saved-queries/">Saved Queries &amp; Queries</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/reference/">API Technical Reference</a></li>
+</ul>
+
+        </div>
+                    </div>
+                </div>
+                <div class="span9">
+                    
+  <div class="section" id="authentication">
+<h1>Authentication<a class="headerlink" href="#authentication" title="Permalink to this headline">¶</a></h1>
+<p>Keen supports two mechanisms for authenticating API requests. For both of them, you&#8217;ll need to know one key piece of information: the API Key for the Project you want to use. This is easily retrievable from the Keen UI. Login with your username and password to <a class="reference external" href="https://keen.io">Keen</a>. Navigate to your project, make sure the &#8220;Project Overview&#8221; tab is selected, and you should see your API Key. Now that you have your API Key, let&#8217;s talk about how you actually authenticate your requests.</p>
+<div class="section" id="http-header">
+<h2>HTTP Header<a class="headerlink" href="#http-header" title="Permalink to this headline">¶</a></h2>
+<p>The first way to authenticate is through a HTTP header called &#8220;Authorization&#8221;. This method is supported for EVERY API call, so it will always work. To use it, simply send a HTTP header with your request. Its name should be &#8220;Authorization&#8221; and its value should just be your API Key. That&#8217;s all you have to do.</p>
+</div>
+<div class="section" id="query-string-param">
+<h2>Query String Param<a class="headerlink" href="#query-string-param" title="Permalink to this headline">¶</a></h2>
+<p>The second way to authenticate is through a query string parameter called &#8220;api_key&#8221;. Its value should just be your API Key.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This mechanism for authentication is ONLY supported for the <a class="reference internal" href="../#data-analysis"><em>Data Analysis APIs</em></a>. We support this so that links to analysis results can be embedded in HTML documents as links.</p>
+</div>
+</div>
+</div>
+
+
+                    
+                        <div id="disqus_thread"></div>
+                        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+                    
+                </div>
+            
+        </div>
+    </div>
+
+[% endblock %]

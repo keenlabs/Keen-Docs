@@ -1,0 +1,94 @@
+
+[% extends "public_layout.html" %]
+[% block body_id %]docBody[% endblock body_id %][% block body %]  
+    <div class="container">        
+        <div class="row">
+                <div class="span3">
+                    <div class="well">                    
+                    
+        <div class="sphinxsidebar">
+<h3><a href="../../">Table Of Contents</a></h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../getting-started-guide/">Getting Started Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../event-data-modeling/event-data-intro/">Data Modeling Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../data-collection/">Data Collection APIs</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../">Data Analysis APIs</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../metrics/">Metrics</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="">Series</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../progressions/">Progressions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../extractions/">Data Extractions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../list/">List of Unique Properties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../authentication/">Authentication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../filters/">Filters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../timeframe/">Timeframe</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../interval/">Interval</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../meta-analysis/">Meta Analysis Tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../saved-queries/">Saved Queries &amp; Queries</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/reference/">API Technical Reference</a></li>
+</ul>
+
+        </div>
+                    </div>
+                </div>
+                <div class="span9">
+                    
+  <div class="section" id="series">
+<h1>Series<a class="headerlink" href="#series" title="Permalink to this headline">¶</a></h1>
+<p>A Series allows you to analyze trends in <a class="reference internal" href="../metrics/"><em>Metrics</em></a> over time. It breaks a timeframe into intervals of hours, days, or weeks, and returns Metrics (numbers) for each of those intervals.</p>
+<p>Creating a series request is done by simply adding the <a class="reference internal" href="../timeframe/"><em>Timeframe</em></a> and <a class="reference internal" href="../interval/"><em>Interval</em></a> query string parameters to a <a class="reference internal" href="../metrics/"><em>Metric</em></a> request. If you are already using a timeframe with a Metric, you only need to add the <a class="reference internal" href="../interval/"><em>Interval</em></a> query string parameter to turn your Metric into a Series. Pretty cool, huh?</p>
+<p>Here’s an example that counts the number of purchases events we have recorded for each day last week.</p>
+<div class="highlight-none"><div class="highlight"><pre>http://api.keen.io/3.0/projects/&lt;project_id&gt;/queries/count?api_key=&lt;key&gt;&amp;event_collection=purchases&amp;interval=daily&amp;timeframe=last_3_days
+</pre></div>
+</div>
+<p>The output of a Series request is an array of JSON dictionaries which include the value for each interval in the timeframe.  Here is what the output looks like in our example:</p>
+<div class="highlight-none"><div class="highlight"><pre>{
+    &quot;result&quot;:&#91;
+        {
+            &quot;value&quot;: 12,
+            &quot;timeframe&quot;: {
+                &quot;start&quot;: &quot;2012-08-05T00:00:00&quot;,
+                &quot;end&quot;: &quot;2012-08-06T00:00:00&quot;
+            }
+        },
+        {
+            &quot;value&quot;: 6585,
+            &quot;timeframe&quot;:{
+                &quot;start&quot;: &quot;2012-08-06T00:00:00&quot;,
+                &quot;end&quot;: &quot;2012-08-07T00:00:00&quot;
+            }
+        },
+        {
+            &quot;value&quot;: 3586,
+            &quot;timeframe&quot;: {
+                &quot;start&quot;: &quot;2012-08-07T00:00:00&quot;,
+                &quot;end&quot;: &quot;2012-08-08T00:00:00&quot;
+            }
+        },
+    &#93;
+}
+</pre></div>
+</div>
+<p>As you might have noticed, the series output forms the data set for a basic bar chart or line graph.</p>
+<p>Please note that there is a limitation on the number of analyses that can be done in a single Series. The current limit is 31. That means your specified interval and timeframe can&#8217;t have more than 31 buckets or &#8220;sub-timeframes&#8221;. For example, running a Series with an &#8220;hourly&#8221; interval over the timeframe &#8220;last_5_days&#8221; would produce an analysis query with 24 hours x 5 days = 120 sub-timeframes. You will get an error about having too many sub-timeframes. If you run the same query with a &#8220;daily&#8221; interval and timeframe of &#8220;last_5_days&#8221; you would have one sub-timeframe per day and a total of 5 sub-timeframes. Easily under the limit.</p>
+<p>Here are some example questions you could answer with a Series:</p>
+<ul class="simple">
+<li>How many times was content shared in the last 24 hours? When was the most popular time to share?</li>
+<li>How much revenue was generated for each of the past 8 weeks?</li>
+<li>Is the usage of our new feature increasing?</li>
+<li>How many users signed up each day last week?</li>
+</ul>
+</div>
+
+
+                    
+                        <div id="disqus_thread"></div>
+                        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+                    
+                </div>
+            
+        </div>
+    </div>
+
+[% endblock %]

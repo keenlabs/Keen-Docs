@@ -1,0 +1,97 @@
+
+[% extends "public_layout.html" %]
+[% block body_id %]docBody[% endblock body_id %][% block body %]  
+    <div class="container">        
+        <div class="row">
+                <div class="span3">
+                    <div class="well">                    
+                    
+        <div class="sphinxsidebar">
+<h3><a href="../../">Table Of Contents</a></h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../getting-started-guide/">Getting Started Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../event-data-modeling/event-data-intro/">Data Modeling Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../data-collection/">Data Collection APIs</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../">Data Analysis APIs</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../metrics/">Metrics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../series/">Series</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../progressions/">Progressions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../extractions/">Data Extractions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../list/">List of Unique Properties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../authentication/">Authentication</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="">Filters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../timeframe/">Timeframe</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../interval/">Interval</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../meta-analysis/">Meta Analysis Tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../saved-queries/">Saved Queries &amp; Queries</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/reference/">API Technical Reference</a></li>
+</ul>
+
+        </div>
+                    </div>
+                </div>
+                <div class="span9">
+                    
+  <div class="section" id="filters">
+<h1>Filters<a class="headerlink" href="#filters" title="Permalink to this headline">¶</a></h1>
+<p>A filter is a criterion applied to a collection of events to narrow down the set of events used for analysis.  For example, you could apply a filter so you are only analyzing events that came from Android users.</p>
+<p>Filters are passed into URLs as an array of JSON objects.  Each JSON object has three properties:</p>
+<ul class="simple">
+<li><strong>property_name</strong> (required) - the name of the property on which you’d like to filter.</li>
+<li><strong>operator</strong> (required) - the string code for the filter operator you’d like to use.</li>
+<li><strong>value</strong> (required) - the value to compare to the property specified in &#8220;property_name&#8221;.</li>
+</ul>
+<p>Here is a list of operators you can use with <a class="reference internal" href=""><em>Filters</em></a>:</p>
+<ul class="simple">
+<li><strong>eq</strong> - Equal to</li>
+<li><strong>ne</strong> - Not equal to</li>
+<li><strong>lt</strong> - Less than</li>
+<li><strong>lte</strong> - Less than or equal to</li>
+<li><strong>gt</strong> - Greater than</li>
+<li><strong>gte</strong> - Greater than or equal to</li>
+<li><strong>exists</strong> - Whether or not a specific property exists on an event record.  When using the &#8220;exists&#8221; operator, the value passed in must be either &#8220;true&#8221; or &#8220;false&#8221;</li>
+<li><strong>in</strong> - Whether or not the property value is in a given set of values.  When using the &#8220;in&#8221; operator, the value must be a JSON array of values.  Example: &#91;1,2,4,5&#93;</li>
+</ul>
+<p>Because not all filter operators make sense for the different property data types, only certain ones are valid for each type.</p>
+<ul class="simple">
+<li>string - eq, ne, lt, gt, exists, in</li>
+<li>number - eq, ne, lt, lte, gt, gte, exists, in</li>
+<li>boolean - eq, exists, in</li>
+</ul>
+<p>Example: Here is the JSON array for two filters.  The first one restricts our events to only those with a <em>price</em> property greater than or equal to .99.  The second one restricts our events to only those whose <em>on_sale</em> property is set to <em>true</em>.</p>
+<div class="highlight-none"><div class="highlight"><pre>&#91;
+    {
+        &quot;property_name&quot; : &quot;price&quot;,
+        &quot;operator&quot; : &quot;gte&quot;,
+        &quot;property_value&quot; : .99
+    },
+    {
+        &quot;property_name&quot; : &quot;on_sale&quot;
+        &quot;operator&quot; : &quot;eq&quot;
+        &quot;property_value&quot; : true
+    }
+&#93;
+</pre></div>
+</div>
+<p>Filters are either passed through a HTTP POST/PUT body, or through the query string of an HTTP GET. If you&#8217;re making a GET request and you want to specify some filters, you&#8217;ll have to URL encode your JSON string using the proper method in your language of choice.</p>
+<p>Finally, set the &#8220;filters&#8221; parameter in your query string equal to the URL encoded string.</p>
+<p>Example:</p>
+<div class="highlight-none"><div class="highlight"><pre>https://api.keen.io/3.0/projects/&lt;project_id&gt;/queries/count?api_key=&lt;api_key&gt;&amp;event_collection=&lt;event_collection&gt;&amp;filters=%5b%7b%22property_name%22%3a%22price%22%2c%22operator%22%3a%22gte%22%2c%22property_value%22%3a.99%7d%2c%7b%22property_name%22%3a%22on_sale%22%2c%22operator%22%3a%22eq%22%2c%22property_value%22%3atrue%7d%5d
+</pre></div>
+</div>
+<p>PS: The query builder on keen.io will construct and decode filters into a URL for you.</p>
+</div>
+
+
+                    
+                        <div id="disqus_thread"></div>
+                        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+                    
+                </div>
+            
+        </div>
+    </div>
+
+[% endblock %]

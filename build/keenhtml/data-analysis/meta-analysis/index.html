@@ -1,0 +1,62 @@
+
+[% extends "public_layout.html" %]
+[% block body_id %]docBody[% endblock body_id %][% block body %]  
+    <div class="container">        
+        <div class="row">
+                <div class="span3">
+                    <div class="well">                    
+                    
+        <div class="sphinxsidebar">
+<h3><a href="../../">Table Of Contents</a></h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../getting-started-guide/">Getting Started Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../event-data-modeling/event-data-intro/">Data Modeling Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../data-collection/">Data Collection APIs</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../">Data Analysis APIs</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../metrics/">Metrics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../series/">Series</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../progressions/">Progressions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../extractions/">Data Extractions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../list/">List of Unique Properties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../authentication/">Authentication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../filters/">Filters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../timeframe/">Timeframe</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../interval/">Interval</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="">Meta Analysis Tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../saved-queries/">Saved Queries &amp; Queries</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/reference/">API Technical Reference</a></li>
+</ul>
+
+        </div>
+                    </div>
+                </div>
+                <div class="span9">
+                    
+  <div class="section" id="meta-analysis-tools">
+<h1>Meta Analysis Tools<a class="headerlink" href="#meta-analysis-tools" title="Permalink to this headline">¶</a></h1>
+<p>These tools can be used to get information about your projects, event collections, Saved Queries, etc.</p>
+<ul class="simple">
+<li><a class="reference internal" href="../../api/reference/#versions-resource"><em>Versions Resource</em></a> - The entry point to our APIs. Returns the available API versions and links to the <a class="reference internal" href="../../api/reference/#discovery-resource"><em>Discovery Resource</em></a>.</li>
+<li><a class="reference internal" href="../../api/reference/#discovery-resource"><em>Discovery Resource</em></a> - Returns the available child resources. Currently, the only child resource is the <a class="reference internal" href="../../api/reference/#projects-list-resource"><em>Projects Resource</em></a>.</li>
+<li><a class="reference internal" href="../../api/reference/#projects-list-resource"><em>Projects Resource</em></a> - Returns the projects accessible to the API user, as well as links to the <a class="reference internal" href="../../api/reference/#project-row-resource"><em>Project Row Resource</em></a> for discovery.</li>
+<li><a class="reference internal" href="../../api/reference/#project-row-resource"><em>Project Row Resource</em></a> - Returns detailed information about the specific project, as well as links to related resources.</li>
+<li><a class="reference internal" href="../../api/reference/#event-collections-list-resource"><em>Event Collections List Resource</em></a> - Returns detailed information about all the event collections in the specific project, as well as links to them. Also used for bulk-inserting events.</li>
+<li><a class="reference internal" href="../../api/reference/#event-collection-row-resource"><em>Event Collection Row Resource</em></a> - Returns event collection info including properties and their type. It also returns links to sub-resources. Also used for inserting events.</li>
+<li><a class="reference internal" href="../../api/reference/#queries-resource"><em>Queries Resource</em></a> - Returns links to the available Queries, i.e. <a class="reference internal" href="../metrics/"><em>Metrics</em></a>, <a class="reference internal" href="../progressions/"><em>Progressions</em></a>, <a class="reference internal" href="../extractions/"><em>Data Extractions</em></a>.</li>
+<li><a class="reference internal" href="../../api/reference/#saved-query-list-resource"><em>Saved Queries List Resource</em></a> - Returns all the available <a class="reference internal" href="../saved-queries/"><em>Saved Queries &amp; Queries</em></a> in this project as well as links to each of their <a class="reference internal" href="../../api/reference/#saved-query-row-resource"><em>Saved Query Row Resource</em></a>.</li>
+</ul>
+</div>
+
+
+                    
+                        <div id="disqus_thread"></div>
+                        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+                    
+                </div>
+            
+        </div>
+    </div>
+
+[% endblock %]

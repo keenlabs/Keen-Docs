@@ -1,0 +1,226 @@
+
+[% extends "public_layout.html" %]
+[% block body_id %]docBody[% endblock body_id %][% block body %]  
+    <div class="container">        
+        <div class="row">
+                <div class="span3">
+                    <div class="well">                    
+                    
+        <div class="sphinxsidebar">
+<h3><a href="../../../">Table Of Contents</a></h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../getting-started-guide/">Getting Started Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../event-data-modeling/event-data-intro/">Data Modeling Guide</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../../data-collection/">Data Collection APIs</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="">iOS Client Usage Guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ruby/usage-guide/">Ruby Client Usage Guide</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../data-analysis/">Data Analysis APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/reference/">API Technical Reference</a></li>
+</ul>
+
+        </div>
+                    </div>
+                </div>
+                <div class="span9">
+                    
+  <div class="section" id="ios-client-usage-guide">
+<h1>iOS Client Usage Guide<a class="headerlink" href="#ios-client-usage-guide" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<p>The Keen iOS client is designed to be simple to develop with, yet incredibly flexible. Our goal is to let you decide what events are important to you, use your own vocabulary to describe them, and decide when you want to send them to Keen service.</p>
+<p>For a detailed class reference, please visit our <a class="reference external" href="https://keen.io/static/iOS-reference/index.html">Keen iOS Client API Reference</a>.</p>
+<ul class="simple">
+<li><a class="reference internal" href="#install-guide"><em>Install Guide</em></a> - How to install the Keen iOS Client into your application.</li>
+<li><a class="reference internal" href="#register-client"><em>Register Client</em></a> - How to register your project ID and API key with the Keen iOS Client.</li>
+<li><a class="reference internal" href="#add-events"><em>Add Events</em></a> - How to add an event with the Keen iOS Client.</li>
+<li><a class="reference internal" href="#upload-events"><em>Upload to Keen</em></a> - How to upload all previously saved events with the Keen iOS Client.</li>
+</ul>
+<p>Got questions or feedback? Come hang out with us in the Keen chat: <a class="reference external" href="http://users.keen.io/">users.keen.io</a>.</p>
+<div class="section" id="get-project-id-auth-token">
+<h3>Get Project ID &amp; Auth Token<a class="headerlink" href="#get-project-id-auth-token" title="Permalink to this headline">¶</a></h3>
+<p>If you haven&#8217;t done so already,  <a class="reference external" href="https://keen.io/add-project">login to Keen.io to create a project</a>  for your app.</p>
+</div>
+</div>
+<div class="section" id="install-guide">
+<span id="id1"></span><h2>Install Guide<a class="headerlink" href="#install-guide" title="Permalink to this headline">¶</a></h2>
+<p>Installing the client should be a breeze. If it&#8217;s not, please let us know at <a class="reference external" href="mailto:team&#37;&#52;&#48;keen&#46;io">team<span>&#64;</span>keen<span>&#46;</span>io</a>!</p>
+<div class="section" id="universal-binary">
+<h3>Universal Binary<a class="headerlink" href="#universal-binary" title="Permalink to this headline">¶</a></h3>
+<p>Our recommended way of installing the Keen Client is to use the universal binary we&#8217;ve created. With this, you&#8217;ll be able to instrument your app regardless of whether or not it uses ARC (Automatic Reference Counting) or if you have a different version of JSONKit than the one we rely on.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">While we think the universal binary makes things really easy, we love to be transparent. Come check out our work on GitHub at <a class="reference external" href="https://github.com/keenlabs/KeenClient-iOS">https://github.com/keenlabs/KeenClient-iOS</a>. We love feedback, especially in the form of pull requests. :)</p>
+</div>
+<div class="section" id="download">
+<h4>Download<a class="headerlink" href="#download" title="Permalink to this headline">¶</a></h4>
+<p>Download the binary and public headers. Get the latest from here:</p>
+<p><a class="reference external" href="http://keen.io/static/code/KeenClient.zip">http://keen.io/static/code/KeenClient.zip</a></p>
+</div>
+<div class="section" id="uncompress">
+<h4>Uncompress<a class="headerlink" href="#uncompress" title="Permalink to this headline">¶</a></h4>
+<p>Uncompress the archive. It should contain a folder called &#8220;KeenClient&#8221; with two files:</p>
+<ul class="simple">
+<li>libKeenClient-Aggregate.a</li>
+<li>KeenClient.h</li>
+</ul>
+</div>
+<div class="section" id="add-files-to-xcode">
+<h4>Add Files to Xcode<a class="headerlink" href="#add-files-to-xcode" title="Permalink to this headline">¶</a></h4>
+<p>Just drag the &#8220;KeenClient&#8221; folder into your Xcode project.</p>
+</div>
+<div class="section" id="enable-linker-flag">
+<h4>Enable Linker Flag<a class="headerlink" href="#enable-linker-flag" title="Permalink to this headline">¶</a></h4>
+<p>Enable a linker flag to include the special categories on some of the NSFoundation classes that are required for the Keen client to work correctly. Start by choosing the correct target for your project, selecting the &#8220;Build Settings&#8221; tab, and then search for &#8220;other linker&#8221;. Under &#8220;Other Linker Flags&#8221;, add the text &#8220;-ObjC&#8221;.</p>
+<img alt="../../../_images/categories.png" src="../../../_images/categories.png" />
+</div>
+<div class="section" id="compile">
+<h4>Compile<a class="headerlink" href="#compile" title="Permalink to this headline">¶</a></h4>
+<p>Try and compile. It should work! If it doesn&#8217;t, you probably forgot to enable the linker flag (see above). If you still can&#8217;t get it to work, let us know at <a class="reference external" href="mailto:team&#37;&#52;&#48;keen&#46;io">team<span>&#64;</span>keen<span>&#46;</span>io</a> and one of us will help you right away.</p>
+</div>
+</div>
+</div>
+<div class="section" id="usage-guide">
+<h2>Usage Guide<a class="headerlink" href="#usage-guide" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="instrumentation">
+<h3>Instrumentation<a class="headerlink" href="#instrumentation" title="Permalink to this headline">¶</a></h3>
+<p>Now it’s time to actually use the client!</p>
+<div class="section" id="register-client">
+<span id="id2"></span><h4>Register Client<a class="headerlink" href="#register-client" title="Permalink to this headline">¶</a></h4>
+<p>Register the KeenClient shared client with your project ID and authorization token. The recommended place to do this is in one of your application delegates. Here’s some example code:</p>
+<div class="highlight-objc"><div class="highlight"><pre><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">applicationDidBecomeActive:</span><span class="p">(</span><span class="n">UIApplication</span> <span class="o">*</span><span class="p">)</span><span class="nv">application</span>
+<span class="p">{</span>
+    <span class="p">&#91;</span><span class="n">KeenClient</span> <span class="nl">sharedClientWithProjectId:</span><span class="s">@&quot;4f4ed092163d663d3a000000&quot;</span>
+                                <span class="nl">andApiKey:</span><span class="s">@&quot;9a9d92907c3e43c3a4742535fc2f78ec&quot;</span><span class="p">&#93;;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The &#91;KeenClient sharedClientWithProjectId: andApiKey&#93; does the registration. From now on, in your code, you can just reference the shared client by calling &#91;KeenClient sharedClient&#93;.</p>
+</div>
+<div class="section" id="add-events">
+<span id="id3"></span><h4>Add Events<a class="headerlink" href="#add-events" title="Permalink to this headline">¶</a></h4>
+<p>Add events to track. Here’s a very basic example for an app that includes two tabs. We want to track when a tab is switched to.</p>
+<div class="highlight-objc"><div class="highlight"><pre><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">viewWillAppear:</span><span class="p">(</span><span class="kt">BOOL</span><span class="p">)</span><span class="nv">animated</span>
+<span class="p">{</span>
+    <span class="p">&#91;</span><span class="n">super</span> <span class="nl">viewWillAppear:</span><span class="n">animated</span><span class="p">&#93;;</span>
+
+    <span class="n">NSDictionary</span> <span class="o">*</span><span class="n">event</span> <span class="o">=</span> <span class="p">&#91;</span><span class="n">NSDictionary</span> <span class="nl">dictionaryWithObjectsAndKeys:</span><span class="s">@&quot;first view&quot;</span><span class="p">,</span> <span class="s">@&quot;view_name&quot;</span><span class="p">,</span>
+                           <span class="s">@&quot;going to&quot;</span><span class="p">,</span> <span class="s">@&quot;action&quot;</span><span class="p">,</span> <span class="nb">nil</span><span class="p">&#93;;</span>
+    <span class="p">&#91;&#91;</span><span class="n">KeenClient</span> <span class="n">sharedClient</span><span class="p">&#93;</span> <span class="nl">addEvent:</span><span class="n">event</span> <span class="nl">toCollection:</span><span class="s">@&quot;tab_views&quot;</span> <span class="nl">error:</span><span class="nb">nil</span><span class="p">&#93;;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The idea is to first create an arbitrary dictionary of JSON-serializable values. We support:</p>
+<div class="highlight-python"><pre>NSString, NSNumber, NSDate, NSDictionary, NSArray, and BOOL</pre>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The JSON spec doesn&#8217;t include anything about date values. At Keen, we know dates are important to track. Keen sends dates back and forth through its API in ISO-8601 format. The Keen Client handles this for you.</p>
+</div>
+<p>Keys must be alphanumeric, with the exception of the underscore (_) character, which can appear anywhere but the beginning of the string. For example, &#8220;view_name&#8221; is allowed, but &#8220;_view_name&#8221; is not.</p>
+<p>Add as many events as you like. The Keen client will cache them on disk until you’re ready to send them.</p>
+<p>The client will automatically stamp every event you track with a timestamp. If you want to override the system value with your own, use the following example. Note that the &#8220;timestamp&#8221; key is set in the header properties dictionary.</p>
+<div class="highlight-objc"><div class="highlight"><pre><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">viewWillAppear:</span><span class="p">(</span><span class="kt">BOOL</span><span class="p">)</span><span class="nv">animated</span>
+<span class="p">{</span>
+    <span class="p">&#91;</span><span class="n">super</span> <span class="nl">viewWillAppear:</span><span class="n">animated</span><span class="p">&#93;;</span>
+
+    <span class="n">NSDictionary</span> <span class="o">*</span><span class="n">event</span> <span class="o">=</span> <span class="p">&#91;</span><span class="n">NSDictionary</span> <span class="nl">dictionaryWithObjectsAndKeys:</span><span class="s">@&quot;first view&quot;</span><span class="p">,</span> <span class="s">@&quot;view_name&quot;</span><span class="p">,</span>
+                           <span class="s">@&quot;going to&quot;</span><span class="p">,</span> <span class="s">@&quot;action&quot;</span><span class="p">,</span> <span class="nb">nil</span><span class="p">&#93;;</span>
+    <span class="n">NSDate</span> <span class="o">*</span><span class="n">myDate</span> <span class="o">=</span> <span class="p">&#91;</span><span class="n">NSDate</span> <span class="n">date</span><span class="p">&#93;;</span>
+    <span class="n">NSDictionary</span> <span class="o">*</span><span class="n">headerProperties</span> <span class="o">=</span> <span class="p">&#91;</span><span class="n">NSDictionary</span> <span class="nl">dictionaryWithObject:</span><span class="n">myDate</span>
+                                                                 <span class="nl">forKey:</span><span class="s">@&quot;timestamp&quot;</span><span class="p">&#93;;</span>
+    <span class="p">&#91;&#91;</span><span class="n">KeenClient</span> <span class="n">sharedClient</span><span class="p">&#93;</span> <span class="nl">addEvent:</span><span class="n">event</span>
+                   <span class="nl">withHeaderProperties:</span><span class="n">headerProperties</span>
+                           <span class="nl">toCollection:</span><span class="s">@&quot;tab_views&quot;</span>
+                                  <span class="nl">error:</span><span class="nb">nil</span><span class="p">&#93;;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="global-properties">
+<h4>Global Properties<a class="headerlink" href="#global-properties" title="Permalink to this headline">¶</a></h4>
+<p>Now you might be thinking, &#8220;Okay, that looks pretty easy. But what if I want to send the same properties on EVERY event in a particular collection? Or just EVERY event, period?&#8221; We&#8217;ve got you covered through something we call Global Properties.</p>
+<p>Global properties are properties which are sent with EVERY event. For example, you may wish to always capture device information like OS version, handset type, orientation, etc.</p>
+<p>There are two ways to handle Global Properties - one is more simple but more limited, while the other is a bit more complex but much more powerful. For each of them, after you register your client, you&#8217;ll need to set an Objective-C property on the KeenClient instance you&#8217;re using.</p>
+<p><strong>Dictionary-based Global Properties</strong></p>
+<p>For this, the Objective-C property is called <em>globalPropertiesDictionary</em>. The property&#8217;s value will be an <em>NSDictionary</em> that you define. Each time an event is added, the iOS client will look at the value of this property and add all its contents to the user-defined event. Use this if you have a bunch of static properties that you want to add to every event.</p>
+<p>Here&#8217;s an example using a dictionary:</p>
+<div class="highlight-objc"><pre>- (void)applicationDidBecomeActive:(UIApplication *)application
+{
+    &#91;KeenClient sharedClientWithProjectId:@"4f4ed092163d663d3a000000"
+                                andApiKey:@"9a9d92907c3e43c3a4742535fc2f78ec"&#93;;
+    client.globalPropertiesDictionary = @{@"some_standard_key": @"some_standard_value"};
+}</pre>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">If there are two properties with the same name specified in the user-defined event AND the global properties, the user-defined event&#8217;s property will be the one used.</p>
+</div>
+<p><strong>Block-based Global Properties</strong></p>
+<p>For this, the Objective-C property is called <em>globalPropertiesBlock</em>. The property&#8217;s value will be a block that you define. Every time an event is added, the block will be called. The client expects the block to return an NSDictionary consisting of the global properties for that event collection. Use this if you have a bunch of dynamic properties (see below) that you want to add to every event.</p>
+<p>Here&#8217;s an example using blocks:</p>
+<div class="highlight-objc"><pre>- (void)applicationDidBecomeActive:(UIApplication *)application
+{
+    &#91;KeenClient sharedClientWithProjectId:@"4f4ed092163d663d3a000000"
+                                andApiKey:@"9a9d92907c3e43c3a4742535fc2f78ec"&#93;;
+    client.globalPropertiesBlock = ^NSDictionary *(NSString *eventCollection) {
+        if (&#91;eventCollection isEqualToString:@"apples"&#93;) {
+            return @{ @"color": @"red" };
+        } else if (&#91;eventCollection isEqualToString:@"pears"&#93;) {
+            return @{ @"color": @"green" };
+        } else {
+            return nil;
+        }
+    };
+}</pre>
+</div>
+<p>The block takes in a single string parameter which corresponds to the name of this particular event. And we expect it to return an NSDictionary of your construction. This example doesn&#8217;t make use of the parameter, but yours could!</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Because we support a block here, you can create DYNAMIC global properties. For example, you might want to capture the orientation of the device, which obviously could change at run-time. With the block, you can use functional programming to ask the OS what the current orientation is, each time you add an event. Pretty useful, right?</p>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Another note - you can use BOTH the dictionary property AND the block property at the same time. If there are conflicts between defined properties, the order of precedence is: user-defined event &gt; block-defined event &gt; dictionary-defined event. Meaning the properties you put in a single event will ALWAYS show up, even if you define the same property in one of your globals.</p>
+</div>
+</div>
+<div class="section" id="upload-to-keen">
+<span id="upload-events"></span><h4>Upload to Keen<a class="headerlink" href="#upload-to-keen" title="Permalink to this headline">¶</a></h4>
+<p>Upload the captured events to the Keen service. This must be done explicitly. We recommend doing the upload when your application is sent to the background, but you can do it whenever you’d like (for example, if your application typically has very long user sessions). The uploader spawns its own background thread so the main UI thread is not blocked.</p>
+<div class="highlight-objc"><div class="highlight"><pre><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">applicationDidEnterBackground:</span><span class="p">(</span><span class="n">UIApplication</span> <span class="o">*</span><span class="p">)</span><span class="nv">application</span>
+<span class="p">{</span>
+    <span class="n">UIBackgroundTaskIdentifier</span> <span class="n">taskId</span> <span class="o">=</span> <span class="p">&#91;</span><span class="n">application</span> <span class="nl">beginBackgroundTaskWithExpirationHandler:</span><span class="o">^</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;Background task is being expired.&quot;</span><span class="p">);</span>
+    <span class="p">}&#93;;</span>
+
+    <span class="p">&#91;&#91;</span><span class="n">KeenClient</span> <span class="n">sharedClient</span><span class="p">&#93;</span> <span class="nl">uploadWithFinishedBlock:</span><span class="o">^</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="p">{</span>
+        <span class="p">&#91;</span><span class="n">application</span> <span class="nl">endBackgroundTask:</span><span class="n">taskId</span><span class="p">&#93;;</span>
+    <span class="p">}&#93;;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>In this example, the upload is done in a background task so that even once the user backgrounds your application, the upload can continue. Here we first start the background task, start the upload, and then end the background task once the upload completes.</p>
+<p>If you want to call upload periodically during your application’s execution, you can do so by simply invoking &#91;KeenClient uploadWithFinishedBlock:&#93; at any point.</p>
+</div>
+</div>
+<div class="section" id="debugging">
+<h3>Debugging<a class="headerlink" href="#debugging" title="Permalink to this headline">¶</a></h3>
+<p>The Keen iOS client code does a lot of logging, but it’s usually turned off by default. If you’d like to see the log lines generated by your usage of the client, you’ll need to enable a Preprocessor Macro in your Build Settings in Xcode. Here’s a screenshot:</p>
+<img alt="../../../_images/macro.png" src="../../../_images/macro.png" />
+<p>As you can see, you’ll want to add a macro for Debug mode called KEEN_DEBUG and set its value to 1. If you want to disable the log lines, simply remove the macro or set its value to 0.</p>
+</div>
+</div>
+</div>
+
+
+                    
+                        <div id="disqus_thread"></div>
+                        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+                    
+                </div>
+            
+        </div>
+    </div>
+
+[% endblock %]

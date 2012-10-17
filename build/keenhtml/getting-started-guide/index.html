@@ -1,0 +1,210 @@
+
+[% extends "public_layout.html" %]
+[% block body_id %]docBody[% endblock body_id %][% block body %]  
+    <div class="container">        
+        <div class="row">
+                <div class="span3">
+                    <div class="well">                    
+                    
+        <div class="sphinxsidebar">
+<h3><a href="../">Table Of Contents</a></h3>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="">Getting Started Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#what-are-we-doing">What Are We Doing?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#project-setup">Project Setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#send-an-event">Send an Event</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#analyze-events">Analyze Events</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#get-to-work-for-realz">Get to Work, For Realz</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../event-data-modeling/event-data-intro/">Data Modeling Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data-collection/">Data Collection APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data-analysis/">Data Analysis APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/reference/">API Technical Reference</a></li>
+</ul>
+
+        </div>
+                    </div>
+                </div>
+                <div class="span9">
+                    
+  <div class="section" id="getting-started-guide">
+<span id="id1"></span><h1>Getting Started Guide<a class="headerlink" href="#getting-started-guide" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="what-are-we-doing">
+<h2>What Are We Doing?<a class="headerlink" href="#what-are-we-doing" title="Permalink to this headline">¶</a></h2>
+<p>This we believe: Getting started with Keen APIs should be easy. For the technical wizards among you, this guide will take you 8 minutes and you can dig into the advanced documentation. For the sorcerer&#8217;s apprentices, this shouldn&#8217;t take much more than 20 minutes. If it does, we&#8217;ve failed. <a class="reference external" href="mailto:team&#37;&#52;&#48;keen&#46;io?Subject=GettingStartedFeedback">Let us know via email</a> or <a class="reference external" href="http://users.keen.io/">come chat with us at users.keen.io</a>.</p>
+<p>Once you&#8217;re through this guide, we hope you&#8217;ll be square on the following:</p>
+<ul class="simple">
+<li>How we think about and organize analytics data.</li>
+<li>How to setup a project and create an event collection.</li>
+<li>How to submit sample data and do a little something with it.</li>
+</ul>
+<p>This guide assumes that you&#8217;ve been granted developer preview access. Keen is still in private beta, so access is limited to the choicest of rockstars. If you don&#8217;t have a Keen login yet, you can request access <a class="reference external" href="http://keen.io">here</a>.</p>
+</div>
+<div class="section" id="project-setup">
+<h2>Project Setup<a class="headerlink" href="#project-setup" title="Permalink to this headline">¶</a></h2>
+<p>If you haven&#8217;t done so already, login to Keen.io and <a class="reference external" href="https://keen.io/add-project">create a new project</a>.  Since we&#8217;re just practicing, you might want to give it a sufficiently silly name like &#8220;Getting Keeny&#8221; or &#8220;Windows ME&#8221;. Make note of the Project ID and the API Key. You&#8217;ll need those soon.</p>
+<p>What is a project? - A project amounts to a data silo. The information in one project isn&#8217;t available to other projects. Practically speaking, in the mobile world, a project is an app.</p>
+</div>
+<div class="section" id="send-an-event">
+<h2>Send an Event<a class="headerlink" href="#send-an-event" title="Permalink to this headline">¶</a></h2>
+<p>Let&#8217;s get to the heart of it - sending events. <a class="reference internal" href="../event-data-modeling/event-data-intro/#event-data"><em>Events</em></a> are the actions that are happening in your app that you want to track.  Events are stored in <a class="reference internal" href="../event-data-modeling/event-data-intro/#event-collections"><em>Event Collections</em></a>. We’ll call our new Event Collection &#8220;purchases&#8221;, but you can pick any name that doesn&#8217;t have spaces or weird characters.</p>
+<p>Let&#8217;s insert a new &#8220;purchase&#8221; event into the purchases event collection. The event should be in <a class="reference external" href="http://en.wikipedia.org/wiki/JSON">JSON</a> format and look like this example.</p>
+<p><strong>STEP 1:</strong> Copy this example, paste it into a text editor, and save it as a &#8220;purchase1.json&#8221;.</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+  <span class="s2">&quot;category&quot;</span><span class="o">:</span> <span class="s2">&quot;magical animals&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;animal_type&quot;</span><span class="o">:</span> <span class="s2">&quot;pegasus&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;username&quot;</span><span class="o">:</span> <span class="s2">&quot;perseus&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;payment_type&quot;</span><span class="o">:</span> <span class="s2">&quot;head of medusa&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;price&quot;</span><span class="o">:</span> <span class="mf">4.50</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Next you&#8217;ll send this event to Keen using a command line interface like Mac&#8217;s Terminal. <a class="reference external" href="http://en.wikipedia.org/wiki/CURL">cURL</a> is a simple data transfer program built into most operating systems. We&#8217;ll use cURL to do an HTTP POST to the Keen API.</p>
+<p><strong>STEP 2:</strong> Copy, modify, then paste the following cURL command into your terminal. Replace &lt;PROJECT_ID&gt; (e.g. 50610255555a2c4f36000000), &lt;EVENT_COLLECTION&gt; (e.g. purchases) and &lt;API_KEY&gt;  (e.g. e648cf32a1fb401194444444c4e7c2b1) with your specific values.</p>
+<div class="highlight-python"><pre>curl https://api.keen.io/3.0/projects/&lt;PROJECT_ID&gt;/events/&lt;EVENT_COLLECTION&gt;\
+     -H "Authorization: &lt;API_KEY&gt;"\
+     -H "Content-Type: application/json"\
+     -d @purchase1.json</pre>
+</div>
+<p>Note: Make sure to navigate your Terminal prompt to the place where you saved your event, or add a file path to your file name.</p>
+<p>There are a couple things going on here.</p>
+<ul class="simple">
+<li>First, we send the request to a URL that includes both the Project ID and the name of the <a class="reference internal" href="../event-data-modeling/event-data-intro/#event-collections"><em>Event Collection</em></a> (e.g. purchases) where we want to store this event.</li>
+<li>Since the event collection &#8220;purchases&#8221; doesn&#8217;t exist yet, Keen creates a new event collection for you called &#8220;purchases&#8221; and stores your event there. Now you have a place to send all your purchase events in the future.</li>
+<li>Second, we set headers for both authorization (with your API Key) and content-type (so the API knows it’s getting a JSON request).</li>
+<li>Third, we set the body of the HTTP request to the contents of the file that we saved.</li>
+</ul>
+<p>The response should look like:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s">&quot;created&quot;</span><span class="p">:</span> <span class="n">true</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Winning!</p>
+</div>
+<div class="section" id="analyze-events">
+<h2>Analyze Events<a class="headerlink" href="#analyze-events" title="Permalink to this headline">¶</a></h2>
+<p>Through our data analysis API, you&#8217;ll have access to a number of different tools. But, for the moment, let&#8217;s just worry about one - counts. It does exactly what it sounds like it does - counts the number of times an event has occurred.</p>
+<p>We&#8217;ll try a very simple version of a count here. The first query string parameter is the &#8220;api_key&#8221;. You know where to find this from earlier. The second parameter is the &#8220;event_collection&#8221; (e.g. purchases) where we want to do analysis.</p>
+<p>Replace the &lt;PROJECT_ID&gt;, &lt;API_KEY&gt;, and &lt;EVENT_COLLECTON_NAME&gt; with your own, then enter this request in your browser bar.</p>
+<div class="section" id="simple-count-request">
+<h3>Simple Count Request<a class="headerlink" href="#simple-count-request" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python"><pre>https://api.keen.io/3.0/projects/&lt;PROJECT_ID&gt;/queries/count?api_key=&lt;API_KEY&gt;&amp;event_collection=&lt;EVENT_COLLECTION&gt;</pre>
+</div>
+</div>
+<div class="section" id="response">
+<h3>Response<a class="headerlink" href="#response" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s">&quot;result&quot;</span><span class="p">:</span> <span class="mi">1</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Yup. 1. We only inserted one event, so that&#8217;s all we can count. This is just a getting started guide. Here a couple more simple examples just to show off:</p>
+<p>Now change <a class="reference internal" href="../data-analysis/metrics/#count-metric"><em>Count</em></a> to <a class="reference internal" href="../data-analysis/metrics/#average-metric"><em>Average</em></a> and add a target_property query string parameter to let the API know which numeric property you want average. Here&#8217;s how you can run an average on the &#8220;price&#8221; property.</p>
+</div>
+<div class="section" id="average-request">
+<h3>Average Request<a class="headerlink" href="#average-request" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python"><pre>https://api.keen.io/3.0/projects/&lt;PROJECT_ID&gt;/queries/average?api_key=&lt;API_KEY&gt;&amp;event_collection=&lt;EVENT_COLLECTION&gt;&amp;target_property=price</pre>
+</div>
+</div>
+<div class="section" id="id2">
+<h3>Response<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s">&quot;result&quot;</span><span class="p">:</span> <span class="mf">4.5</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Add a <a class="reference internal" href="../data-analysis/timeframe/"><em>Timeframe</em></a> parameter to any request to limit the results to events that happened in a particular timeframe. For example, we can set timeframe=today to count the events created today.</p>
+</div>
+<div class="section" id="request-with-timeframe">
+<h3>Request with timeframe<a class="headerlink" href="#request-with-timeframe" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python"><pre>https://api.keen.io/3.0/projects/&lt;PROJECT_ID&gt;/queries/count?api_key=&lt;API_KEY&gt;&amp;event_collection=&lt;EVENT_COLLECTION&gt;&amp;timeframe=today</pre>
+</div>
+</div>
+<div class="section" id="id3">
+<h3>Response<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s">&quot;result&quot;</span><span class="p">:</span> <span class="mi">1</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>You can also add an <a class="reference internal" href="../data-analysis/interval/"><em>Interval</em></a> parameter in order to break the results into buckets.
+Here&#8217;s an example with a <a class="reference internal" href="../data-analysis/timeframe/"><em>Timeframe</em></a> of the last_3_hours and an hourly <a class="reference internal" href="../data-analysis/interval/"><em>Interval</em></a>.</p>
+</div>
+<div class="section" id="request-with-interval">
+<h3>Request with interval<a class="headerlink" href="#request-with-interval" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python"><pre>https://api.keen.io/3.0/projects/&lt;PROJECT_ID&gt;/queries/count?api_key=&lt;API_KEY&gt;&amp;event_collection=&lt;EVENT_COLLECTION&gt;&amp;timeframe=last_3_hours&amp;interval=hourly</pre>
+</div>
+</div>
+<div class="section" id="id4">
+<h3>Response<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span>
+  <span class="s">&quot;result&quot;</span><span class="p">:</span> <span class="p">&#91;</span>
+    <span class="p">{</span>
+      <span class="s">&quot;timeframe&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s">&quot;end&quot;</span><span class="p">:</span> <span class="s">&quot;2012-09-26T15:00:00+00:00&quot;</span><span class="p">,</span>
+        <span class="s">&quot;start&quot;</span><span class="p">:</span> <span class="s">&quot;2012-09-26T14:00:00+00:00&quot;</span>
+      <span class="p">},</span>
+      <span class="s">&quot;value&quot;</span><span class="p">:</span> <span class="mi">0</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="s">&quot;timeframe&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s">&quot;end&quot;</span><span class="p">:</span> <span class="s">&quot;2012-09-26T16:00:00+00:00&quot;</span><span class="p">,</span>
+        <span class="s">&quot;start&quot;</span><span class="p">:</span> <span class="s">&quot;2012-09-26T15:00:00+00:00&quot;</span>
+      <span class="p">},</span>
+      <span class="s">&quot;value&quot;</span><span class="p">:</span> <span class="mi">0</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="s">&quot;timeframe&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s">&quot;end&quot;</span><span class="p">:</span> <span class="s">&quot;2012-09-26T17:00:00+00:00&quot;</span><span class="p">,</span>
+        <span class="s">&quot;start&quot;</span><span class="p">:</span> <span class="s">&quot;2012-09-26T16:00:00+00:00&quot;</span>
+      <span class="p">},</span>
+      <span class="s">&quot;value&quot;</span><span class="p">:</span> <span class="mi">0</span>
+    <span class="p">}</span>
+  <span class="p">&#93;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Note: last_N_hours breaks up results for the last N <em>completed</em> hours. If it&#8217;s 2:15pm now, last_hour will calculate from 1pm to 2pm. It won&#8217;t include events from 2pm to 2:15pm.</p>
+<p>That&#8217;s just the beginning. You&#8217;ll find a lot more analysis tools on <a class="reference external" href="http://keen.io">our website</a> and our <a class="reference internal" href="../data-analysis/"><em>API docs</em></a>.</p>
+<img alt="../_images/keen_tools.png" src="../_images/keen_tools.png" />
+</div>
+</div>
+<div class="section" id="get-to-work-for-realz">
+<h2>Get to Work, For Realz<a class="headerlink" href="#get-to-work-for-realz" title="Permalink to this headline">¶</a></h2>
+<p>Congratulations! You&#8217;ve graduated from the Keen Getting Started guide. Admittedly, we&#8217;ve just scratched the surface, but hopefully you&#8217;ve got some context on which you can build.</p>
+<p>Now, go do something useful.</p>
+<p>Actually, before you do that, could you please let us know what you thought of this guide? What would make it better or less confusing? Drop a note to <a class="reference external" href="mailto:team&#37;&#52;&#48;keen&#46;io?Subject=GettingStartedFeedback">team<span>&#64;</span>keen<span>&#46;</span>io</a>.</p>
+<p>On to the good stuff...</p>
+<div class="section" id="data-collection-apis">
+<h3>Data Collection APIs<a class="headerlink" href="#data-collection-apis" title="Permalink to this headline">¶</a></h3>
+<p>We built a massively scalable event data warehouse so that you can send us whatever data you want without having to worry about storage or performance. Dive into <a class="reference internal" href="../data-collection/"><em>our data collection API docs</em></a>.</p>
+<p>Or, jump straight to our currently available client usage guides.</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../clients/iOS/usage-guide/">iOS Client Usage Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../clients/ruby/usage-guide/">Ruby Client Usage Guide</a></li>
+</ul>
+</div>
+<p>More are on the way!</p>
+</div>
+<div class="section" id="data-analysis-apis">
+<h3>Data Analysis APIs<a class="headerlink" href="#data-analysis-apis" title="Permalink to this headline">¶</a></h3>
+<p>We are passionate about building a powerful analysis API so you can get the most out of your data. Our services could be the building blocks for your new custom dashboard or a real-time workflow. I’m sure you’ll think of even more uses we haven’t considered yet :)</p>
+<p>Now that you&#8217;ve sent at least one sample event, you can login to Keen.io and check out our query builders. You&#8217;ll notice that all of the custom properties you send are immediately available for analysis. If you&#8217;re more interested in the API itself, check out our <a class="reference internal" href="../data-analysis/"><em>documentation on our suite of analysis API offerings</em></a>.</p>
+</div>
+</div>
+</div>
+
+
+                    
+                        <div id="disqus_thread"></div>
+                        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+                    
+                </div>
+            
+        </div>
+    </div>
+
+[% endblock %]
