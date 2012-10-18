@@ -19,10 +19,12 @@ There are a few scenarios where it makes sense to create multiple projects to lo
 
 * If you have more than one application, create a separate project for each app. For example you might have a project called Eat My Shorts App and another one called CraftMine App.
 * You probably have a production environment and a test environment. It’s a good idea to separate that data to avoid accidentally polluting your production data store with test data. Continuing our example, you would have 4 projects:
+
     * Eat My Shorts App - Staging
     * Eat My Shorts App - Prod
     * CraftMine - Staging
     * CraftMine - Prod
+
 * If you run your app on multiple platforms --- iOS and Android for example --- we recommend storing that data in a shared project rather than creating separate projects. Having your iOS and Android events in a single project will make it much easier to do analysis across platforms. You’ll be able to ask questions like "how many people are using our app? How many people are using our new feature?". You can always use :doc:`filters </data-analysis/filters>` to do comparisons between the platforms --- just make sure you include a platform property when sending data.
 * If you have an application with many similar instances, for example an app for restaurants with a different version for each restaurant, `email us`_ and we will help you figure out the best way to structure your projects. There may be cases where you want to logically separate data for different companies while at the same time requiring cross-project analysis -- we can help!
 
@@ -208,10 +210,10 @@ Some things to consider when creating your event collections:
 #. Events Collections for a given application share many "global properties". For example, most events in your application probably share some properties like user ID, app version, and platform. It’s a good planning exercise to identify those properties that you want to include in every Event Collection so you can structure them the same way each time.
 #. When possible, minimize the number of distinct Event Collections. Let’s say you’re analyzing purchases across many devices and you want to compare them. You've got purchases from multiple versions of your iPhone app and multiple versions of your iPad app.  It’s logical to think of creating separate event collections for each of them, but it’s not the best way. Instead, consider creating a single event collection called Purchases. Each purchase in your event collection share many properties like item description, unit price, quantity, payment method, and customer. Additionally, you can include the property DeviceType (iPhone, iPad, etc) and Version (2.4A, 2.4B, 1.3).
 
-  Since you’re now tracking those Device & Version properties for every purchase, it’s very easy to do the following:
+Since you’re now tracking those Device & Version properties for every purchase, it’s very easy to do the following:
 
-  * count the total number of purchases across all devices
-  * count the total number of purchases where DeviceType equals "iPhone"
-  * count the total number of purchases for iPhone app version 2.4A.
+* count the total number of purchases across all devices
+* count the total number of purchases where DeviceType equals "iPhone"
+* count the total number of purchases for iPhone app version 2.4A.
 
 Check out the :doc:`filters </data-analysis/filters>` page for more information on how to slice and dice your data.
