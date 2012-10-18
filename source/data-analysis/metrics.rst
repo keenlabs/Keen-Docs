@@ -16,7 +16,7 @@ The following Metrics are currently supported in the Data Analysis API:
    :maxdepth: 3
    
    
-Metrics are retrieved using HTTP GET requests to a URL for this format:
+Metrics are calculated using HTTP GET requests. The URL looks like this plus some query string parameters:
 
 .. code-block:: none
 
@@ -24,11 +24,11 @@ Metrics are retrieved using HTTP GET requests to a URL for this format:
 
 The variables in the URL are defined as follows:
 
-* **api_version** - the version of the API you want to use.
-* **project_id** - the ID of the project that contains the data you are analyzing.
+* **api_version** - the version of the API you want to use (e.g. 3.0)
+* **project_id** - the ID of the project that contains the data you are analyzing
 * **metric_name** - the type of Metric you wish to use in this analysis. Example: count_unique
 
-Query string parameters specific to the analysis type will be also be present -- such as filters or a specific timeframe.  See the documentation for the specific Metric for more information.
+Query string parameters specific to the analysis type will be also be present -- such as filters or a specific timeframe.  See the documentation for each specific Metric for more information.
 
 .. _count-metric:
 

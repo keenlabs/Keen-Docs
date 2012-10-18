@@ -23,4 +23,4 @@ Or take a look at our :doc:`/api/reference` for all the nitty-gritty details of 
 
 Unlike traditional databases like SQL, our database has no schema. You no longer need to think of data as a row with a limited number of columns. Our database holds JSON documents - they’re hierarchical and can have as many fields and values as you want. 
 
-If you're new to unstructured data, take a look at the :doc:`../event-data-modeling/event-data-intro` to get some ideas about how to model they data you send to Keen.
+If you're new to unstructured data, take a look at the :doc:`../event-data-modeling/event-data-intro` to get some ideas about how to model the data you send to Keen.

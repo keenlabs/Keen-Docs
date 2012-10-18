@@ -50,17 +50,17 @@
 <ul class="simple">
 </ul>
 </div>
-<p>Metrics are retrieved using HTTP GET requests to a URL for this format:</p>
+<p>Metrics are calculated using HTTP GET requests. The URL looks like this plus some query string parameters:</p>
 <div class="highlight-none"><div class="highlight"><pre>https://api.keen.io/&lt;api_version&gt;/projects/&lt;project_id&gt;/queries/&lt;metric_name&gt;
 </pre></div>
 </div>
 <p>The variables in the URL are defined as follows:</p>
 <ul class="simple">
-<li><strong>api_version</strong> - the version of the API you want to use.</li>
-<li><strong>project_id</strong> - the ID of the project that contains the data you are analyzing.</li>
+<li><strong>api_version</strong> - the version of the API you want to use (e.g. 3.0)</li>
+<li><strong>project_id</strong> - the ID of the project that contains the data you are analyzing</li>
 <li><strong>metric_name</strong> - the type of Metric you wish to use in this analysis. Example: count_unique</li>
 </ul>
-<p>Query string parameters specific to the analysis type will be also be present &#8211; such as filters or a specific timeframe.  See the documentation for the specific Metric for more information.</p>
+<p>Query string parameters specific to the analysis type will be also be present &#8211; such as filters or a specific timeframe.  See the documentation for each specific Metric for more information.</p>
 <div class="section" id="count">
 <span id="count-metric"></span><h2>Count<a class="headerlink" href="#count" title="Permalink to this headline">¶</a></h2>
 <p>Technical Reference: <a class="reference internal" href="../../api/reference/#count-resource"><em>Count Resource</em></a></p>
