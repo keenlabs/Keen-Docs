@@ -53,7 +53,7 @@ Counts take the following parameters:
 
 * **api_key** (optional) - The API Key for the project containing the data you are analyzing. See :doc:`authentication` for more information.
 * **event_collection** (required) - The name of the event collection you are analyzing.
-* **filters** (optional) - :doc:`filters` are used to narrow down the events used in an analysis request based on `event property <event_properties>`_ values.
+* **filters** (optional) - :doc:`filters` are used to narrow down the events used in an analysis request based on :ref:`event property <event-properties>` values.
 * **timeframe** (optional) - A :doc:`timeframe` specifies the events to use for analysis based on a window of time. If no timeframe is specified, all events will be counted.
 
 .. note:: Adding :doc:`timeframe` and :doc:`interval` query string parameters will turn the Count request into a Series.  See the documentation on :doc:`Series<series>` for more information.
@@ -92,7 +92,7 @@ Count Unique takes the following query string parameters:
 * **api_key** (optional) - The API Key for the project containing the data you are analyzing. See :doc:`authentication` for more information.
 * **event_collection** (required) - The name of the event collection you are analyzing.
 * **target_property** (required) - The property of which you want to count the unique values.
-* **filters** (optional) - :doc:`filters` are used to narrow down the events used in an analysis request based on `event property <event_properties>`_ values.
+* **filters** (optional) - :doc:`filters` are used to narrow down the events used in an analysis request based on :ref:`event property <event-properties>` values.
 * **timeframe** (optional) - Similar to filters, a :doc:`timeframe` is used to narrow down the events used in an analysis request based on the time that the event occurred.
 
 .. note:: Adding **timeframe** and **interval** query string parameters will turn the Count Unique request into a Series.  See the documentation on :doc:`Series<series>` for more information.

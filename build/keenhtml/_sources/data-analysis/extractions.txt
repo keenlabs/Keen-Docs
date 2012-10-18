@@ -42,7 +42,7 @@ Extractions take the following parameters:
 
 * **api_key** (optional) - The API Key for the project containing the data you are analyzing. The API key can alternatively be provided  in the request header. See :doc:`authentication` for more information.
 * **event_collection** (required) - The name of the event collection you are analyzing.
-* **filters** (optional) - :doc:`filters` are used to narrow down the events used in an analysis request based on `event property <event_properties>`_ values.
+* **filters** (optional) - :doc:`filters` are used to narrow down the events used in an analysis request based on :ref:`event property <event-properties>` values.
 * **timeframe** (optional) - A :doc:`timeframe` specifies the events to use for analysis based on a window of time. If no timeframe is specified, all events will be counted.
 * **email_address** (optional) - If an email address is specified, an email will be sent this address when the extraction is complete. If email is not specified, your extraction will be processed synchronously and your data will be returned as a :ref:`JSON-data-extraction`.
 
@@ -64,7 +64,7 @@ Extractions take the following parameters:
 
 * **api_key** (optional) - The API Key for the project containing the data you are analyzing. The API key can alternatively be provided  in the request header. See :doc:`authentication` for more information. 
 * **event_collection** (required) - The name of the event collection you are analyzing.
-* **filters** (optional) - :doc:`filters` are used to narrow down the events used in an analysis request based on `event property <event_properties>`_ values.
+* **filters** (optional) - :doc:`filters` are used to narrow down the events used in an analysis request based on :ref:`event property <event-properties>` values.
 * **timeframe** (optional) - A :doc:`timeframe` specifies the events to use for analysis based on a window of time. If no timeframe is specified, all events will be counted.
 
 

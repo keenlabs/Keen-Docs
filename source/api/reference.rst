@@ -519,7 +519,7 @@ Query String Parameters
 
 * **api_key** (optional) - The API Key for the project containing the data you are analyzing. See :doc:`/data-analysis/authentication` for more information.
 * **event_collection** (required) - The name of the event collection you are analyzing.
-* **filters** (optional) - :doc:`/data-analysis/filters` are used to narrow down the events used in an analysis request based on `event property <event_properties>`_ values.
+* **filters** (optional) - :doc:`/data-analysis/filters` are used to narrow down the events used in an analysis request based on :ref:`event property <event-properties>` values.
 * **timeframe** (optional) - A :doc:`/data-analysis/timeframe` specifies the events to use for analysis based on a window of time. If no timeframe is specified, all events will be counted.
 
 .. note:: Adding :doc:`/data-analysis/timeframe` and :doc:`/data-analysis/interval` query string parameters will turn the Count request into a Series.  See the documentation on :doc:`/data-analysis/series` for more information.
@@ -722,7 +722,7 @@ Query String Parameters
 * **api_key** (optional) - The API Key for the project containing the data you are analyzing. If you don't include it as a query string parameter you must include it in the header. See :doc:`/data-analysis/authentication` for more information.
 * **event_collection** (required) - The name of the event collection you are analyzing.
 * **target_property** (required) - The property of which you want to count the unique values.
-* **filters** (optional) - :doc:`/data-analysis/filters` are used to narrow down the events used in an analysis request based on `event property <event_properties>`_ values.
+* **filters** (optional) - :doc:`/data-analysis/filters` are used to narrow down the events used in an analysis request based on :ref:`event property <event-properties>` values.
 * **timeframe** (optional) - Similar to filters, a :doc:`/data-analysis/timeframe` is used to narrow down the events used in an analysis request based on the time that the event occurred.
 
 .. note:: Adding **timeframe** and **interval** query string parameters will turn the Select Unique request into a Series.  See the documentation on :doc:`Series</data-analysis/series>` for more information.
@@ -760,7 +760,7 @@ Query String Parameters
 
 * **api_key** (optional) - The API Key for the project containing the data you are analyzing. See :doc:`/data-analysis/authentication` for more information.
 * **event_collection** (required) - The name of the event collection you are analyzing.
-* **filters** (optional) - :doc:`/data-analysis/filters` are used to narrow down the events used in an analysis request based on `event property <event_properties>`_ values.
+* **filters** (optional) - :doc:`/data-analysis/filters` are used to narrow down the events used in an analysis request based on :ref:`event property <event-properties>` values.
 * **timeframe** (optional) - Similar to filters, a :doc:`/data-analysis/timeframe` is used to narrow down the events used in an analysis request based on the time that the event occurred.
 * **email_address** (optional) - If an email address is specified, an email will be sent to this address when the extraction is complete.
 
