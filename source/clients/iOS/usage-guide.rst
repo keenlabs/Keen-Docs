@@ -16,14 +16,15 @@ For a detailed class reference, please visit our `Keen iOS Client API Reference`
 
 Got questions or feedback? Come hang out with us in the Keen chat: `users.keen.io <http://users.keen.io/>`_. 
 
----------------------------
-Get Project ID & Auth Token
----------------------------
+------------------------
+Get Project ID & API Key
+------------------------
 
 If you haven't done so already,  `login to Keen.io to create a project <https://keen.io/add-project>`_  for your app. 
 
 .. _install-guide:
 
+=============
 Install Guide
 =============
 
@@ -90,7 +91,7 @@ Now it’s time to actually use the client!
 Register Client
 ^^^^^^^^^^^^^^^
 
-Register the KeenClient shared client with your project ID and authorization token. The recommended place to do this is in one of your application delegates. Here’s some example code: 
+Register the KeenClient shared client with your project ID and API Key. The recommended place to do this is in one of your application delegates. Here’s some example code:
 
 .. code-block:: objc
 

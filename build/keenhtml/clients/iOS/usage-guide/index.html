@@ -13,6 +13,9 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../event-data-modeling/event-data-intro/">Data Modeling Guide</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../../../data-collection/">Data Collection APIs</a><ul class="current">
 <li class="toctree-l2 current"><a class="current reference internal" href="">iOS Client Usage Guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#install-guide">Install Guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../android/usage-guide/">Android Client Usage Guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../android/usage-guide/#install-guide">Install Guide</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../ruby/usage-guide/">Ruby Client Usage Guide</a></li>
 </ul>
 </li>
@@ -38,49 +41,31 @@
 <li><a class="reference internal" href="#upload-events"><em>Upload to Keen</em></a> - How to upload all previously saved events with the Keen iOS Client.</li>
 </ul>
 <p>Got questions or feedback? Come hang out with us in the Keen chat: <a class="reference external" href="http://users.keen.io/">users.keen.io</a>.</p>
-<div class="section" id="get-project-id-auth-token">
-<h3>Get Project ID &amp; Auth Token<a class="headerlink" href="#get-project-id-auth-token" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="get-project-id-api-key">
+<h3>Get Project ID &amp; API Key<a class="headerlink" href="#get-project-id-api-key" title="Permalink to this headline">¶</a></h3>
 <p>If you haven&#8217;t done so already,  <a class="reference external" href="https://keen.io/add-project">login to Keen.io to create a project</a>  for your app.</p>
 </div>
 </div>
+</div>
 <div class="section" id="install-guide">
-<span id="id1"></span><h2>Install Guide<a class="headerlink" href="#install-guide" title="Permalink to this headline">¶</a></h2>
+<span id="id1"></span><h1>Install Guide<a class="headerlink" href="#install-guide" title="Permalink to this headline">¶</a></h1>
 <p>Installing the client should be a breeze. If it&#8217;s not, please let us know at <a class="reference external" href="mailto:team&#37;&#52;&#48;keen&#46;io">team<span>&#64;</span>keen<span>&#46;</span>io</a>!</p>
-<div class="section" id="universal-binary">
-<h3>Universal Binary<a class="headerlink" href="#universal-binary" title="Permalink to this headline">¶</a></h3>
 <p>Our recommended way of installing the Keen Client is to use the universal binary we&#8217;ve created. With this, you&#8217;ll be able to instrument your app regardless of whether or not it uses ARC (Automatic Reference Counting) or if you have a different version of JSONKit than the one we rely on.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">While we think the universal binary makes things really easy, we love to be transparent. Come check out our work on GitHub at <a class="reference external" href="https://github.com/keenlabs/KeenClient-iOS">https://github.com/keenlabs/KeenClient-iOS</a>. We love feedback, especially in the form of pull requests. :)</p>
 </div>
-<div class="section" id="download">
-<h4>Download<a class="headerlink" href="#download" title="Permalink to this headline">¶</a></h4>
 <p>Download the binary and public headers. Get the latest from here:</p>
 <p><a class="reference external" href="http://keen.io/static/code/KeenClient.zip">http://keen.io/static/code/KeenClient.zip</a></p>
-</div>
-<div class="section" id="uncompress">
-<h4>Uncompress<a class="headerlink" href="#uncompress" title="Permalink to this headline">¶</a></h4>
 <p>Uncompress the archive. It should contain a folder called &#8220;KeenClient&#8221; with two files:</p>
 <ul class="simple">
 <li>libKeenClient-Aggregate.a</li>
 <li>KeenClient.h</li>
 </ul>
-</div>
-<div class="section" id="add-files-to-xcode">
-<h4>Add Files to Xcode<a class="headerlink" href="#add-files-to-xcode" title="Permalink to this headline">¶</a></h4>
 <p>Just drag the &#8220;KeenClient&#8221; folder into your Xcode project.</p>
-</div>
-<div class="section" id="enable-linker-flag">
-<h4>Enable Linker Flag<a class="headerlink" href="#enable-linker-flag" title="Permalink to this headline">¶</a></h4>
 <p>Enable a linker flag to include the special categories on some of the NSFoundation classes that are required for the Keen client to work correctly. Start by choosing the correct target for your project, selecting the &#8220;Build Settings&#8221; tab, and then search for &#8220;other linker&#8221;. Under &#8220;Other Linker Flags&#8221;, add the text &#8220;-ObjC&#8221;.</p>
 <img alt="../../../_images/categories.png" src="../../../_images/categories.png" />
-</div>
-<div class="section" id="compile">
-<h4>Compile<a class="headerlink" href="#compile" title="Permalink to this headline">¶</a></h4>
 <p>Try and compile. It should work! If it doesn&#8217;t, you probably forgot to enable the linker flag (see above). If you still can&#8217;t get it to work, let us know at <a class="reference external" href="mailto:team&#37;&#52;&#48;keen&#46;io">team<span>&#64;</span>keen<span>&#46;</span>io</a> and one of us will help you right away.</p>
-</div>
-</div>
-</div>
 <div class="section" id="usage-guide">
 <h2>Usage Guide<a class="headerlink" href="#usage-guide" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="instrumentation">
@@ -88,7 +73,7 @@
 <p>Now it’s time to actually use the client!</p>
 <div class="section" id="register-client">
 <span id="id2"></span><h4>Register Client<a class="headerlink" href="#register-client" title="Permalink to this headline">¶</a></h4>
-<p>Register the KeenClient shared client with your project ID and authorization token. The recommended place to do this is in one of your application delegates. Here’s some example code:</p>
+<p>Register the KeenClient shared client with your project ID and API Key. The recommended place to do this is in one of your application delegates. Here’s some example code:</p>
 <div class="highlight-objc"><div class="highlight"><pre><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">applicationDidBecomeActive:</span><span class="p">(</span><span class="n">UIApplication</span> <span class="o">*</span><span class="p">)</span><span class="nv">application</span>
 <span class="p">{</span>
     <span class="p">&#91;</span><span class="n">KeenClient</span> <span class="nl">sharedClientWithProjectId:</span><span class="s">@&quot;4f4ed092163d663d3a000000&quot;</span>

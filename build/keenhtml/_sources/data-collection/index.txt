@@ -17,6 +17,7 @@ Our SDKs make integration even simpler. Check out our client usage guides for th
    :maxdepth: 1
 
    /clients/iOS/usage-guide 
+   /clients/android/usage-guide
    /clients/ruby/usage-guide
    
 Or take a look at our :doc:`/api/reference` for all the nitty-gritty details of our REST API.
