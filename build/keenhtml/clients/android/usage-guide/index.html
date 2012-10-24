@@ -8,17 +8,10 @@
                     
         <div class="sphinxsidebar">
 <h3><a href="../../../">Table Of Contents</a></h3>
-<ul class="current">
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../getting-started-guide/">Getting Started Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../event-data-modeling/event-data-intro/">Data Modeling Guide</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="../../../data-collection/">Data Collection APIs</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="../../iOS/usage-guide/">iOS Client Usage Guide</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../iOS/usage-guide/#install-guide">Install Guide</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="">Android Client Usage Guide</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#install-guide">Install Guide</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../ruby/usage-guide/">Ruby Client Usage Guide</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../data-collection/">Data Collection APIs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../data-analysis/">Data Analysis APIs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../api/reference/">API Technical Reference</a></li>
 </ul>
@@ -30,33 +23,40 @@
                     
   <div class="section" id="android-client-usage-guide">
 <h1>Android Client Usage Guide<a class="headerlink" href="#android-client-usage-guide" title="Permalink to this headline">¶</a></h1>
+</div>
 <div class="section" id="introduction">
-<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h1>
 <p>The Keen Android client is designed to be simple to develop with, yet incredibly flexible. Our goal is to let you decide what events are important to you, use your own vocabulary to describe them, and decide when you want to send them to the Keen service.</p>
-<p>For a detailed class reference, please visit our <a class="reference external" href="https://keen.io/static/Android-reference/index.html">Keen Android Client API Reference</a>.</p>
+<p>For a detailed class reference, please visit our <a class="reference external" href="https://keen.io/static/android-reference/index.html">Keen Android Client API Reference</a>.</p>
 <ul class="simple">
-<li><a class="reference internal" href="../../iOS/usage-guide/#install-guide"><em>Install Guide</em></a> - How to install the Keen Android Client into your application.</li>
-<li><a class="reference internal" href="../../iOS/usage-guide/#register-client"><em>Register Client</em></a> - How to register your Project ID and API key with the Keen Android Client.</li>
-<li><a class="reference internal" href="../../iOS/usage-guide/#add-events"><em>Add Events</em></a> - How to add an event with the Keen Android Client.</li>
-<li><a class="reference internal" href="../../iOS/usage-guide/#upload-events"><em>Upload to Keen</em></a> - How to upload all previously saved events with the Keen Android Client.</li>
+<li><a class="reference internal" href="#install-guide"><em>Install Guide</em></a> - How to install the Keen Android Client into your application.</li>
+<li><a class="reference internal" href="#register-client"><em>Register Client</em></a> - How to register your Project ID and API key with the Keen Android Client.</li>
+<li><a class="reference internal" href="#add-events"><em>Add Events</em></a> - How to add an event with the Keen Android Client.</li>
+<li><a class="reference internal" href="#upload-events"><em>Upload to Keen</em></a> - How to upload all previously saved events with the Keen Android Client.</li>
 </ul>
 <p>Got questions or feedback? Come hang out with us in the <a class="reference external" href="https://users.keen.io">Keen IO User Chat</a>.</p>
 <div class="section" id="get-project-id-api-key">
-<h3>Get Project ID &amp; API Key<a class="headerlink" href="#get-project-id-api-key" title="Permalink to this headline">¶</a></h3>
+<h2>Get Project ID &amp; API Key<a class="headerlink" href="#get-project-id-api-key" title="Permalink to this headline">¶</a></h2>
 <p>If you haven&#8217;t done so already,  <a class="reference external" href="https://keen.io/add-project">login to Keen.io to create a project</a>  for your app.</p>
-</div>
 </div>
 </div>
 <div class="section" id="install-guide">
 <span id="id1"></span><h1>Install Guide<a class="headerlink" href="#install-guide" title="Permalink to this headline">¶</a></h1>
 <p>Installing the client should be a breeze. If it&#8217;s not, please let us know at <a class="reference external" href="mailto:team&#37;&#52;&#48;keen&#46;io">team<span>&#64;</span>keen<span>&#46;</span>io</a>!</p>
+<div class="section" id="add-the-jar">
+<h2>Add the JAR<a class="headerlink" href="#add-the-jar" title="Permalink to this headline">¶</a></h2>
 <p>Our recommended way of installing the Keen Client is to use the JAR file we&#8217;ve created. With this, you&#8217;ll be able to simply drop a JAR into your Android project and go.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">While we think the JAR file makes things really easy, we love to be transparent. Come check out our work on GitHub at <a class="reference external" href="https://github.com/keenlabs/KeenClient-Android">https://github.com/keenlabs/KeenClient-Android</a>. We love feedback, especially in the form of pull requests. :)</p>
 </div>
+<div class="section" id="download">
+<h3>Download<a class="headerlink" href="#download" title="Permalink to this headline">¶</a></h3>
 <p>Download the JAR file. Get the latest from here:</p>
 <p><a class="reference external" href="http://keen.io/static/code/KeenClient-Android.jar">http://keen.io/static/code/KeenClient-Android.jar</a></p>
+</div>
+<div class="section" id="add-jar-to-your-project">
+<h3>Add JAR to Your Project<a class="headerlink" href="#add-jar-to-your-project" title="Permalink to this headline">¶</a></h3>
 <ol class="arabic simple">
 <li>Create a directory called &#8220;libs&#8221; in your project.</li>
 <li>Put the JAR you downloaded previously in the &#8220;libs&#8221; directory.</li>
@@ -66,17 +66,23 @@
 <p class="first admonition-title">Note</p>
 <p class="last">If you&#8217;re using IntelliJ, you&#8217;ll have to add the JAR as an external library in your settings. If you&#8217;re not sure how to do that, come ask how in the <a class="reference external" href="https://users.keen.io">Keen IO User Chat</a>.</p>
 </div>
+</div>
+<div class="section" id="enable-required-android-permissions">
+<h3>Enable Required Android Permissions<a class="headerlink" href="#enable-required-android-permissions" title="Permalink to this headline">¶</a></h3>
 <p>If it&#8217;s not already present, add the INTERNET permission to your AndroidManifest.xml file. The entry below should appear between the &lt;manifest&gt; .. &lt;/manifest&gt; tags.</p>
 <div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;uses-permission</span> <span class="na">android:name=</span><span class="s">&quot;android.permission.INTERNET&quot;</span><span class="nt">/&gt;</span>
 </pre></div>
 </div>
 <div class="section" id="usage-guide">
-<h2>Usage Guide<a class="headerlink" href="#usage-guide" title="Permalink to this headline">¶</a></h2>
+<h4>Usage Guide<a class="headerlink" href="#usage-guide" title="Permalink to this headline">¶</a></h4>
+</div>
+</div>
+</div>
 <div class="section" id="instrumentation">
-<h3>Instrumentation<a class="headerlink" href="#instrumentation" title="Permalink to this headline">¶</a></h3>
+<h2>Instrumentation<a class="headerlink" href="#instrumentation" title="Permalink to this headline">¶</a></h2>
 <p>Now it’s time to actually use the client!</p>
 <div class="section" id="register-client">
-<span id="id2"></span><h4>Register Client<a class="headerlink" href="#register-client" title="Permalink to this headline">¶</a></h4>
+<span id="id2"></span><h3>Register Client<a class="headerlink" href="#register-client" title="Permalink to this headline">¶</a></h3>
 <p>Register the KeenClient shared client with your project ID and API Key. The recommended place to do this is in the onCreate() method of your main activity. Here’s some example code:</p>
 <div class="highlight-java"><div class="highlight"><pre><span class="kd">public</span> <span class="kt">void</span> <span class="nf">onCreate</span><span class="o">(</span><span class="n">Bundle</span> <span class="n">savedInstanceState</span><span class="o">)</span> <span class="o">{</span>
     <span class="kd">super</span><span class="o">.</span><span class="na">onCreate</span><span class="o">(</span><span class="n">savedInstanceState</span><span class="o">);</span>
@@ -90,7 +96,7 @@
 <p>The KeenClient.initialize() does the registration. From now on, in your code, you can just reference the shared client by calling KeenClient.client().</p>
 </div>
 <div class="section" id="add-events">
-<span id="id3"></span><h4>Add Events<a class="headerlink" href="#add-events" title="Permalink to this headline">¶</a></h4>
+<span id="id3"></span><h3>Add Events<a class="headerlink" href="#add-events" title="Permalink to this headline">¶</a></h3>
 <p>Add events to track. Here’s a very basic example for an app that tracks &#8220;purchases&#8221; whenever the app is resumed.</p>
 <div class="highlight-java"><div class="highlight"><pre><span class="nd">@Override</span>
 <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onResume</span><span class="o">()</span> <span class="o">{</span>
@@ -147,7 +153,7 @@
 </div>
 </div>
 <div class="section" id="global-properties">
-<h4>Global Properties<a class="headerlink" href="#global-properties" title="Permalink to this headline">¶</a></h4>
+<h3>Global Properties<a class="headerlink" href="#global-properties" title="Permalink to this headline">¶</a></h3>
 <p>Now you might be thinking, &#8220;Okay, that looks pretty easy. But what if I want to send the same properties on EVERY event in a particular collection? Or just EVERY event, period?&#8221; We&#8217;ve got you covered through something we call Global Properties.</p>
 <p>Global properties are properties which are sent with EVERY event. For example, you may wish to always capture device information like OS version, handset type, orientation, etc.</p>
 <p>There are two ways to handle Global Properties - one is more simple but more limited, while the other is a bit more complex but much more powerful. For each of them, after you register your client, you&#8217;ll need to set an Objective-C property on the KeenClient instance you&#8217;re using.</p>
@@ -214,7 +220,7 @@
 </div>
 </div>
 <div class="section" id="upload-to-keen">
-<span id="upload-events"></span><h4>Upload to Keen<a class="headerlink" href="#upload-to-keen" title="Permalink to this headline">¶</a></h4>
+<span id="upload-events"></span><h3>Upload to Keen<a class="headerlink" href="#upload-to-keen" title="Permalink to this headline">¶</a></h3>
 <p>Upload the captured events to the Keen service. This must be done explicitly. We recommend doing the upload when your application is sent to the background, but you can do it whenever you’d like (for example, if your application typically has very long user sessions). The uploader spawns its own background thread so the main UI thread is not blocked.</p>
 <div class="highlight-java"><div class="highlight"><pre><span class="nd">@Override</span>
 <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onPause</span><span class="o">()</span> <span class="o">{</span>
@@ -234,7 +240,7 @@
 </div>
 </div>
 <div class="section" id="debugging">
-<h3>Debugging<a class="headerlink" href="#debugging" title="Permalink to this headline">¶</a></h3>
+<h2>Debugging<a class="headerlink" href="#debugging" title="Permalink to this headline">¶</a></h2>
 <p>The Keen Android client code does a lot of logging, but it’s usually turned off by default. If you’d like to see the log lines generated by your usage of the client, you’ll need to enable logging.</p>
 <div class="highlight-java"><div class="highlight"><pre><span class="n">KeenLogger</span><span class="o">.</span><span class="na">enableLogging</span><span class="o">();</span>
 </pre></div>
@@ -242,7 +248,6 @@
 <p>Disabling logging is quite easy as well.</p>
 <div class="highlight-java"><div class="highlight"><pre><span class="n">KeenLogger</span><span class="o">.</span><span class="na">disableLogging</span><span class="o">();</span>
 </pre></div>
-</div>
 </div>
 </div>
 </div>

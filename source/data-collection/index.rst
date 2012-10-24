@@ -13,13 +13,10 @@ These two links have all the technical details you need for sending data to our 
 
 Our SDKs make integration even simpler. Check out our client usage guides for the steps to integrate your app for data collection: 
 
-.. toctree::
-   :maxdepth: 1
+* :doc:`/clients/iOS/usage-guide`
+* :doc:`/clients/android/usage-guide`
+* :doc:`/clients/ruby/usage-guide`
 
-   /clients/iOS/usage-guide 
-   /clients/android/usage-guide
-   /clients/ruby/usage-guide
-   
 Or take a look at our :doc:`/api/reference` for all the nitty-gritty details of our REST API.
 
 Unlike traditional databases like SQL, our database has no schema. You no longer need to think of data as a row with a limited number of columns. Our database holds JSON documents - they’re hierarchical and can have as many fields and values as you want. 

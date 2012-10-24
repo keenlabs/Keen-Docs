@@ -2,6 +2,7 @@
 Android Client Usage Guide
 ==========================
 
+============
 Introduction
 ============
 
@@ -274,5 +275,5 @@ Disabling logging is quite easy as well.
 
     KeenLogger.disableLogging();
 
-.. _Keen Android Client API Reference: https://keen.io/static/Android-reference/index.html
+.. _Keen Android Client API Reference: https://keen.io/static/android-reference/index.html
 .. _Keen IO User Chat: https://users.keen.io
