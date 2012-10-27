@@ -29,6 +29,7 @@ Need help? Want to tell us what could make Keen.io better? Chat with us at `user
    data-collection/index
    data-analysis/index
    api/reference
+   SDKs/index
 
 .. _let us know: team@keen.io
 .. _Keen iOS Client API Reference: http://keen.io/documentation/iOS-client-api-reference
