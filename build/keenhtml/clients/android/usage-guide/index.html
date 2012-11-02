@@ -30,9 +30,9 @@
 <p>The Keen Android client is designed to be simple to develop with, yet incredibly flexible. Our goal is to let you decide what events are important to you, use your own vocabulary to describe them, and decide when you want to send them to the Keen service.</p>
 <p>For a detailed class reference, please visit our <a class="reference external" href="https://keen.io/static/android-reference/index.html">Keen Android Client API Reference</a>.</p>
 <ul class="simple">
-<li><a class="reference internal" href="../../iOS/usage-guide/#install-guide"><em>Install Guide</em></a> - How to install the Keen Android Client into your application.</li>
+<li><a class="reference internal" href="../../javascript/usage-guide/#install-guide"><em>Install Guide</em></a> - How to install the Keen Android Client into your application.</li>
 <li><a class="reference internal" href="../../iOS/usage-guide/#register-client"><em>Register Client</em></a> - How to register your Project ID and API key with the Keen Android Client.</li>
-<li><a class="reference internal" href="../../iOS/usage-guide/#add-events"><em>Add Events</em></a> - How to add an event with the Keen Android Client.</li>
+<li><a class="reference internal" href="../../javascript/usage-guide/#add-events"><em>Add Events</em></a> - How to add an event with the Keen Android Client.</li>
 <li><a class="reference internal" href="../../iOS/usage-guide/#upload-events"><em>Upload to Keen</em></a> - How to upload all previously saved events with the Keen Android Client.</li>
 </ul>
 <p>Got questions or feedback? Come hang out with us in the <a class="reference external" href="https://users.keen.io">Keen IO User Chat</a>.</p>
@@ -157,7 +157,7 @@
 <h3>Global Properties<a class="headerlink" href="#global-properties" title="Permalink to this headline">¶</a></h3>
 <p>Now you might be thinking, &#8220;Okay, that looks pretty easy. But what if I want to send the same properties on EVERY event in a particular collection? Or just EVERY event, period?&#8221; We&#8217;ve got you covered through something we call Global Properties.</p>
 <p>Global properties are properties which are sent with EVERY event. For example, you may wish to always capture device information like OS version, handset type, orientation, etc.</p>
-<p>There are two ways to handle Global Properties - one is more simple but more limited, while the other is a bit more complex but much more powerful. For each of them, after you register your client, you&#8217;ll need to set an Objective-C property on the KeenClient instance you&#8217;re using.</p>
+<p>There are two ways to handle Global Properties - one is more simple but more limited, while the other is a bit more complex but much more powerful. For each of them, after you register your client, you&#8217;ll need to set a value on the KeenClient instance you&#8217;re using.</p>
 <p><strong>Map-based Global Properties</strong></p>
 <p>For this, the Java getter/setter is for <em>globalProperties</em>. The property&#8217;s value will be a <em>Map</em> that you define. Each time an event is added, the Android client will look at the value of this property and add all its contents to the user-defined event. Use this if you have a bunch of static properties that you want to add to every event.</p>
 <p>Here&#8217;s an example using a map:</p>

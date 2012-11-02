@@ -1,0 +1,145 @@
+
+[% extends "public_layout.html" %]
+[% block body_id %]docBody[% endblock body_id %][% block body %]  
+    <div class="container">        
+        <div class="row">
+                <div class="span3">
+                    <div class="well">                    
+                    
+        <div class="sphinxsidebar">
+<h3><a href="../../../">Table Of Contents</a></h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../getting-started-guide/">Getting Started Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../event-data-modeling/event-data-intro/">Data Modeling Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../data-collection/">Data Collection APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../data-analysis/">Data Analysis APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/reference/">API Technical Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../SDKs/">SDKs</a></li>
+</ul>
+
+        </div>
+                    </div>
+                </div>
+                <div class="span9">
+                    
+  <div class="section" id="javascript-usage-guide">
+<h1>JavaScript Usage Guide<a class="headerlink" href="#javascript-usage-guide" title="Permalink to this headline">¶</a></h1>
+</div>
+<div class="section" id="introduction">
+<h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h1>
+<p>The Keen IO JavaScript SDK is designed to be simple to develop with, yet incredibly flexible. Our goal is to let you decide what events are important to you, use your own vocabulary to describe them, and decide when you want to send them to Keen IO.</p>
+<ul class="simple">
+<li><a class="reference internal" href="#install-guide"><em>Install Guide</em></a> - How to include the Keen IO JavaScript SDK into your application or website.</li>
+<li><a class="reference internal" href="#configure-sdk"><em>Configure SDK</em></a> - How to configure the Keen IO JavaScript SDK with your Project ID and API Key.</li>
+<li><a class="reference internal" href="#add-events"><em>Add Events</em></a> - How to add an event with the Keen IO JavaScript SDK.</li>
+</ul>
+<p>Got questions or feedback? Come hang out with us in the <a class="reference external" href="https://users.keen.io">Keen IO User Chat</a>.</p>
+<div class="section" id="get-project-id-api-key">
+<h2>Get Project ID &amp; API Key<a class="headerlink" href="#get-project-id-api-key" title="Permalink to this headline">¶</a></h2>
+<p>If you haven&#8217;t done so already,  <a class="reference external" href="https://keen.io/add-project">login to Keen.io to create a project</a>  for your app.</p>
+</div>
+</div>
+<div class="section" id="install-guide">
+<span id="id1"></span><h1>Install Guide<a class="headerlink" href="#install-guide" title="Permalink to this headline">¶</a></h1>
+<p>Installing the SDK should be a breeze. If it&#8217;s not, please let us know at <a class="reference external" href="mailto:team&#37;&#52;&#48;keen&#46;io">team<span>&#64;</span>keen<span>&#46;</span>io</a>!</p>
+<p>Our recommended way of using the Keen IO JavaScript SDK is to include it from its official spot on S3.</p>
+<p><a class="reference external" href="https://keen_web_static.s3.amazonaws.com/code/keenio-1.0.0.min.js">https://keen_web_static.s3.amazonaws.com/code/keenio-1.0.0.min.js</a></p>
+<p>Copy and paste the following code into your HTML page to give this a shot (make sure to put this after your body tag):</p>
+<div class="highlight-html"><div class="highlight"><pre><span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span> <span class="na">src=</span><span class="s">&quot;https://keen_web_static.s3.amazonaws.com/code/keenio-1.0.0.min.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="usage-guide">
+<h1>Usage Guide<a class="headerlink" href="#usage-guide" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="instrumentation">
+<h2>Instrumentation<a class="headerlink" href="#instrumentation" title="Permalink to this headline">¶</a></h2>
+<p>Now it’s time to actually use the SDK!</p>
+<div class="section" id="configure-sdk">
+<span id="id2"></span><h3>Configure SDK<a class="headerlink" href="#configure-sdk" title="Permalink to this headline">¶</a></h3>
+<p>Configure the Keen IO JavaScript SDK with your Project ID and API Key. Do this before using any other code from the Keen IO JavaScript SDK. Here&#8217;s some example code:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">Keen</span><span class="p">.</span><span class="nx">configure</span><span class="p">(</span><span class="s2">&quot;your_project_id&quot;</span><span class="p">,</span> <span class="s2">&quot;your_api_key&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Keen.configure() sets up the SDK to be used later. Now you&#8217;re ready to do the fun stuff!</p>
+</div>
+<div class="section" id="add-events">
+<span id="id3"></span><h3>Add Events<a class="headerlink" href="#add-events" title="Permalink to this headline">¶</a></h3>
+<p>Add events to track. Here’s a very basic example for an app that tracks &#8220;purchases&#8221;.</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="kd">var</span> <span class="nx">trackPurchase</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// create an event as a JS object</span>
+    <span class="kd">var</span> <span class="nx">purchase</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="nx">item</span><span class="o">:</span> <span class="s2">&quot;golden widget&quot;</span>
+    <span class="p">};</span>
+
+    <span class="c1">// add it to the &quot;purchases&quot; collection</span>
+    <span class="nx">Keen</span><span class="p">.</span><span class="nx">addEvent</span><span class="p">(</span><span class="s2">&quot;purchases&quot;</span><span class="p">,</span> <span class="nx">purchase</span><span class="p">);</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+<p>The idea is to create an arbitrary JS Object of JSON-serializable values.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The JSON spec doesn&#8217;t include anything about date values. At Keen IO, we know dates are important to track. Keen IO sends dates back and forth through its API in ISO-8601 format. The SDK handles this for you.</p>
+</div>
+<p>The properties of the JS Object must be valid Keen Property Names. A Keen Property Name must follow these rules:</p>
+<ul class="simple">
+<li>Cannot start with the $ character.</li>
+<li>Cannot contain the . character anywhere.</li>
+<li>Cannot be longer than 256 characters.</li>
+</ul>
+<p>Add as many events as you like. The SDK will fire off each event to the Keen IO servers asynchronously.</p>
+<p>The SDK will automatically stamp every event you track with a timestamp. If you want to override the system value with your own, use the following example. Note that the &#8220;timestamp&#8221; key is set in the header properties dictionary.</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="kd">var</span> <span class="nx">trackPurchase</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// create an event as a JS object</span>
+    <span class="kd">var</span> <span class="nx">purchase</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="nx">item</span><span class="o">:</span> <span class="s2">&quot;golden widget&quot;</span><span class="p">,</span>
+        <span class="nx">headers</span><span class="o">:</span> <span class="p">{</span>
+            <span class="nx">timestamp</span><span class="o">:</span> <span class="k">new</span> <span class="nb">Date</span><span class="p">()</span>
+        <span class="p">}</span>
+    <span class="p">};</span>
+
+    <span class="c1">// add it to the &quot;purchases&quot; collection</span>
+    <span class="nx">Keen</span><span class="p">.</span><span class="nx">addEvent</span><span class="p">(</span><span class="s2">&quot;purchases&quot;</span><span class="p">,</span> <span class="nx">purchase</span><span class="p">);</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="global-properties">
+<h3>Global Properties<a class="headerlink" href="#global-properties" title="Permalink to this headline">¶</a></h3>
+<p>Now you might be thinking, &#8220;Okay, that looks pretty easy. But what if I want to send the same properties on EVERY event in a particular collection? Or just EVERY event, period?&#8221; We&#8217;ve got you covered through something we call Global Properties.</p>
+<p>Global properties are properties which are sent with EVERY event. For example, you may wish to always capture device information like OS version, handset type, orientation, etc.</p>
+<p>To use global properties, simply set the <em>globalProperties</em> member of Keen to a function you&#8217;ve defined which takes in event collection as a string parameter and returns a JS object of all the global properties for that collection.</p>
+<p>Here&#8217;s an eaxmple:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="kd">var</span> <span class="nx">myGlobalProperties</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">eventCollection</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// setup the global properties we&#39;ll use</span>
+    <span class="kd">var</span> <span class="nx">globalProperties</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="nx">someStandardProperty</span><span class="o">:</span> <span class="mi">42</span>
+    <span class="p">};</span>
+    <span class="c1">// do something extra for a specific event collection</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">eventCollection</span> <span class="o">===</span> <span class="s2">&quot;purchase&quot;</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">globalProperties</span><span class="p">&#91;</span><span class="s2">&quot;isPurchase&quot;</span><span class="p">&#93;</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="nx">globalProperties</span><span class="p">;</span>
+<span class="p">};</span>
+<span class="nx">Keen</span><span class="p">.</span><span class="nx">globalProperties</span> <span class="o">=</span> <span class="nx">myGlobalProperties</span><span class="p">;</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">If there are two properties with the same name specified in the user-defined event AND the global properties, the user-defined event&#8217;s property will be the one used.</p>
+</div>
+</div>
+</div>
+</div>
+
+
+                    
+                        <div id="disqus_thread"></div>
+                        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+                    
+                </div>
+            
+        </div>
+    </div>
+
+[% endblock %]

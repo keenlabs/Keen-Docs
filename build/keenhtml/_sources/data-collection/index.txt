@@ -15,6 +15,7 @@ Our SDKs make integration even simpler. Check out our client usage guides for th
 
 * :doc:`/clients/iOS/usage-guide`
 * :doc:`/clients/android/usage-guide`
+* :doc:`/clients/javascript/usage-guide`
 * :doc:`/clients/ruby/usage-guide`
 
 Or take a look at our :doc:`/api/reference` for all the nitty-gritty details of our REST API.

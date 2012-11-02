@@ -168,7 +168,7 @@ Now you might be thinking, "Okay, that looks pretty easy. But what if I want to 
 
 Global properties are properties which are sent with EVERY event. For example, you may wish to always capture device information like OS version, handset type, orientation, etc.
 
-There are two ways to handle Global Properties - one is more simple but more limited, while the other is a bit more complex but much more powerful. For each of them, after you register your client, you'll need to set an Objective-C property on the KeenClient instance you're using. 
+There are two ways to handle Global Properties - one is more simple but more limited, while the other is a bit more complex but much more powerful. For each of them, after you register your client, you'll need to set a value on the KeenClient instance you're using.
 
 **Map-based Global Properties**
 
