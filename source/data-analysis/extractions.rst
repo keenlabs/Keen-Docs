@@ -6,8 +6,8 @@ Data Extractions allow you to get your event data out of Keen IO.  We strongly b
 
 The following types of Data Extractions are currently supported in the Keen Analysis API:
 
-*  :ref:`extraction-to-file` - request a .CSV file with all of your events (or a subset of them)
 *  :ref:`extraction-to-JSON` - extract all events in a collection in JSON format
+*  :ref:`extraction-to-file` - request a .CSV file with all of your events (or a subset of them)
 *  :ref:`latest-events` - extract the most recent N events of a given event collection 
 *  :doc:`list` - extract a list of unique properties values (for example user names)
 
