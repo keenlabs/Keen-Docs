@@ -143,7 +143,7 @@ The nice thing about using `JSON`_ as the data format is that you can include LO
 
 You can see in the example below that this purchases event has properties that describe the purchase, properties that describe the customer, and properties that describe the store.
 
-The ability to store the properties in this hierarchy makes it much simpler to name the properties. Notice how the customer name and the store name are simply labeled "name". When you look for these properties in a filter or in your data extract, you’ll find them labeled **customer:name** and **store:name**.
+The ability to store the properties in this hierarchy makes it much simpler to name the properties. Notice how the customer name and the store name are simply labeled "name". When you look for these properties in a filter or in your data extract, you’ll find them labeled **customer.name** and **store.name**.
 
 .. code-block:: none
 
