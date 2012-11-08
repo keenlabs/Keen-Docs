@@ -2,7 +2,7 @@
 List of Unique Properties
 =========================
 
-This feature returns a list of property values from one property of an event collection. Only target_property values are returned (all duplicates are removed).
+This feature returns a list of property values from one property of an event collection. Only unique property values are returned; all duplicates are removed.
 
 Some example uses of this feature:
 
