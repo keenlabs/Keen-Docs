@@ -6,9 +6,10 @@ Data Extractions are ways to get your data, or subsets of your data, out of Keen
 
 The following types of Data Extractions are currently supported in the Keen Analysis API:
 
-*  :ref:`extraction-to-file` - a .CSV file with all of your events (or a subset of them)
-*  :ref:`JSON-data-extraction` - a get request that returns your event data in JSON format
-*  :doc:`list` - a list of unique properties (for example user names)
+*  :ref:`extraction-to-file` - request a .CSV file with all of your events (or a subset of them)
+*  :ref:`JSON-data-extraction` - extract all of an collection's events in JSON format
+*  :ref:`last-events` - extract the most recent N events in a given event collection 
+*  :doc:`list` - extract a list of unique properties values (for example user names)
 
 .. _extraction-to-file:
 
@@ -17,7 +18,55 @@ Data Extraction to File
 
 Technical Reference: :ref:`extraction-resource`
 
-You can perform a data extraction at any time from the Keen.io website or via API. We wanted to let you know some things about the extraction file:
+You can perform a data extraction at any time from the Keen.io website or via API. Shortly after requesting an extract from the Keen.io website, you will get an email letting you know that the extract is ready for download. The larger your extraction, the longer it will take to get the email. When you click the link, your download will begin immediately (check the bottom of your browser -- you should see the download progress there).
+
+Here's what the API request looks like:
+
+.. code-block:: none
+
+    https://api.keen.io/3.0/projects/<project_id>/queries/extraction?api_key=<api_key>&event_collection=<event_collection>&email_address=<email>
+    
+
+.. include:: extraction-parameters.txt
+
+
+.. _JSON-data-extraction:
+
+JSON Data Extraction
+====================
+
+Technical Reference: :ref:`extraction-resource`
+
+Performing a JSON data extraction is done via an HTTP GET request that follows this pattern. It's the same as the request for extraction to file, but without the email parameter.
+
+.. code-block:: none
+
+    https://api.keen.io/3.0/projects/<project_id>/queries/extraction?api_key=<api_key>&event_collection=<event_collection>
+
+
+.. include:: extraction-parameters.txt
+
+.. _last-events:
+
+Latest events
+=============
+
+Add a 'last_events' parameter to your request to get back the last 5 events, last 10 events, etc. Request up to 100 of the most recent events.
+
+.. code-block:: none
+
+    https://api.keen.io/3.0/projects/<project_id>/queries/extraction?api_key=<api_key>&event_collection=<event_collection>&latest=<number>
+
+.. include:: extraction-parameters.txt
+
+.. _extraction-notes:
+
+Notes on Data Extraction
+=========================
+
+Technical Reference: :ref:`extraction-resource`
+
+Here is some additional info related to data extraction:
 
 * If you don't specify any filters, your extract will include every event in an :ref:`Event Collection<event-collections>`. All :ref:`event-properties` are included for each event in the extract. The files can get quite large. Use timeframes and filters to narrow the inventory of events that you extract.
 
@@ -29,42 +78,4 @@ You can perform a data extraction at any time from the Keen.io website or via AP
 
 * Extractions are done by :ref:`Event Collection<event-collections>`. If you want to extract 100% of your data from Keen, you'll need to run the extraction for each Event Collection.
 
-You can also programmatically request extractions via the :ref:`extraction-resource` or via :doc:`saved-queries` in our API. The Data Extraction APIs can be used to, for example, set up a nightly job that will have the data you need ready and waiting in your inbox in the morning.
-
-Performing a Data Extraction to File is done via an HTTP GET request that follows this pattern:
-
-.. code-block:: none
-
-    https://api.keen.io/3.0/projects/<project_id>/queries/extraction?api_key=<api_key>&event_collection=<event_collection>&email_address=<email>
-    
-
-Extractions take the following parameters:
-
-* **api_key** (optional) - The API Key for the project containing the data you are analyzing. The API key can alternatively be provided  in the request header. See :doc:`authentication` for more information.
-* **event_collection** (required) - The name of the event collection you are analyzing.
-* **filters** (optional) - :doc:`filters` are used to narrow down the events used in an analysis request based on :ref:`event property <event-properties>` values.
-* **timeframe** (optional) - A :doc:`timeframe` specifies the events to use for analysis based on a window of time. If no timeframe is specified, all events will be counted.
-* **email_address** (optional) - If an email address is specified, an email will be sent this address when the extraction is complete. If email is not specified, your extraction will be processed synchronously and your data will be returned as a :ref:`JSON-data-extraction`.
-
-
-.. _JSON-data-extraction:
-
-JSON Data Extraction
-=======================
-
-Technical Reference: :ref:`extraction-resource`
-
-Performing a JSON data extraction is done via an HTTP GET request that follows this pattern:
-
-.. code-block:: none
-
-    https://api.keen.io/3.0/projects/<project_id>/queries/extraction?api_key=<api_key>&event_collection=<event_collection>
-
-Extractions take the following parameters:
-
-* **api_key** (optional) - The API Key for the project containing the data you are analyzing. The API key can alternatively be provided  in the request header. See :doc:`authentication` for more information. 
-* **event_collection** (required) - The name of the event collection you are analyzing.
-* **filters** (optional) - :doc:`filters` are used to narrow down the events used in an analysis request based on :ref:`event property <event-properties>` values.
-* **timeframe** (optional) - A :doc:`timeframe` specifies the events to use for analysis based on a window of time. If no timeframe is specified, all events will be counted.
-
-
+* You can also programmatically request extractions via the :ref:`extraction-resource` or using :doc:`saved-queries` in our API. The Data Extraction APIs can be used to, for example, set up a nightly job that will have the data you need ready and waiting in your inbox in the morning.

@@ -23,7 +23,7 @@
 # -- Custom extensions ---------------------------------------------------------
 # TODO: Figure out how to hook into the html builder & change "[" and "]" characters
 # to some sort of code, which Keen-Web's controller will translate back into
-# literals..
+# literals.
 from sphinx.builders.html import DirectoryHTMLBuilder
 
 class KeenDirectoryHTMLBuilder(DirectoryHTMLBuilder):

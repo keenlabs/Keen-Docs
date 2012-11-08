@@ -181,7 +181,7 @@ Properties have data types.  Keen automatically infers the data types of your pr
 * **boolean** - either *true* or *false*
 * **array** - collection of data points of like data types
 
-When you’re performing analysis on your data, you might notice that you have different filtering options for different properties. That’s because Keen automatically detects the relevant operators based on your property’s data type. For example, you won’t have the option to apply a greater than or less than filter to boolean property with only TRUE or FALSE property values (that would be super confusing!).  For a list of the possibilities, check out :doc:`filters </data-analysis/filters>`. .
+When you’re performing analysis on your data, you might notice that you have different filtering options for different properties. That’s because Keen automatically detects the relevant operators based on your property’s data type. For example, you won’t have the option to apply a greater than or less than filter to boolean property with only TRUE or FALSE property values (that would be super confusing!).  For a list of the possibilities, check out :doc:`filters </data-analysis/filters>`.
 
 
 .. _JSON: http://json.org
