@@ -136,7 +136,7 @@
 <span id="id4"></span><h3>Property Hierarchy<a class="headerlink" href="#property-hierarchy" title="Permalink to this headline">¶</a></h3>
 <p>The nice thing about using <a class="reference external" href="http://json.org">JSON</a> as the data format is that you can include LOTS of properties with your events, and you can organize them in a hierarchy.</p>
 <p>You can see in the example below that this purchases event has properties that describe the purchase, properties that describe the customer, and properties that describe the store.</p>
-<p>The ability to store the properties in this hierarchy makes it much simpler to name the properties. Notice how the customer name and the store name are simply labeled &#8220;name&#8221;. When you look for these properties in a filter or in your data extract, you’ll find them labeled <strong>customer:name</strong> and <strong>store:name</strong>.</p>
+<p>The ability to store the properties in this hierarchy makes it much simpler to name the properties. Notice how the customer name and the store name are simply labeled &#8220;name&#8221;. When you look for these properties in a filter or in your data extract, you’ll find them labeled <strong>customer.name</strong> and <strong>store.name</strong>.</p>
 <div class="highlight-none"><div class="highlight"><pre>{
    &quot;item&quot;: &quot;sophisticated orange turtleneck with deer on it&quot;,
    &quot;cost&quot;: 469.50,
@@ -169,7 +169,7 @@
 <li><strong>boolean</strong> - either <em>true</em> or <em>false</em></li>
 <li><strong>array</strong> - collection of data points of like data types</li>
 </ul>
-<p>When you’re performing analysis on your data, you might notice that you have different filtering options for different properties. That’s because Keen automatically detects the relevant operators based on your property’s data type. For example, you won’t have the option to apply a greater than or less than filter to boolean property with only TRUE or FALSE property values (that would be super confusing!).  For a list of the possibilities, check out <a class="reference internal" href="../../data-analysis/filters/"><em>filters</em></a>. .</p>
+<p>When you’re performing analysis on your data, you might notice that you have different filtering options for different properties. That’s because Keen automatically detects the relevant operators based on your property’s data type. For example, you won’t have the option to apply a greater than or less than filter to boolean property with only TRUE or FALSE property values (that would be super confusing!).  For a list of the possibilities, check out <a class="reference internal" href="../../data-analysis/filters/"><em>filters</em></a>.</p>
 </div>
 </div>
 <div class="section" id="event-collections">

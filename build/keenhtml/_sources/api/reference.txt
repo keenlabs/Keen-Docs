@@ -758,11 +758,7 @@ Extraction Resource
 Query String Parameters
 -----------------------
 
-* **api_key** (optional) - The API Key for the project containing the data you are analyzing. See :doc:`/data-analysis/authentication` for more information.
-* **event_collection** (required) - The name of the event collection you are analyzing.
-* **filters** (optional) - :doc:`/data-analysis/filters` are used to narrow down the events used in an analysis request based on :ref:`event property <event-properties>` values.
-* **timeframe** (optional) - Similar to filters, a :doc:`/data-analysis/timeframe` is used to narrow down the events used in an analysis request based on the time that the event occurred.
-* **email_address** (optional) - If an email address is specified, an email will be sent to this address when the extraction is complete.
+.. include:: /data-analysis/extraction-parameters.txt
 
 .. note:: :doc:`/data-analysis/series` are not supported for the Extraction Resource. The **interval** query string parameter is not used here.
 
@@ -780,59 +776,42 @@ GET (if **email** is specified)
 
 GET (if **email** is not specified)
 
-::
+The result is an array of events like this:
 
-    [{
-        "keen": {
-            "timestamp": "2012-06-06T19:10:39.205000"
-        },
-        "item": "old rusty key with french words on it",
-        "cost": 330.23,
-        "payment_method": "Cash",
-        "customer": {
-            "name": "Shelby Frothsworth",
-            "age": 22,
-        },
-        "store": {
-            "name": "Yupster Things",
-            "city": "San Francisco",
-            "address": "467 West Portal Ave",
-        }
-    },
-    {
-        "keen": {
-            "timestamp": "2012-06-07T13:10:35.203000"
-        },
-        "item": "sophisticated orange turtleneck with deer on it",
-        "cost": 469.5,
-        "payment_method": "Bank Simple VISA",
-        "customer": {
-            "name": "Francis Woodbury",
-            "age": 28,
-        },
-        "store": {
-            "name": "Yupster Things",
-            "city": "San Francisco",
-            "address": "467 West Portal Ave",
-        }
-    },
-    {
-        "keen": {
-            "timestamp": "2012-06-07T13:10:35.203000"
-        },
-        "item": "antique gumball machine filled with marbles",
-        "cost": 65.00,
-        "payment_method": "Amex",
-        "customer": {
-            "name": "Izzy Graybeard",
-            "age": 31,
-        },
-        "store": {
-            "name": "Yupster Things",
-            "city": "San Francisco",
-            "address": "467 West Portal Ave",
-        }
-    }]
+.. code-block:: none
+
+    {"result":[{
+                "keen": {
+                    "created_at": "2012-07-30T21:21:46.566000+00:00", 
+                    "timestamp": "2012-07-30T21:21:46.566000+00:00"
+                        }, 
+                "user": {
+                    "email": "dan@keen.io", 
+                    "id": "4f4db6c7777d66ffff000000"
+                        }, 
+                "user_agent": {
+                    "browser": "chrome", 
+                    "browser_version": "20.0.1132.57", 
+                    "platform": "macos"
+                              },
+                }, 
+                {
+                "keen": {
+                    "created_at": "2012-07-30T21:40:05.386000+00:00", 
+                    "timestamp": "2012-07-30T21:40:05.386000+00:00"
+                        },
+                "user": {
+                    "email": "michelle@keen.io", 
+                    "id": "4fa2cccccf546ffff000006"
+                        }, 
+                "user_agent": {
+                    "browser": "chrome", 
+                    "browser_version": "20.0.1132.57", 
+                    "platform": "macos"
+                              }
+                }
+            ]
+    }
 
 
 

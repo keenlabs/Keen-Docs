@@ -143,7 +143,7 @@ The nice thing about using `JSON`_ as the data format is that you can include LO
 
 You can see in the example below that this purchases event has properties that describe the purchase, properties that describe the customer, and properties that describe the store.
 
-The ability to store the properties in this hierarchy makes it much simpler to name the properties. Notice how the customer name and the store name are simply labeled "name". When you look for these properties in a filter or in your data extract, you’ll find them labeled **customer:name** and **store:name**.
+The ability to store the properties in this hierarchy makes it much simpler to name the properties. Notice how the customer name and the store name are simply labeled "name". When you look for these properties in a filter or in your data extract, you’ll find them labeled **customer.name** and **store.name**.
 
 .. code-block:: none
 
@@ -181,7 +181,7 @@ Properties have data types.  Keen automatically infers the data types of your pr
 * **boolean** - either *true* or *false*
 * **array** - collection of data points of like data types
 
-When you’re performing analysis on your data, you might notice that you have different filtering options for different properties. That’s because Keen automatically detects the relevant operators based on your property’s data type. For example, you won’t have the option to apply a greater than or less than filter to boolean property with only TRUE or FALSE property values (that would be super confusing!).  For a list of the possibilities, check out :doc:`filters </data-analysis/filters>`. .
+When you’re performing analysis on your data, you might notice that you have different filtering options for different properties. That’s because Keen automatically detects the relevant operators based on your property’s data type. For example, you won’t have the option to apply a greater than or less than filter to boolean property with only TRUE or FALSE property values (that would be super confusing!).  For a list of the possibilities, check out :doc:`filters </data-analysis/filters>`.
 
 
 .. _JSON: http://json.org

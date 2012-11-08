@@ -890,12 +890,14 @@ The response will be a simple JSON object with one key: result, which maps to an
 </table>
 <div class="section" id="id34">
 <h3>Query String Parameters<a class="headerlink" href="#id34" title="Permalink to this headline">¶</a></h3>
+<p>Extractions take the following parameters:</p>
 <ul class="simple">
-<li><strong>api_key</strong> (optional) - The API Key for the project containing the data you are analyzing. See <a class="reference internal" href="../../data-analysis/authentication/"><em>Authentication</em></a> for more information.</li>
+<li><strong>api_key</strong> (optional) - The API Key for the project containing the data you are analyzing. The API key can alternatively be provided  in the request header. See <tt class="xref doc docutils literal"><span class="pre">authentication</span></tt> for more information.</li>
 <li><strong>event_collection</strong> (required) - The name of the event collection you are analyzing.</li>
-<li><strong>filters</strong> (optional) - <a class="reference internal" href="../../data-analysis/filters/"><em>Filters</em></a> are used to narrow down the events used in an analysis request based on <a class="reference internal" href="../../event-data-modeling/event-data-intro/#event-properties"><em>event property</em></a> values.</li>
-<li><strong>timeframe</strong> (optional) - Similar to filters, a <a class="reference internal" href="../../data-analysis/timeframe/"><em>Timeframe</em></a> is used to narrow down the events used in an analysis request based on the time that the event occurred.</li>
-<li><strong>email_address</strong> (optional) - If an email address is specified, an email will be sent to this address when the extraction is complete.</li>
+<li><strong>filters</strong> (optional) - <tt class="xref doc docutils literal"><span class="pre">filters</span></tt> are used to narrow down the events used in an analysis request based on <a class="reference internal" href="../../event-data-modeling/event-data-intro/#event-properties"><em>event property</em></a> values.</li>
+<li><strong>timeframe</strong> (optional) - A <tt class="xref doc docutils literal"><span class="pre">timeframe</span></tt> specifies the events to use for analysis based on a window of time.</li>
+<li><strong>email_address</strong> (optional) - If an email address is specified, an email will be sent to it when your extraction is ready for download. If email is not specified, your extraction will be processed synchronously and your data will be returned as <a class="reference internal" href="../../data-analysis/extractions/#extraction-to-json"><em>JSON</em></a>.</li>
+<li><strong>latest</strong> (optional) - Use this parameter to specifically request the most recent events added to a given collection. Extract up to 100 of your most recent events.</li>
 </ul>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
@@ -909,57 +911,39 @@ The response will be a simple JSON object with one key: result, which maps to an
 </pre></div>
 </div>
 <p>GET (if <strong>email</strong> is not specified)</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="p">&#91;{</span>
-    <span class="s">&quot;keen&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="s">&quot;timestamp&quot;</span><span class="p">:</span> <span class="s">&quot;2012-06-06T19:10:39.205000&quot;</span>
-    <span class="p">},</span>
-    <span class="s">&quot;item&quot;</span><span class="p">:</span> <span class="s">&quot;old rusty key with french words on it&quot;</span><span class="p">,</span>
-    <span class="s">&quot;cost&quot;</span><span class="p">:</span> <span class="mf">330.23</span><span class="p">,</span>
-    <span class="s">&quot;payment_method&quot;</span><span class="p">:</span> <span class="s">&quot;Cash&quot;</span><span class="p">,</span>
-    <span class="s">&quot;customer&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Shelby Frothsworth&quot;</span><span class="p">,</span>
-        <span class="s">&quot;age&quot;</span><span class="p">:</span> <span class="mi">22</span><span class="p">,</span>
-    <span class="p">},</span>
-    <span class="s">&quot;store&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Yupster Things&quot;</span><span class="p">,</span>
-        <span class="s">&quot;city&quot;</span><span class="p">:</span> <span class="s">&quot;San Francisco&quot;</span><span class="p">,</span>
-        <span class="s">&quot;address&quot;</span><span class="p">:</span> <span class="s">&quot;467 West Portal Ave&quot;</span><span class="p">,</span>
-    <span class="p">}</span>
-<span class="p">},</span>
-<span class="p">{</span>
-    <span class="s">&quot;keen&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="s">&quot;timestamp&quot;</span><span class="p">:</span> <span class="s">&quot;2012-06-07T13:10:35.203000&quot;</span>
-    <span class="p">},</span>
-    <span class="s">&quot;item&quot;</span><span class="p">:</span> <span class="s">&quot;sophisticated orange turtleneck with deer on it&quot;</span><span class="p">,</span>
-    <span class="s">&quot;cost&quot;</span><span class="p">:</span> <span class="mf">469.5</span><span class="p">,</span>
-    <span class="s">&quot;payment_method&quot;</span><span class="p">:</span> <span class="s">&quot;Bank Simple VISA&quot;</span><span class="p">,</span>
-    <span class="s">&quot;customer&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Francis Woodbury&quot;</span><span class="p">,</span>
-        <span class="s">&quot;age&quot;</span><span class="p">:</span> <span class="mi">28</span><span class="p">,</span>
-    <span class="p">},</span>
-    <span class="s">&quot;store&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Yupster Things&quot;</span><span class="p">,</span>
-        <span class="s">&quot;city&quot;</span><span class="p">:</span> <span class="s">&quot;San Francisco&quot;</span><span class="p">,</span>
-        <span class="s">&quot;address&quot;</span><span class="p">:</span> <span class="s">&quot;467 West Portal Ave&quot;</span><span class="p">,</span>
-    <span class="p">}</span>
-<span class="p">},</span>
-<span class="p">{</span>
-    <span class="s">&quot;keen&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="s">&quot;timestamp&quot;</span><span class="p">:</span> <span class="s">&quot;2012-06-07T13:10:35.203000&quot;</span>
-    <span class="p">},</span>
-    <span class="s">&quot;item&quot;</span><span class="p">:</span> <span class="s">&quot;antique gumball machine filled with marbles&quot;</span><span class="p">,</span>
-    <span class="s">&quot;cost&quot;</span><span class="p">:</span> <span class="mf">65.00</span><span class="p">,</span>
-    <span class="s">&quot;payment_method&quot;</span><span class="p">:</span> <span class="s">&quot;Amex&quot;</span><span class="p">,</span>
-    <span class="s">&quot;customer&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Izzy Graybeard&quot;</span><span class="p">,</span>
-        <span class="s">&quot;age&quot;</span><span class="p">:</span> <span class="mi">31</span><span class="p">,</span>
-    <span class="p">},</span>
-    <span class="s">&quot;store&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Yupster Things&quot;</span><span class="p">,</span>
-        <span class="s">&quot;city&quot;</span><span class="p">:</span> <span class="s">&quot;San Francisco&quot;</span><span class="p">,</span>
-        <span class="s">&quot;address&quot;</span><span class="p">:</span> <span class="s">&quot;467 West Portal Ave&quot;</span><span class="p">,</span>
-    <span class="p">}</span>
-<span class="p">}&#93;</span>
+<p>The result is an array of events like this:</p>
+<div class="highlight-none"><div class="highlight"><pre>{&quot;result&quot;:&#91;{
+            &quot;keen&quot;: {
+                &quot;created_at&quot;: &quot;2012-07-30T21:21:46.566000+00:00&quot;,
+                &quot;timestamp&quot;: &quot;2012-07-30T21:21:46.566000+00:00&quot;
+                    },
+            &quot;user&quot;: {
+                &quot;email&quot;: &quot;dan@keen.io&quot;,
+                &quot;id&quot;: &quot;4f4db6c7777d66ffff000000&quot;
+                    },
+            &quot;user_agent&quot;: {
+                &quot;browser&quot;: &quot;chrome&quot;,
+                &quot;browser_version&quot;: &quot;20.0.1132.57&quot;,
+                &quot;platform&quot;: &quot;macos&quot;
+                          },
+            },
+            {
+            &quot;keen&quot;: {
+                &quot;created_at&quot;: &quot;2012-07-30T21:40:05.386000+00:00&quot;,
+                &quot;timestamp&quot;: &quot;2012-07-30T21:40:05.386000+00:00&quot;
+                    },
+            &quot;user&quot;: {
+                &quot;email&quot;: &quot;michelle@keen.io&quot;,
+                &quot;id&quot;: &quot;4fa2cccccf546ffff000006&quot;
+                    },
+            &quot;user_agent&quot;: {
+                &quot;browser&quot;: &quot;chrome&quot;,
+                &quot;browser_version&quot;: &quot;20.0.1132.57&quot;,
+                &quot;platform&quot;: &quot;macos&quot;
+                          }
+            }
+        &#93;
+}
 </pre></div>
 </div>
 </div>
