@@ -152,7 +152,7 @@ Project Row Resource
 +-------------------+--------------------------------------------------------------------------------------------------------------------------------------------+
 | Description       | GET returns detailed information about the specific project, as well as links to related resources.                                        |
 +-------------------+--------------------------------------------------------------------------------------------------------------------------------------------+
-| Supported Methods | GET, HEAD, DELETE                                                                                                                          |
+| Supported Methods | GET, HEAD                                                                                                                                  |
 +-------------------+--------------------------------------------------------------------------------------------------------------------------------------------+
 
 
@@ -201,7 +201,7 @@ Event Resource
 | Description       | | GET returns schema information for all the event collections in this project, including properties and their type. It also returns links to sub-resources.|
 |                   | | POST is for inserting multiple events in one or more collections, in a single request. See below for examples.                                            |
 +-------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Supported Methods | GET, HEAD, POST, DELETE                                                                                                                                     |
+| Supported Methods | GET, HEAD, POST                                                                                                                                             |
 +-------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | POST Request Body | JSON arrays of events. See example below                                                                                                                    |
 +-------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------+

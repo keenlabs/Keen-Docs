@@ -69,7 +69,7 @@ You can also use a GET request to retrieve information about the event propertie
 Event Properties
 ================
 
-Technical Reference: :ref:`event-properties`
+Technical Reference: :ref:`property-resource`
 
 Individual event properties can be deleted using our API. Deletion will only work for properties with under 10,000 events. If you need to delete more than that, `let us know <team@keen.io>`_
 
