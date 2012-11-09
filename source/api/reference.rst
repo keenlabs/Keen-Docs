@@ -11,7 +11,7 @@ Resource Inventory:
 
 * :ref:`versions-resource` - Returns the available API versions.
 * :ref:`discovery-resource` - Returns the available child resources.
-* :ref:`projects-list-resource` - Returns the projects accessible to the API user, as well as links to project sub-resources for discovery.
+* :ref:`projects-resource` - Returns the projects accessible to the API user, as well as links to project sub-resources for discovery.
 * :ref:`project-row-resource` - Returns detailed information about the specific project, as well as links to related resources.
 * :ref:`event-collection-resource` - Used for bulk inserting events or for getting information about all the collections in a given project.
 * :ref:`event-resource` - Used for inserting individual events or to get information about a specific event collection.
@@ -92,7 +92,7 @@ Example Response
     "projects_resource_url": "/3.0/projects"
   }
 
-.. _projects-list-resource:
+.. _projects-resource:
 
 Projects Resource
 =================

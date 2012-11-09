@@ -13,7 +13,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../event-data-modeling/event-data-intro/">Data Modeling Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../data-collection/">Data Collection APIs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../data-analysis/">Data Analysis APIs</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../maintenance/">Maintenance Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../maintenance/">Maintenance</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="">API Technical Reference</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#versions-resource">Versions Resource</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#discovery-resource">Discovery Resource</a></li>
@@ -56,7 +56,7 @@
 <ul class="simple">
 <li><a class="reference internal" href="#versions-resource"><em>Versions Resource</em></a> - Returns the available API versions.</li>
 <li><a class="reference internal" href="#discovery-resource"><em>Discovery Resource</em></a> - Returns the available child resources.</li>
-<li><a class="reference internal" href="#projects-list-resource"><em>Projects Resource</em></a> - Returns the projects accessible to the API user, as well as links to project sub-resources for discovery.</li>
+<li><a class="reference internal" href="#projects-resource"><em>Projects Resource</em></a> - Returns the projects accessible to the API user, as well as links to project sub-resources for discovery.</li>
 <li><a class="reference internal" href="#project-row-resource"><em>Project Row Resource</em></a> - Returns detailed information about the specific project, as well as links to related resources.</li>
 <li><a class="reference internal" href="#event-collection-resource"><em>Event Collection Resource</em></a> - Used for bulk inserting events or for getting information about all the collections in a given project.</li>
 <li><a class="reference internal" href="#event-resource"><em>Event Resource</em></a> - Used for inserting individual events or to get information about a specific event collection.</li>
@@ -145,7 +145,7 @@
 </div>
 </div>
 <div class="section" id="projects-resource">
-<span id="projects-list-resource"></span><h2>Projects Resource<a class="headerlink" href="#projects-resource" title="Permalink to this headline">¶</a></h2>
+<span id="id4"></span><h2>Projects Resource<a class="headerlink" href="#projects-resource" title="Permalink to this headline">¶</a></h2>
 <table border="1" class="docutils">
 <colgroup>
 <col width="12%" />
@@ -163,8 +163,8 @@
 </tr>
 </tbody>
 </table>
-<div class="section" id="id4">
-<h3>Example Response<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id5">
+<h3>Example Response<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-javascript"><div class="highlight"><pre><span class="p">&#91;</span>
   <span class="p">{</span>
     <span class="s2">&quot;api_key&quot;</span><span class="o">:</span> <span class="s2">&quot;a62538e817dd49fc9101fd0c1fa3c892&quot;</span><span class="p">,</span>
@@ -199,7 +199,7 @@
 </div>
 </div>
 <div class="section" id="project-row-resource">
-<span id="id5"></span><h2>Project Row Resource<a class="headerlink" href="#project-row-resource" title="Permalink to this headline">¶</a></h2>
+<span id="id6"></span><h2>Project Row Resource<a class="headerlink" href="#project-row-resource" title="Permalink to this headline">¶</a></h2>
 <table border="1" class="docutils">
 <colgroup>
 <col width="12%" />
@@ -217,8 +217,8 @@
 </tr>
 </tbody>
 </table>
-<div class="section" id="id6">
-<h3>Example Response<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id7">
+<h3>Example Response<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
   <span class="s2">&quot;api_key&quot;</span><span class="o">:</span> <span class="s2">&quot;a62538e817dd49fc9101fd0c1fa3c892&quot;</span><span class="p">,</span>
   <span class="s2">&quot;events&quot;</span><span class="o">:</span> <span class="p">&#91;</span>
@@ -251,7 +251,7 @@
 </div>
 </div>
 <div class="section" id="event-resource">
-<span id="id7"></span><h2>Event Resource<a class="headerlink" href="#event-resource" title="Permalink to this headline">¶</a></h2>
+<span id="id8"></span><h2>Event Resource<a class="headerlink" href="#event-resource" title="Permalink to this headline">¶</a></h2>
 <table border="1" class="docutils">
 <colgroup>
 <col width="11%" />
@@ -467,7 +467,7 @@
 </div>
 </div>
 <div class="section" id="property-resource">
-<span id="id8"></span><h2>Property Resource<a class="headerlink" href="#property-resource" title="Permalink to this headline">¶</a></h2>
+<span id="id9"></span><h2>Property Resource<a class="headerlink" href="#property-resource" title="Permalink to this headline">¶</a></h2>
 <table border="1" class="docutils">
 <colgroup>
 <col width="11%" />
@@ -492,14 +492,14 @@
 </tr>
 </tbody>
 </table>
-<div class="section" id="id9">
-<h3>Query String Parameters<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id10">
+<h3>Query String Parameters<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><strong>api_key</strong> (optional) - The API Key for the project containing the data you are analyzing. If you don’t include api_key s a query string parameter, you must include it in the header. See <a class="reference internal" href="../../data-analysis/authentication/"><em>Authentication</em></a> for more information.</li>
 </ul>
 </div>
-<div class="section" id="id10">
-<h3>Example GET Response<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id11">
+<h3>Example GET Response<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
     <span class="s2">&quot;property_name&quot;</span><span class="o">:</span> <span class="s2">&quot;user.id&quot;</span><span class="p">,</span>
     <span class="s2">&quot;url&quot;</span><span class="o">:</span> <span class="s2">&quot;/3.0/projects/&lt;project_id&gt;/events/login/properties/user.id&quot;</span><span class="p">,</span>
@@ -510,7 +510,7 @@
 </div>
 </div>
 <div class="section" id="event-collection-resource">
-<span id="id11"></span><h2>Event Collection Resource<a class="headerlink" href="#event-collection-resource" title="Permalink to this headline">¶</a></h2>
+<span id="id12"></span><h2>Event Collection Resource<a class="headerlink" href="#event-collection-resource" title="Permalink to this headline">¶</a></h2>
 <table border="1" class="docutils">
 <colgroup>
 <col width="11%" />
@@ -536,14 +536,14 @@
 </tr>
 </tbody>
 </table>
-<div class="section" id="id12">
-<h3>Query String Parameters<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id13">
+<h3>Query String Parameters<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><strong>api_key</strong> (optional) - The API Key for the project containing the data you are analyzing. If you don’t include api_key s a query string parameter, you must include it in the header. See <a class="reference internal" href="../../data-analysis/authentication/"><em>Authentication</em></a> for more information.</li>
 </ul>
 </div>
-<div class="section" id="id13">
-<h3>Example GET Response<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id14">
+<h3>Example GET Response<a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
   <span class="s2">&quot;properties&quot;</span><span class="o">:</span> <span class="p">{</span>
     <span class="s2">&quot;item.id&quot;</span><span class="o">:</span> <span class="s2">&quot;num&quot;</span><span class="p">,</span>
@@ -576,8 +576,8 @@
 </pre></div>
 </div>
 </div>
-<div class="section" id="id14">
-<h3>Example POST Response<a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id15">
+<h3>Example POST Response<a class="headerlink" href="#id15" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
         <span class="s2">&quot;created&quot;</span><span class="o">:</span> <span class="kc">true</span>
 <span class="p">}</span>
@@ -586,7 +586,7 @@
 </div>
 </div>
 <div class="section" id="queries-resource">
-<span id="id15"></span><h2>Queries Resource<a class="headerlink" href="#queries-resource" title="Permalink to this headline">¶</a></h2>
+<span id="id16"></span><h2>Queries Resource<a class="headerlink" href="#queries-resource" title="Permalink to this headline">¶</a></h2>
 <table border="1" class="docutils">
 <colgroup>
 <col width="11%" />
@@ -604,14 +604,14 @@
 </tr>
 </tbody>
 </table>
-<div class="section" id="id16">
-<h3>Query String Parameters<a class="headerlink" href="#id16" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id17">
+<h3>Query String Parameters<a class="headerlink" href="#id17" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><strong>api_key</strong> (optional) - The API Key for the project containing the data you are analyzing. If you don’t include api_key s a query string parameter, you must include it in the header. See <a class="reference internal" href="../../data-analysis/authentication/"><em>Authentication</em></a> for more information.</li>
 </ul>
 </div>
-<div class="section" id="id17">
-<h3>Example Response<a class="headerlink" href="#id17" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id18">
+<h3>Example Response<a class="headerlink" href="#id18" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
   <span class="s2">&quot;count_unique_url&quot;</span><span class="o">:</span> <span class="s2">&quot;/3.0/projects/4fea721933da5b4e8e000002/queries/count_unique&quot;</span><span class="p">,</span>
   <span class="s2">&quot;count_url&quot;</span><span class="o">:</span> <span class="s2">&quot;/3.0/projects/4fea721933da5b4e8e000002/queries/count&quot;</span><span class="p">,</span>
@@ -624,7 +624,7 @@
 </div>
 </div>
 <div class="section" id="count-resource">
-<span id="id18"></span><h2>Count Resource<a class="headerlink" href="#count-resource" title="Permalink to this headline">¶</a></h2>
+<span id="id19"></span><h2>Count Resource<a class="headerlink" href="#count-resource" title="Permalink to this headline">¶</a></h2>
 <table border="1" class="docutils">
 <colgroup>
 <col width="10%" />
@@ -642,12 +642,12 @@
 </tr>
 </tbody>
 </table>
-<div class="section" id="id19">
-<h3>Query String Parameters<a class="headerlink" href="#id19" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id20">
+<h3>Query String Parameters<a class="headerlink" href="#id20" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><strong>api_key</strong> (optional) - The API Key for the project containing the data you are analyzing. If you don’t include it as a query string parameter you must include it in the header. See <a class="reference internal" href="../../data-analysis/authentication/"><em>Authentication</em></a> for more information.</li>
 <li><strong>event_collection</strong> (required) - The name of the event collection you are analyzing.</li>
-<li><strong>filters</strong> (optional) - <a class="reference internal" href="../../data-analysis/filters/"><em>Filters</em></a> are used to narrow down the events used in an analysis request based on <em class="xref std std-ref">event property</em> values.</li>
+<li><strong>filters</strong> (optional) - <a class="reference internal" href="../../data-analysis/filters/"><em>Filters</em></a> are used to narrow down the events used in an analysis request based on <a class="reference internal" href="../../event-data-modeling/event-data-intro/#event-properties"><em>event property</em></a> values.</li>
 <li><strong>timeframe</strong> (optional) - A <a class="reference internal" href="../../data-analysis/timeframe/"><em>Timeframe</em></a> specifies the events to use for analysis based on a window of time. If no timeframe is specified, all events will be counted.</li>
 </ul>
 <div class="admonition note">
@@ -655,8 +655,8 @@
 <p class="last">Adding <a class="reference internal" href="../../data-analysis/timeframe/"><em>Timeframe</em></a> and <a class="reference internal" href="../../data-analysis/interval/"><em>Interval</em></a> query string parameters will turn the Count request into a Series.  See the documentation on <a class="reference internal" href="../../data-analysis/series/"><em>Series</em></a> for more information.</p>
 </div>
 </div>
-<div class="section" id="id20">
-<h3>Example Response<a class="headerlink" href="#id20" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id21">
+<h3>Example Response<a class="headerlink" href="#id21" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
     <span class="s2">&quot;result&quot;</span><span class="o">:</span> <span class="mi">10</span>
 <span class="p">}</span>
@@ -665,7 +665,7 @@
 </div>
 </div>
 <div class="section" id="count-unique-resource">
-<span id="id21"></span><h2>Count Unique Resource<a class="headerlink" href="#count-unique-resource" title="Permalink to this headline">¶</a></h2>
+<span id="id22"></span><h2>Count Unique Resource<a class="headerlink" href="#count-unique-resource" title="Permalink to this headline">¶</a></h2>
 <table border="1" class="docutils">
 <colgroup>
 <col width="13%" />
@@ -684,13 +684,13 @@ The response will be a simple JSON object with one key: result, which maps to th
 </tr>
 </tbody>
 </table>
-<div class="section" id="id22">
-<h3>Query String Parameters<a class="headerlink" href="#id22" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id23">
+<h3>Query String Parameters<a class="headerlink" href="#id23" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><strong>api_key</strong> (optional) - The API Key for the project containing the data you are analyzing. If you don&#8217;t include it as a query string parameter you must include it in the header. See <a class="reference internal" href="../../data-analysis/authentication/"><em>Authentication</em></a> for more information.</li>
 <li><strong>event_collection</strong> (required) - The name of the event collection you are analyzing.</li>
 <li><strong>target_property</strong> (required) - The name of the property you are analyzing.</li>
-<li><strong>filters</strong> (optional) - <a class="reference internal" href="../../data-analysis/filters/"><em>Filters</em></a> are used to narrow down the events used in an analysis request based on <em class="xref std std-ref">event property</em> values.</li>
+<li><strong>filters</strong> (optional) - <a class="reference internal" href="../../data-analysis/filters/"><em>Filters</em></a> are used to narrow down the events used in an analysis request based on <a class="reference internal" href="../../event-data-modeling/event-data-intro/#event-properties"><em>event property</em></a> values.</li>
 <li><strong>timeframe</strong> (optional) - Similar to filters, a <a class="reference internal" href="../../data-analysis/timeframe/"><em>Timeframe</em></a> is used to narrow down the events used in an analysis request based on the time that the event occurred.</li>
 </ul>
 <div class="admonition note">
@@ -698,8 +698,8 @@ The response will be a simple JSON object with one key: result, which maps to th
 <p class="last">Adding <strong>timeframe</strong> and <strong>interval</strong> query string parameters will turn the request into a Series.  See the documentation on <a class="reference internal" href="../../data-analysis/series/"><em>Series</em></a> for more information.</p>
 </div>
 </div>
-<div class="section" id="id23">
-<h3>Example Response<a class="headerlink" href="#id23" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id24">
+<h3>Example Response<a class="headerlink" href="#id24" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
   <span class="s2">&quot;result&quot;</span><span class="o">:</span> <span class="mi">7</span>
 <span class="p">}</span>
@@ -708,7 +708,7 @@ The response will be a simple JSON object with one key: result, which maps to th
 </div>
 </div>
 <div class="section" id="minimum-resource">
-<span id="id24"></span><h2>Minimum Resource<a class="headerlink" href="#minimum-resource" title="Permalink to this headline">¶</a></h2>
+<span id="id25"></span><h2>Minimum Resource<a class="headerlink" href="#minimum-resource" title="Permalink to this headline">¶</a></h2>
 <table border="1" class="docutils">
 <colgroup>
 <col width="11%" />
@@ -728,13 +728,13 @@ The response will be a simple JSON object with one key: result, which maps to th
 </tr>
 </tbody>
 </table>
-<div class="section" id="id25">
-<h3>Query String Parameters<a class="headerlink" href="#id25" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id26">
+<h3>Query String Parameters<a class="headerlink" href="#id26" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><strong>api_key</strong> (optional) - The API Key for the project containing the data you are analyzing. If you don&#8217;t include it as a query string parameter you must include it in the header. See <a class="reference internal" href="../../data-analysis/authentication/"><em>Authentication</em></a> for more information.</li>
 <li><strong>event_collection</strong> (required) - The name of the event collection you are analyzing.</li>
 <li><strong>target_property</strong> (required) - The name of the property you are analyzing.</li>
-<li><strong>filters</strong> (optional) - <a class="reference internal" href="../../data-analysis/filters/"><em>Filters</em></a> are used to narrow down the events used in an analysis request based on <em class="xref std std-ref">event property</em> values.</li>
+<li><strong>filters</strong> (optional) - <a class="reference internal" href="../../data-analysis/filters/"><em>Filters</em></a> are used to narrow down the events used in an analysis request based on <a class="reference internal" href="../../event-data-modeling/event-data-intro/#event-properties"><em>event property</em></a> values.</li>
 <li><strong>timeframe</strong> (optional) - Similar to filters, a <a class="reference internal" href="../../data-analysis/timeframe/"><em>Timeframe</em></a> is used to narrow down the events used in an analysis request based on the time that the event occurred.</li>
 </ul>
 <div class="admonition note">
@@ -742,8 +742,8 @@ The response will be a simple JSON object with one key: result, which maps to th
 <p class="last">Adding <strong>timeframe</strong> and <strong>interval</strong> query string parameters will turn the request into a Series.  See the documentation on <a class="reference internal" href="../../data-analysis/series/"><em>Series</em></a> for more information.</p>
 </div>
 </div>
-<div class="section" id="id26">
-<h3>Example Response<a class="headerlink" href="#id26" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id27">
+<h3>Example Response<a class="headerlink" href="#id27" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
   <span class="s2">&quot;result&quot;</span><span class="o">:</span> <span class="mi">7</span>
 <span class="p">}</span>
@@ -752,7 +752,7 @@ The response will be a simple JSON object with one key: result, which maps to th
 </div>
 </div>
 <div class="section" id="maximum-resource">
-<span id="id27"></span><h2>Maximum Resource<a class="headerlink" href="#maximum-resource" title="Permalink to this headline">¶</a></h2>
+<span id="id28"></span><h2>Maximum Resource<a class="headerlink" href="#maximum-resource" title="Permalink to this headline">¶</a></h2>
 <table border="1" class="docutils">
 <colgroup>
 <col width="11%" />
@@ -772,13 +772,13 @@ The response will be a simple JSON object with one key: result, which maps to th
 </tr>
 </tbody>
 </table>
-<div class="section" id="id28">
-<h3>Query String Parameters<a class="headerlink" href="#id28" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id29">
+<h3>Query String Parameters<a class="headerlink" href="#id29" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><strong>api_key</strong> (optional) - The API Key for the project containing the data you are analyzing. If you don&#8217;t include it as a query string parameter you must include it in the header. See <a class="reference internal" href="../../data-analysis/authentication/"><em>Authentication</em></a> for more information.</li>
 <li><strong>event_collection</strong> (required) - The name of the event collection you are analyzing.</li>
 <li><strong>target_property</strong> (required) - The name of the property you are analyzing.</li>
-<li><strong>filters</strong> (optional) - <a class="reference internal" href="../../data-analysis/filters/"><em>Filters</em></a> are used to narrow down the events used in an analysis request based on <em class="xref std std-ref">event property</em> values.</li>
+<li><strong>filters</strong> (optional) - <a class="reference internal" href="../../data-analysis/filters/"><em>Filters</em></a> are used to narrow down the events used in an analysis request based on <a class="reference internal" href="../../event-data-modeling/event-data-intro/#event-properties"><em>event property</em></a> values.</li>
 <li><strong>timeframe</strong> (optional) - Similar to filters, a <a class="reference internal" href="../../data-analysis/timeframe/"><em>Timeframe</em></a> is used to narrow down the events used in an analysis request based on the time that the event occurred.</li>
 </ul>
 <div class="admonition note">
@@ -786,8 +786,8 @@ The response will be a simple JSON object with one key: result, which maps to th
 <p class="last">Adding <strong>timeframe</strong> and <strong>interval</strong> query string parameters will turn the request into a Series.  See the documentation on <a class="reference internal" href="../../data-analysis/series/"><em>Series</em></a> for more information.</p>
 </div>
 </div>
-<div class="section" id="id29">
-<h3>Example Response<a class="headerlink" href="#id29" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id30">
+<h3>Example Response<a class="headerlink" href="#id30" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
   <span class="s2">&quot;result&quot;</span><span class="o">:</span> <span class="mi">7</span>
 <span class="p">}</span>
@@ -796,7 +796,7 @@ The response will be a simple JSON object with one key: result, which maps to th
 </div>
 </div>
 <div class="section" id="average-resource">
-<span id="id30"></span><h2>Average Resource<a class="headerlink" href="#average-resource" title="Permalink to this headline">¶</a></h2>
+<span id="id31"></span><h2>Average Resource<a class="headerlink" href="#average-resource" title="Permalink to this headline">¶</a></h2>
 <table border="1" class="docutils">
 <colgroup>
 <col width="11%" />
@@ -816,13 +816,13 @@ The response will be a simple JSON object with one key: result, which maps to th
 </tr>
 </tbody>
 </table>
-<div class="section" id="id31">
-<h3>Query String Parameters<a class="headerlink" href="#id31" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id32">
+<h3>Query String Parameters<a class="headerlink" href="#id32" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><strong>api_key</strong> (optional) - The API Key for the project containing the data you are analyzing. If you don&#8217;t include it as a query string parameter you must include it in the header. See <a class="reference internal" href="../../data-analysis/authentication/"><em>Authentication</em></a> for more information.</li>
 <li><strong>event_collection</strong> (required) - The name of the event collection you are analyzing.</li>
 <li><strong>target_property</strong> (required) - The name of the property you are analyzing.</li>
-<li><strong>filters</strong> (optional) - <a class="reference internal" href="../../data-analysis/filters/"><em>Filters</em></a> are used to narrow down the events used in an analysis request based on <em class="xref std std-ref">event property</em> values.</li>
+<li><strong>filters</strong> (optional) - <a class="reference internal" href="../../data-analysis/filters/"><em>Filters</em></a> are used to narrow down the events used in an analysis request based on <a class="reference internal" href="../../event-data-modeling/event-data-intro/#event-properties"><em>event property</em></a> values.</li>
 <li><strong>timeframe</strong> (optional) - Similar to filters, a <a class="reference internal" href="../../data-analysis/timeframe/"><em>Timeframe</em></a> is used to narrow down the events used in an analysis request based on the time that the event occurred.</li>
 </ul>
 <div class="admonition note">
@@ -830,8 +830,8 @@ The response will be a simple JSON object with one key: result, which maps to th
 <p class="last">Adding <strong>timeframe</strong> and <strong>interval</strong> query string parameters will turn the request into a Series.  See the documentation on <a class="reference internal" href="../../data-analysis/series/"><em>Series</em></a> for more information.</p>
 </div>
 </div>
-<div class="section" id="id32">
-<h3>Example Response<a class="headerlink" href="#id32" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id33">
+<h3>Example Response<a class="headerlink" href="#id33" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
   <span class="s2">&quot;result&quot;</span><span class="o">:</span> <span class="mi">7</span>
 <span class="p">}</span>
@@ -840,7 +840,7 @@ The response will be a simple JSON object with one key: result, which maps to th
 </div>
 </div>
 <div class="section" id="sum-resource">
-<span id="id33"></span><h2>Sum Resource<a class="headerlink" href="#sum-resource" title="Permalink to this headline">¶</a></h2>
+<span id="id34"></span><h2>Sum Resource<a class="headerlink" href="#sum-resource" title="Permalink to this headline">¶</a></h2>
 <table border="1" class="docutils">
 <colgroup>
 <col width="11%" />
@@ -860,13 +860,13 @@ The response will be a simple JSON object with one key: result, which maps to th
 </tr>
 </tbody>
 </table>
-<div class="section" id="id34">
-<h3>Query String Parameters<a class="headerlink" href="#id34" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id35">
+<h3>Query String Parameters<a class="headerlink" href="#id35" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><strong>api_key</strong> (optional) - The API Key for the project containing the data you are analyzing. If you don&#8217;t include it as a query string parameter you must include it in the header. See <a class="reference internal" href="../../data-analysis/authentication/"><em>Authentication</em></a> for more information.</li>
 <li><strong>event_collection</strong> (required) - The name of the event collection you are analyzing.</li>
 <li><strong>target_property</strong> (required) - The name of the property you are analyzing.</li>
-<li><strong>filters</strong> (optional) - <a class="reference internal" href="../../data-analysis/filters/"><em>Filters</em></a> are used to narrow down the events used in an analysis request based on <em class="xref std std-ref">event property</em> values.</li>
+<li><strong>filters</strong> (optional) - <a class="reference internal" href="../../data-analysis/filters/"><em>Filters</em></a> are used to narrow down the events used in an analysis request based on <a class="reference internal" href="../../event-data-modeling/event-data-intro/#event-properties"><em>event property</em></a> values.</li>
 <li><strong>timeframe</strong> (optional) - Similar to filters, a <a class="reference internal" href="../../data-analysis/timeframe/"><em>Timeframe</em></a> is used to narrow down the events used in an analysis request based on the time that the event occurred.</li>
 </ul>
 <div class="admonition note">
@@ -874,8 +874,8 @@ The response will be a simple JSON object with one key: result, which maps to th
 <p class="last">Adding <strong>timeframe</strong> and <strong>interval</strong> query string parameters will turn the request into a Series.  See the documentation on <a class="reference internal" href="../../data-analysis/series/"><em>Series</em></a> for more information.</p>
 </div>
 </div>
-<div class="section" id="id35">
-<h3>Example Response<a class="headerlink" href="#id35" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id36">
+<h3>Example Response<a class="headerlink" href="#id36" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
   <span class="s2">&quot;result&quot;</span><span class="o">:</span> <span class="mi">7</span>
 <span class="p">}</span>
@@ -884,7 +884,7 @@ The response will be a simple JSON object with one key: result, which maps to th
 </div>
 </div>
 <div class="section" id="select-unique-resource">
-<span id="id36"></span><h2>Select Unique Resource<a class="headerlink" href="#select-unique-resource" title="Permalink to this headline">¶</a></h2>
+<span id="id37"></span><h2>Select Unique Resource<a class="headerlink" href="#select-unique-resource" title="Permalink to this headline">¶</a></h2>
 <table border="1" class="docutils">
 <colgroup>
 <col width="11%" />
@@ -903,13 +903,13 @@ The response will be a simple JSON object with one key: result, which maps to an
 </tr>
 </tbody>
 </table>
-<div class="section" id="id37">
-<h3>Query String Parameters<a class="headerlink" href="#id37" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id38">
+<h3>Query String Parameters<a class="headerlink" href="#id38" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><strong>api_key</strong> (optional) - The API Key for the project containing the data you are analyzing. If you don&#8217;t include it as a query string parameter you must include it in the header. See <a class="reference internal" href="../../data-analysis/authentication/"><em>Authentication</em></a> for more information.</li>
 <li><strong>event_collection</strong> (required) - The name of the event collection you are analyzing.</li>
 <li><strong>target_property</strong> (required) - The property of which you want to count the unique values.</li>
-<li><strong>filters</strong> (optional) - <a class="reference internal" href="../../data-analysis/filters/"><em>Filters</em></a> are used to narrow down the events used in an analysis request based on <em class="xref std std-ref">event property</em> values.</li>
+<li><strong>filters</strong> (optional) - <a class="reference internal" href="../../data-analysis/filters/"><em>Filters</em></a> are used to narrow down the events used in an analysis request based on <a class="reference internal" href="../../event-data-modeling/event-data-intro/#event-properties"><em>event property</em></a> values.</li>
 <li><strong>timeframe</strong> (optional) - Similar to filters, a <a class="reference internal" href="../../data-analysis/timeframe/"><em>Timeframe</em></a> is used to narrow down the events used in an analysis request based on the time that the event occurred.</li>
 </ul>
 <div class="admonition note">
@@ -917,8 +917,8 @@ The response will be a simple JSON object with one key: result, which maps to an
 <p class="last">Adding <strong>timeframe</strong> and <strong>interval</strong> query string parameters will turn the Select Unique request into a Series.  See the documentation on <a class="reference internal" href="../../data-analysis/series/"><em>Series</em></a> for more information.</p>
 </div>
 </div>
-<div class="section" id="id38">
-<h3>Example Response<a class="headerlink" href="#id38" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id39">
+<h3>Example Response<a class="headerlink" href="#id39" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
     <span class="s2">&quot;result&quot;</span><span class="o">:</span> <span class="p">&#91;</span><span class="s2">&quot;hello&quot;</span><span class="p">,</span> <span class="s2">&quot;goodbye&quot;</span><span class="p">,</span> <span class="s2">&quot;welcome&quot;</span><span class="p">&#93;</span>
 <span class="p">}</span>
@@ -927,7 +927,7 @@ The response will be a simple JSON object with one key: result, which maps to an
 </div>
 </div>
 <div class="section" id="extraction-resource">
-<span id="id39"></span><h2>Extraction Resource<a class="headerlink" href="#extraction-resource" title="Permalink to this headline">¶</a></h2>
+<span id="id40"></span><h2>Extraction Resource<a class="headerlink" href="#extraction-resource" title="Permalink to this headline">¶</a></h2>
 <table border="1" class="docutils">
 <colgroup>
 <col width="9%" />
@@ -951,13 +951,13 @@ The response will be a simple JSON object with one key: result, which maps to an
 </tr>
 </tbody>
 </table>
-<div class="section" id="id40">
-<h3>Query String Parameters<a class="headerlink" href="#id40" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id41">
+<h3>Query String Parameters<a class="headerlink" href="#id41" title="Permalink to this headline">¶</a></h3>
 <p>Extractions take the following parameters:</p>
 <ul class="simple">
 <li><strong>api_key</strong> (optional) - The API Key for the project containing the data you are analyzing. The API key can alternatively be provided  in the request header. See <tt class="xref doc docutils literal"><span class="pre">authentication</span></tt> for more information.</li>
 <li><strong>event_collection</strong> (required) - The name of the event collection you are analyzing.</li>
-<li><strong>filters</strong> (optional) - <tt class="xref doc docutils literal"><span class="pre">filters</span></tt> are used to narrow down the events used in an analysis request based on <em class="xref std std-ref">event property</em> values.</li>
+<li><strong>filters</strong> (optional) - <tt class="xref doc docutils literal"><span class="pre">filters</span></tt> are used to narrow down the events used in an analysis request based on <a class="reference internal" href="../../event-data-modeling/event-data-intro/#event-properties"><em>event property</em></a> values.</li>
 <li><strong>timeframe</strong> (optional) - A <tt class="xref doc docutils literal"><span class="pre">timeframe</span></tt> specifies the events to use for analysis based on a window of time.</li>
 <li><strong>email_address</strong> (optional) - If an email address is specified, an email will be sent to it when your extraction is ready for download. If email is not specified, your extraction will be processed synchronously and your data will be returned as <a class="reference internal" href="../../data-analysis/extractions/#extraction-to-json"><em>JSON</em></a>.</li>
 <li><strong>latest</strong> (optional) - Use this parameter to specifically request the most recent events added to a given collection. Extract up to 100 of your most recent events.</li>
@@ -967,8 +967,8 @@ The response will be a simple JSON object with one key: result, which maps to an
 <p class="last"><a class="reference internal" href="../../data-analysis/series/"><em>Series</em></a> are not supported for the Extraction Resource. The <strong>interval</strong> query string parameter is not used here.</p>
 </div>
 </div>
-<div class="section" id="id41">
-<h3>Example Response<a class="headerlink" href="#id41" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id42">
+<h3>Example Response<a class="headerlink" href="#id42" title="Permalink to this headline">¶</a></h3>
 <p>GET (if <strong>email</strong> is specified)</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="p">{</span><span class="s">&quot;result&quot;</span><span class="p">:</span> <span class="s">&quot;Processing. Check the specified email for the extraction results.&quot;</span><span class="p">}</span>
 </pre></div>
@@ -1012,7 +1012,7 @@ The response will be a simple JSON object with one key: result, which maps to an
 </div>
 </div>
 <div class="section" id="progression-resource">
-<span id="id42"></span><h2>Progression Resource<a class="headerlink" href="#progression-resource" title="Permalink to this headline">¶</a></h2>
+<span id="id43"></span><h2>Progression Resource<a class="headerlink" href="#progression-resource" title="Permalink to this headline">¶</a></h2>
 <table border="1" class="docutils">
 <colgroup>
 <col width="9%" />
@@ -1030,8 +1030,8 @@ The response will be a simple JSON object with one key: result, which maps to an
 </tr>
 </tbody>
 </table>
-<div class="section" id="id43">
-<h3>Query String Parameters<a class="headerlink" href="#id43" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id44">
+<h3>Query String Parameters<a class="headerlink" href="#id44" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><strong>api_key</strong> (optional) - The API Key for the project containing the data you are analyzing. If you don&#8217;t include it as a query string parameter you must include it in the header. See <a class="reference internal" href="../../data-analysis/authentication/"><em>Authentication</em></a> for more information.</li>
 <li><strong>steps</strong> (required) - A URL encoded JSON Array defining the <a class="reference internal" href="../../data-analysis/progressions/#steps"><em>Steps</em></a> in the Progression.</li>
@@ -1041,8 +1041,8 @@ The response will be a simple JSON object with one key: result, which maps to an
 <p class="last"><a class="reference internal" href="../../data-analysis/series/"><em>Series</em></a> are not supported for the Progression Resource. The <strong>interval</strong> query string parameter is not used here.</p>
 </div>
 </div>
-<div class="section" id="id44">
-<h3>Example Response<a class="headerlink" href="#id44" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id45">
+<h3>Example Response<a class="headerlink" href="#id45" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
   <span class="s2">&quot;result&quot;</span><span class="o">:</span> <span class="p">&#91;</span>
     <span class="mi">2</span><span class="p">,</span>
@@ -1100,14 +1100,14 @@ The response will be a simple JSON object with one key: result, which maps to an
 </tr>
 </tbody>
 </table>
-<div class="section" id="id45">
-<h3>Query String Parameters<a class="headerlink" href="#id45" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id46">
+<h3>Query String Parameters<a class="headerlink" href="#id46" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><strong>api_key</strong>  - The API Key for the project containing the data you are analyzing. If you don&#8217;t include it as a query string parameter you must include it in the header. See <a class="reference internal" href="../../data-analysis/authentication/"><em>Authentication</em></a> for more information.</li>
 </ul>
 </div>
-<div class="section" id="id46">
-<h3>Example Response<a class="headerlink" href="#id46" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id47">
+<h3>Example Response<a class="headerlink" href="#id47" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-javascript"><div class="highlight"><pre><span class="p">&#91;</span>
   <span class="p">{</span>
     <span class="s2">&quot;analysis_type&quot;</span><span class="o">:</span> <span class="s2">&quot;count&quot;</span><span class="p">,</span>
@@ -1145,7 +1145,7 @@ The response will be a simple JSON object with one key: result, which maps to an
 </div>
 </div>
 <div class="section" id="saved-query-row-resource">
-<span id="id47"></span><h2>Saved Query Row Resource<a class="headerlink" href="#saved-query-row-resource" title="Permalink to this headline">¶</a></h2>
+<span id="id48"></span><h2>Saved Query Row Resource<a class="headerlink" href="#saved-query-row-resource" title="Permalink to this headline">¶</a></h2>
 <table border="1" class="docutils">
 <colgroup>
 <col width="9%" />
@@ -1181,8 +1181,8 @@ The response will be a simple JSON object with one key: result, which maps to an
 <p class="last">Make sure to set the request header &#8220;Content-Type&#8221; to &#8220;application/json&#8221; for PUTs.</p>
 </div>
 </div>
-<div class="section" id="id48">
-<h3>Query String Parameters<a class="headerlink" href="#id48" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id49">
+<h3>Query String Parameters<a class="headerlink" href="#id49" title="Permalink to this headline">¶</a></h3>
 <p>The two parameters required for <strong>every</strong> Saved Query are:</p>
 <ul class="simple">
 <li><strong>saved_query_name</strong> - The name of the Saved Query. This goes in the URL.</li>
@@ -1269,8 +1269,8 @@ The response will be a simple JSON object with one key: result, which maps to an
 </tbody>
 </table>
 </div>
-<div class="section" id="id49">
-<h3>Example GET Response<a class="headerlink" href="#id49" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id50">
+<h3>Example GET Response<a class="headerlink" href="#id50" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
   <span class="s2">&quot;analysis_type&quot;</span><span class="o">:</span> <span class="s2">&quot;count&quot;</span><span class="p">,</span>
   <span class="s2">&quot;created_date&quot;</span><span class="o">:</span> <span class="s2">&quot;2012-09-14T22:23:50.259000&quot;</span><span class="p">,</span>
@@ -1298,8 +1298,8 @@ The response will be a simple JSON object with one key: result, which maps to an
 </pre></div>
 </div>
 </div>
-<div class="section" id="id50">
-<h3>Example POST Response<a class="headerlink" href="#id50" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id51">
+<h3>Example POST Response<a class="headerlink" href="#id51" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
   <span class="s2">&quot;created&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
   <span class="s2">&quot;saved_query&quot;</span><span class="o">:</span> <span class="p">{</span>
@@ -1324,7 +1324,7 @@ The response will be a simple JSON object with one key: result, which maps to an
 </div>
 </div>
 <div class="section" id="saved-query-row-result-resource">
-<span id="id51"></span><h2>Saved Query Row Result Resource<a class="headerlink" href="#saved-query-row-result-resource" title="Permalink to this headline">¶</a></h2>
+<span id="id52"></span><h2>Saved Query Row Result Resource<a class="headerlink" href="#saved-query-row-result-resource" title="Permalink to this headline">¶</a></h2>
 <table border="1" class="docutils">
 <colgroup>
 <col width="9%" />
@@ -1342,8 +1342,8 @@ The response will be a simple JSON object with one key: result, which maps to an
 </tr>
 </tbody>
 </table>
-<div class="section" id="id52">
-<h3>Example Response<a class="headerlink" href="#id52" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id53">
+<h3>Example Response<a class="headerlink" href="#id53" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
   <span class="s2">&quot;result&quot;</span><span class="o">:</span> <span class="mi">5</span>
 <span class="p">}</span>
