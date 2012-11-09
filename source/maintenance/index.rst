@@ -23,9 +23,8 @@ Deleting your project puts your project in an inactive state and removes it from
 
 You can also use our API to get information about your projects:
 
-The :ref:`projects-resource` returns the projects accessible to the API user, as well as links to project sub-resources for discovery.
-
-The :ref:`project-row-resource` returns detailed information about the specific project, as well as links to related resources.
+* The :ref:`projects-resource` returns the projects accessible to the API user, as well as links to project sub-resources for discovery.
+* The :ref:`project-row-resource` returns detailed information about the specific project, as well as links to related resources.
 
 
 

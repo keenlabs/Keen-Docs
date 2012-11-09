@@ -42,14 +42,16 @@
 <p>You can create and delete projects on the Keen IO <a class="reference external" href="https://keen.io/projects">projects page</a>.
 Deleting your project puts your project in an inactive state and removes it from the UI.</p>
 <p>You can also use our API to get information about your projects:</p>
-<p>The <a class="reference internal" href="../api/reference/#projects-resource"><em>Projects Resource</em></a> returns the projects accessible to the API user, as well as links to project sub-resources for discovery.</p>
-<p>The <a class="reference internal" href="../api/reference/#project-row-resource"><em>Project Row Resource</em></a> returns detailed information about the specific project, as well as links to related resources.</p>
+<ul class="simple">
+<li>The <a class="reference internal" href="../api/reference/#projects-resource"><em>Projects Resource</em></a> returns the projects accessible to the API user, as well as links to project sub-resources for discovery.</li>
+<li>The <a class="reference internal" href="../api/reference/#project-row-resource"><em>Project Row Resource</em></a> returns detailed information about the specific project, as well as links to related resources.</li>
+</ul>
 </div>
 <div class="section" id="event-collections">
 <span id="event-collections-maintenance"></span><h2>Event Collections<a class="headerlink" href="#event-collections" title="Permalink to this headline">¶</a></h2>
 <p>Technical Reference: <a class="reference internal" href="../api/reference/#event-collection-resource"><em>Event Collection Resource</em></a></p>
 <p>After testing, you may have some event collections you want to delete. You do this using the <a class="reference external" href="https://keen.io/projects">projects page</a>, or our API.</p>
-<p>Deletion will only work for collections with under 10,000 events. If you need to delete a larger collection, we can do it for you, just <a class="reference external" href="mailto:team&#37;&#52;&#48;keen&#46;io">let us know</a></p>
+<p>Deletion will only work for collections with under 10,000 events. If you need to delete a larger collection, we can help, just <a class="reference external" href="mailto:team&#37;&#52;&#48;keen&#46;io">let us know</a></p>
 <p>Here&#8217;s what an event collection request would look like using the REST API (use the DELETE method):</p>
 <div class="highlight-python"><pre>https://api.keen.io/3.0/projects/&lt;project_id&gt;/events/&lt;collection_name&gt;?api_key=&lt;key&gt;</pre>
 </div>
