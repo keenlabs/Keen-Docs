@@ -13,8 +13,9 @@ Resource Inventory:
 * :ref:`discovery-resource` - Returns the available child resources.
 * :ref:`projects-list-resource` - Returns the projects accessible to the API user, as well as links to project sub-resources for discovery.
 * :ref:`project-row-resource` - Returns detailed information about the specific project, as well as links to related resources.
-* :ref:`event-collections-list-resource` - Used for bulk inserting events or for getting information about all the collections in a given project.
-* :ref:`event-collection-row-resource` - Used for inserting events or to get information about a specific event collection.
+* :ref:`event-collection-resource` - Used for bulk inserting events or for getting information about all the collections in a given project.
+* :ref:`event-resource` - Used for inserting individual events or to get information about a specific event collection.
+* :ref:`property-resource` - Used for inserting individual events or to get information about a specific event collection.
 * :ref:`count-resource` - Returns a count of items meeting specified criteria.
 * :ref:`count-unique-resource` - Returns a count of unique items meeting specified criteria.
 * :ref:`minimum-resource` - Returns the minimum value for a given property.
@@ -149,9 +150,9 @@ Project Row Resource
 +-------------------+--------------------------------------------------------------------------------------------------------------------------------------------+
 | URL               | https://api.keen.io/<version>/projects/<project_id>                                                                                        | 
 +-------------------+--------------------------------------------------------------------------------------------------------------------------------------------+
-| Description       | Returns detailed information about the specific project, as well as links to related resources.                                            |
+| Description       | GET returns detailed information about the specific project, as well as links to related resources.                                        |
 +-------------------+--------------------------------------------------------------------------------------------------------------------------------------------+
-| Supported Methods | GET, HEAD                                                                                                                                  |
+| Supported Methods | GET, HEAD, DELETE                                                                                                                          |
 +-------------------+--------------------------------------------------------------------------------------------------------------------------------------------+
 
 
@@ -189,18 +190,18 @@ Example Response
     "url": "/3.0/projects/4fea721933da5b4e8e000002"
   }
   
-.. _event-collections-list-resource:
+.. _event-resource:
 
-Event Collections List Resource
-===============================
+Event Resource
+==============
 
 +-------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| URL               | https://api.keen.io/<version>/projects/<project_id>/events/                                                                                                 | 
+| URL               | https://api.keen.io/<version>/projects/<project_id>/events                                                                                                  | 
 +-------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | Description       | | GET returns schema information for all the event collections in this project, including properties and their type. It also returns links to sub-resources.|
 |                   | | POST is for inserting multiple events in one or more collections, in a single request. See below for examples.                                            |
 +-------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Supported Methods | GET, HEAD, POST                                                                                                                                             |
+| Supported Methods | GET, HEAD, POST, DELETE                                                                                                                                     |
 +-------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | POST Request Body | JSON arrays of events. See example below                                                                                                                    |
 +-------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -400,19 +401,50 @@ Example POST Response
       } 
     ]
   }
-  
-.. _event-collection-row-resource:
+ 
+.. _property-resource:
 
-Event Collection Row Resource
-=============================
+Property Resource
+=================
+
++-------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| URL               | https://api.keen.io/<version>/projects/<project_id>/events/<event_collection>/properties/<property_name>                                                    |                                              
++-------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Description       | | GET returns the property name, type, and a link to sub-resources.                                                                                         |
+|                   | | DELETE is for removing a property and deleting all values stored with that property name.                                                                 |
++-------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Supported Methods | GET, DELETE                                                                                                                                                 |
++-------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| POST Request Body | JSON arrays of events. See example below                                                                                                                    |
++-------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+
+--------------------
+Example GET Response
+--------------------
+
+.. code-block:: javascript
+
+     {
+         "property_name": "user.id",
+         "url": "/3.0/projects/<project_id>/events/login/properties/user.id",
+         "type": "string"
+     }
+  
+.. _event-collection-resource:
+
+
+Event Collection Resource
+=========================
 
 +-------------------+----------------------------------------------------------------------------------------------------------------------------------------------------+
 | URL               | https://api.keen.io/<version>/projects/<project_id>/events/<event_collection>                                                                      | 
 +-------------------+----------------------------------------------------------------------------------------------------------------------------------------------------+
 | Description       | | GET returns available schema information for this event collection, including properties and their type. It also returns links to sub-resources. |
 |                   | | POST is for inserting one event at a time in a single request. Examples below.                                                                   |
+|                   | | DELETE is for deleting the entire event collection. This is irreversible and will only work for collections under 10k events.                    |
 +-------------------+----------------------------------------------------------------------------------------------------------------------------------------------------+
-| Supported Methods | GET, HEAD, POST                                                                                                                                    |
+| Supported Methods | GET, HEAD, POST, DELETE                                                                                                                            |
 +-------------------+----------------------------------------------------------------------------------------------------------------------------------------------------+
 | POST Request Body | Single JSON event. See example below                                                                                                               |
 +-------------------+----------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -427,7 +459,6 @@ Example GET Response
 .. code-block:: javascript
 
   {
-    "name": "purchases", 
     "properties": {
       "item.id": "num", 
       "item.on_sale": "bool", 
@@ -440,8 +471,7 @@ Example GET Response
       "user.level": "num", 
       "user.prior_balance": "num", 
       "user.referring_source": "string"
-    }, 
-    "url": "/3.0/projects/4fea721933da5b4e8e000002/events/purchases"
+    }
   }
 
 -----------------
