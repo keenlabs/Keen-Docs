@@ -28,6 +28,7 @@ Need help? Want to tell us what could make Keen.io better? Chat with us at `user
    event-data-modeling/event-data-intro
    data-collection/index
    data-analysis/index
+   maintenance/index
    api/reference
    SDKs/index
 

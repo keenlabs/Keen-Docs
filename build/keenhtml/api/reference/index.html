@@ -13,6 +13,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../event-data-modeling/event-data-intro/">Data Modeling Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../data-collection/">Data Collection APIs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../data-analysis/">Data Analysis APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../maintenance/">Maintenance Functions</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="">API Technical Reference</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#versions-resource">Versions Resource</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#discovery-resource">Discovery Resource</a></li>
@@ -59,7 +60,7 @@
 <li><a class="reference internal" href="#project-row-resource"><em>Project Row Resource</em></a> - Returns detailed information about the specific project, as well as links to related resources.</li>
 <li><a class="reference internal" href="#event-collection-resource"><em>Event Collection Resource</em></a> - Used for bulk inserting events or for getting information about all the collections in a given project.</li>
 <li><a class="reference internal" href="#event-resource"><em>Event Resource</em></a> - Used for inserting individual events or to get information about a specific event collection.</li>
-<li><a class="reference internal" href="#property-resource"><em>Property Resource</em></a> - Used for inserting individual events or to get information about a specific event collection.</li>
+<li><a class="reference internal" href="#property-resource"><em>Property Resource</em></a> - Returns a property&#8217;s type and can also be used to delete properties.</li>
 <li><a class="reference internal" href="#count-resource"><em>Count Resource</em></a> - Returns a count of items meeting specified criteria.</li>
 <li><a class="reference internal" href="#count-unique-resource"><em>Count Unique Resource</em></a> - Returns a count of unique items meeting specified criteria.</li>
 <li><a class="reference internal" href="#minimum-resource"><em>Minimum Resource</em></a> - Returns the minimum value for a given property.</li>
@@ -646,7 +647,7 @@
 <ul class="simple">
 <li><strong>api_key</strong> (optional) - The API Key for the project containing the data you are analyzing. If you don’t include it as a query string parameter you must include it in the header. See <a class="reference internal" href="../../data-analysis/authentication/"><em>Authentication</em></a> for more information.</li>
 <li><strong>event_collection</strong> (required) - The name of the event collection you are analyzing.</li>
-<li><strong>filters</strong> (optional) - <a class="reference internal" href="../../data-analysis/filters/"><em>Filters</em></a> are used to narrow down the events used in an analysis request based on <a class="reference internal" href="../../event-data-modeling/event-data-intro/#event-properties"><em>event property</em></a> values.</li>
+<li><strong>filters</strong> (optional) - <a class="reference internal" href="../../data-analysis/filters/"><em>Filters</em></a> are used to narrow down the events used in an analysis request based on <em class="xref std std-ref">event property</em> values.</li>
 <li><strong>timeframe</strong> (optional) - A <a class="reference internal" href="../../data-analysis/timeframe/"><em>Timeframe</em></a> specifies the events to use for analysis based on a window of time. If no timeframe is specified, all events will be counted.</li>
 </ul>
 <div class="admonition note">
@@ -689,7 +690,7 @@ The response will be a simple JSON object with one key: result, which maps to th
 <li><strong>api_key</strong> (optional) - The API Key for the project containing the data you are analyzing. If you don&#8217;t include it as a query string parameter you must include it in the header. See <a class="reference internal" href="../../data-analysis/authentication/"><em>Authentication</em></a> for more information.</li>
 <li><strong>event_collection</strong> (required) - The name of the event collection you are analyzing.</li>
 <li><strong>target_property</strong> (required) - The name of the property you are analyzing.</li>
-<li><strong>filters</strong> (optional) - <a class="reference internal" href="../../data-analysis/filters/"><em>Filters</em></a> are used to narrow down the events used in an analysis request based on <a class="reference internal" href="../../event-data-modeling/event-data-intro/#event-properties"><em>event property</em></a> values.</li>
+<li><strong>filters</strong> (optional) - <a class="reference internal" href="../../data-analysis/filters/"><em>Filters</em></a> are used to narrow down the events used in an analysis request based on <em class="xref std std-ref">event property</em> values.</li>
 <li><strong>timeframe</strong> (optional) - Similar to filters, a <a class="reference internal" href="../../data-analysis/timeframe/"><em>Timeframe</em></a> is used to narrow down the events used in an analysis request based on the time that the event occurred.</li>
 </ul>
 <div class="admonition note">
@@ -733,7 +734,7 @@ The response will be a simple JSON object with one key: result, which maps to th
 <li><strong>api_key</strong> (optional) - The API Key for the project containing the data you are analyzing. If you don&#8217;t include it as a query string parameter you must include it in the header. See <a class="reference internal" href="../../data-analysis/authentication/"><em>Authentication</em></a> for more information.</li>
 <li><strong>event_collection</strong> (required) - The name of the event collection you are analyzing.</li>
 <li><strong>target_property</strong> (required) - The name of the property you are analyzing.</li>
-<li><strong>filters</strong> (optional) - <a class="reference internal" href="../../data-analysis/filters/"><em>Filters</em></a> are used to narrow down the events used in an analysis request based on <a class="reference internal" href="../../event-data-modeling/event-data-intro/#event-properties"><em>event property</em></a> values.</li>
+<li><strong>filters</strong> (optional) - <a class="reference internal" href="../../data-analysis/filters/"><em>Filters</em></a> are used to narrow down the events used in an analysis request based on <em class="xref std std-ref">event property</em> values.</li>
 <li><strong>timeframe</strong> (optional) - Similar to filters, a <a class="reference internal" href="../../data-analysis/timeframe/"><em>Timeframe</em></a> is used to narrow down the events used in an analysis request based on the time that the event occurred.</li>
 </ul>
 <div class="admonition note">
@@ -777,7 +778,7 @@ The response will be a simple JSON object with one key: result, which maps to th
 <li><strong>api_key</strong> (optional) - The API Key for the project containing the data you are analyzing. If you don&#8217;t include it as a query string parameter you must include it in the header. See <a class="reference internal" href="../../data-analysis/authentication/"><em>Authentication</em></a> for more information.</li>
 <li><strong>event_collection</strong> (required) - The name of the event collection you are analyzing.</li>
 <li><strong>target_property</strong> (required) - The name of the property you are analyzing.</li>
-<li><strong>filters</strong> (optional) - <a class="reference internal" href="../../data-analysis/filters/"><em>Filters</em></a> are used to narrow down the events used in an analysis request based on <a class="reference internal" href="../../event-data-modeling/event-data-intro/#event-properties"><em>event property</em></a> values.</li>
+<li><strong>filters</strong> (optional) - <a class="reference internal" href="../../data-analysis/filters/"><em>Filters</em></a> are used to narrow down the events used in an analysis request based on <em class="xref std std-ref">event property</em> values.</li>
 <li><strong>timeframe</strong> (optional) - Similar to filters, a <a class="reference internal" href="../../data-analysis/timeframe/"><em>Timeframe</em></a> is used to narrow down the events used in an analysis request based on the time that the event occurred.</li>
 </ul>
 <div class="admonition note">
@@ -821,7 +822,7 @@ The response will be a simple JSON object with one key: result, which maps to th
 <li><strong>api_key</strong> (optional) - The API Key for the project containing the data you are analyzing. If you don&#8217;t include it as a query string parameter you must include it in the header. See <a class="reference internal" href="../../data-analysis/authentication/"><em>Authentication</em></a> for more information.</li>
 <li><strong>event_collection</strong> (required) - The name of the event collection you are analyzing.</li>
 <li><strong>target_property</strong> (required) - The name of the property you are analyzing.</li>
-<li><strong>filters</strong> (optional) - <a class="reference internal" href="../../data-analysis/filters/"><em>Filters</em></a> are used to narrow down the events used in an analysis request based on <a class="reference internal" href="../../event-data-modeling/event-data-intro/#event-properties"><em>event property</em></a> values.</li>
+<li><strong>filters</strong> (optional) - <a class="reference internal" href="../../data-analysis/filters/"><em>Filters</em></a> are used to narrow down the events used in an analysis request based on <em class="xref std std-ref">event property</em> values.</li>
 <li><strong>timeframe</strong> (optional) - Similar to filters, a <a class="reference internal" href="../../data-analysis/timeframe/"><em>Timeframe</em></a> is used to narrow down the events used in an analysis request based on the time that the event occurred.</li>
 </ul>
 <div class="admonition note">
@@ -865,7 +866,7 @@ The response will be a simple JSON object with one key: result, which maps to th
 <li><strong>api_key</strong> (optional) - The API Key for the project containing the data you are analyzing. If you don&#8217;t include it as a query string parameter you must include it in the header. See <a class="reference internal" href="../../data-analysis/authentication/"><em>Authentication</em></a> for more information.</li>
 <li><strong>event_collection</strong> (required) - The name of the event collection you are analyzing.</li>
 <li><strong>target_property</strong> (required) - The name of the property you are analyzing.</li>
-<li><strong>filters</strong> (optional) - <a class="reference internal" href="../../data-analysis/filters/"><em>Filters</em></a> are used to narrow down the events used in an analysis request based on <a class="reference internal" href="../../event-data-modeling/event-data-intro/#event-properties"><em>event property</em></a> values.</li>
+<li><strong>filters</strong> (optional) - <a class="reference internal" href="../../data-analysis/filters/"><em>Filters</em></a> are used to narrow down the events used in an analysis request based on <em class="xref std std-ref">event property</em> values.</li>
 <li><strong>timeframe</strong> (optional) - Similar to filters, a <a class="reference internal" href="../../data-analysis/timeframe/"><em>Timeframe</em></a> is used to narrow down the events used in an analysis request based on the time that the event occurred.</li>
 </ul>
 <div class="admonition note">
@@ -908,7 +909,7 @@ The response will be a simple JSON object with one key: result, which maps to an
 <li><strong>api_key</strong> (optional) - The API Key for the project containing the data you are analyzing. If you don&#8217;t include it as a query string parameter you must include it in the header. See <a class="reference internal" href="../../data-analysis/authentication/"><em>Authentication</em></a> for more information.</li>
 <li><strong>event_collection</strong> (required) - The name of the event collection you are analyzing.</li>
 <li><strong>target_property</strong> (required) - The property of which you want to count the unique values.</li>
-<li><strong>filters</strong> (optional) - <a class="reference internal" href="../../data-analysis/filters/"><em>Filters</em></a> are used to narrow down the events used in an analysis request based on <a class="reference internal" href="../../event-data-modeling/event-data-intro/#event-properties"><em>event property</em></a> values.</li>
+<li><strong>filters</strong> (optional) - <a class="reference internal" href="../../data-analysis/filters/"><em>Filters</em></a> are used to narrow down the events used in an analysis request based on <em class="xref std std-ref">event property</em> values.</li>
 <li><strong>timeframe</strong> (optional) - Similar to filters, a <a class="reference internal" href="../../data-analysis/timeframe/"><em>Timeframe</em></a> is used to narrow down the events used in an analysis request based on the time that the event occurred.</li>
 </ul>
 <div class="admonition note">
@@ -956,7 +957,7 @@ The response will be a simple JSON object with one key: result, which maps to an
 <ul class="simple">
 <li><strong>api_key</strong> (optional) - The API Key for the project containing the data you are analyzing. The API key can alternatively be provided  in the request header. See <tt class="xref doc docutils literal"><span class="pre">authentication</span></tt> for more information.</li>
 <li><strong>event_collection</strong> (required) - The name of the event collection you are analyzing.</li>
-<li><strong>filters</strong> (optional) - <tt class="xref doc docutils literal"><span class="pre">filters</span></tt> are used to narrow down the events used in an analysis request based on <a class="reference internal" href="../../event-data-modeling/event-data-intro/#event-properties"><em>event property</em></a> values.</li>
+<li><strong>filters</strong> (optional) - <tt class="xref doc docutils literal"><span class="pre">filters</span></tt> are used to narrow down the events used in an analysis request based on <em class="xref std std-ref">event property</em> values.</li>
 <li><strong>timeframe</strong> (optional) - A <tt class="xref doc docutils literal"><span class="pre">timeframe</span></tt> specifies the events to use for analysis based on a window of time.</li>
 <li><strong>email_address</strong> (optional) - If an email address is specified, an email will be sent to it when your extraction is ready for download. If email is not specified, your extraction will be processed synchronously and your data will be returned as <a class="reference internal" href="../../data-analysis/extractions/#extraction-to-json"><em>JSON</em></a>.</li>
 <li><strong>latest</strong> (optional) - Use this parameter to specifically request the most recent events added to a given collection. Extract up to 100 of your most recent events.</li>

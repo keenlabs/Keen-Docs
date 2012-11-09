@@ -15,7 +15,7 @@ Resource Inventory:
 * :ref:`project-row-resource` - Returns detailed information about the specific project, as well as links to related resources.
 * :ref:`event-collection-resource` - Used for bulk inserting events or for getting information about all the collections in a given project.
 * :ref:`event-resource` - Used for inserting individual events or to get information about a specific event collection.
-* :ref:`property-resource` - Used for inserting individual events or to get information about a specific event collection.
+* :ref:`property-resource` - Returns a property's type and can also be used to delete properties.
 * :ref:`count-resource` - Returns a count of items meeting specified criteria.
 * :ref:`count-unique-resource` - Returns a count of unique items meeting specified criteria.
 * :ref:`minimum-resource` - Returns the minimum value for a given property.

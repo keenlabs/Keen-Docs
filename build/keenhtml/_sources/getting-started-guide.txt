@@ -14,8 +14,6 @@ Once you're through this guide, we hope you'll be square on the following:
 * How to setup a project and create an event collection.
 * How to submit sample data and do a little something with it. 
 
-This guide assumes that you've been granted developer preview access. Keen is still in private beta, so access is limited to the choicest of rockstars. If you don't have a Keen login yet, you can request access `here <http://keen.io>`_. 
-
 ==============
 Project Setup
 ==============
