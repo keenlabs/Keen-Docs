@@ -1,0 +1,104 @@
+
+[% extends "public_layout.html" %]
+[% block body_id %]docBody[% endblock body_id %][% block body %]  
+    <div class="container">        
+        <div class="row">
+                <div class="span3">
+                    <div class="well">                    
+                    
+        <div class="sphinxsidebar">
+<h3><a href="../">Table Of Contents</a></h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../getting-started-guide/">Getting Started Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../event-data-modeling/event-data-intro/">Data Modeling Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data-collection/">Data Collection APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data-analysis/">Data Analysis APIs</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">Maintenance</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#projects">Projects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#event-collections">Event Collections</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#event-properties">Event Properties</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../api/reference/">API Technical Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../SDKs/">SDKs</a></li>
+</ul>
+
+        </div>
+                    </div>
+                </div>
+                <div class="span9">
+                    
+  <div class="section" id="maintenance">
+<span id="id1"></span><h1>Maintenance<a class="headerlink" href="#maintenance" title="Permalink to this headline">¶</a></h1>
+<p>This page describes some of the maintenance functions of the Keen IO API.</p>
+<ul class="simple">
+<li><a class="reference internal" href="#projects-maintenance"><em>Projects</em></a></li>
+<li><a class="reference internal" href="#event-collections-maintenance"><em>Event Collections</em></a></li>
+<li><a class="reference internal" href="#event-properties-maintenance"><em>Event Properties</em></a></li>
+</ul>
+<div class="section" id="projects">
+<span id="projects-maintenance"></span><h2>Projects<a class="headerlink" href="#projects" title="Permalink to this headline">¶</a></h2>
+<p>Technical Reference: <a class="reference internal" href="../api/reference/#projects-resource"><em>Projects Resource</em></a></p>
+<p>You can create and delete projects on the Keen IO <a class="reference external" href="https://keen.io/projects">projects page</a>.
+Deleting your project puts your project in an inactive state and removes it from the UI.</p>
+<p>You can also use our API to get information about your projects:</p>
+<p>The <a class="reference internal" href="../api/reference/#projects-resource"><em>Projects Resource</em></a> returns the projects accessible to the API user, as well as links to project sub-resources for discovery.</p>
+<p>The <a class="reference internal" href="../api/reference/#project-row-resource"><em>Project Row Resource</em></a> returns detailed information about the specific project, as well as links to related resources.</p>
+</div>
+<div class="section" id="event-collections">
+<span id="event-collections-maintenance"></span><h2>Event Collections<a class="headerlink" href="#event-collections" title="Permalink to this headline">¶</a></h2>
+<p>Technical Reference: <a class="reference internal" href="../api/reference/#event-collection-resource"><em>Event Collection Resource</em></a></p>
+<p>After testing, you may have some event collections you want to delete. You do this using the <a class="reference external" href="https://keen.io/projects">projects page</a>, or our API.</p>
+<p>Deletion will only work for collections with under 10,000 events. If you need to delete a larger collection, we can do it for you, just <a class="reference external" href="mailto:team&#37;&#52;&#48;keen&#46;io">let us know</a></p>
+<p>Here&#8217;s what an event collection request would look like using the REST API (use the DELETE method):</p>
+<div class="highlight-python"><pre>https://api.keen.io/3.0/projects/&lt;project_id&gt;/events/&lt;collection_name&gt;?api_key=&lt;key&gt;</pre>
+</div>
+<p>Successful Result:</p>
+<div class="highlight-python"><pre>204 - No Content</pre>
+</div>
+<p>You can also use a GET request to retrieve information about the event properties in your collection. For example:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s">&quot;properties&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s">&quot;user.age&quot;</span><span class="p">:</span> <span class="s">&quot;num&quot;</span><span class="p">,</span>
+        <span class="s">&quot;user.name&quot;</span><span class="p">:</span> <span class="s">&quot;string&quot;</span><span class="p">,</span>
+        <span class="s">&quot;user.location&quot;</span><span class="p">:</span> <span class="s">&quot;string&quot;</span><span class="p">,</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="event-properties">
+<span id="event-properties-maintenance"></span><h2>Event Properties<a class="headerlink" href="#event-properties" title="Permalink to this headline">¶</a></h2>
+<p>Technical Reference: <a class="reference internal" href="../event-data-modeling/event-data-intro/#event-properties"><em>Event Properties</em></a></p>
+<p>Individual event properties can be deleted using our API. Deletion will only work for properties with under 10,000 events. If you need to delete more than that, <a class="reference external" href="mailto:team&#37;&#52;&#48;keen&#46;io">let us know</a></p>
+<p>Here&#8217;s an example event property DELETE request using the REST API:</p>
+<div class="highlight-python"><pre>https://api.keen.io/3.0/projects/&lt;project_id&gt;/events/&lt;event_collection&gt;/properties/&lt;property_name&gt;?api_key=&lt;key&gt;</pre>
+</div>
+<p>Successful Result:</p>
+<div class="highlight-python"><pre>204 - No Content</pre>
+</div>
+<p>You can also perform a GET request to retrieve information about a property:</p>
+<div class="highlight-python"><pre>https://api.keen.io/3.0/projects/4fdf5ae25f546f1b6a000002/events/&lt;event_collection&gt;/properties/&lt;property_name&gt;?api_key=&lt;key&gt;</pre>
+</div>
+<p>Result:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s">&quot;property_name&quot;</span><span class="p">:</span> <span class="s">&quot;user.email&quot;</span><span class="p">,</span>
+    <span class="s">&quot;url&quot;</span><span class="p">:</span> <span class="s">&quot;/3.0/projects/&lt;project_id&gt;/events/&lt;event_collection&gt;/properties/&lt;property_name&gt;&quot;</span><span class="p">,</span>
+    <span class="s">&quot;type&quot;</span><span class="p">:</span> <span class="s">&quot;string&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+                    
+                        <div id="disqus_thread"></div>
+                        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+                    
+                </div>
+            
+        </div>
+    </div>
+
+[% endblock %]
