@@ -209,6 +209,12 @@ Event Resource
 
 .. note:: Make sure to set the request header "Content-Type" to "application/json" for POSTs.
 
+-----------------------
+Query String Parameters
+-----------------------
+
+* **api_key** (optional) - The API Key for the project containing the data you are analyzing. If you don’t include api_key s a query string parameter, you must include it in the header. See :doc:`/data-analysis/authentication` for more information.
+
 
 --------------------
 Example GET Response
@@ -418,6 +424,12 @@ Property Resource
 | POST Request Body | JSON arrays of events. See example below                                                                                                                    |
 +-------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
+-----------------------
+Query String Parameters
+-----------------------
+
+* **api_key** (optional) - The API Key for the project containing the data you are analyzing. If you don’t include api_key s a query string parameter, you must include it in the header. See :doc:`/data-analysis/authentication` for more information.
+
 
 --------------------
 Example GET Response
@@ -449,7 +461,11 @@ Event Collection Resource
 | POST Request Body | Single JSON event. See example below                                                                                                               |
 +-------------------+----------------------------------------------------------------------------------------------------------------------------------------------------+
 
+-----------------------
+Query String Parameters
+-----------------------
 
+* **api_key** (optional) - The API Key for the project containing the data you are analyzing. If you don’t include api_key s a query string parameter, you must include it in the header. See :doc:`/data-analysis/authentication` for more information.
 
 
 --------------------
@@ -514,6 +530,11 @@ Queries Resource
 | Supported Methods | GET, HEAD                                                                                                                                          |
 +-------------------+----------------------------------------------------------------------------------------------------------------------------------------------------+
 
+-----------------------
+Query String Parameters
+-----------------------
+
+* **api_key** (optional) - The API Key for the project containing the data you are analyzing. If you don’t include api_key s a query string parameter, you must include it in the header. See :doc:`/data-analysis/authentication` for more information.
 
 ----------------
 Example Response
@@ -547,7 +568,7 @@ Count Resource
 Query String Parameters
 -----------------------
 
-* **api_key** (optional) - The API Key for the project containing the data you are analyzing. See :doc:`/data-analysis/authentication` for more information.
+* **api_key** (optional) - The API Key for the project containing the data you are analyzing. If you don’t include it as a query string parameter you must include it in the header. See :doc:`/data-analysis/authentication` for more information.
 * **event_collection** (required) - The name of the event collection you are analyzing.
 * **filters** (optional) - :doc:`/data-analysis/filters` are used to narrow down the events used in an analysis request based on :ref:`event property <event-properties>` values.
 * **timeframe** (optional) - A :doc:`/data-analysis/timeframe` specifies the events to use for analysis based on a window of time. If no timeframe is specified, all events will be counted.

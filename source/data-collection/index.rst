@@ -8,8 +8,8 @@ Our public REST API lets you send data using standard HTTP POST methods, from an
 
 These two links have all the technical details you need for sending data to our REST API:
 
-* :ref:`event-collections-list-resource` - Used for bulk-inserting events into Keen.
-* :ref:`event-collection-row-resource` - Used for inserting single events into Keen.
+* :ref:`event-collection-resource` - Used for bulk-inserting events into Keen.
+* :ref:`event-resource` - Used for inserting single events into Keen.
 
 Our SDKs make integration even simpler. Check out our client usage guides for the steps to integrate your app for data collection: 
 
