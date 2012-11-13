@@ -94,7 +94,7 @@ The properties of the JS Object must be valid Keen Property Names. A Keen Proper
 
 Add as many events as you like. The SDK will fire off each event to the Keen IO servers asynchronously.
 
-The SDK will automatically stamp every event you track with a timestamp. If you want to override the system value with your own, use the following example. Note that the "timestamp" key is set in the header properties dictionary.
+The SDK will automatically stamp every event you track with a timestamp. If you want to override the system value with your own, use the following example. Note that the "timestamp" key is set in the *header* properties dictionary.
 
 .. code-block:: javascript
 
@@ -102,7 +102,7 @@ The SDK will automatically stamp every event you track with a timestamp. If you 
         // create an event as a JS object
         var purchase = {
             item: "golden widget",
-            headers: {
+            header: {
                 timestamp: new Date()
             }
         };

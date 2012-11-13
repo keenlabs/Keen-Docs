@@ -26,6 +26,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../saved-queries/">Saved Queries &amp; Queries</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../../maintenance/">Maintenance</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../api/reference/">API Technical Reference</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../SDKs/">SDKs</a></li>
 </ul>
@@ -40,11 +41,11 @@
 <p>These tools can be used to get information about your projects, event collections, Saved Queries, etc.</p>
 <ul class="simple">
 <li><a class="reference internal" href="../../api/reference/#versions-resource"><em>Versions Resource</em></a> - The entry point to our APIs. Returns the available API versions and links to the <a class="reference internal" href="../../api/reference/#discovery-resource"><em>Discovery Resource</em></a>.</li>
-<li><a class="reference internal" href="../../api/reference/#discovery-resource"><em>Discovery Resource</em></a> - Returns the available child resources. Currently, the only child resource is the <a class="reference internal" href="../../api/reference/#projects-list-resource"><em>Projects Resource</em></a>.</li>
-<li><a class="reference internal" href="../../api/reference/#projects-list-resource"><em>Projects Resource</em></a> - Returns the projects accessible to the API user, as well as links to the <a class="reference internal" href="../../api/reference/#project-row-resource"><em>Project Row Resource</em></a> for discovery.</li>
+<li><a class="reference internal" href="../../api/reference/#discovery-resource"><em>Discovery Resource</em></a> - Returns the available child resources. Currently, the only child resource is the <em class="xref std std-ref">projects-list-resource</em>.</li>
+<li><em class="xref std std-ref">projects-list-resource</em> - Returns the projects accessible to the API user, as well as links to the <a class="reference internal" href="../../api/reference/#project-row-resource"><em>Project Row Resource</em></a> for discovery.</li>
 <li><a class="reference internal" href="../../api/reference/#project-row-resource"><em>Project Row Resource</em></a> - Returns detailed information about the specific project, as well as links to related resources.</li>
-<li><a class="reference internal" href="../../api/reference/#event-collections-list-resource"><em>Event Collections List Resource</em></a> - Returns detailed information about all the event collections in the specific project, as well as links to them. Also used for bulk-inserting events.</li>
-<li><a class="reference internal" href="../../api/reference/#event-collection-row-resource"><em>Event Collection Row Resource</em></a> - Returns event collection info including properties and their type. It also returns links to sub-resources. Also used for inserting events.</li>
+<li><em class="xref std std-ref">event-collections-list-resource</em> - Returns detailed information about all the event collections in the specific project, as well as links to them. Also used for bulk-inserting events.</li>
+<li><em class="xref std std-ref">event-collection-row-resource</em> - Returns event collection info including properties and their type. It also returns links to sub-resources. Also used for inserting events.</li>
 <li><a class="reference internal" href="../../api/reference/#queries-resource"><em>Queries Resource</em></a> - Returns links to the available Queries, i.e. <a class="reference internal" href="../metrics/"><em>Metrics</em></a>, <a class="reference internal" href="../progressions/"><em>Progressions</em></a>, <a class="reference internal" href="../extractions/"><em>Data Extractions</em></a>.</li>
 <li><a class="reference internal" href="../../api/reference/#saved-query-list-resource"><em>Saved Queries List Resource</em></a> - Returns all the available <a class="reference internal" href="../saved-queries/"><em>Saved Queries &amp; Queries</em></a> in this project as well as links to each of their <a class="reference internal" href="../../api/reference/#saved-query-row-resource"><em>Saved Query Row Resource</em></a>.</li>
 </ul>

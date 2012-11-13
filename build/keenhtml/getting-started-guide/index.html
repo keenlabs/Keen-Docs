@@ -20,7 +20,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../event-data-modeling/event-data-intro/">Data Modeling Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../data-collection/">Data Collection APIs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../data-analysis/">Data Analysis APIs</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../maintenance/">Maintenance Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../maintenance/">Maintenance</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/reference/">API Technical Reference</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../SDKs/">SDKs</a></li>
 </ul>
@@ -49,7 +49,7 @@
 </div>
 <div class="section" id="send-an-event">
 <h2>Send an Event<a class="headerlink" href="#send-an-event" title="Permalink to this headline">¶</a></h2>
-<p>Let&#8217;s get to the heart of it - sending events. <a class="reference internal" href="../event-data-modeling/event-data-intro/#event-data"><em>Events</em></a> are the actions that are happening in your app that you want to track.  Events are stored in <a class="reference internal" href="../maintenance/#event-collections"><em>Event Collections</em></a>. We’ll call our new Event Collection &#8220;purchases&#8221;, but you can pick any name that doesn&#8217;t have spaces or weird characters.</p>
+<p>Let&#8217;s get to the heart of it - sending events. <a class="reference internal" href="../event-data-modeling/event-data-intro/#event-data"><em>Events</em></a> are the actions that are happening in your app that you want to track.  Events are stored in <a class="reference internal" href="../event-data-modeling/event-data-intro/#event-collections"><em>Event Collections</em></a>. We’ll call our new Event Collection &#8220;purchases&#8221;, but you can pick any name that doesn&#8217;t have spaces or weird characters.</p>
 <p>Let&#8217;s insert a new &#8220;purchase&#8221; event into the purchases event collection. The event should be in <a class="reference external" href="http://en.wikipedia.org/wiki/JSON">JSON</a> format and look like this example.</p>
 <p><strong>STEP 1:</strong> Copy this example, paste it into a text editor, and save it as a &#8220;purchase1.json&#8221;.</p>
 <div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
@@ -71,7 +71,7 @@
 <p>Note: Make sure to navigate your Terminal prompt to the place where you saved your event, or add a file path to your file name.</p>
 <p>There are a couple things going on here.</p>
 <ul class="simple">
-<li>First, we send the request to a URL that includes both the Project ID and the name of the <a class="reference internal" href="../maintenance/#event-collections"><em>Event Collection</em></a> (e.g. purchases) where we want to store this event.</li>
+<li>First, we send the request to a URL that includes both the Project ID and the name of the <a class="reference internal" href="../event-data-modeling/event-data-intro/#event-collections"><em>Event Collection</em></a> (e.g. purchases) where we want to store this event.</li>
 <li>Since the event collection &#8220;purchases&#8221; doesn&#8217;t exist yet, Keen creates a new event collection for you called &#8220;purchases&#8221; and stores your event there. Now you have a place to send all your purchase events in the future.</li>
 <li>Second, we set headers for both authorization (with your API Key) and content-type (so the API knows it’s getting a JSON request).</li>
 <li>Third, we set the body of the HTTP request to the contents of the file that we saved.</li>
