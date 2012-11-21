@@ -17,7 +17,7 @@ Choose one of these options to get started:
 
 Need help? Want to tell us what could make Keen IO better? Chat with us at `users.keen.io <http://users.keen.io/>`_. 
 
--Keen Team
+-Keen IO Team
 
 
 .. toctree::
