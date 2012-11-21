@@ -1,63 +1,146 @@
-Documentation for Keen.
+Keen-Docs holds all of the Documentation for Keen IO.
+It is a submodule of Keen-Web.
 
-Here's how to modify Keen docs (install Sphinx first)
+Prerequisites for updating Keen Docs: 
+o You have the Keen environment running locally. See Keen-Web and Keen-Service READMEs.
+o Install Sphinx.
 
-1. Use Sphinx and TextMate to modify .rst files. Synch Keen-Docs and Keen-Web to your machine using github.
-2. Open Keen-Docs in TextMate or another editor to make mods to the Spinx rst files. Don't modify html files directly.
-3. Use Sphinx build HTML docs locally. Type "make html" in your Terminal.
+Steps to Install Sphinx:
+1. [michelle] ~ $ sudo easy_install -U Sphinx
 
-for example:
+	Note: If you get the error "ImportError: Entry point ('console_scripts', 'easy_install') not found", install Distribute:
+	[michelle] ~ $ sudo easy_install -U Sphinxsudo curl -O http://python-distribute.org/distribute_setup.py
+	[michelle] ~ $ sudo easy_install -U Sphinxsudo curl easy_install -U Sphinx
+
+Keen Docs Development Process:
+1. Navigate to Keen-Web and enter your virtual environment.
+	[michelle] ~/Dev/Keen-Web $ v mykeenweb
+	(mykeenweb)[michelle] ~/Dev/Keen-Web $
+
+2. Check status of your local environment. Download the latest Keen-Web from master if needed.
+	(mykeenweb)[michelle] ~/Dev/Keen-Web $ git status
+	# On branch master
+	nothing to commit, working directory clean
+	(mykeenweb)[michelle] ~/Dev/Keen-Web $ git pull
+
+3. You must also download a submodule update of Keen-Web, since Keen-Docs is a submodule of Keen-Docs.
+	(mykeenweb)[michelle] ~/Dev/Keen-Web $ git submodule update
+
+4. Checkout the master branch of Keen-Docs
+	(mykeenweb)[michelle] ~/Dev/Keen-Web/app/Keen-Docs $ git checkout master
+
+5. Use TextMate to modify .rst files in Sphinx language and save your changes. You should only modify .rst and .txt files in the "source" folder. Never modify html files for the docs; those are built by Sphinx.
+	(mykeenweb)[michelle] ~/Dev/Keen-Web/app/Keen-Docs $ mate source
+
+6. Do a git status in Keen-Docs to take a look at the rst changes you've made to make sure everything looks ok.
+	This step is FYI only.
+
+	(mykeenweb)[michelle] ~/Dev/Keen-Web/app/Keen-Docs $ git status
+	# On branch master
+	# Changes not staged for commit:
+	#   (use "git add <file>..." to update what will be committed)
+	#   (use "git checkout -- <file>..." to discard changes in working directory)
+	#
+	#	modified:   source/index.rst
+	#
+	no changes added to commit (use "git add" and/or "git commit -a")
+
+7. Now you need to run a Sphinx build process to turn your rst files into HTML.
+	(mykeenweb)[michelle] ~/Dev/Keen-Web/app/Keen-Docs $ make keenhtml
+
+8. Review the list of warnings that are displayed. Sphinx will call out broken references, links, and ill formatting for tables and such. Make changes and re-run make keenhtml until the errors and warnings are resolved.
+
+9. Preview and test your changes in your local environment. Typically, it's http://localhost:5000. Make changes and re-run make keenhtml until all is well.
+
+10. Now do a git status in Keen-Docs to take a look at your changes. You'll see rst changes as well as html changes. 
+
+	(mykeenweb)[michelle] ~/Dev/Keen-Web/app/Keen-Docs $ git status
+	# On branch master
+	# Changes not staged for commit:
+	#   (use "git add <file>..." to update what will be committed)
+	#   (use "git checkout -- <file>..." to discard changes in working directory)
+	#
+	#	modified:   source/index.rst
+	#	modified:   build/keenhtml/_sources/index.txt
+	#	modified:   build/keenhtml/searchindex.js
+	#
+	no changes added to commit (use "git add" and/or "git commit -a")
+
+	Note: searchindex.js is updated pretty much every time your make a change anywhere in sphinx docs.
+
+11. Commit your changes to Keen-Docs.
 	
-	[michelle] ~/Dev/Keen-Docs $ make html
-
-or use "make clean" to delete unused files (and other helpful things? sometimes this makes things work better)
-
-	[michelle] ~/Dev/Keen-Docs $ make clean html
-  
-4. Check your build folder (/Keen-Docs/build/html) and open index.html to preview the build on your local machine.
-5. Review warnings from the build process --- Sphinx is good at identifying broken links and new docs which are missing from the table of contents.
-
-
-To deploy build docs:
-
-1. You must set an environment variable on your local machine so that Sphinx can deposit html files into Keen-Web. You must have Keen-Web synched to your machine. This is a one-time step to set the environment variable:
-
-In terminal:
-
-	export KEEN_WEB_DIR=<Keen web directory on your machine>
+	(mykeenweb)[michelle] ~/Dev/Keen-Web/app/Keen-Docs $ git commit -a -m 'docs: Keen IO and remove meta-analysis page'
+	[master 7b9e0cf] docs: Keen IO and remove meta-analysis page
+ 	3 files changed, 7 insertions(+), 26 deletions(-)
+ 	rewrite build/keenhtml/objects.inv (88%)
+ 	rewrite build/keenhtml/searchindex.js (100%)
+ 	delete mode 100644 source/data-analysis/meta-analysis.rst
 	
-	for example:
-	export KEEN_WEB_DIR=/Users/michellewetzler/Dev/Keen-Web
+	(mykeenweb)[michelle] ~/Dev/Keen-Web/app/Keen-Docs $ git status
+	# On branch master
+	# Your branch is ahead of 'origin/master' by 1 commit.
+	#
+	nothing to commit, working directory clean
+
+12. Do a git pull to see if there are any new updates on Keen Docs. 
 	
-Note: Keen-Docs/build.sh holds the configuration of this deployment folder.
+	Resolve or discard conflicts, rebuild docs, and re-commit until git pull says it is up to date.
 
+	(mykeenweb)[michelle] ~/Dev/Keen-Web/app/Keen-Docs $ git pull
+	Already up-to-date.
 
-2. Now run the Sphinx build command to generate the html files in the Keen-Web folder.
+13. Push the changes to Keen-Docs master
+	(mykeenweb)[michelle] ~/Dev/Keen-Web/app/KEen-Docs $ git push origin master
 
-	[michelle] ~/Dev/Keen-Docs $ ./build.sh
+14. Navigate to Keen-Web and check status. You should have master branch checked out.
 	
-3. If you have the Keen-Web environment on your local machine, you can checkout the deployment locally.
+	(mykeenweb)[michelle] ~/Dev/Keen-Web $ git status
+	# On branch master
+	# Changes not staged for commit:
+	#   (use "git add <file>..." to update what will be committed)
+	#   (use "git checkout -- <file>..." to discard changes in working directory)
+	#
+	#	modified:   app/Keen-Docs (new commits)
+	#
+	no changes added to commit (use "git add" and/or "git commit -a")
 
-4. Don't forget to commit your updated Sphinx docs (rst files) to the Keen-Docs repository on github. Make sure you're in the right branch (master).
-	
-	Run these commands from Keen-Docs directory:
-	$ git status
-	$ git commit -a -m 'comments describing the build'
-	$ git push origin master
+15. Commit these changes to Keen-Web master.
 
-5. Now you can push the final web code (html) to Keen-Web on github.
+	(mykeenweb)[michelle] ~/Dev/Keen-Web $ git commit -a -m 'docs: Keen IO and remove meta-analysis page'
+	[master 524d3ab] merged docs udpates
+ 	1 file changed, 1 insertion(+), 1 deletion(-)
 
-	Run these commands from Keen-Web directory:
-	$ git status
-	$ git commit -a -m 'comments describing the build'
-	$ git push origin master
+16. Pull the latest Keen-Web master to check for conflicts. 
 
-7. To deploy the new Keen-web code to staging, type this in HipChat:
+	(mykeenweb)[michelle] ~/Dev/Keen-Web $ git pull
+
+	Work out the conflicts until git pull says Already up-to-date.
+
+17. Push the Keen docs changes to Keen Web master.
+
+	(mykeenweb)[michelle] ~/Dev/Keen-Web $ git push origin master
+
+	(mykeenweb)[michelle] ~/Dev/Keen-Web $ git push origin master
+	Counting objects: 13, done.
+	Delta compression using up to 4 threads.
+	Compressing objects: 100% (9/9), done.
+	Writing objects: 100% (9/9), 961 bytes, done.
+	Total 9 (delta 6), reused 0 (delta 0)
+	To https://github.com/keenlabs/Keen-Web.git
+   		b386b23..dae795c  master -> master
+
+
+Now you have successfully deployed all your changes to the repository!!
+
+Here's how to deploy them to the web.
+
+1. Deploy the new Keen-web code to staging, type this in HipChat:
 
 	@robot keen deploy web to staging
 	
-8. Go to staging.keen.io to checkout the changes
+2. Go to staging.keen.io to checkout the changes
 
-9. If successful, deploy web to prod by typing this in HipChat:
+3. If successful, deploy web to prod by typing this in HipChat:
 
 	@robot keen deploy web to prod
