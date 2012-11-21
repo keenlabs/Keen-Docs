@@ -9,8 +9,8 @@ Steps to Install Sphinx:
 1. [michelle] ~ $ sudo easy_install -U Sphinx
 
 	Note: If you get the error "ImportError: Entry point ('console_scripts', 'easy_install') not found", install Distribute:
-	[michelle] ~ $ sudo easy_install -U Sphinxsudo curl -O http://python-distribute.org/distribute_setup.py
-	[michelle] ~ $ sudo easy_install -U Sphinxsudo curl easy_install -U Sphinx
+	[michelle] ~ $ curl -O http://python-distribute.org/distribute_setup.py
+	[michelle] ~ $ sudo python distribute_setup.py
 
 Keen Docs Development Process:
 1. Navigate to Keen-Web and enter your virtual environment.
