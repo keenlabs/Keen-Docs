@@ -16,7 +16,6 @@ Data Analysis APIs
    filters
    timeframe
    interval
-   meta-analysis
    saved-queries
 
 We are passionate about building powerful analysis APIs so you can get the most out of your data. Our services could be the building blocks for your new custom dashboard or a real-time workflow. I'm sure you'll think of even more uses we haven't considered yet :)
@@ -28,7 +27,6 @@ Here is the inventory of tools we've built so far. We'd love to get your feedbac
 * :doc:`progressions` - Analyze the dropoff rates of users as they progress through a set of steps.  Example: What is the conversion rate of users landing on the site to creating an account to upgrading their account?
 * :doc:`extractions` - Extract all or subsets of your data in its raw form.
 * :doc:`list` - Get a list of target_property values (for example user names).
-* :doc:`meta-analysis` - Get information about your projects, event collections, extractions, etc.
 * :doc:`saved-queries` - Save your metric, series, or progression so you can reuse them later.
 
 The analysis APIs have some common parameters that apply to all of them.
