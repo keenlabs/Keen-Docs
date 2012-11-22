@@ -27,21 +27,18 @@
 <h1>Data Collection APIs<a class="headerlink" href="#data-collection-apis" title="Permalink to this headline">¶</a></h1>
 <p>We built a massively scalable event data warehouse so that you can send us whatever data you want without having to worry about storage or performance.</p>
 <p>Our public REST API lets you send data using standard HTTP POST methods, from any device. Try it out really quickly using cURL in our <a class="reference internal" href="../getting-started-guide/"><em>Getting Started Guide</em></a>.</p>
-<p>These two links have all the technical details you need for sending data to our REST API:</p>
+<p>Our SDKs make integration even simpler. Check out our client usage guides for the steps to integrate your app for data collection:</p>
+<ul class="simple">
+<li><a class="reference internal" href="../clients/iOS/usage-guide/"><em>iOS guide</em></a> | <a class="reference external" href="http://keen.io/static/code/KeenClient.zip">SDK</a></li>
+<li><a class="reference internal" href="../clients/javascript/usage-guide/"><em>javascript guide</em></a> | <a class="reference external" href="https://keen_web_static.s3.amazonaws.com/code/keenio-1.0.0.js">SDK</a></li>
+<li><a class="reference internal" href="../clients/android/usage-guide/"><em>android guide</em></a> | <a class="reference external" href="http://keen.io/static/code/KeenClient-Android.jar">SDK</a></li>
+<li><a class="reference internal" href="../clients/ruby/usage-guide/"><em>ruby guide</em></a> | <a class="reference external" href="https://github.com/keenlabs/KeenClient-Ruby">gem install keen</a></li>
+</ul>
+<p>Here are the links to the REST API resources for data collection:</p>
 <ul class="simple">
 <li><a class="reference internal" href="../api/reference/#event-collection-resource"><em>Event Collection Resource</em></a> - Used for bulk-inserting events into Keen.</li>
 <li><a class="reference internal" href="../api/reference/#event-resource"><em>Event Resource</em></a> - Used for inserting single events into Keen.</li>
 </ul>
-<p>Our SDKs make integration even simpler. Check out our client usage guides for the steps to integrate your app for data collection:</p>
-<ul class="simple">
-<li><a class="reference internal" href="../clients/iOS/usage-guide/"><em>iOS Client Usage Guide</em></a></li>
-<li><a class="reference internal" href="../clients/android/usage-guide/"><em>Android Client Usage Guide</em></a></li>
-<li><a class="reference internal" href="../clients/javascript/usage-guide/"><em>JavaScript Usage Guide</em></a></li>
-<li><a class="reference internal" href="../clients/ruby/usage-guide/"><em>Ruby Client Usage Guide</em></a></li>
-</ul>
-<p>Or take a look at our <a class="reference internal" href="../api/reference/"><em>API Technical Reference</em></a> for all the nitty-gritty details of our REST API.</p>
-<p>Unlike traditional databases like SQL, our database has no schema. You no longer need to think of data as a row with a limited number of columns. Our database holds JSON documents - they’re hierarchical and can have as many fields and values as you want.</p>
-<p>If you&#8217;re new to unstructured data, take a look at the <a class="reference internal" href="../event-data-modeling/event-data-intro/"><em>Data Modeling Guide</em></a> to get some ideas about how to model the data you send to Keen.</p>
 </div>
 
 
