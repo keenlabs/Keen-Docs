@@ -73,7 +73,7 @@ Technical Reference: :ref:`property-resource`
 
 Individual event properties can be deleted using our API. Deletion will only work for properties with under 10,000 events. If you need to delete more than that, `let us know <team@keen.io>`_
 
-Here's an example event property DELETE request using the REST API:
+Here's an example event property DELETE request using the REST API. Use the DELETE method:
 
 ::
 
@@ -90,7 +90,7 @@ You can also perform a GET request to retrieve information about a property:
 
 :: 
 
-    https://api.keen.io/3.0/projects/4fdf5ae25f546f1b6a000002/events/<event_collection>/properties/<property_name>?api_key=<key>
+    https://api.keen.io/3.0/projects/<project_id>/events/<event_collection>/properties/<property_name>?api_key=<key>
 
 Result:
 

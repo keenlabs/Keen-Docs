@@ -61,5 +61,5 @@ gem install keen
 
 :doc:`/clients/ruby/usage-guide`
 
-
+A link to our github repo: https://github.com/keenlabs/KeenClient-Ruby
 
